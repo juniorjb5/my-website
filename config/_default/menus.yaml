@@ -23,7 +23,7 @@ main:
     url: '#posts'
     weight: 40
   - name: Publications
-    url: '#featured'
+    url: '#publications'
     weight: 50
   - name: Courses
     url: courses/
