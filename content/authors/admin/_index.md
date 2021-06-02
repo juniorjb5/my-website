@@ -1,52 +1,52 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable
-  matter.
+title: "Orlando Joaqui Barandica"
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
-email: ""
-highlight_name: false
+  - course: PhD student in Industrial Engineering
+    institution: Universidad del Valle
+    year: Current
+  - course: MSc Applied Economics
+    institution: Universidad del Valle
+    year: 2017
+  - course: BSc in Statistics
+    institution: Universidad del Valle
+    year: 2014
+email: orlando.joaqui@correounivalle.edu.co
+highlight_name: yes
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Asset-Liability Management
+- Quantitative Finance
+- Applied Econometrics
+- Applied Statistics
+- Data Science
+- Data Visualizations
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: Universidad del Valle
+  url: https://www.univalle.edu.co/
+role: PhD student in Industrial Engineering
 social:
 - icon: envelope
   icon_pack: fas
   link: /#contact
-- display:
-    header: true
-  icon: twitter
+- icon: twitter
   icon_pack: fab
-  label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/jotajb5
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.es/citations?user=BYkOWAsAAAAJ&hl=es
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/juniorjb5
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
-superuser: true
-title: Nelson Bighetti
+  link: https://www.linkedin.com/in/orlando-jr-joaqui-69758463/
+superuser: yes
+bio: My research interests include asset and liability management, quantitative finance, applied econometrics, and applied statistics.
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am a current student of the Doctorate in Engineering with an emphasis in industrial engineering at the Universidad del Valle. Member of the GIFINC research group (Quantitative Finance Research Group) of the School of Industrial Engineering of the Universidad del Valle. My research topic in Asset-Liability Management is under the supervision of {{< staticref "http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque" "newtab" >}}Diego F. Manotas{{< /staticref >}} and {{< staticref "https://jorgemuribe.com/" "newtab" >}}Jorge M. Uribe{{< /staticref >}}.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I am a professor at the School of Statistics at the Universidad del Valle. I have guided various training courses in statistics, econometrics and quantitative finance at the Pontificia Universidad Javeriana de Cali, Universidad ICESI, Universidad San Buenaventura Cali and the Faculty of Economics at Universidad del Valle. My current research interests include asset and liability management, quantitative finance, applied econometrics, and applied statistics.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/CV.pdf" "newtab" >}}resumé{{< /staticref >}}.

@@ -4,3 +4,7 @@ outputs:
 - HTML
 type: wowchemycms
 ---
+
+
+
+Hola mundo
