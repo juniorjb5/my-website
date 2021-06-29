@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cassava | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/tag/cassava/</link>
+      <atom:link href="www.joaquibarandica.io/tag/cassava/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cassava</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 16 Dec 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>Cassava</title>
+      <link>www.joaquibarandica.io/tag/cassava/</link>
+    </image>
+    
+    <item>
+      <title>Cassava Breeding II: Phenotypic Correlations through the Different Stages of Selection</title>
+      <link>www.joaquibarandica.io/publication/cassava_ii/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_ii/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cassava Breeding I: The Value of Breeding Value</title>
+      <link>www.joaquibarandica.io/publication/cassava_i/</link>
+      <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_i/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

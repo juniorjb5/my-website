@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assets | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/tag/assets/</link>
+      <atom:link href="www.joaquibarandica.io/tag/assets/index.xml" rel="self" type="application/rss+xml" />
+    <description>Assets</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>Assets</title>
+      <link>www.joaquibarandica.io/tag/assets/</link>
+    </image>
+    
+    <item>
+      <title>An app for Value at Risk (VaR).</title>
+      <link>www.joaquibarandica.io/post/value_at_risk/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/value_at_risk/</guid>
+      <description>&lt;h2 id=&#34;value-at-risk-var&#34;&gt;Value at Risk (VaR)&lt;/h2&gt;
+&lt;p&gt;The Value at Risk (VaR) is one of the measures used to assess the risk of a certain position or portfolio of financial assets.
+The definition of VaR can be done in terms of profitability or in terms of profit and loss of profit and loss (nominal terms); the definition also depends on whether it applies to a long position (bought), as usual, or a short position (sold) on a financial asset.&lt;/p&gt;
+&lt;p&gt;The VaR then answers the question:
+What is the fall or loss that could be suffered under normal market conditions in a time interval and with a certain level of probability or confidence?&lt;/p&gt;
+&lt;p&gt;That is, it indicates the probability (usually 1% or 5%) of suffering a certain loss during a period of time (normally 1 day, 1 week or 1 month).&lt;/p&gt;
+&lt;p&gt;Therefore, the VaR is nothing more than a certain percentile of the probability distribution predicted for the variations in the market value of the portfolio in the chosen time horizon.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/Value_at_Risk/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;VaR App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text Mining | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/category/text-mining/</link>
+      <atom:link href="www.joaquibarandica.io/category/text-mining/index.xml" rel="self" type="application/rss+xml" />
+    <description>Text Mining</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>Text Mining</title>
+      <link>www.joaquibarandica.io/category/text-mining/</link>
+    </image>
+    
+    <item>
+      <title>Corporate Social Responsibility Barometer, an app of text mining.</title>
+      <link>www.joaquibarandica.io/post/barometro/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/barometro/</guid>
+      <description>&lt;h2 id=&#34;what-is-kairós&#34;&gt;¿What is Kairós?&lt;/h2&gt;
+&lt;p&gt;The Observatory for business sustainability, Kairós, created in 2017, is a space for observation and analysis of business practices in business sustainability. The main objective is to contribute to the generation of knowledge on business responsibility and sustainability through the analysis of the practices and strategies of Colombian companies with a multidisciplinary approach.&lt;/p&gt;
+&lt;p&gt;In this application, the objective is to evaluate the disclosure index on topics such as employment, environment, community, consumers and products, human rights and the economy.&lt;/p&gt;
+&lt;p&gt;We analyze the sustainability reports of companies through text mining. This allows different measurements to be calculated by company, sector and country.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Barometer App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Kairós Observatory&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🏛️ &lt;a href=&#34;https://www.icesi.edu.co/es/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad ICESI&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

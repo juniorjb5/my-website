@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Probit | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/tag/probit/</link>
+      <atom:link href="www.joaquibarandica.io/tag/probit/index.xml" rel="self" type="application/rss+xml" />
+    <description>Probit</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>Probit</title>
+      <link>www.joaquibarandica.io/tag/probit/</link>
+    </image>
+    
+    <item>
+      <title>Choosing the type of transport in the working class in Colombia: An analysis by region</title>
+      <link>www.joaquibarandica.io/publication/libreempresa/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/libreempresa/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
