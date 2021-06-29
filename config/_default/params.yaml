@@ -70,7 +70,7 @@ edit_page:
     book: false
 show_related:
   book: true
-  page: true
+  page: false
   post: true
   project: true
   publication: true
