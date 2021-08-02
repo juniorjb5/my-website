@@ -28,7 +28,7 @@ links:
 - icon: doi
   icon_pack: ai
   name: Full Publication
-  url: https:doi.org/10.3389/fpls.2016.01227
+  url: https://www.frontiersin.org/articles/10.3389/fpls.2016.01227/full
 
 ---
 
