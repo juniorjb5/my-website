@@ -5,7 +5,7 @@
     <link>www.joaquibarandica.io/project/</link>
       <atom:link href="www.joaquibarandica.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
       <title>Projects</title>
@@ -13,23 +13,21 @@
     </image>
     
     <item>
-      <title>External Project</title>
-      <link>www.joaquibarandica.io/project/external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>www.joaquibarandica.io/project/external-project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Internal Project</title>
-      <link>www.joaquibarandica.io/project/internal-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>www.joaquibarandica.io/project/internal-project/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+      <title>IFABS 2021 - Oxford</title>
+      <link>www.joaquibarandica.io/project/ifabs/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/project/ifabs/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s go to Oxford!👏 Yes, this time virtually but it doesn&amp;rsquo;t matter, we will enjoy everything.&lt;/p&gt;
+&lt;p&gt;The research: &lt;a href=&#34;https://www.ub.edu/irea/working_papers/2021/202113.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Commonality, macroeconomic factors and bank profitability&amp;rdquo;&lt;/a&gt; carried out with my advisers was selected for presentation at the IFABS 2021 - Oxford conference. The International Finance and Banking Society is a conference founded in 2008 in the UK, has become one of the world&amp;rsquo;s leading research networks dedicated to the promotion of cutting-edge research in the areas of Banking, Finance and FinTech.&lt;/p&gt;
+&lt;p&gt;This year due to the pandemic situation the event will be held virtually. In this version, the conference is organized in collaboration with Bank of Englad, King&amp;rsquo;s College London, University of Oxford and University of Nottingham on the general topic of the financial systems of tomorrow.&lt;/p&gt;
+&lt;p&gt;As keynote speakers will be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Larry Summers, is a professor at Charles W. Eliot University and president emeritus of Harvard University. He served as President Clinton&amp;rsquo;s 71st Secretary of the Treasury and Director of President Obama&amp;rsquo;s National Economic Council.&lt;/li&gt;
+&lt;li&gt;Claudia Buch, who joined the Bundesbank in 2014, is Vice President of the Deutsche Bundesbank and head of its Directorates-General for Financial Stability, Statistics and Internal Audit. She is a deputy of the central bank of the G20 and the G7 of the Bundesbank and a member of the Financial Stability Committee of Germany.&lt;/li&gt;
+&lt;li&gt;Willem Buiter is currently visiting professor of international and public affairs at Columbia University and an adjunct member of the Council on Foreign Relations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/1FMaabePDEfgk/giphy.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;So, could you imagine my happiness?😁😁😁 I don&amp;rsquo;t believe (and less, do you imagine my panic?😱😱😱), but like say my dad! &amp;ldquo;pa&#39; lante es pa&#39; lla&amp;rdquo;.&lt;/p&gt;
 </description>
     </item>
     

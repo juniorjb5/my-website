@@ -98,7 +98,31 @@ experience:
         
         * Econometrics I
         * Econometrics II
-      
 
+  - title: Professor
+    company: Universidad del Tolima
+    company_url: 'https://www.ut.edu.co/'
+    company_logo: ut
+    location: Ibagué - Colombia
+    date_start: '2021-07-30'
+    date_end: '2021-10-08'
+    description: |2-
+        Guide and develop the classes of the courses:
+        
+        * Data Visualization in R
+        * Reports in RMarkdown      
+
+  - title: Professor
+    company: Universidad Santiago de Cali
+    company_url: 'https://www.usc.edu.co/'
+    company_logo: usc
+    location: Cali - Colombia
+    date_start: '2018-09-01'
+    date_end: '2018-09-15'
+    description: |2-
+        Guide and develop the classes of the courses:
+        
+        * Techniques and data analysis
+      
 
 ---

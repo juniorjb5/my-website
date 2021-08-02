@@ -19,15 +19,15 @@ main:
   - name: ''
     url: '#pre-posts'
     weight: 20
+  - name: Conferences & Talks
+    url: '#conferences'
+    weight: 25
   - name: Posts
     url: '#posts'
     weight: 40
   - name: Publications
     url: '#publications'
     weight: 50
-  - name: Courses
-    url: courses/
-    weight: 60
   - name: Contact
     url: '#contact'
     weight: 70
