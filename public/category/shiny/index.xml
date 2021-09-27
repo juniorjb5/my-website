@@ -111,5 +111,31 @@ What is the fall or loss that could be suffered under normal market conditions i
 </description>
     </item>
     
+    <item>
+      <title>Data Visualization</title>
+      <link>www.joaquibarandica.io/post/dataviz/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/dataviz/</guid>
+      <description>&lt;hr&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;knitr::include_url(&amp;quot;https://juniorjb5.github.io/UT-DataViz/1_Intro/1_Intro.html#1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;`r &#39;&#39;````{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = &amp;quot;https://juniorjb5.github.io/UT-DataViz/1_Intro/1_Intro.html#1&amp;quot;, ratio = &amp;quot;16:9&amp;quot;)
+```
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = &amp;quot;https://juniorjb5.github.io/IFABS_2021/Presentation_Oxford_2021.html#1&amp;quot;, ratio = &amp;quot;16:9&amp;quot;)
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Barometer App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Kairós Observatory&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🏛️ &lt;a href=&#34;https://www.icesi.edu.co/es/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad ICESI&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

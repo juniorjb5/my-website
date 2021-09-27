@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ggplot2 | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/category/ggplot2/</link>
+      <atom:link href="www.joaquibarandica.io/category/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <description>ggplot2</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>ggplot2</title>
+      <link>www.joaquibarandica.io/category/ggplot2/</link>
+    </image>
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>www.joaquibarandica.io/post/dataviz/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/dataviz/</guid>
+      <description>&lt;hr&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;knitr::include_url(&amp;quot;https://juniorjb5.github.io/UT-DataViz/1_Intro/1_Intro.html#1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;`r &#39;&#39;````{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = &amp;quot;https://juniorjb5.github.io/UT-DataViz/1_Intro/1_Intro.html#1&amp;quot;, ratio = &amp;quot;16:9&amp;quot;)
+```
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;```{r embed-xaringan, echo=FALSE}
+xaringanExtra::embed_xaringan(url = &amp;quot;https://juniorjb5.github.io/IFABS_2021/Presentation_Oxford_2021.html#1&amp;quot;, ratio = &amp;quot;16:9&amp;quot;)
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Barometer App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Kairós Observatory&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🏛️ &lt;a href=&#34;https://www.icesi.edu.co/es/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad ICESI&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
