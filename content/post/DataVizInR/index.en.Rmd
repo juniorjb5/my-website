@@ -1,5 +1,5 @@
 ---
-title: "IFABS 2021 Oxford Conference"
+title: "Data Viz"
 authors: ["Orlando Joaqui Barandica"] 
 date: 2021-09-15T21:13:14-05:00
 categories: ["Xaringan","IFABS","Banking","Finance","Oxford" ]

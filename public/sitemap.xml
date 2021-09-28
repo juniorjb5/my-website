@@ -12,7 +12,49 @@
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/authors/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/categories/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/post/datavizr/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/dataviz/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/dplyr/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/ggplot2/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/highcharter/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/author/orlando-joaqui-barandica/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/plotly/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/post/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/r/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/r/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tags/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/tidyverse/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/xaringan/</loc>
+    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/category/banking/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
@@ -20,7 +62,7 @@
     <loc>www.joaquibarandica.io/tag/banks-roa/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/categories/</loc>
+    <loc>www.joaquibarandica.io/post/datavizinr/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/dynamic-factors/</loc>
@@ -35,25 +77,10 @@
     <loc>www.joaquibarandica.io/category/ifabs/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/post/ifabs_2021-copia/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/post/ifabs_2021/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/author/orlando-joaqui-barandica/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/category/oxford/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/post/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/tags/</loc>
-    <lastmod>2021-09-15T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/category/xaringan/</loc>
     <lastmod>2021-09-15T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/banking/</loc>
@@ -111,9 +138,6 @@
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/category/optimization/</loc>
-    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/category/r/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/shiny/</loc>

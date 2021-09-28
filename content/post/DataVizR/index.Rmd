@@ -1,7 +1,7 @@
 ---
 title: "Data Visualization in R"
 authors: ["Orlando Joaqui Barandica"] 
-date: 2021-09-28T21:13:14-05:00
+date: 2021-09-27T21:13:14-05:00
 categories: ["R","Xaringan","ggplot2","plotly","highcharter","dplyr" ]
 tags: ["DataViz", "R","Tidyverse"]
 subtitle: "Knowing how to do data science is also knowing how to communicate. Effective communication is the cornerstone of impactful data science. Either teaching data-related skills or reporting the latest results obtained in our statistical processes."
@@ -9,7 +9,7 @@ summary: "Knowing how to do data science is also knowing how to communicate. Eff
 draft: false
 featured: false
 image:
-  caption: '#DataViz in R'
+  caption: 'DataViz in R'
   focal_point: ""
   placement: 2
   preview_only: false
