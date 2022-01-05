@@ -30,3 +30,13 @@ links:
 
 ---
 
+
+
+
+
+## Visit
+
+- 👉 [**Full Publication**](https://www2.javerianacali.edu.co/sello-editorial-javeriano/catalogo/tramas-sexualidades-y-prevencion-del-vih-en-jovenes#gsc.tab=0)
+
+
+

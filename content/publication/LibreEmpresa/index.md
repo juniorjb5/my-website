@@ -34,3 +34,10 @@ links:
 
 ---
 
+
+
+## Visit
+
+- 👉 [**Full Publication**](https://doi.org/10.18041/1657-2815/libreempresa.2019v16n2.6608)
+
+

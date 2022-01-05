@@ -11,6 +11,51 @@
     <loc>www.joaquibarandica.io/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
+    <loc>www.joaquibarandica.io/publication-type/2/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/authors/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/categories/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/decomposition/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/econometrics-applied/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/logit/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/publication/child/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/oaxaca-blinder/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/author/orlando-joaqui-barandica/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/publication_types/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/publication/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/socio-economic-determinants/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/stunting/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tags/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/urban-rural-gap/</loc>
+    <lastmod>2022-01-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>www.joaquibarandica.io/tag/colombian-stock-exchange/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
@@ -26,17 +71,8 @@
     <loc>www.joaquibarandica.io/project/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/tags/</loc>
-    <lastmod>2021-11-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/project/sce/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/authors/</loc>
-    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/categories/</loc>
-    <lastmod>2021-09-27T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/post/datavizr/</loc>
     <lastmod>2021-09-27T21:13:14-05:00</lastmod>
@@ -116,15 +152,6 @@
     <loc>www.joaquibarandica.io/tag/indebtedness/</loc>
     <lastmod>2021-06-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/author/orlando-joaqui-barandica/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/publication_types/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/publication/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/tag/academic/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
@@ -188,9 +215,6 @@
     <loc>www.joaquibarandica.io/tag/var/</loc>
     <lastmod>2021-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/publication-type/2/</loc>
-    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/publication-type/6/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -198,9 +222,6 @@
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/category/economy/</loc>
-    <lastmod>2019-12-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/tag/logit/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/multinomial-regression/</loc>

@@ -40,8 +40,8 @@ This my first working paper join with [Jorge M. Uribe](https://jorgemuribe.com/)
 
 👋 All Comments are welcome. 
 
-📩 *orlando.joaqui@correounivalle.edu.co* \
-📑 Visit PDF [Full Publication](https://www.ub.edu/irea/working_papers/2021/202113.pdf)
+- 📩 *orlando.joaqui@correounivalle.edu.co* \
+- 👉 [**Full Publication**](https://www.ub.edu/irea/working_papers/2021/202113.pdf)
 
 
 
