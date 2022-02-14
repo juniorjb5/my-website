@@ -42,6 +42,7 @@ experience:
         * Statistical methods
         * Time series and forecast
         * Multivariate analysis and data mining
+        * Analytics applied to finance
         
         
   - title: Professor

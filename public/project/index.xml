@@ -5,12 +5,31 @@
     <link>www.joaquibarandica.io/project/</link>
       <atom:link href="www.joaquibarandica.io/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 13 Feb 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
       <title>Projects</title>
       <link>www.joaquibarandica.io/project/</link>
     </image>
+    
+    <item>
+      <title>Seminario CIEF - EAFIT</title>
+      <link>www.joaquibarandica.io/project/eafit/</link>
+      <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/project/eafit/</guid>
+      <description>&lt;p&gt;The next Wednesday (16/Feb/2022) I&amp;rsquo;ll present the conference &lt;a href=&#34;https://www.ub.edu/irea/working_papers/2021/202113.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Commonality, macroeconomic factors and bank profitability&amp;rdquo;&lt;/a&gt; in the Seminario CIEF of the University EAFIT of Medellín - Colombia.&lt;/p&gt;
+&lt;p&gt;This research was selected for presentation at the IFABS 2021 - Oxford conference &lt;a href=&#34;https://www.joaquibarandica.com/project/ifabs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(see more..)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks to the School of Economics and Finance for the invitation. Next, the information for the connection to the conference.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Link for registration: &lt;a href=&#34;http://s60148679.hs.eloqua.com/ReunionZoom-20210205&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;👉Here!&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Link for slides: &lt;a href=&#34;https://juniorjb5.github.io/EAFIT/Slides_EAFIT.html#1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;👉Here!&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Workshop Advances in Statistical Methods</title>
