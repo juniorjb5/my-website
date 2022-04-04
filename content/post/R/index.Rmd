@@ -1,0 +1,50 @@
+---
+title: "Introduction to R"
+authors: ["Orlando Joaqui Barandica"] 
+date: 2022-04-03T21:13:14-05:00
+categories: ["R","Xaringan","ggplot2","tidyverse","dplyr","Rmarkdown" ]
+tags: ["DataViz", "R","Tidyverse","Rmarkdown"]
+subtitle: "This class is the collection of materials from different sources on the web. Here we have an introduction to R, some tools for DataViz, descriptive statistics, and an introduction to Rmarkdown. This class is in Spanish."
+summary: "This class is the collection of materials from different sources on the web. Here we have an introduction to R, some tools for DataViz, descriptive statistics, and an introduction to Rmarkdown. This class is in Spanish."
+draft: false
+featured: false
+image:
+  caption: 'Introduction to R'
+  focal_point: ""
+  placement: 2
+  preview_only: false
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+These slides can be used as a supplement to my last #️⃣DataViz post [(see the material HERE!!!).](https://www.joaquibarandica.com/post/datavizr/)
+
+The structure of this presentation is:
+
+* Introduction to R
+* Introduction to tidyverse
+* Introduction to DataViz
+* Introduction to Rmarkdown
+
+Important!! Once you're done with this class, you should move on to #️⃣DataViz
+
+
+
+
+## Introduction to R
+
+```{r embed-xaringan1, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/R/index.html#1", ratio = "16:9")
+```
+
+
+* Visit slides: 🔗 [Here! Introduction](https://juniorjb5.github.io/R/index.html#1)
+    - Recommendation to see in full screen (F11 - Google Chrome)
+
+
+
+
