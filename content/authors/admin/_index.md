@@ -32,13 +32,13 @@ social:
   link: https://twitter.com/jotajb5
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.es/citations?user=BYkOWAsAAAAJ&hl=es
+  link: https://scholar.google.es/citations?user=3-slu-sAAAAJ&hl=es
 - icon: github
   icon_pack: fab
   link: https://github.com/juniorjb5
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/orlando-jr-joaqui-69758463/
+  link: https://www.linkedin.com/in/orlando-jr-joaqui-barandica-69758463/
 superuser: yes
 bio: My research interests include energy markets, asset and liability management, quantitative finance, applied econometrics and statistical, and data visualization.
 ---
