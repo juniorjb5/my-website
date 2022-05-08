@@ -43,7 +43,9 @@ experience:
         * Time series and forecast
         * Multivariate analysis and data mining
         * Analytics applied to finance
-        
+        * Data management
+        * Applied statistics I
+        * Probability and statistics
         
   - title: Professor
     company: Pontificia Universidad Javeriana de Cali
@@ -57,8 +59,9 @@ experience:
         
         * Descriptive statistics
         * Statistics I
-        * Quantitative Methods for Finance
-        * Statistics and Mathematics
+        * Quantitative methods for finance
+        * Mathematics and statistics for economic sciences
+        * Quantitative methods applied to social policy
 
 
   - title: Professor
@@ -73,7 +76,7 @@ experience:
         
         * Probability theory
         * Statistical inference
-        * Regression and Sampling
+        * Regression and sampling
 
 
   - title: Statistician - Visiting Reasearcher
@@ -110,7 +113,7 @@ experience:
     description: |2-
         Guide and develop the classes of the courses:
         
-        * Data Visualization in R
+        * Data visualization in R
         * Reports in RMarkdown      
 
   - title: Professor
