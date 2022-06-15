@@ -39,6 +39,9 @@ Definitely a great academic adventure.
 
 ![png](./porto3.png)
 
+![png](./porto4.png)
+
+![png](./porto5.png)
 
 * Link for slides: [👉Here!](https://juniorjb5.github.io/ICEE2022/Presentation_ICEE_2022.html#1)
 

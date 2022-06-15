@@ -12,6 +12,6 @@ git add .
 <<<<<<< HEAD
 git commit -m "Act_1.08.05.2022"
 =======
-git commit -m "Act.08.06.2022"
+git commit -m "Act.10.06.2022"
 >>>>>>> 375b03b922c80b6de657171c5cc0563344607333
 git push origin main
