@@ -1,0 +1,1929 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.1.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Orlando Joaqui Barandica" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Management Data subject, the unsupervised analytics application for a group of 9,000 credit card customers." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="www.joaquibarandica.io/post/ansupervised/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#e5be00" />
+  
+
+  
+  
+    
+    <script src="/www.joaquibarandica.io/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/www.joaquibarandica.io/css/wowchemy.1af867982f8abbba0dc6d0726591abab.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/www.joaquibarandica.io/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/www.joaquibarandica.io/media/icon_hu78c4959f139c9f031aef65cf60b3bb12_20487_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/www.joaquibarandica.io/media/icon_hu78c4959f139c9f031aef65cf60b3bb12_20487_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="www.joaquibarandica.io/post/ansupervised/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Orlando Joaqui Barandica" />
+  <meta property="og:url" content="www.joaquibarandica.io/post/ansupervised/" />
+  <meta property="og:title" content="Unsupervised learning &#39;credit card clients&#39; | Orlando Joaqui Barandica" />
+  <meta property="og:description" content="Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Management Data subject, the unsupervised analytics application for a group of 9,000 credit card customers." /><meta property="og:image" content="/www.joaquibarandica.io/post/ansupervised/featured.jpg" />
+    <meta property="twitter:image" content="/www.joaquibarandica.io/post/ansupervised/featured.jpg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-07-15T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-07-15T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "www.joaquibarandica.io/post/ansupervised/"
+  },
+  "headline": "Unsupervised learning 'credit card clients'",
+  
+  "image": [
+    "/www.joaquibarandica.io/post/ansupervised/featured.jpg"
+  ],
+  
+  "datePublished": "2022-07-15T00:00:00Z",
+  "dateModified": "2022-07-15T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Orlando Joaqui Barandica"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Orlando Joaqui Barandica",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_192x192_fit_lanczos_2.png"
+    }
+  },
+  "description": "Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Management Data subject, the unsupervised analytics application for a group of 9,000 credit card customers."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Unsupervised learning &#39;credit card clients&#39; | Orlando Joaqui Barandica</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="bdabb7f5004ee82a24e17cc7d38964da" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/www.joaquibarandica.io/js/wowchemy-init.min.f16be01fc8fb2b5885dd67ce942d1185.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/www.joaquibarandica.io/"><img src="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_0x70_resize_lanczos_2.png" alt="Orlando Joaqui Barandica"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/www.joaquibarandica.io/"><img src="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_0x70_resize_lanczos_2.png" alt="Orlando Joaqui Barandica"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#conferences"><span>Conferences & Talks</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#pre-experience"><span></span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Unsupervised learning &#39;credit card clients&#39;</h1>
+
+  
+  <p class="page-subtitle">Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Management Data subject, the unsupervised analytics application for a group of 9,000 credit card customers.</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jul 15, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    16 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="www.joaquibarandica.io/category/r/">R</a>, <a href="www.joaquibarandica.io/category/unsupervised-learning/">Unsupervised learning</a>, <a href="www.joaquibarandica.io/category/credit-card/">Credit card</a>, <a href="www.joaquibarandica.io/category/clusters/">Clusters</a>, <a href="www.joaquibarandica.io/category/pcr/">PCR</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header container-fluid featured-image-wrapper mt-4 mb-4" style="max-width: 6048px; max-height: 4024px;">
+  <div style="position: relative">
+    <img src="/www.joaquibarandica.io/post/ansupervised/featured.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://www.freepik.es/fotos/terminal-pago"><strong>freepik</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Today credit cards are one of the most useful financial tools. Traditionally, having a credit card was a sign of having high economic power, but this has now changed. Now we have at our disposal a wide variety of types of credit cards. This is because not only banks can offer them, but some businesses have also started offering credit cards to adapt to the needs of consumers.</p>
+<p>Credit cards have multiple functions and not everyone who has one implements it for the same purpose, so we want to know the behavior of use of approximately 9,000 active credit card holders, which have 17 variables of behavior, we carry out a segmentation of groups among the individuals to be studied, in relation to their behaviors; thus allowing us to simplify the complexity of the sample space with many dimensions while preserving its information.</p>
+<p>In our database we take into account the following data&hellip;</p>
+<pre><code class="language-mermaid">graph TD
+A[Variables]
+A --&gt; B(Saldo) --&gt; |Translation| D(BALANCE)
+A --&gt; E(Frec_Saldo) --&gt; |Translation| F(BALANCE_FREQUENCY)
+A --&gt; G(Compras) --&gt; |Translation| H(PURCHASES)
+A --&gt; I(Compras_UnaVez) --&gt; |Translation| J(ONEOFF_PURCHASES)
+A --&gt; K(Compras_aPlazos) --&gt; |Translation| L(INSTALLMENTS_PURCHASES)
+A --&gt; M(Efectivo_Adelantado) --&gt; |Translation| N(CASH_ADVANCE)
+</code></pre>
+<pre><code class="language-mermaid">graph TD
+A[Variables]
+A --&gt; N(Frec_Compras) --&gt; |Translation| O(PURCHASES_FREQUENCY)
+A --&gt; P(Fre_Compras_UnaVez) --&gt; |Translation| Q(ONEOFF_PURCHASES_FREQUENCY)
+A --&gt; R(frec_Compras_aPlazos) --&gt; |Translation| S(PURCHASES_INSTALLMENTS_FREQUENCY)
+A --&gt; T(Frec_Efectivo_Adelantado) --&gt; |Translation| U(CASH_ADVANCE_FREQUENCY)
+A --&gt; V(Num_trans_Efectivo_Adelantado) --&gt; |Translation| W(CASH_ADVANCE_TRX)
+A --&gt; X(Num_trans_Compras) --&gt; |Translation| Y(PURCHASES_TRX)
+</code></pre>
+<pre><code class="language-mermaid">graph TD
+A[Variables]
+A --&gt; B(Limite_Credito)  --&gt; |Translation| C(CREDIT_LIMIT)
+A --&gt; D(Pagos_Realizados) --&gt; |Translation| E(PAYMENTS)
+A --&gt; F(Num_Min_Pagos_Realizados) --&gt; |Translation| G(MINIMUM_PAYMENTS)
+A --&gt; H(Porcent_PagosCompletos_Realizados) --&gt; |Translation| I(PRC_FULL_PAYMENT)
+A --&gt; J(Tenencia_Servicio) --&gt; |Translation| K(TENURE)
+</code></pre>
+<p><strong>Unsupervised analysis bases its training process on a data set that does not have a previously established label. Multivariate methodologies are relevant to finding answers about data.</strong></p>
+<p>The Principal Component Analysis (PCA) technique, applied by Karl Pearson, who was responsible for the application of statistics, as the PCA method in 1901; is used for quantitative variables, allowing to simplify the dimension of the data creating new variables to characterize each individual, these variables are called main components, which are given by the following linear combination</p>
+<p>$$Z = \lambda_1 X_1 + \lambda_2 X_2 + . . . +  \lambda_p X_p$$</p>
+<p>To see the classification of the model data set, Ward&rsquo;s method is used, presented by Joe H. Ward, which considers all the clusters and the algorithm calculates the sum of the squared distances within each one, to later merge them and manage to minimize them.</p>
+<h2 id="lets-go-to-r">Let&rsquo;s go to R</h2>
+<p>We point out that the code and results is in spanish. This was made by <a href="https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/" target="_blank" rel="noopener">Kleiner J. Balanta</a></p>
+<h3 id="code">Code</h3>
+<details class="spoiler "  id="spoiler-0">
+  <summary>PACKAGES [Click to see the code]</summary>
+  <p><pre><code class="language-r">library(tidyverse)
+library(dendextend)
+library(factoextra)
+library(FactoClass)
+library(corrplot)
+library(caret)
+library(stats)
+library(dplyr)
+</code></pre>
+</p>
+</details>
+<details class="spoiler "  id="spoiler-1">
+  <summary>DATA [Click to see the code]</summary>
+  <p><pre><code class="language-r">
+Datos_Base&lt;-read.csv(&quot;https://github.com/juniorjb5/Data/blob/main/TarjetasCredito.csv&quot;
+                      ,header = TRUE, sep = &quot;,&quot; ,dec = &quot;.&quot;, row.names = 1)  #En ese link consigues los datos
+
+is.na(Datos_Base) # True: Nas y False: Datos
+
+sum(is.na(Datos_Base)) #314 Na's
+
+sum(complete.cases(is.na(Datos_Base))) #8950 Datos
+# De 9264 observaciones, solo 8950 tienen observaciones sin Na's. Es decir, trabajamos
+#con el 96,51% de las observaciones de la base de datos original. Aun es una buena base de datos.
+
+Datos&lt;-na.omit(Datos_Base)
+View(Datos)
+
+#Cambio de nombre de las columnas de la base de datos
+Datos &lt;- Datos %&gt;% 
+  rename(Saldo=BALANCE,Frec_Saldo=BALANCE_FREQUENCY,
+          Compras=PURCHASES,Compras_UnaVez=ONEOFF_PURCHASES, 
+         Compras_aPlazos=INSTALLMENTS_PURCHASES,Efectivo_Adelantado=CASH_ADVANCE, 
+         Frec_Compras=PURCHASES_FREQUENCY,Fre_Compras_UnaVez=ONEOFF_PURCHASES_FREQUENCY,
+         frec_Compras_aPlazos=PURCHASES_INSTALLMENTS_FREQUENCY,Frec_Efectivo_Adelantado=CASH_ADVANCE_FREQUENCY,
+         Num_trans_Efectivo_Adelantado=CASH_ADVANCE_TRX ,Num_trans_Compras=PURCHASES_TRX,
+         Limite_Credito=CREDIT_LIMIT ,Pagos_Realizados=PAYMENTS,Num_Min_Pagos_Realizados=MINIMUM_PAYMENTS
+         ,Porcent_PagosCompletos_Realizados=PRC_FULL_PAYMENT
+         ,Tenencia_Servicio=TENURE) 
+</code></pre>
+</p>
+</details>
+<details class="spoiler "  id="spoiler-2">
+  <summary>CORRELATION [Click to see the code]</summary>
+  <p><pre><code class="language-r">matriz_correlacion&lt;- cor(Datos)
+print(matriz_correlacion)
+Alta_Correlacion &lt;- findCorrelation(matriz_correlacion,cutoff = 0,1)
+
+print(names(Datos[,Alta_Correlacion]))
+
+x11()
+corrplot(cor(Datos), type=&quot;upper&quot;, method=&quot;ellipse&quot;, tl.cex=0.9)
+</code></pre>
+</p>
+</details>
+<p>The figure shows the correlation among all variables in the database</p>
+<p><img src="./Graf_1.png" alt="png"></p>
+<details class="spoiler "  id="spoiler-3">
+  <summary>PCA [Click to see the code]</summary>
+  <p><pre><code class="language-r"># Componentes: Varianza explicada
+
+res.pca &lt;- prcomp(Datos, scale = TRUE)
+
+res.pca[[1]]
+
+fviz_eig(res.pca,ylab = &quot;porcentaje de varianza explicada&quot;,
+         xlab= &quot;numero de componentes&quot;, main = &quot;.&quot; ,barfill = &quot;#0B7D75&quot;,addlabels = TRUE) + theme_classic() 
+
+</code></pre>
+</p>
+</details>
+<p>There are different varieties of criteria that help to select the number of components, in this case it was decided to use one of the most famous called the Kaiser criterion. For this reason, the eigen values of the first 5 components were found, which are reflected in the following table</p>
+<table>
+<thead>
+<tr>
+<th>PC 1</th>
+<th>PC 2</th>
+<th>PC 3</th>
+<th>PC 4</th>
+<th>PC 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.151580834</td>
+<td>1.861083634</td>
+<td>1.231306920</td>
+<td>1.134686503</td>
+<td>1.032969064</td>
+</tr>
+</tbody>
+</table>
+<p>The Kaiser criterion recommends that 5 components should be selected. However, the value of the eigenvalues between components 3, 4 and 5 do not vary much compared to the first 2 components. Given this observation, it was decided to plot a bar chart with the percentage of variance or explanation provided by each component, in order to have a broader and more detailed view of the choice of components</p>
+<p><img src="./Graf_2.png" alt="png"></p>
+<p>The graph shows an interesting behavior, components 3, 4 and 5 do meet the Kaiser criterion as mentioned above, but between these the percentage of explained information does not have much difference, so it can be said that there is noise between them. . For this reason, it was decided to use 3 components, that is, we have a variance percentage of approximately 56.5% for our analysis.</p>
+<pre><code class="language-mermaid">graph TD
+A[PC 1] --&gt; B(Purchases made)
+A[PC 1] --&gt; C(Purchase transactions made)
+A[PC 1] --&gt; D(One-time purchases)
+A[PC 1] --&gt; E(Purchases made in installments)
+A[PC 1] --&gt; F(Purchase Frequency)
+B --&gt; G{Interpretation}
+C --&gt; G{Interpretation}
+D --&gt; G{Interpretation}
+E --&gt; G{Interpretation}
+F --&gt; G{Interpretation}
+G --&gt; H[Purchasing power]
+</code></pre>
+<blockquote>
+<p>Based on the variables that most influence the explanation of the first component, this factor was named purchasing power; since its definition that groups and relates the variables. &ldquo;Purchasing power, purchasing power or purchasing power is the amount of goods or services that can be obtained with a fixed amount of money depending on the price level&rdquo;</p>
+</blockquote>
+<pre><code class="language-mermaid">graph TD
+A[PC 2] --&gt; B(Cash advanced by the user)
+A[PC 2] --&gt; C(Frequency of cash advanced by the user)
+A[PC 2] --&gt; D(Transactions made with cash in advance)
+A[PC 2] --&gt; E(Balance for purchases)
+A[PC 2] --&gt; F(Credit limit)
+B --&gt; G{Interpretation}
+C --&gt; G{Interpretation}
+D --&gt; G{Interpretation}
+E --&gt; G{Interpretation}
+F --&gt; G{Interpretation}
+G --&gt; H[Payment capacity]
+</code></pre>
+<blockquote>
+<p>Regarding the second component, it was called payment capacity, since in agreement with the Bank of Mexico (Banxico), there are users who have fixed monthly income and when making purchases they make their payments in cash or at the end of the month to avoid interest and build a good credit history, plus maintain access to the rewards and benefits on offer.</p>
+</blockquote>
+<pre><code class="language-mermaid">graph TD
+A[PC 3] --&gt; B(Balance Update Frequency)
+A[PC 3] --&gt; C(Frequency of installment purchases)
+A[PC 3] --&gt; D(Purchases made in a single payment)
+A[PC 3] --&gt; E(Amount of payments made)
+A[PC 3] --&gt; F(Credit limit)
+B --&gt; G{Interpretation}
+C --&gt; G{Interpretation}
+D --&gt; G{Interpretation}
+E --&gt; G{Interpretation}
+F --&gt; G{Interpretation}
+G --&gt; H[Excessive consumption]
+</code></pre>
+<blockquote>
+<p>Finally, the third component was called excessive consumption, according to Marco Carrera, director of Market Studies of the National Commission for the Defense of Users of Financial Services (Condusef) in 2009, people who frequently buy from purchases that satisfy their basic needs are considered people who fall into the trend of consumerism, for which they see the need to pay the minimum cost of credit cards and thus maintain their credit limit and all the benefits that this entails.</p>
+</blockquote>
+<details class="spoiler "  id="spoiler-4">
+  <summary>PCA - GRAPHS [Click to see the code]</summary>
+  <p><pre><code class="language-r">fviz_pca_ind(res.pca,
+             col.ind = &quot;cos2&quot;, # Color by the quality of representation
+             gradient.cols = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;),
+             repel = FALSE     # Avoid text overlapping
+)
+
+fviz_pca_var(res.pca,
+             col.var = &quot;contrib&quot;, # Color by contributions to the PC
+             gradient.cols = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;),
+             repel = FALSE    # Avoid text overlapping
+)
+
+
+fviz_pca_biplot(res.pca, repel = FALSE,
+                col.var = &quot;#2E9FDF&quot;, # Variables color
+                col.ind = &quot;#696969&quot;  # Individuals color
+)
+
+
+eig.val &lt;- get_eigenvalue(res.pca)
+eig.val #Valores propios de los componentes compuestos
+
+res.var &lt;- get_pca_var(res.pca)
+res.var$coord          # Coordinates
+res.var$contrib        # Contribuccion de las variables  a los ejes
+res.var$cos2           # Quality of representation
+
+View(res.var$contrib[,1:3]) # Miro los 3 primeros factores
+ 
+
+# Resultados por individuos
+res.ind &lt;- get_pca_ind(res.pca)
+res.ind$coord          # Coordinates
+res.ind$contrib        # Contribuccion a los componentes
+res.ind$cos2           # Quality of representation 
+
+
+View(res.ind$contrib[,1:3]) # Miro los tres primeros factores
+
+
+</code></pre>
+</p>
+</details>
+<p><img src="./Graf_3.png" alt="png"></p>
+<p><img src="./Graf_4.png" alt="png"></p>
+<details class="spoiler "  id="spoiler-5">
+  <summary>CLUSTERING [Click to see the code]</summary>
+  <p><pre><code class="language-r">resultado_ACP&lt;-FactoClass(Datos,dudi.pca)
+
+3 
+3 
+4 
+
+resultado_ACP$cluster 
+
+NuevaBase&lt;-data.frame(Cluster=resultado_ACP$cluster,Datos)  # unir la nueva base de datos con la nueva variable cluster
+View(NuevaBase)
+
+plot(resultado_ACP$dudi) # Grafico del an?lisis
+
+s.corcircle((resultado_ACP$dudi)$co)
+
+s.label((resultado_ACP$dudi)$li,label=row.names(Datos)) #Graf. Individuos
+
+s.label((resultado_ACP$dudi)$co,xax=1,yax=2,sub=&quot;Componente 1 y 2&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+s.label((resultado_ACP$dudi)$co,xax=1,yax=3,sub=&quot;Componente 1 y 3&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+s.label((resultado_ACP$dudi)$co,xax=2,yax=1,sub=&quot;Componente 2 y 1&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+s.label((resultado_ACP$dudi)$co,xax=2,yax=3,sub=&quot;Componente 2 y 3&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+s.label((resultado_ACP$dudi)$co,xax=3,yax=1,sub=&quot;Componente 3 y 1&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+s.label((resultado_ACP$dudi)$co,xax=3,yax=2,sub=&quot;Componente 3 y 2&quot;,possub=&quot;bottomright&quot;,) #Graf. Variables
+
+
+x11()
+
+scatter(resultado_ACP$dudi,xax=1,yax=2,sub=&quot;Componente 1 y 2&quot;,possub=&quot;bottomright&quot;) # Graf. Conjuntos
+
+X11()
+scatter(resultado_ACP$dudi,xax=1,yax=3,sub=&quot;Componente 1 y 3&quot;,possub=&quot;bottomright&quot;)
+
+X11()
+scatter(resultado_ACP$dudi,xax=2,yax=1,sub=&quot;Componente 2 y 1&quot;,possub=&quot;bottomright&quot;)
+
+X11()
+scatter(resultado_ACP$dudi,xax=2,yax=3,sub=&quot;Componente 2 y 3&quot;,possub=&quot;bottomright&quot;)
+
+X11()
+scatter(resultado_ACP$dudi,xax=3,yax=1,sub=&quot;Componente 3 y 1&quot;,possub=&quot;bottomright&quot;)
+
+X11()
+scatter(resultado_ACP$dudi,xax=3,yax=2,sub=&quot;Componente 3 y 2&quot;,possub=&quot;bottomright&quot;)
+
+
+Grupo&lt;-NuevaBase$Cluster
+
+
+X11()
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 1 y 2&quot;,possub=&quot;bottomright&quot;,xax=1,yax=2,col=c(1,2,3,4))
+
+X11()
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 1 y 3&quot;,possub=&quot;bottomright&quot;,xax=1,yax=3,col=c(1,2,3,4))
+
+X11()
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 2 y 1&quot;,possub=&quot;bottomright&quot;,xax=2,yax=1,col=c(1,2,3,4))
+
+X11()
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 2 y 3&quot;,possub=&quot;bottomright&quot;,xax=2,yax=3,col=c(1,2,3,4))
+
+X11()
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 3 y 1&quot;,possub=&quot;bottomright&quot;,xax=3,yax=1,col=c(1,2,3,4))
+
+
+X11()
+
+s.class((resultado_ACP$dudi)$li,Grupo,sub=&quot;Componentes 3 y 2&quot;,possub=&quot;bottomright&quot;,xax=1,yax=2,col=c(1,2,3,4))
+#importante
+
+
+#DescripciÓn de los grupos (Análisis de medias)
+resultado_ACP$carac.cont 
+
+
+</code></pre>
+</p>
+</details>
+<p><strong>Dendogram</strong></p>
+<p><img src="./Graf_5.png" alt="png"></p>
+<p><strong>PC1 vs PC2</strong></p>
+<p><img src="./Graf_6.png" alt="png"></p>
+<p><strong>PC1 vs PC3</strong></p>
+<p><img src="./Graf_7.png" alt="png"></p>
+<p><strong>Class characterization</strong></p>
+<pre><code class="language-r">class: 1
+                                  Test.Value Class.Mean Frequency Global.Mean
+Frec_Compras                          68.218      0.938      2657       0.496
+frec_Compras_aPlazos                  61.895      0.767      2657       0.369
+Fre_Compras_UnaVez                    40.837      0.404      2657       0.206
+Compras_aPlazos                       34.321    929.010      2657     420.844
+Compras                               28.956   2038.379      2657    1025.434
+Porcent_PagosCompletos_Realizados     25.250      0.280      2657       0.159
+Frec_Saldo                            24.426      0.977      2657       0.895
+Compras_UnaVez                        18.570   1109.784      2657     604.901
+Limite_Credito                        13.143   5298.450      2657    4522.091
+Pagos_Realizados                       5.278   2032.412      2657    1784.478
+Saldo                                 -7.423   1350.131      2657    1601.225
+Efectivo_Adelantado                  -21.528    256.949      2657     994.176
+Frec_Efectivo_Adelantado             -28.902      0.043      2657       0.138
+------------------------------------------------------------ 
+class: 2
+                                  Test.Value Class.Mean Frequency Global.Mean
+Frec_Efectivo_Adelantado             -10.482      0.118      4960       0.138
+Num_Min_Pagos_Realizados             -14.953    535.657      4960     864.305
+Porcent_PagosCompletos_Realizados    -16.299      0.115      4960       0.159
+Efectivo_Adelantado                  -18.377    633.015      4960     994.176
+Compras_UnaVez                       -25.412    208.401      4960     604.901
+Pagos_Realizados                     -28.894   1005.618      4960    1784.478
+Saldo                                -29.143   1035.473      4960    1601.225
+Frec_Saldo                           -31.424      0.835      4960       0.895
+Compras                              -35.002    322.735      4960    1025.434
+Compras_aPlazos                      -36.037    114.633      4960     420.844
+Limite_Credito                       -36.397   3288.275      4960    4522.091
+Fre_Compras_UnaVez                   -37.545      0.102      4960       0.206
+frec_Compras_aPlazos                 -50.555      0.182      4960       0.369
+Frec_Compras                         -55.501      0.290      4960       0.496
+------------------------------------------------------------ 
+class: 3
+                                  Test.Value Class.Mean Frequency Global.Mean
+Efectivo_Adelantado                   60.918   4968.608       942     994.176
+Frec_Efectivo_Adelantado              60.158      0.511       942       0.138
+Saldo                                 53.513   5049.907       942    1601.225
+Limite_Credito                        32.142   8139.124       942    4522.091
+Pagos_Realizados                      24.556   3981.927       942    1784.478
+Num_Min_Pagos_Realizados              22.039   2472.399       942     864.305
+Frec_Saldo                            12.669      0.976       942       0.895
+Compras_UnaVez                        -4.497    371.965       942     604.901
+Fre_Compras_UnaVez                    -6.205      0.149       942       0.206
+Compras                               -6.405    598.583       942    1025.434
+Compras_aPlazos                       -6.882    226.726       942     420.844
+Porcent_PagosCompletos_Realizados    -13.818      0.033       942       0.159
+frec_Compras_aPlazos                 -14.172      0.195       942       0.369
+Frec_Compras                         -15.868      0.300       942       0.496
+------------------------------------------------------------ 
+class: 4
+                                  Test.Value Class.Mean Frequency Global.Mean
+Compras                               63.180  16559.006        77    1025.434
+Compras_UnaVez                        57.402  11573.696        77     604.901
+Pagos_Realizados                      44.627  16516.810        77    1784.478
+Compras_aPlazos                       43.863   4985.310        77     420.844
+Limite_Credito                        20.325  12959.740        77    4522.091
+Fre_Compras_UnaVez                    17.557      0.804        77       0.206
+Saldo                                 12.270   4518.465        77    1601.225
+Frec_Compras                           9.616      0.934        77       0.496
+frec_Compras_aPlazos                   9.027      0.777        77       0.369
+Porcent_PagosCompletos_Realizados      7.584      0.414        77       0.159
+Num_Min_Pagos_Realizados               5.865   2442.863        77     864.305
+Frec_Saldo                             3.347      0.974        77       0.895
+Frec_Efectivo_Adelantado              -2.465      0.081        77       0.138
+</code></pre>
+<blockquote>
+<p>The first class is made up of clients with the highest credit card balance, it can be inferred that they have a good salary or earn a lot of money. These people prefer not to pay for their purchases with a credit card, they prefer to withdraw cash in advance to make said purchases. Your credit limit is very high, since your income is high and the time with which you pay your cash advances is very low. In short, they are rich people who do not buy with their card, perhaps so that there is no record of their purchases. In terms of social level, they are high-income people who prefer to avoid registering their bank transactions. <strong>This class of clients was classified as passive clients.</strong></p>
+</blockquote>
+<pre><code class="language-mermaid">graph LR
+A[Class 1 &lt;br /&gt; PASSIVE CLIENTS &lt;br /&gt;] --&gt; B(Purchasing power)
+A --&gt; C(Payment capacity)
+A --&gt; D(Excessive consumption)
+B --- E(Low)
+C --- F(High)
+D --- G(Low)
+</code></pre>
+<blockquote>
+<p>The second class is made up of very low balance clients, actually the second lowest among the classes. They are the class with the lowest rate of purchases, whether in instant purchases or installment purchases. The aforementioned is reflected in your credit limit, since you earn little money, do not enter installments and have a low rate of payments through your cards, your credit limit is relatively low. Socially, they are low-income people who do not have the possibility of accessing constant purchases, they prefer to save their money and not take risks. <strong>These clients were called inactive clients.</strong></p>
+</blockquote>
+<pre><code class="language-mermaid">graph LR
+A[Class 2 &lt;br /&gt; INACTIVE CLIENTS &lt;br /&gt;] --&gt; B(Purchasing power)
+A --&gt; C(Payment capacity)
+A --&gt; D(Excessive consumption)
+B --- E(Low)
+C --- F(Low)
+D --- G(Low)
+</code></pre>
+<blockquote>
+<p>The third class is made up of clients with the lowest balance on the card but who make cash purchases, that is, they do not earn much money and their salary on the card is low, however, they continue to consume, make purchases frequently, whether for goods or services, by means of a credit card, generally in installments or installments because it is not possible for them to pay instantly due to the little money they have in their accounts. In addition, the payment limit is lower than the global average for all clients, due to their low income level. It is not the lowest credit limit among the classes because, by frequently making installment purchases, their credit history is good, however, the time in which they pay their debts is not favorable for their credit limit. They are low-income people who are passionate about indulging their frequent desires, even if that means paying installments. <strong>They were called active clients.</strong></p>
+</blockquote>
+<pre><code class="language-mermaid">graph LR
+A[Class 3 &lt;br /&gt; ACTIVE CLIENTS &lt;br /&gt;] --&gt; B(Purchasing power)
+A --&gt; C(Payment capacity)
+A --&gt; D(Excessive consumption)
+B --- E(High)
+C --- F(Low)
+D --- G(Low)
+</code></pre>
+<blockquote>
+<p>In the fourth class are present clients who use credit cards more, since they maintain a high rate of frequent purchases instantly or in installments, because they handle a large amount of money and keep a balance to later acquire any good or service. , which is why they have a high profile in the banking institution and benefit from obtaining a higher credit limit, in addition to withdrawing very little cash in advance. Socially, they were called high-income people who spend their money to satisfy their tastes, apart from their basic needs. <strong>These people are potential clients.</strong></p>
+</blockquote>
+<pre><code class="language-mermaid">graph LR
+A[Class 4 &lt;br /&gt; POTENCIAL CLIENTS &lt;br /&gt;] --&gt; B(Purchasing power)
+A --&gt; C(Payment capacity)
+A --&gt; D(Excessive consumption)
+B --- E(High)
+C --- F(High)
+D --- G(High)
+</code></pre>
+<h2 id="market-strategies">Market strategies</h2>
+<ul>
+<li>
+<p>Passive clients, they have very low purchases, due to the lack of information on promotions and discounts, for which, from the user&rsquo;s database, a telephone number can be contacted and begin to make informative use of that means of communication. Likewise, the advisors can be in contact by means of telephone calls, in order to spread the information and make sure that the user obtains the benefits. To motivate you, you can initially generate promotions, accumulation of points that can later be redeemed in some good or cash refunds.</p>
+</li>
+<li>
+<p>Inactive clients, an incentive plan can be implemented, where an order of quotas is proposed, which allow them to go to certain places to access a product as a reward for the high use of credit cards, this strategy can be carried out carried out in the people who buy the most and with that constant use is promoted.</p>
+</li>
+<li>
+<p>Active clients, by maintaining constant purchases, the accumulation of points can be implemented, either to obtain a free product or with good discounts and the exclusivity of participating in raffles of some good, such as appliances. Likewise, up to 3 installments without interest can be managed, with the aim that the client is motivated and makes their purchases.</p>
+</li>
+<li>
+<p>To encourage the best credit card clients, rewards or incentives can be generated for the number of purchases made, whether monthly or semi-annually, likewise, miles can be accumulated so that users can obtain tickets without high costs on planes and in the VIP area, as well as tickets to concerts, entertainment areas, restaurants, among others.</p>
+</li>
+</ul>
+<h2 id="new-clients">New clients</h2>
+<details class="spoiler "  id="spoiler-6">
+  <summary>PREDICT [Click to see the code]</summary>
+  <p><pre><code class="language-r">
+ind.test &lt;- Datos[8632:8636, 1:17] #5 clientes para realizar la prediccion
+
+head(ind.test)
+
+ind.test.coord &lt;- predict(res.pca, newdata = ind.test)
+ind.test.coord[, 1:3] # Miro los primeros dos componentes
+
+
+# Utilizo el gráfico anterior y le anexo los nuevos individuos
+
+p &lt;- fviz_pca_ind(res.pca, repel = TRUE)
+
+fviz_add(p, ind.test.coord, color =&quot;blue&quot;)
+
+
+nuevospuntos&lt;-data.frame(ind.test.coord)
+
+NP2&lt;-data.frame(names = rownames(nuevospuntos), nuevospuntos)
+
+Newgrafico&lt;-data.frame((resultado_ACP$dudi)$li , Grupo)
+
+X11()
+#PC1 ; PC2
+ggplot(Newgrafico, aes(x = Axis1, y = Axis2, color = Grupo)) +
+  geom_point() +
+  geom_point(NP2, mapping=aes(x=PC1,y=PC2, color = &quot;Nuevos&quot;, 
+label = names), size=5.5)+ theme_bw()
+
+
+</code></pre>
+</p>
+</details>
+<p>We managed to classify customers into classes depending on their characteristics in the use of the credit card. However, the banking institution will not always have the same number of clients and these will not always present the same behavior, therefore, it is necessary that the created model has the ability to predict to which group a client with new characteristics should belong management regarding the use of your credit card.</p>
+<p>That said, a classification test was carried out with 5 clients without a group, to evaluate the effectiveness of the model at the time of cataloging. This test is done graphically, incorporating new clients represented by purple dots in the plans previously designed in graph 4; It is worth mentioning that the value of the characteristic variables of the five clients with respect to the use of their credit card is known.</p>
+<p><img src="./Graf_8.png" alt="png"></p>
+<p>The visualization of the new clients in the groups is better illustrated in the plane composed of components 1 and 2, for this reason the main analysis was carried out with this plane. Now, among these 5 clients, the model classified 3 of them as members of group 2 (inactive clients), and the rest as members of group 3 (active clients).</p>
+<h3 id="supervised-learning">Supervised learning</h3>
+<p>We realize a supervised analyses using the classification founded in the clustering. We use 75% of the data as training, and 25% as test.</p>
+<p>The class that better is classified is 4. Potencial Clients.</p>
+<details class="spoiler "  id="spoiler-7">
+  <summary>KNN [Click to see the code]</summary>
+  <p><pre><code class="language-r">
+NuevaBase &lt;- NuevaBase %&gt;% 
+  rename(grupo = Cluster ) %&gt;% 
+  mutate_at(c(&quot;grupo&quot;), ~as.factor(.))
+
+
+IndexEntrena&lt;-createDataPartition(y = NuevaBase$grupo, p=0.75 , list = FALSE)
+
+
+SP_entrena &lt;- NuevaBase[IndexEntrena,]
+SP_test &lt;- NuevaBase[-IndexEntrena,]
+
+
+SP_knnEntrenado &lt;- train(grupo ~ .,
+                         data = SP_entrena, 
+                         method = &quot;knn&quot;,  
+                         tuneLength = 20)
+
+class(SP_knnEntrenado)
+
+
+SP_knnEntrenado
+
+X11()
+plot(SP_knnEntrenado)
+
+SP_ctrl &lt;- trainControl(method=&quot;cv&quot;, number = 5) #Metodo de validación cruzada
+
+
+SP_knnEntrenado &lt;- train(grupo ~ ., 
+                         data = SP_entrena, 
+                         method = &quot;knn&quot;,  
+                         tuneLength = 20,
+                         trControl = SP_ctrl,
+                         preProcess = c(&quot;center&quot;, &quot;scale&quot;))
+
+                         
+SP_knnEntrenado
+
+x11()
+plot(SP_knnEntrenado) # Aprece un nuevo k optimo! K=7
+
+plot(SP_knnEntrenado,pch=8 ,bty=&quot;1&quot;,bg=&quot;seagreen2
+     nos&quot;, ylab = &quot;Precision (Validación Cruzada)&quot;, xlab= &quot;vecinos&quot; ) #Grafica de K vs Precision
+
+
+SP_knnPrediccion &lt;- predict(SP_knnEntrenado, newdata = SP_test)
+
+
+SP_knnPrediccion %&gt;%  
+  head(50)
+
+prob_knnPrediccion &lt;- predict(SP_knnEntrenado, newdata = SP_test, type= &quot;prob&quot;)
+
+prob_knnPrediccion %&gt;% 
+  head(10)   #Probabilidades para catalogar a que grupo pertenece el cliente
+
+confusionMatrix(SP_knnPrediccion, SP_test$grupo)
+
+</code></pre>
+</p>
+</details>
+<pre><code class="language-r">Confusion Matrix and Statistics
+
+          Reference
+Prediction    1    2    3    4
+         1  463  118    4    1
+         2  182 1099   51    0
+         3   19   23  180    0
+         4    0    0    0   18
+
+Overall Statistics
+                                          
+               Accuracy : 0.8156          
+                 95% CI : (0.7986, 0.8317)
+    No Information Rate : 0.5746          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.665           
+                                          
+Statistics by Class:
+
+                     Class: 1 Class: 2 Class: 3 Class: 4
+Sensitivity            0.6973   0.8863  0.76596 0.947368
+Specificity            0.9177   0.7462  0.97816 1.000000
+Pos Pred Value         0.7901   0.8251  0.81081 1.000000
+Neg Pred Value         0.8721   0.8293  0.97159 0.999533
+Prevalence             0.3077   0.5746  0.10890 0.008804
+Detection Rate         0.2146   0.5093  0.08341 0.008341
+Detection Prevalence   0.2715   0.6172  0.10287 0.008341
+Balanced Accuracy      0.8075   0.8162  0.87206 0.973684
+</code></pre>
+<h3 id="made-by-">Made by 🙌</h3>
+<p><img style="border-radius: 50%;" src="kleiner.png"
+width="50px" align="left"
+/></p>
+<br>
+<p>📚  <a href="https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/" target="_blank" rel="noopener">Kleiner J. Balanta</a> - Student of Industrial Engineering</p>
+<p>(Universidad del Valle)</p>
+<p><img style="border-radius: 50%;" src="laura.png"
+width="50px" align="left"
+/></p>
+<br>
+<p>📚  <a href="https://www.linkedin.com/in/laura-vanessa-cicery-mu%C3%B1oz-247800245/" target="_blank" rel="noopener">Laura V. Cicery</a> - Student of Industrial Engineering</p>
+<p>(Universidad del Valle)</p>
+<p><img style="border-radius: 50%;" src="sofia.png"
+width="50px" align="left"
+/></p>
+<br>
+<p>📚  <a href="https://www.linkedin.com/in/sofia-vivas-marin-265a83208/" target="_blank" rel="noopener">Sofia Vivas</a> - Student of Industrial Engineering</p>
+<p>(Universidad del Valle)</p>
+<p><img style="border-radius: 50%;" src="carlos.png"
+width="50px" align="left"
+/></p>
+<br>
+<p>📚  <a href="https://www.linkedin.com/in/carlos-arturo-cruz-hoyos-194643208/" target="_blank" rel="noopener">Carlos A. Cruz</a> - Student of Industrial Engineering</p>
+<p>(Universidad del Valle)</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="www.joaquibarandica.io/tag/unsupervised-learning/">Unsupervised learning</a>
+  
+  <a class="badge badge-light" href="www.joaquibarandica.io/tag/credit-card/">Credit card</a>
+  
+  <a class="badge badge-light" href="www.joaquibarandica.io/tag/clusters/">Clusters</a>
+  
+  <a class="badge badge-light" href="www.joaquibarandica.io/tag/r/">R</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=www.joaquibarandica.io/post/ansupervised/&amp;text=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=www.joaquibarandica.io/post/ansupervised/&amp;t=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;&amp;body=www.joaquibarandica.io/post/ansupervised/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=www.joaquibarandica.io/post/ansupervised/&amp;title=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://send?text=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;%20www.joaquibarandica.io/post/ansupervised/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=www.joaquibarandica.io/post/ansupervised/&amp;title=Unsupervised%20learning%20&amp;#39;credit%20card%20clients&amp;#39;" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="www.joaquibarandica.io"><img class="avatar mr-3 avatar-circle" src="/www.joaquibarandica.io/author/orlando-joaqui-barandica/avatar_hubff469d42154c21c97fb9216ba090a36_209917_270x270_fill_lanczos_center_2.png" alt="Orlando Joaqui Barandica"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="www.joaquibarandica.io">Orlando Joaqui Barandica</a></h5>
+      <h6 class="card-subtitle">PhD student in Industrial Engineering</h6>
+      <p class="card-text">My research interests include energy markets, asset and liability management, quantitative finance, applied econometrics and statistical, and data visualization.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/www.joaquibarandica.io/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/jotajb5" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.es/citations?user=3-slu-sAAAAJ&amp;hl=es" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/juniorjb5" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/orlando-jr-joaqui-barandica-69758463/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="www.joaquibarandica.io/post/r/">Introduction to R</a></li>
+      
+      <li><a href="www.joaquibarandica.io/post/datavizr/">Data Visualization in R</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js" integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA==" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/www.joaquibarandica.io/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/www.joaquibarandica.io/en/js/wowchemy.min.0cb236a584a56fc8a8f250f0c3900a92.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>
