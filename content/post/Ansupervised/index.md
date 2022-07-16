@@ -7,8 +7,8 @@ image:
   placement: 3
 math: true
 title: Unsupervised learning 'credit card clients'
-subtitle: "Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Data Management subject, the unsupervised analytics application for a group of 9,000 credit card customers."
-summary: "Understanding the behavior of customers of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fifth-semester students of the Data Management subject, the unsupervised analytics application for a group of 9,000 credit card customers."
+subtitle: "Understanding the behavior of clients of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fourth-semester students of the Data Management subject, the unsupervised analytics application for a group of 9,000 credit card clients."
+summary: "Understanding the behavior of clients of a product such as a credit card is vital to propose different marketing strategies or policies to management. Here we present, together with fourth-semester students of the Data Management subject, the unsupervised analytics application for a group of 9,000 credit card clients."
 tags:
 - Unsupervised learning
 - Credit card
