@@ -80,7 +80,7 @@ To see the classification of the model data set, Ward's method is used, presente
 
 ## Let's go to R
 
-We point out that the code and results is in spanish. This was made by [Kleiner J. Balanta](https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/)
+We point out that the code and results are in spanish. This was made by [Kleiner J. Balanta](https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/)
 
 ### Code
 
