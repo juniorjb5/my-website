@@ -26,7 +26,7 @@ date_format: Jan 2006
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
 
-  - title: Professor
+  - title: Assistant professor
     company: Universidad del Valle
     company_url: 'https://www.univalle.edu.co/'
     company_logo: univalle
@@ -47,7 +47,7 @@ experience:
         * Applied statistics I
         * Probability and statistics
         
-  - title: Professor
+  - title: Assistant professor
     company: Pontificia Universidad Javeriana de Cali
     company_url: 'https://www.javerianacali.edu.co/'
     company_logo: jave
@@ -64,7 +64,7 @@ experience:
         * Quantitative methods applied to social policy
 
 
-  - title: Professor
+  - title: Assistant professor
     company: Universidad ICESI
     company_url: 'https://www.icesi.edu.co/es/'
     company_logo: icesi
@@ -90,7 +90,7 @@ experience:
     
         Manipulation and statistical analysis of cassava breeding databases.
 
-  - title: Professor
+  - title: Assistant professor
     company: Universidad de San Buenaventura Cali
     company_url: 'https://www.usbcali.edu.co/'
     company_logo: sanbue
@@ -103,7 +103,7 @@ experience:
         * Econometrics I
         * Econometrics II
 
-  - title: Professor
+  - title: Assistant professor
     company: Universidad del Tolima
     company_url: 'https://www.ut.edu.co/'
     company_logo: ut
@@ -116,7 +116,7 @@ experience:
         * Data visualization in R
         * Reports in RMarkdown      
 
-  - title: Professor
+  - title: Assistant professor
     company: Universidad Santiago de Cali
     company_url: 'https://www.usc.edu.co/'
     company_logo: usc

@@ -2,7 +2,7 @@
 title: "Orlando Joaqui Barandica"
 education:
   courses:
-  - course: PhD student in Industrial Engineering
+  - course: PhD(C)  in Industrial Engineering
     institution: Universidad del Valle
     year: Current
   - course: MSc Applied Economics
@@ -22,7 +22,7 @@ interests:
 organizations:
 - name: Universidad del Valle
   url: https://www.univalle.edu.co/
-role: PhD student in Industrial Engineering
+role: PhD(C) in Industrial Engineering
 social:
 - icon: envelope
   icon_pack: fas
@@ -43,9 +43,9 @@ superuser: yes
 bio: My research interests include energy markets, asset and liability management, quantitative finance, applied econometrics and statistical, and data visualization.
 ---
 
-I am a current student of the Doctorate in Engineering with an emphasis in industrial engineering at the Universidad del Valle. Member of the GIFINC research group (Quantitative Finance Research Group) of the School of Industrial Engineering of the Universidad del Valle. My research topic in Asset-Liability Management is under the supervision of {{< staticref "http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque" "newtab" >}}Diego F. Manotas{{< /staticref >}} and {{< staticref "https://jorgemuribe.com/" "newtab" >}}Jorge M. Uribe{{< /staticref >}}.
+I am a current a candidate for Ph.D. in Engineering with an emphasis in industrial engineering at the Universidad del Valle. Member of the GIFINC research group (Quantitative Finance Research Group) of the School of Industrial Engineering of the Universidad del Valle. My research topic in Asset-Liability Management is under the supervision of {{< staticref "http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque" "newtab" >}}Diego F. Manotas{{< /staticref >}} and {{< staticref "https://jorgemuribe.com/" "newtab" >}}Jorge M. Uribe{{< /staticref >}}.
 
-I am a professor at the School of Statistics at the Universidad del Valle. I have guided various training courses in statistics, data visualization, econometrics and quantitative finance at the Pontificia Universidad Javeriana de Cali, Universidad ICESI, Universidad San Buenaventura Cali, Universidad del Tolima and the Faculty of Economics at Universidad del Valle. My current research interests include energy markets, asset and liability management, quantitative finance, applied econometrics, and applied statistics.
+I am an assistant professor at the School of Statistics at the Universidad del Valle. I have guided various training courses in statistics, data visualization, econometrics and quantitative finance at the Pontificia Universidad Javeriana de Cali, Universidad ICESI, Universidad San Buenaventura Cali, Universidad del Tolima and the Faculty of Economics at Universidad del Valle. My current research interests include energy markets, asset and liability management, quantitative finance, applied econometrics, and applied statistics.
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/CV.pdf" "newtab" >}}resumé{{< /staticref >}}.

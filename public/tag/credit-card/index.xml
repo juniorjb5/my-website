@@ -51,7 +51,7 @@ A --&amp;gt; J(Tenencia_Servicio) --&amp;gt; |Translation| K(TENURE)
 &lt;p&gt;$$Z = \lambda_1 X_1 + \lambda_2 X_2 + . . . +  \lambda_p X_p$$&lt;/p&gt;
 &lt;p&gt;To see the classification of the model data set, Ward&amp;rsquo;s method is used, presented by Joe H. Ward, which considers all the clusters and the algorithm calculates the sum of the squared distances within each one, to later merge them and manage to minimize them.&lt;/p&gt;
 &lt;h2 id=&#34;lets-go-to-r&#34;&gt;Let&amp;rsquo;s go to R&lt;/h2&gt;
-&lt;p&gt;We point out that the code and results is in spanish. This was made by &lt;a href=&#34;https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kleiner J. Balanta&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We point out that the code and results are in spanish. This was made by &lt;a href=&#34;https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kleiner J. Balanta&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
 &lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-0&#34;&gt;
   &lt;summary&gt;PACKAGES [Click to see the code]&lt;/summary&gt;
