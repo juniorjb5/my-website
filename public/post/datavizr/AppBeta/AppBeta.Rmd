@@ -1,0 +1,424 @@
+---
+title: "Renewables Portfolio"
+author: " "
+output: 
+  flexdashboard::flex_dashboard:
+    # orientation: rows
+    theme: cerulean
+    logo: industrial2.png
+    social: menu
+    #source_code: embed
+runtime: shiny
+---
+
+
+```{r setup, include=FALSE}
+
+library(flexdashboard)
+library(shiny)
+library(readxl)
+library(tidyverse)
+library(leaflet)
+
+
+Base<-readRDS("Base_Argentina.RDS")
+#Prec<-readRDS("Prec_Argentina.RDS")
+#Solar<-readRDS("Solar_Argentina.RDS")
+#Wind<-readRDS("Wind_Argentina.RDS")
+
+Places<-read_xlsx("DatosParques.xlsx")
+
+
+Places$ratingcol <- ifelse(Places$Tipo == "Eólica", "#2ECC71",
+                    ifelse(Places$Tipo == "Hidráulica", "#21618C",
+                    ifelse(Places$Tipo == "Solar", "#F39C12", "black")))
+
+
+```
+
+
+Georeferenciación
+=======================================================================
+
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Geolocalización de fuentes de energía
+
+```{r}
+
+
+
+renderLeaflet({
+Places%>% 
+leaflet() %>%
+  addTiles() %>% 
+  addCircleMarkers(~Long, ~Lat, 
+             popup = paste("Potencia instalada:", Places$Potmw), 
+             label = ~as.character(Nombre),
+             color=~ratingcol) %>% 
+  leaflet::addLegend("bottomleft", 
+            colors =c("#2ECC71", "#21618C" , "#F39C12"),
+            labels = c("Eólica",
+                       "Hidráulica",
+                       "Solar"), 
+            opacity = 0.8)
+
+})
+  
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Geolocalización de cluster de generación de energía
+
+```{r}
+
+Places %>% 
+  leaflet() %>%
+  addTiles() %>% 
+addMarkers(
+  clusterOptions = markerClusterOptions()
+)
+
+
+```
+
+### Generación de energía según el tipo de fuente
+
+```{r}
+
+Places %>% 
+  group_by(Tipo) %>% 
+  summarise(TotMW=sum(Potmw,na.rm = TRUE)) %>% 
+  ggplot(aes(x=Tipo, y=TotMW,fill=Tipo)) +
+  geom_bar(stat="identity")+
+  scale_fill_manual(values = c("#2ECC71", "#21618C" , "#F39C12"))+
+  theme_minimal()+
+  geom_text(aes(label=TotMW), position=position_dodge(width=0.9), vjust=-0.25, size=5)+
+  theme(legend.position = "none", axis.text.x = element_text(size=15),
+        axis.text.y = element_text(size=15))+
+  xlab(" ")+
+  ylab(" MW ")
+
+
+
+```
+
+
+
+
+
+
+Serie climatológica
+=======================================================================
+
+
+Inputs {.sidebar}
+-------------------------------------
+
+
+Se requiere realizar todas las selecciones de este menú:
+
+
+```{r}
+
+
+selectizeInput(
+        "Country", "Elegir País", choices = Places$Pais,
+        options = list(
+          placeholder = 'Please select an option below',
+          onInitialize = I('function() { this.setValue(""); }')
+        )
+      )
+
+selectizeInput(
+        "Fuente", "Elegir fuente de energía", choices = Places$Tipo,
+        options = list(
+          placeholder = 'Please select an option below',
+          onInitialize = I('function() { this.setValue(""); }')
+        )
+      )
+
+
+zone.choices = reactive({
+    Places %>%
+  filter(Pais==input$Country & Tipo==input$Fuente)
+})
+
+
+renderUI({selectInput("A", label = "Lugar a analizar",
+        choices = zone.choices()$Nombre)})
+
+
+#actionButton("Submit", "Buscar")
+
+
+#pos <- eventReactive(input$Submit, {
+#             Places %>% 
+#                     filter(Nombre==input$A)
+#     })
+
+
+```
+
+
+Las series climatológicas dependen del tipo de generación de energía.
+
+* **Eólica:** Velocidad del viento (2m)
+* **Solar:** Irradiación solar (JM/m2)
+* **Hidráulica:** Precipitación (mm)
+
+
+
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Serie de tiempo climatológica
+
+```{r}
+
+library(xts)
+library(highcharter)
+Argentina_xts <- xts(Base[,-1],Base$YYYYMMDD)
+colnames(Argentina_xts)<-gsub(".", " ", colnames(Base[,-1]),fixed = TRUE)
+
+
+  renderHighchart({
+          highchart(type = "stock") %>% 
+          hc_title(text = paste("Fuente",input$Fuente,input$A)) %>%
+          hc_add_series(Argentina_xts[,input$A]) %>% 
+          hc_add_theme(hc_theme_flat())
+})
+  
+
+
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Geolocalización de fuentes de energía
+
+```{r}
+
+
+renderLeaflet({
+Places %>% 
+  filter(Nombre==input$A) %>% 
+leaflet() %>%
+  addProviderTiles(
+    "Esri.WorldImagery",
+    group = "Esri.WorldImagery"
+  ) %>% 
+  addCircleMarkers(~Long, ~Lat, 
+             label = ~as.character(Nombre),
+             color=~ratingcol,opacity = 2) 
+  
+
+})
+
+
+```
+
+### Potencia 
+
+```{r}
+
+renderValueBox({
+  valueBox(paste(Places %>% 
+             filter(Nombre==input$A) %>% 
+             select(Potmw) %>% 
+             as.numeric(),"MW"),
+      icon = "fas fa-lightbulb", 
+      caption="POTENCIA INSTALADA",
+      color = "orange")
+}) 
+
+
+
+```
+
+
+
+
+
+
+
+Portafolio
+=======================================================================
+
+
+
+Row
+-----------------------------------------------------------------------
+
+
+### Risk vs Sharpe Ratio
+
+```{r}
+
+###########################################################################
+#
+# Optimización ------------------------------------------------------------
+
+
+library(PortfolioAnalytics)
+library(PerformanceAnalytics)
+
+Base_Argentina<-readRDS("Base_Argentina.RDS")
+
+Argentina_xts <- xts(Base_Argentina[,-1],Base_Argentina$YYYYMMDD)
+colnames(Argentina_xts)<-gsub(".", " ", colnames(Base_Argentina[,-1]),fixed = TRUE)
+
+#Retornos
+# Preguntar por el método que pasa con el logaritmo de los negativos
+retornos <- CalculateReturns(Argentina_xts) %>% 
+            na.omit()
+retornos <- retornos[!is.infinite(rowSums(retornos)),]
+
+
+#Sharpe Ratio
+sharpe.indiv1 <- SharpeRatio(retornos, Rf = 0 , FUN = "StdDev")
+
+
+sd_Sh<-data.frame(sd=as.vector(apply(retornos,2,sd)),
+                  Sh=as.vector(sharpe.indiv1),
+                  Tipo=Places$Tipo,
+                  Nombre=Places$Nombre)
+#View(sd_Sh)
+
+#Grafico des ves vs sharpe ratio
+plot_sd_Sh<-sd_Sh %>% 
+              ggplot(aes(x=sd,y=Sh,color=Tipo, label=Nombre)) +
+              geom_point(size=2)+
+              facet_grid(~Tipo,scales="free")+
+  xlab("Desviación Estándar")+
+  ylab("Sharpe Ratio")
+
+
+library(plotly)               
+ggplotly(plot_sd_Sh)
+
+
+
+```
+
+
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+   
+### Portafolio de MinVar
+
+```{r}
+
+portfolio_values<-readRDS("Simulacion_Port.RDS")
+
+min_var <- portfolio_values[which.min(portfolio_values$Risk),]
+
+
+#Ordenar (assets) de mayor a menor  (portafolio óptimo de minima varianza)
+OPT_1<-min_var %>%
+  gather( key = Asset,
+          value = Weights) %>% 
+  filter(!Asset %in% c("Risk", "Return", "SharpeRatio")) %>% 
+  mutate(Tipo = Places$Tipo) %>% 
+  arrange(-Weights)
+
+w1<-OPT_1[1:10,] %>%
+ mutate(Asset = as.factor(Asset),Tipo=as.factor(Tipo)) %>% 
+  select(Tipo,Asset,Weights) %>% 
+  ggplot(aes(x = fct_reorder(Asset,Weights), y = Weights)) +
+  geom_bar(stat = 'identity',fill="#A569BD") +
+  theme_minimal() +
+  labs(x = 'Assets', y = 'Weights', title = "Top 10 - Minimum Variance Portfolio Weights") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip()+
+  #geom_text(aes(label=Tipo), vjust=0, hjust = 2, color="#09325B",
+  #          position = position_dodge(0.9), size=3.5)+
+  #scale_fill_manual(values = c("#2ECC71", "#F39C12","#21618C"))+
+    theme(axis.text.y = element_text(hjust=1, vjust=0.5, size=7)) +
+  scale_x_discrete(
+    limits = rev(levels(OPT_1$Asset)),
+    labels=str_wrap(OPT_1$Asset, 30))
+
+library(plotly)
+ggplotly(w1,tooltip="Weights")
+
+
+
+```   
+ 
+
+
+### Portafolio de Max - Sharpe Ratio
+    
+```{r}
+
+portfolio_values<-readRDS("Simulacion_Port.RDS")
+
+max_sr <- portfolio_values[which.max(portfolio_values$SharpeRatio),]
+
+#Ordenar (assets) de mayor a menor  (portafolio óptimo max SharpeRatio)
+OPT_2<-max_sr %>%
+    gather( key = Asset,
+            value = Weights) %>% 
+    filter(!Asset %in% c("Risk", "Return", "SharpeRatio")) %>% 
+  mutate(Tipo = Places$Tipo) %>% 
+  arrange(-Weights)
+    
+  
+  
+w2<-OPT_2[1:10,] %>%
+  mutate(Asset = as.factor(Asset),Tipo=as.factor(Tipo)) %>% 
+  select(Tipo,Asset,Weights) %>% 
+  ggplot(aes(x = fct_reorder(Asset,Weights), y = Weights)) +
+  geom_bar(stat = 'identity',fill="#A569BD") +
+  #scale_fill_manual(values = 
+  #                  c(Eólica="#2ECC71",Solar= "#21618C" ,Hidráulica= "#F39C12"),drop = FALSE)+
+  theme_minimal() +
+  labs(x = 'Assets', y = 'Weights', title = "Top 10 - Max Sharpe Ratio") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip()+
+  #geom_text(aes(label=Tipo), vjust=0, hjust = 2, color="#09325B",
+  #          position = position_dodge(0.9), size=3.5)+
+  theme(axis.text.y = element_text(hjust=1, vjust=0.5, size=5)) +
+  scale_x_discrete(
+    limits = rev(levels(OPT_2$Asset)),
+    labels=str_wrap(OPT_2$Asset, 30))
+
+library(plotly)
+ggplotly(w2,tooltip="Weights")
+
+```
+
+
+### Frontera Eficiente
+
+```{r}
+portfolio_values %>%
+  ggplot(aes(x = Risk, y = Return, color = SharpeRatio)) +
+  geom_point() +
+  theme_classic() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = 'Annualized Risk',
+       y = 'Returns',
+       title = "Portfolio Optimization & Efficient Frontier") +
+  geom_point(aes(x = Risk,
+                 y = Return), data = min_var, color = 'red',size=5) +
+  geom_point(aes(x = Risk,
+                 y = Return), data = max_sr, color = 'orange',size=5)
+  
+
+```
+
+

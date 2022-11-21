@@ -18,6 +18,7 @@ projects: []
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(shiny)
 ```
 
 
@@ -76,7 +77,6 @@ xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/DataViz/4_Inter
 
 * Visit slides: [🔗 Here! Interactive graphs](https://juniorjb5.github.io/DataViz/4_InteractiveR/4_Interactive.html#1)
     - Recommendation to see in full screen (F11 - Google Chrome)
-
 
 
 
