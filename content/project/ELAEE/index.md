@@ -33,8 +33,9 @@ I will present the research "Decision tools from index fund finance to explore t
 
 * Link for slides: [👉Here!](https://juniorjb5.github.io/ELAEE/Slides.html#1)
 
+![png](./elaee1.png)
 
-![png](./elaae2.png)
+![png](./elaee2.png)
 
 
 
