@@ -28,5 +28,8 @@ xaringanExtra::embed_xaringan(url = "https://www.joaquibarandica.com/slides/VaR.
 ```
 
 
+```{r embed-xaringan1, echo=FALSE}
+knitr::include_url('static/slides/VaR.html', ratio = "16:9")
+```
 
 
