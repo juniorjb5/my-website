@@ -1,0 +1,32 @@
+---
+title: "VaR in R"
+authors: ["Orlando Joaqui Barandica"] 
+date: 2022-11-23T21:13:14-05:00
+categories: ["R","Xaringan","ggplot2","tidyverse","dplyr","Rmarkdown" ]
+tags: ["VaR", "R","Finance"]
+subtitle: "This is a small capsule about the calculation of VaR in R."
+summary: "This is a small capsule about the calculation of VaR in R."
+draft: false
+featured: false
+image:
+  caption: 'VaR in R'
+  focal_point: ""
+  placement: 2
+  preview_only: false
+projects: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+## VaR in R
+
+```{r embed-xaringan1, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "https://www.joaquibarandica.com/slides/VaR.html#1", ratio = "16:9")
+```
+
+
+
+
