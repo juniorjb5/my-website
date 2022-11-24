@@ -23,9 +23,5 @@ knitr::opts_chunk$set(collapse = TRUE)
 ## VaR in R
 
 ```{r embed-xaringan1, echo=FALSE}
-xaringanExtra::embed_xaringan(url = "https://www.joaquibarandica.com/slides/VaR.html#1", ratio = "16:9")
-```
-
-```{r embed-xaringan2, echo=FALSE}
-knitr::include_url('https://www.joaquibarandica.com/slides/VaR.html#1')
+xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/VaR/VaR.html#1", ratio = "16:9")
 ```
