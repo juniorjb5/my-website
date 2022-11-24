@@ -17,28 +17,34 @@
     <loc>www.joaquibarandica.io/categories/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
+    <loc>www.joaquibarandica.io/tag/cvar/</loc>
+    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
+  </url><url>
     <loc>www.joaquibarandica.io/category/dplyr/</loc>
+    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/tag/expected-shortfall/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/finance/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>www.joaquibarandica.io/category/ggplot2/</loc>
-    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
-  </url><url>
     <loc>www.joaquibarandica.io/author/orlando-joaqui-barandica/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
+    <loc>www.joaquibarandica.io/category/performanceanalytics/</loc>
+    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
+  </url><url>
     <loc>www.joaquibarandica.io/post/</loc>
+    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/quantmod/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/r/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/category/r/</loc>
-    <lastmod>2022-11-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>www.joaquibarandica.io/category/rmarkdown/</loc>
     <lastmod>2022-11-23T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tags/</loc>
@@ -167,10 +173,16 @@
     <loc>www.joaquibarandica.io/tag/dataviz/</loc>
     <lastmod>2022-04-03T21:13:14-05:00</lastmod>
   </url><url>
+    <loc>www.joaquibarandica.io/category/ggplot2/</loc>
+    <lastmod>2022-04-03T21:13:14-05:00</lastmod>
+  </url><url>
     <loc>www.joaquibarandica.io/post/r/</loc>
     <lastmod>2022-04-03T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/rmarkdown/</loc>
+    <lastmod>2022-04-03T21:13:14-05:00</lastmod>
+  </url><url>
+    <loc>www.joaquibarandica.io/category/rmarkdown/</loc>
     <lastmod>2022-04-03T21:13:14-05:00</lastmod>
   </url><url>
     <loc>www.joaquibarandica.io/tag/tidyverse/</loc>

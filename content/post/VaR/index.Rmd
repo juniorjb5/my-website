@@ -2,8 +2,8 @@
 title: "VaR in R"
 authors: ["Orlando Joaqui Barandica"] 
 date: 2022-11-23T21:13:14-05:00
-categories: ["R","Xaringan","ggplot2","tidyverse","dplyr","Rmarkdown" ]
-tags: ["VaR", "R","Finance"]
+categories: ["R","Xaringan","quantmod","tidyverse","dplyr","PerformanceAnalytics" ]
+tags: ["VaR", "R","Finance", "Expected Shortfall", "CVaR"]
 subtitle: "This is a small capsule about the calculation of VaR in R."
 summary: "This is a small capsule about the calculation of VaR in R."
 draft: false
@@ -27,5 +27,5 @@ xaringanExtra::embed_xaringan(url = "https://www.joaquibarandica.com/slides/VaR.
 ```
 
 ```{r embed-xaringan2, echo=FALSE}
-knitr::include_url('https://www.joaquibarandica.com/slides/VaR.html#1', ratio = "16:9" )
+knitr::include_url('https://www.joaquibarandica.com/slides/VaR.html#1')
 ```
