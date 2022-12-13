@@ -1,10 +1,10 @@
 ---
 widget: hero
-headless: true
+headless: false
 active: false
 weight: 10
 title: Hugo Academic Starter
-hero_media: hero-academic.png
+hero_media: logo2.jpg
 cta:
   label: '**Get Started**'
   url: https://wowchemy.com/templates/
@@ -22,6 +22,8 @@ design:
 advanced:
   css_class: fullscreen
 ---
+
+
 
 **The FREE, Hugo-based open source website builder and template trusted by 500,000+ sites.**
 
