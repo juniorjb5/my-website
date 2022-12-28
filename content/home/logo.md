@@ -3,7 +3,7 @@
 # Documentation: https://wowchemy.com/docs/page-builder/
 widget: featurette
 headless: true
-active: false
+active: true
 weight: 10
 
 

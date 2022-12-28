@@ -6,7 +6,7 @@
 # Appearance
 
 theme: "silvia"
-day_night: true
+day_night: false
 font: 'Minimal'
 font_size: L
 
@@ -39,7 +39,7 @@ main_menu:
   align: l
   show_logo: true
   show_language: false
-  show_day_night: true
+  show_day_night: false
   show_search: true
   highlight_active_link: true
 

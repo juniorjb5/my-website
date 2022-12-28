@@ -7,6 +7,9 @@ main:
   - name: Home
     url: '#about'
     weight: 10
+  - name: Portfolio
+    url: '#portfolio'
+    weight: 15
   - name: ''
     url: '#pre-experience'
     weight: 
@@ -21,7 +24,7 @@ main:
     weight: 20
   - name: Conferences & Talks
     url: '#conferences'
-    weight: 25
+    weight: 45
   - name: Posts
     url: '#posts'
     weight: 40
