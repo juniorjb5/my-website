@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Colcap | Orlando Joaqui Barandica</title>
+    <link>www.joaquibarandica.io/tag/colcap/</link>
+      <atom:link href="www.joaquibarandica.io/tag/colcap/index.xml" rel="self" type="application/rss+xml" />
+    <description>Colcap</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <title>Colcap</title>
+      <link>www.joaquibarandica.io/tag/colcap/</link>
+    </image>
+    
+    <item>
+      <title>Colombia: Macroeconomic Data</title>
+      <link>www.joaquibarandica.io/post/col_macroeconomic_data/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/col_macroeconomic_data/</guid>
+      <description>&lt;h2 id=&#34;building&#34;&gt;Building&lt;/h2&gt;
+&lt;p&gt;Here, you will find macroeconomic data for Colombia.&lt;/p&gt;
+&lt;p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download Metadata &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Metadata.xlsx&#34; target=&#34;_blank&#34;&gt;the slides&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;made-by-&#34;&gt;Made by 🙌&lt;/h3&gt;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;imagen.png&#34;
+width=&#34;50px&#34; align=&#34;left&#34;
+/&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;(Universidad del Valle)&lt;/p&gt;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;imagen.png&#34;
+width=&#34;50px&#34; align=&#34;left&#34;
+/&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/laura-vanessa-cicery-mu%C3%B1oz-247800245/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;(Universidad del Valle)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
