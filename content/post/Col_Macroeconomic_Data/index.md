@@ -28,7 +28,7 @@ Motivated by [Michael W. McCracken](https://research.stlouisfed.org/econ/mccrack
 
 This macroeconomic database was created within the framework of the degree thesis project: "Nonlinear modeling (DLNM) of the effect of macroeconomic factors on the MSCI Colombia stock market capitalization index for the period 2001 to 2020", to obtain the bachelor's degree in Statistics from the Universidad del Valle. This work was carried out by [Brayan Osorio-Vanegas](https://www.linkedin.com/in/brayan-osorio-vanegas-233473237/)  and [Carolina Ramirez-Patiño](https://www.linkedin.com/in/carorpbs/) under the advice of Professor [César Ojeda-Echeverry](http://escuelaestadistica.univalle.edu.co/index.php/profesores) and myself.
 
-Our database is fully balanced *(153 variables)*, to achieve this, we use a data imputation technique such as the iterative (regularized) PCA algorithm.
+Our database is fully balanced *(153 variables)*, to achieve this we use a data imputation technique such as the iterative (regularized) PCA algorithm.
 
 
 ### Files
