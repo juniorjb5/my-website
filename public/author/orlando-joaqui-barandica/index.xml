@@ -5,171 +5,271 @@
     <link>www.joaquibarandica.io/author/orlando-joaqui-barandica/</link>
       <atom:link href="www.joaquibarandica.io/author/orlando-joaqui-barandica/index.xml" rel="self" type="application/rss+xml" />
     <description>Orlando Joaqui Barandica</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 23 Nov 2022 21:13:14 -0500</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
+      <url>/www.joaquibarandica.io/author/orlando-joaqui-barandica/avatar_hubff469d42154c21c97fb9216ba090a36_209917_270x270_fill_lanczos_center_2.png</url>
       <title>Orlando Joaqui Barandica</title>
       <link>www.joaquibarandica.io/author/orlando-joaqui-barandica/</link>
     </image>
     
     <item>
-      <title>VaR in R</title>
-      <link>www.joaquibarandica.io/post/var/</link>
-      <pubDate>Wed, 23 Nov 2022 21:13:14 -0500</pubDate>
-      <guid>www.joaquibarandica.io/post/var/</guid>
-      <description>
-&lt;script src=&#34;www.joaquibarandica.io/post/var/index_files/fitvids/fitvids.min.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;div id=&#34;var-in-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;VaR in R&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/VaR/VaR.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <title>Colombia: Macroeconomic Data</title>
+      <link>www.joaquibarandica.io/post/col_macroeconomic_data/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/col_macroeconomic_data/</guid>
+      <description>&lt;h2 id=&#34;macroeconomic-data&#34;&gt;Macroeconomic Data&lt;/h2&gt;
+&lt;p&gt;Motivated by &lt;a href=&#34;https://research.stlouisfed.org/econ/mccracken/fred-databases/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Michael W. McCracken&lt;/a&gt; who designed a large macroeconomic database of monthly and quarterly observation of the FRED database in the USA. We propose in the similar case for Colombia a macroeconomic database with the objective of having access to the information, facilitating the replication of the empirical work.&lt;/p&gt;
+&lt;p&gt;This macroeconomic database was created within the framework of the degree thesis project: &amp;ldquo;Nonlinear modeling (DLNM) of the effect of macroeconomic factors on the MSCI Colombia stock market capitalization index for the period 2001 to 2020&amp;rdquo;, to obtain the bachelor&amp;rsquo;s degree in Statistics from the Universidad del Valle. This work was carried out by &lt;a href=&#34;https://www.linkedin.com/in/brayan-osorio-vanegas-233473237/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio-Vanegas&lt;/a&gt;  and &lt;a href=&#34;https://www.linkedin.com/in/carorpbs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez-Patiño&lt;/a&gt; under the advice of Professor &lt;a href=&#34;http://escuelaestadistica.univalle.edu.co/index.php/profesores&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;César Ojeda-Echeverry&lt;/a&gt; and myself.&lt;/p&gt;
+&lt;p&gt;Our database is fully balanced &lt;em&gt;(153 variables)&lt;/em&gt;, to achieve this, we use a data imputation technique such as the iterative (regularized) PCA algorithm.&lt;/p&gt;
+&lt;h3 id=&#34;files&#34;&gt;Files&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Metadata:&lt;/strong&gt; Here, you can find all codes, description and sources for each variable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Metadata.xlsx&#34; target=&#34;_blank&#34;&gt;Metadata&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database:&lt;/strong&gt; Here, you can find 153 macroeconomic variables for Colombia.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Data_Series_Mensuales.xlsx&#34; target=&#34;_blank&#34;&gt;Database&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;made-by-&#34;&gt;Made by 🙌&lt;/h3&gt;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;brayan.png&#34;
+width=&#34;50px&#34; align=&#34;left&#34;
+/&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/brayan-osorio-vanegas-233473237/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;(Universidad del Valle)&lt;/p&gt;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;carolina.png&#34;
+width=&#34;50px&#34; align=&#34;left&#34;
+/&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/carorpbs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;(Universidad del Valle)&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Introduction to R</title>
-      <link>www.joaquibarandica.io/post/r/</link>
-      <pubDate>Sun, 03 Apr 2022 21:13:14 -0500</pubDate>
-      <guid>www.joaquibarandica.io/post/r/</guid>
-      <description>
-&lt;script src=&#34;www.joaquibarandica.io/post/r/index_files/fitvids/fitvids.min.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;These slides can be used as a supplement to my last #️⃣DataViz post &lt;a href=&#34;https://www.joaquibarandica.com/post/datavizr/&#34;&gt;(see the material HERE!!!).&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The structure of this presentation is:&lt;/p&gt;
+      <title>Commonality, macroeconomic factors and banking profitability</title>
+      <link>www.joaquibarandica.io/publication/commonality/</link>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/commonality/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Introduction to R&lt;/li&gt;
-&lt;li&gt;Introduction to tidyverse&lt;/li&gt;
-&lt;li&gt;Introduction to DataViz&lt;/li&gt;
-&lt;li&gt;Introduction to Rmarkdown&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://doi.org/10.1016/j.najef.2022.101714&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Important!! Once you’re done with this class, you should move on to #️⃣DataViz&lt;/p&gt;
-&lt;div id=&#34;introduction-to-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Introduction to R&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/R/index.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;./imagen1.jpg&#34; alt=&#34;image info&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This article is the second publication of our research work on asset and liability management. The main objective was to identify the macroeconomics factors underlying the dynamics of bank profitability.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A pleasure to work with this team&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Visit slides: 🔗 &lt;a href=&#34;https://juniorjb5.github.io/R/index.html#1&#34;&gt;Here! Introduction&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Recommendation to see in full screen (F11 - Google Chrome)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👨‍🏫 &lt;a href=&#34;http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Diego F. Manotas-Duque&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👨‍🏫 &lt;a href=&#34;https://jorgemuribe.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Jorge M. Uribe&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Data Visualization in R</title>
-      <link>www.joaquibarandica.io/post/datavizr/</link>
-      <pubDate>Mon, 27 Sep 2021 21:13:14 -0500</pubDate>
-      <guid>www.joaquibarandica.io/post/datavizr/</guid>
-      <description>
-&lt;script src=&#34;www.joaquibarandica.io/post/datavizr/index_files/fitvids/fitvids.min.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;These slides will cover a mix of styles for &lt;strong&gt;#DataViz&lt;/strong&gt;. We will learn the necessary structure of the data for the adequate visualization of the information. We will work with packages like ggplot2, plotly, highchart, among others.&lt;/p&gt;
-&lt;p&gt;I present the next structure:&lt;/p&gt;
+      <title>Assets Liability Management: A bibliometric analysis and topic modeling</title>
+      <link>www.joaquibarandica.io/publication/bibliometric/</link>
+      <pubDate>Fri, 22 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/bibliometric/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Introduction&lt;/li&gt;
-&lt;li&gt;Data preparation&lt;/li&gt;
-&lt;li&gt;Static #️⃣DataViz&lt;/li&gt;
-&lt;li&gt;Interactive #️⃣DataViz&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://revistas.unilibre.edu.co/index.php/entramado/article/view/8242/7645&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Introduction&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/DataViz/1_Intro/1_Intro.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;./imagen1.jpg&#34; alt=&#34;image info&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This article is the first publication in a national journal (Colombia) of our research work on asset and liability management. The main objective was to identify the lines of research on the subject so that new research can use it as a starting point and obviously fill some gaps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A pleasure to work with this team&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Visit slides: 🔗 &lt;a href=&#34;https://juniorjb5.github.io/DataViz/1_Intro/1_Intro.html#1&#34;&gt;Here! Introduction&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Recommendation to see in full screen (F11 - Google Chrome)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👨‍🏫 &lt;a href=&#34;http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Diego F. Manotas-Duque&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;structure-and-manipulation-of-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. Structure and Manipulation of Data&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/DataViz/2_Data/2_Data.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Visit slides: 🔗 &lt;a href=&#34;https://juniorjb5.github.io/DataViz/2_Data/2_Data.html#1&#34;&gt;Here! Data Preparation &amp;amp; Tables&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Recommendation to see in full screen (F11 - Google Chrome)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;static-dataviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. Static #️⃣DataViz&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/DataViz/3_ggplot2/3_ggplot2.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Visit slides: 🔗 &lt;a href=&#34;https://juniorjb5.github.io/DataViz/3_ggplot2/3_ggplot2.html#1&#34;&gt;Here! DataViz ggplot2&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Recommendation to see in full screen (F11 - Google Chrome)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;interactive-dataviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. Interactive #️⃣DataViz&lt;/h2&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/DataViz/4_InteractiveR/4_Interactive.html&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Visit slides: &lt;a href=&#34;https://juniorjb5.github.io/DataViz/4_InteractiveR/4_Interactive.html#1&#34;&gt;🔗 Here! Interactive graphs&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Recommendation to see in full screen (F11 - Google Chrome)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;coming-soon-more-content&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Coming soon more content!!&lt;/h2&gt;
-&lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>IFABS 2021 Oxford Conference</title>
-      <link>www.joaquibarandica.io/post/ifabs_2021/</link>
-      <pubDate>Wed, 15 Sep 2021 21:13:14 -0500</pubDate>
-      <guid>www.joaquibarandica.io/post/ifabs_2021/</guid>
-      <description>
-&lt;script src=&#34;www.joaquibarandica.io/post/ifabs_2021/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;www.joaquibarandica.io/post/ifabs_2021/index.en_files/fitvids/fitvids.min.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;I feel very fortunate to have been to IFABS 2021, and much more, that it was the first conference I attend in the development of my PhD. An experience that helps me grow a lot personally and academically. And it’s a great starting point for new goals.&lt;/p&gt;
-&lt;p&gt;Special thanks to my thesis supervisors: Diego F. Manotas and Jorge M. Uribe, as well as to the School of Industrial Engineering of the Universidad del Valle.&lt;/p&gt;
-&lt;div id=&#34;commonality-macroeconomic-factors-and-banking-profitability&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Commonality, macroeconomic factors and banking profitability&lt;/h2&gt;
-&lt;div id=&#34;slides&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Slides 🖥️&lt;/h3&gt;
-&lt;div class=&#34;shareagain&#34; style=&#34;min-width:300px;margin:1em auto;&#34;&gt;
-&lt;iframe src=&#34;https://juniorjb5.github.io/IFABS_2021/Presentation_Oxford_2021.html#1&#34; width=&#34;1600&#34; height=&#34;900&#34; style=&#34;border:2px solid currentColor;&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;script&gt;fitvids(&#39;.shareagain&#39;, {players: &#39;iframe&#39;});&lt;/script&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;visit&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Visit&lt;/h2&gt;
+      <title>Mind the Gap! Socioeconomic Determinants of the Stunting Urban-Rural Gap for Children in Colombia</title>
+      <link>www.joaquibarandica.io/publication/child/</link>
+      <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/child/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34;&gt;&lt;strong&gt;Jorge M. Uribe&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34;&gt;&lt;strong&gt;Diego F. Manotas&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;🏛️ &lt;a href=&#34;http://industrial.univalle.edu.co/&#34;&gt;&lt;strong&gt;School of Industrial Engineering&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://link.springer.com/article/10.1007/s12187-021-09880-7&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;./imagen1.jpg&#34; alt=&#34;image info&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This research was chosen as the best work in the research category in the XVIII Edition of &amp;ldquo;Premio por la Nutrición Infantil 2021 de la Fundación Éxito&amp;rdquo;. This work was leadered by the research group &amp;ldquo;Economía, Gestión y Salud (ECGESA)&amp;rdquo; of the Pontificia Universidad Javeriana Cali, in addition to Economics School of Universidad Sergio Arboleda.&lt;/p&gt;
+&lt;p&gt;The Éxito Foundation pointed out that the research &amp;ldquo;also contributes to our national cause, with which it is expected that in 2025 the first generation will be born with zero malnutrition and that by 2030 no child under 5 years of age will have chronic malnutrition in the country.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A pleasure to work with this team&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;👨‍🏫 &lt;a href=&#34;https://www.ernestocardenas.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Ernesto Cárdenas&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👩‍🏫 &lt;a href=&#34;https://www.anaosorio.co/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Ana María Osorio&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👩‍🏫 &lt;a href=&#34;https://www.javerianacali.edu.co/profesores/sayda-milena-pico-fonseca&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Sayda M. Pico&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Visit the awards news&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🗣️ &lt;a href=&#34;https://www.javerianacali.edu.co/noticias/grupo-de-investigacion-ecgesa-recibio-premio-de-la-fundacion-exito&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Pontificia Universidad Javeriana Cali&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🗣️ &lt;a href=&#34;https://www.usergioarboleda.edu.co/noticias/fundacion-exito-galardona-investigacion-sergista-sobre-desnutricion-infantil/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad Sergio Arboleda&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;️📺 &lt;a href=&#34;https://www.youtube.com/watch?v=IJnMacbs-L0&amp;amp;ab_channel=Fundaci%C3%B3n%C3%89xito&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Award Ceremony&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Commonality, macroeconomic factors and banking profitability</title>
+      <link>www.joaquibarandica.io/publication/banking/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/banking/</guid>
+      <description>&lt;p&gt;This my first working paper join with &lt;a href=&#34;https://jorgemuribe.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jorge M. Uribe&lt;/a&gt; and &lt;a href=&#34;http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Diego F. Manotas-Duque&lt;/a&gt; as a result of our research in Asset-Liability Management in Banking.&lt;/p&gt;
+&lt;p&gt;👋 All Comments are welcome.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;📩 &lt;em&gt;&lt;a href=&#34;mailto:orlando.joaqui@correounivalle.edu.co&#34;&gt;orlando.joaqui@correounivalle.edu.co&lt;/a&gt;&lt;/em&gt; \&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.ub.edu/irea/working_papers/2021/202113.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Index Fund to NASDAQ100.</title>
+      <link>www.joaquibarandica.io/post/nasdaq_indexfund/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/nasdaq_indexfund/</guid>
+      <description>&lt;h2 id=&#34;index-fund&#34;&gt;Index Fund&lt;/h2&gt;
+&lt;p&gt;An index fund is a portfolio designed to track the movements of a general market population or a market index.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Variables&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$\rho_{ij}: \text{Correlation between the stock i and the stock j}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij}: 
+\begin{cases}
+1 &amp;amp;  \text{If j is the stock most correlated stock in the Index Fund} \\&lt;br&gt;
+&amp;amp; \text{for the stock i of NASDAQ100} \quad i,j: 1, &amp;hellip;,n  \\&lt;br&gt;
+0 &amp;amp; \text{Other case}
+\end{cases}$$&lt;/p&gt;
+&lt;p&gt;$$y_{j}:
+\begin{cases}
+1 &amp;amp;  \text{If the stock j is in the Index Fund} \quad j = 1, &amp;hellip;, n \\&lt;br&gt;
+0 &amp;amp; \text{Other case}
+\end{cases}$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Objective function&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$
+Z = \quad \text{Max} \quad  \sum_{i=1}^n \sum_{j=1}^n \rho_{ij} x_{ij}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Subject to&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$\sum_{j=1}^n y_j = q$$&lt;/p&gt;
+&lt;p&gt;$$\sum_{j=1}^n x_{ij} = 1 \quad _{i=1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij} \leq y_j \quad _{i,j = 1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij}, y_j = 0 \quad o \quad 1 \quad _{i,j = 1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;Money management strategies are primarily classified as &amp;ldquo;active&amp;rdquo; or &amp;ldquo;passive.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Active portfolio management seeks to achieve superior performance through the use of technical and fundamental analysis, as well as forecasting techniques.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Passive portfolio management avoids any forecasting technique and relies rather on diversification to achieve the desired performance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is desirable to have an index fund with &lt;strong&gt;q&lt;/strong&gt; stocks, where &lt;strong&gt;q&lt;/strong&gt; is substantially less than the size of the target population &lt;strong&gt;(n)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Create a model that groups assets into similar asset groups and selects a representative asset from each group to be included in the Index Fund&amp;rsquo;s portfolio.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Approach&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create an Index Fund with &lt;strong&gt;q&lt;/strong&gt; stocks to track the NASDAQ100 index.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each share &lt;em&gt;i&lt;/em&gt; has a share &lt;em&gt;j&lt;/em&gt; that represents it in the Index Fund&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each share &lt;em&gt;i&lt;/em&gt; can be represented by share &lt;em&gt;j&lt;/em&gt;, only if &lt;em&gt;j&lt;/em&gt; is in the Index Fund&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The objective of the model is to maximize the similarity between the n stocks and their representatives in the Index Fund.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/IndexFund_NASDAQ100/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Index Fund - NASDAQ100 App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An app for Value at Risk (VaR).</title>
+      <link>www.joaquibarandica.io/post/value_at_risk/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/value_at_risk/</guid>
+      <description>&lt;h2 id=&#34;value-at-risk-var&#34;&gt;Value at Risk (VaR)&lt;/h2&gt;
+&lt;p&gt;The Value at Risk (VaR) is one of the measures used to assess the risk of a certain position or portfolio of financial assets.
+The definition of VaR can be done in terms of profitability or in terms of profit and loss of profit and loss (nominal terms); the definition also depends on whether it applies to a long position (bought), as usual, or a short position (sold) on a financial asset.&lt;/p&gt;
+&lt;p&gt;The VaR then answers the question:
+What is the fall or loss that could be suffered under normal market conditions in a time interval and with a certain level of probability or confidence?&lt;/p&gt;
+&lt;p&gt;That is, it indicates the probability (usually 1% or 5%) of suffering a certain loss during a period of time (normally 1 day, 1 week or 1 month).&lt;/p&gt;
+&lt;p&gt;Therefore, the VaR is nothing more than a certain percentile of the probability distribution predicted for the variations in the market value of the portfolio in the chosen time horizon.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/Value_at_Risk/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;VaR App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Corporate Social Responsibility Barometer, an app of text mining.</title>
+      <link>www.joaquibarandica.io/post/barometro/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/barometro/</guid>
+      <description>&lt;h2 id=&#34;what-is-kairós&#34;&gt;¿What is Kairós?&lt;/h2&gt;
+&lt;p&gt;The Observatory for business sustainability, Kairós, created in 2017, is a space for observation and analysis of business practices in business sustainability. The main objective is to contribute to the generation of knowledge on business responsibility and sustainability through the analysis of the practices and strategies of Colombian companies with a multidisciplinary approach.&lt;/p&gt;
+&lt;p&gt;In this application, the objective is to evaluate the disclosure index on topics such as employment, environment, community, consumers and products, human rights and the economy.&lt;/p&gt;
+&lt;p&gt;We analyze the sustainability reports of companies through text mining. This allows different measurements to be calculated by company, sector and country.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Barometer App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Kairós Observatory&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🏛️ &lt;a href=&#34;https://www.icesi.edu.co/es/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad ICESI&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Choosing the type of transport in the working class in Colombia: An analysis by region</title>
+      <link>www.joaquibarandica.io/publication/libreempresa/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/libreempresa/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://doi.org/10.18041/1657-2815/libreempresa.2019v16n2.6608&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Resultados componente cuantitativo: acciones, conocimientos, actitudes y prácticas preventivas frente al VIH</title>
+      <link>www.joaquibarandica.io/publication/tramas/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/tramas/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www2.javerianacali.edu.co/sello-editorial-javeriano/catalogo/tramas-sexualidades-y-prevencion-del-vih-en-jovenes#gsc.tab=0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cassava Breeding II: Phenotypic Correlations through the Different Stages of Selection</title>
+      <link>www.joaquibarandica.io/publication/cassava_ii/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_ii/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fpls.2016.01649/full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cassava Breeding I: The Value of Breeding Value</title>
+      <link>www.joaquibarandica.io/publication/cassava_i/</link>
+      <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_i/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fpls.2016.01227/full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

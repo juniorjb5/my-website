@@ -37,22 +37,33 @@
       <link>www.joaquibarandica.io/post/col_macroeconomic_data/</link>
       <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
       <guid>www.joaquibarandica.io/post/col_macroeconomic_data/</guid>
-      <description>&lt;h2 id=&#34;building&#34;&gt;Building&lt;/h2&gt;
-&lt;p&gt;Here, you will find macroeconomic data for Colombia.&lt;/p&gt;
+      <description>&lt;h2 id=&#34;macroeconomic-data&#34;&gt;Macroeconomic Data&lt;/h2&gt;
+&lt;p&gt;Motivated by &lt;a href=&#34;https://research.stlouisfed.org/econ/mccracken/fred-databases/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Michael W. McCracken&lt;/a&gt; who designed a large macroeconomic database of monthly and quarterly observation of the FRED database in the USA. We propose in the similar case for Colombia a macroeconomic database with the objective of having access to the information, facilitating the replication of the empirical work.&lt;/p&gt;
+&lt;p&gt;This macroeconomic database was created within the framework of the degree thesis project: &amp;ldquo;Nonlinear modeling (DLNM) of the effect of macroeconomic factors on the MSCI Colombia stock market capitalization index for the period 2001 to 2020&amp;rdquo;, to obtain the bachelor&amp;rsquo;s degree in Statistics from the Universidad del Valle. This work was carried out by &lt;a href=&#34;https://www.linkedin.com/in/brayan-osorio-vanegas-233473237/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio-Vanegas&lt;/a&gt;  and &lt;a href=&#34;https://www.linkedin.com/in/carorpbs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez-Patiño&lt;/a&gt; under the advice of Professor &lt;a href=&#34;http://escuelaestadistica.univalle.edu.co/index.php/profesores&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;César Ojeda-Echeverry&lt;/a&gt; and myself.&lt;/p&gt;
+&lt;p&gt;Our database is fully balanced &lt;em&gt;(153 variables)&lt;/em&gt;, to achieve this, we use a data imputation technique such as the iterative (regularized) PCA algorithm.&lt;/p&gt;
+&lt;h3 id=&#34;files&#34;&gt;Files&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Metadata:&lt;/strong&gt; Here, you can find all codes, description and sources for each variable.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;
-  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download Metadata &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Metadata.xlsx&#34; target=&#34;_blank&#34;&gt;the slides&lt;/a&gt;.&lt;/p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Metadata.xlsx&#34; target=&#34;_blank&#34;&gt;Metadata&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database:&lt;/strong&gt; Here, you can find 153 macroeconomic variables for Colombia.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download &lt;a href=&#34;www.joaquibarandica.io/www.joaquibarandica.io/media/Data_Series_Mensuales.xlsx&#34; target=&#34;_blank&#34;&gt;Database&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;made-by-&#34;&gt;Made by 🙌&lt;/h3&gt;
-&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;imagen.png&#34;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;brayan.png&#34;
 width=&#34;50px&#34; align=&#34;left&#34;
 /&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/kleiner-johan-balanta-amu-aa2611214/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/brayan-osorio-vanegas-233473237/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brayan Osorio&lt;/a&gt; - Student of Statistic&lt;/p&gt;
 &lt;p&gt;(Universidad del Valle)&lt;/p&gt;
-&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;imagen.png&#34;
+&lt;p&gt;&lt;img style=&#34;border-radius: 50%;&#34; src=&#34;carolina.png&#34;
 width=&#34;50px&#34; align=&#34;left&#34;
 /&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/laura-vanessa-cicery-mu%C3%B1oz-247800245/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez&lt;/a&gt; - Student of Statistic&lt;/p&gt;
+&lt;p&gt;📚  &lt;a href=&#34;https://www.linkedin.com/in/carorpbs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Carolina Ramirez&lt;/a&gt; - Student of Statistic&lt;/p&gt;
 &lt;p&gt;(Universidad del Valle)&lt;/p&gt;
 </description>
     </item>
