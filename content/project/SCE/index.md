@@ -8,7 +8,7 @@ links:
 - icon: 
   icon_pack: fab
   name: Event Link
-  url: http://english.eventos.sce.org.co/
+  url: https://sce.org.co/jornada-avances-en-metodos-estadisticos/
 slides: ""
 summary: Nov. 25 - 26 / 2021
 tags:
@@ -26,7 +26,7 @@ url_video: ""
 
 ### Distributed lag non-linear models (DLNM) of the effect of macroeconomic factors on the MSCI Colombia index of market capitalization in the stock market during the period 2001 to 2020
 
-This work is part of the thesis developed by students **Brayan Osorio Vanegas** and **Carolina Ramírez Patiño** from the academic program of Statistics at Universidad del Valle. On this occasion, we had the opportunity to participate in the advances in statistical workshop developed by the Colombian Statistics Society (SCE - *Sociedad Colombiana de Estadística*), Inter American Statistical Institute, and National University of Colombia (UNAL - *Universidad Nacional de Colombia*).
+This work is part of the thesis developed by students **Brayan Osorio Vanegas** and **Carolina Ramírez Patiño** from the academic program of Statistics at Universidad del Valle. On this occasion, we had the opportunity to participate in the advances in statistical workshop developed by the Colombian Statistics Society (SCE - *Sociedad Colombiana de Estadística*), Inter American Statistical Institute, and UNAL - *Universidad Nacional de Colombia*.
 
 
 ![png](./SCE.png)
