@@ -1,0 +1,2378 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.1.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Orlando Joaqui Barandica" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Sidebar#Base&lt;-read.table(&quot;Base.csv&quot;,header=TRUE,sep = &quot;,&quot;,dec=&quot;.&quot;)Base&lt;- read_xlsx(&quot;Base2_EP.xlsx&quot;,sheet = 1)#Pais de Noruega#Pais&lt;-Base %&gt;% # filter(Country == &quot;Norway&quot;)helpText(&#39;The objective of this APP is to show the effects of weather on the price of electricity in some European countries." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#e5be00" />
+  
+
+  
+  
+    
+    <script src="/www.joaquibarandica.io/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/www.joaquibarandica.io/css/wowchemy.1af867982f8abbba0dc6d0726591abab.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/www.joaquibarandica.io/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/www.joaquibarandica.io/media/icon_hu1197afa147f4c7472be47f8e8bf8956d_160065_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/www.joaquibarandica.io/media/icon_hu1197afa147f4c7472be47f8e8bf8956d_160065_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Orlando Joaqui Barandica" />
+  <meta property="og:url" content="www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/" />
+  <meta property="og:title" content="Climate change, weather shocks and electricity prices | Orlando Joaqui Barandica" />
+  <meta property="og:description" content="Sidebar#Base&lt;-read.table(&quot;Base.csv&quot;,header=TRUE,sep = &quot;,&quot;,dec=&quot;.&quot;)Base&lt;- read_xlsx(&quot;Base2_EP.xlsx&quot;,sheet = 1)#Pais de Noruega#Pais&lt;-Base %&gt;% # filter(Country == &quot;Norway&quot;)helpText(&#39;The objective of this APP is to show the effects of weather on the price of electricity in some European countries." /><meta property="og:image" content="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png" />
+    <meta property="twitter:image" content="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-02-23T15:16:34-06:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-02-23T15:16:34-06:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/"
+  },
+  "headline": "Climate change, weather shocks and electricity prices",
+  
+  "datePublished": "2023-02-23T15:16:34-06:00",
+  "dateModified": "2023-02-23T15:16:34-06:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Orlando Joaqui Barandica"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Orlando Joaqui Barandica",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_192x192_fit_lanczos_2.png"
+    }
+  },
+  "description": "Sidebar\r#Base\u0026lt;-read.table(\u0026quot;Base.csv\u0026quot;,header=TRUE,sep = \u0026quot;,\u0026quot;,dec=\u0026quot;.\u0026quot;)\rBase\u0026lt;- read_xlsx(\u0026quot;Base2_EP.xlsx\u0026quot;,sheet = 1)\r#Pais de Noruega\r#Pais\u0026lt;-Base %\u0026gt;% # filter(Country == \u0026quot;Norway\u0026quot;)\rhelpText(\u0026#39;The objective of this APP is to show the effects of weather on the price of electricity in some European countries."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Climate change, weather shocks and electricity prices | Orlando Joaqui Barandica</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="b021194ed5dd4877cbd90271d5ecee09" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/www.joaquibarandica.io/js/wowchemy-init.min.2656b96b9273c77f9f1758e7dfbeb3fe.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/www.joaquibarandica.io/"><img src="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_0x70_resize_lanczos_2.png" alt="Orlando Joaqui Barandica"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/www.joaquibarandica.io/"><img src="/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_0x70_resize_lanczos_2.png" alt="Orlando Joaqui Barandica"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#portfolio"><span>Portfolio</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#conferences"><span>Conferences & Talks</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#gallery"><span>Gallery</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/www.joaquibarandica.io/#pre-experience"><span></span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Climate change, weather shocks and electricity prices</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 23, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="shared/selectize/js/selectize.min.js"></script>
+<script src="shared/selectize/accessibility/js/selectize-plugin-a11y.min.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/www.joaquibarandica.iormarkdown-libs/dygraphs/dygraph.css" rel="stylesheet" />
+<script src="/www.joaquibarandica.iormarkdown-libs/dygraphs/dygraph-combined.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/dygraphs/shapes.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/moment/moment.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/moment-timezone/moment-timezone-with-data.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/moment-fquarter/moment-fquarter.min.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/dygraphs-binding/dygraphs.js"></script>
+<script src="/www.joaquibarandica.iormarkdown-libs/plotly-binding/plotly.js"></script>
+
+
+<div id="sidebar" class="section level1 sidebar">
+<h1>Sidebar</h1>
+<pre class="r"><code>#Base&lt;-read.table(&quot;Base.csv&quot;,header=TRUE,sep = &quot;,&quot;,dec=&quot;.&quot;)
+
+Base&lt;- read_xlsx(&quot;Base2_EP.xlsx&quot;,sheet = 1)
+
+#Pais de Noruega
+#Pais&lt;-Base %&gt;% 
+#  filter(Country == &quot;Norway&quot;)
+
+
+
+helpText(&#39;The objective of this APP is to show the effects of weather on the price of electricity in some European countries.&#39;)</code></pre>
+<p><span class="help-block">The objective of this APP is to show the effects of weather on the price of electricity in some European countries.</span></p>
+<pre class="r"><code>selectizeInput(
+         &quot;Q&quot;, label = &quot;Select a country&quot;,
+            choices = sort(unique(Base$Country))
+      )</code></pre>
+<div class="form-group shiny-input-container">
+<label class="control-label" id="Q-label" for="Q">Select a country</label>
+<div>
+<select id="Q" class="form-control"><option value="Belgium" selected>Belgium</option>
+<option value="Czechia">Czechia</option>
+<option value="Denmark">Denmark</option>
+<option value="Estonia">Estonia</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="Germany">Germany</option>
+<option value="Greece">Greece</option>
+<option value="Hungary">Hungary</option>
+<option value="Italy">Italy</option>
+<option value="Latvia">Latvia</option>
+<option value="Lithuania">Lithuania</option>
+<option value="Netherlands">Netherlands</option>
+<option value="Norway">Norway</option>
+<option value="Portugal">Portugal</option>
+<option value="Slovakia">Slovakia</option>
+<option value="Slovenia">Slovenia</option>
+<option value="Spain">Spain</option>
+<option value="Sweden">Sweden</option>
+<option value="Switzerland">Switzerland</option>
+<option value="UK">UK</option></select>
+<script type="application/json" data-for="Q">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+<pre class="r"><code>Pais &lt;- reactive({
+    Base %&gt;% filter(Country == input$Q)
+    })
+
+
+
+
+
+#Forma 1: Base
+
+#price&lt;-reactive({ Pais()$Price[-1] })
+#Temp.lag&lt;-reactive({Pais()$Temperature.lag[-1]})
+#Wind.lag&lt;-reactive({Pais()$Wind.Speed.lag[-1]})
+#Prec.lag&lt;-reactive({Pais()$Precipitation.lag[-1]})
+#Irra.lag&lt;-reactive({Pais()$Irradiance.lag[-1]})
+#TTF.lag&lt;- reactive({Pais()$TTF.lag[-1]})
+
+
+#Forma 2: Base2_EP
+
+price&lt;-reactive({ Pais()$Price[-1] })
+Temp.lag&lt;-reactive({Pais()$Temperature[-2085]})
+Wind.lag&lt;-reactive({Pais()$Wind.Speed[-2085]})
+Prec.lag&lt;-reactive({Pais()$Precipitation[-2085]})
+Irra.lag&lt;-reactive({Pais()$Irradiance[-2085]})
+TTF.lag&lt;- reactive({Pais()$TTF[-2085]})
+
+
+
+
+  library(dlnm)</code></pre>
+<pre><code>## This is dlnm 2.4.7. For details: help(dlnm) and vignette(&#39;dlnmOverview&#39;).</code></pre>
+<pre class="r"><code>  library(splines)
+  library(foreign)
+  library(tsModel)</code></pre>
+<pre><code>## Time Series Modeling for Air Pollution and Health (0.6)</code></pre>
+<pre class="r"><code>  # KNOTS EXPOSURE-RESPONSE 
+  #1
+  vk1 &lt;- reactive({equalknots(Temp.lag(),5) })
+  vk2 &lt;- reactive({equalknots(Wind.lag(),4) })
+  vk3 &lt;- reactive({equalknots(Prec.lag(),4) })
+  vk4 &lt;- reactive({equalknots(Irra.lag(),5) })
+  vk5 &lt;- reactive({equalknots(TTF.lag(),5)  })
+  
+  
+  
+  
+  
+  # KNOTS LAG-RESPONSE
+  maxlag &lt;- 20
+  
+  #1
+  lk &lt;- logknots(maxlag,2)
+  #2
+  #lk &lt;- logknots(maxlag,3)
+  
+  
+  # CENTERING VALUE (AND PERCENTILE)
+  cen &lt;- 10
+  #sum(predictor&lt;cen,na.rm=T)/sum(!is.na(predictor))
+  
+  # THE CROSS-BASIS
+  #1
+  cb1 &lt;- reactive({ crossbasis(Temp.lag(), lag=maxlag, argvar=list(fun=&quot;ns&quot;,knots=vk1()), 
+                                          arglag=list(fun=&quot;bs&quot;,degree=2,df=15,knots=lk))   })
+  
+  cb2 &lt;- reactive({ crossbasis(Wind.lag(), lag=maxlag, argvar=list(fun=&quot;ns&quot;,knots=vk2()), 
+                                          arglag=list(fun=&quot;bs&quot;,degree=2,df=6,knots=lk))
+  })
+  
+  cb3 &lt;- reactive({ crossbasis(Prec.lag(), lag=maxlag, argvar=list(fun=&quot;ns&quot;,knots=vk3()), 
+                                          arglag=list(fun=&quot;bs&quot;,degree=2,df=6,knots=lk))
+  })
+  
+  cb4 &lt;- reactive({ crossbasis(Irra.lag(), lag=maxlag, argvar=list(fun=&quot;ns&quot;,knots=vk4()), 
+                                          arglag=list(fun=&quot;bs&quot;,degree=2,df=6,knots=lk))
+  })
+  
+  cb5 &lt;- reactive({ crossbasis(TTF.lag(), lag=maxlag, argvar=list(fun=&quot;ns&quot;,knots=vk5()), 
+                                          arglag=list(fun=&quot;bs&quot;,degree=2,df=6,knots=lk))
+  })
+  
+  
+  # 1ST AND 99TH PERCENTILES
+perc1 &lt;-reactive({ round(quantile(Temp.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc2 &lt;-reactive({ round(quantile(Wind.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc3 &lt;-reactive({ round(quantile(Prec.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc4 &lt;-reactive({ round(quantile(Irra.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc5 &lt;-reactive({ round(quantile(TTF.lag(), c(input$Q1,input$Q2,input$Q3)),2) })
+
+  
+  # RUN THE MODEL
+  model &lt;- reactive({ glm(price() ~ cb1() + cb2() + cb3() + cb4() +cb5() ,family=gaussian()) })
+  #A[i]&lt;-AIC(model)
+  
+  # PREDICTION FOR 3D AND OVERALL CUMULATIVE
+  
+  #Temperatura
+  { t.cp1 &lt;- reactive({  crosspred(cb1(),model(),at=seq(min(Temp.lag(),na.rm=T),
+                                     max(Temp.lag(),na.rm=T),length=50),cen=median(Temp.lag()))
+  })
+    t.cp1cold &lt;- reactive({ crosspred(cb1(),model(),at=seq(min(Temp.lag(),na.rm=T),
+                                         median(Temp.lag()),length=50),cen=median(Temp.lag()))
+    })  
+  t.cp1hot &lt;- reactive({  crosspred(cb1(),model(),at=seq(median(Temp.lag()),max(Temp.lag(),na.rm=T),
+                                        length=50),cen=median(Temp.lag()))
+    })
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    t.cp2 &lt;- reactive({  crosspred(cb1(),model(),at=perc1(),bylag=0.2,cen=median(Temp.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    t.cp3 &lt;- reactive({  crosspred(cb1(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+    
+  } 
+  
+  
+ #Wind
+{ w.cp1 &lt;- reactive({  crosspred(cb2(),model(),at=seq(min(Wind.lag(),na.rm=T),
+                                  max(Wind.lag(),na.rm=T),length=50),cen=median(Wind.lag()))
+})
+w.cp1cold &lt;- reactive({  crosspred(cb2(),model(),at=seq(min(Wind.lag(),na.rm=T),
+                                  median(Wind.lag()),length=50),cen=median(Wind.lag()))
+})
+w.cp1hot &lt;- reactive({ crosspred(cb2(),model(),at=seq(median(Wind.lag()),max(Wind.lag(),na.rm=T),
+                                                      length=50),cen=median(Wind.lag()))
+})
+
+# PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    w.cp2 &lt;- reactive({  crosspred(cb2(),model(),at=perc2(),bylag=0.2,cen=median(Wind.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    w.cp3 &lt;- reactive({  crosspred(cb2(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+  
+
+}
+
+
+
+#Precipitacion
+{ p.cp1 &lt;- reactive({ crosspred(cb3(),model(),at=seq(min(Prec.lag(),na.rm=T),
+                                                     max(Prec.lag(),na.rm=T),length=50),cen=median(Prec.lag()))
+})
+  p.cp1cold &lt;- reactive({ crosspred(cb3(),model(),at=seq(min(Prec.lag(),na.rm=T),
+                                                         median(Prec.lag()),length=50),cen=median(Prec.lag()))
+  })
+  p.cp1hot &lt;- reactive({  crosspred(cb3(),model(),at=seq(median(Prec.lag()),max(Prec.lag(),na.rm=T),
+                                                         length=50),cen=median(Prec.lag()))
+  })
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    p.cp2 &lt;- reactive({  crosspred(cb3(),model(),at=perc3(),bylag=0.2,cen=median(Prec.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    p.cp3 &lt;- reactive({  crosspred(cb3(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+  
+}
+
+
+
+#Irradiation
+{ i.cp1 &lt;- reactive({  crosspred(cb4(),model(),at=seq(min(Irra.lag(),na.rm=T),
+                                                      max(Irra.lag(),na.rm=T),length=50),cen=median(Irra.lag()))
+})  
+  i.cp1cold &lt;- reactive({  crosspred(cb4(),model(),at=seq(min(Irra.lag(),na.rm=T),
+                                                          median(Irra.lag()),length=50),cen=median(Irra.lag()))
+  })  
+  i.cp1hot &lt;-reactive({  crosspred(cb4(),model(),at=seq(median(Irra.lag()),max(Irra.lag(),na.rm=T),
+                                                        length=50),cen=median(Irra.lag()))
+  }) 
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    i.cp2 &lt;- reactive({  crosspred(cb4(),model(),at=perc4(),bylag=0.2,cen=median(Irra.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    i.cp3 &lt;- reactive({  crosspred(cb4(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+  
+}
+
+
+
+#Gas
+{ g.cp1 &lt;- reactive({  crosspred(cb4(),model(),at=seq(min(TTF.lag(),na.rm=T),
+                                                     max(TTF.lag(),na.rm=T),length=50),cen=median(TTF.lag()))
+})
+ g.cp1cold &lt;- reactive({  crosspred(cb4(),model(),at=seq(min(TTF.lag(),na.rm=T),
+                                                         median(TTF.lag()),length=50),cen=median(TTF.lag()))
+ })
+ g.cp1hot &lt;- reactive({  crosspred(cb4(),model(),at=seq(median(TTF.lag()),max(TTF.lag(),na.rm=T),
+                                                        length=50),cen=median(TTF.lag()))
+ })
+
+ # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+   g.cp2 &lt;- reactive({  crosspred(cb5(),model(),at=perc5(),bylag=0.2,cen=median(TTF.lag())) })
+
+   # PREDICTION FOR LAG-RESPONSE CURVES
+   g.cp3 &lt;- reactive({  crosspred(cb5(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+
+}</code></pre>
+</div>
+<div id="electricity-price" class="section level1" data-icon="ion-social-usd">
+<h1>Electricity Price</h1>
+<div id="row" class="section level2">
+<h2>Row</h2>
+<div id="chart-2" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out4f093dbdda11a0c2" width="100%"></div></p>
+</div>
+</div>
+<div id="row-1" class="section level2">
+<h2>Row</h2>
+<div id="electricity-price-1" class="section level3">
+<h3>Electricity price</h3>
+<pre class="r"><code>precio.ser&lt;- reactive ({ xts(Pais()$Price, order.by=as.Date(Pais()$Dates,format = &quot;%Y/%m/%d&quot;))
+               })
+
+# plot
+renderDygraph({
+  
+  precio.ser() %&gt;% 
+  setNames(paste(&quot;Price in&quot;,input$Q)) %&gt;% 
+  dygraph(
+          ylab = &quot;Electricity Price&quot;
+          ) %&gt;%
+    dyRangeSelector(height=100) %&gt;% 
+    dyOptions(strokeWidth = 1,colors = RColorBrewer::brewer.pal(1, &quot;Set3&quot;),stackedGraph = TRUE)%&gt;%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%&gt;%
+    dyLegend(width = 400)
+  
+})</code></pre>
+<p><div id="out1ea7a64dd7c66806" style="width:100%; height:400px; " class="dygraphs html-widget html-widget-output"></div></p>
+<pre class="r"><code>#renderPlot({
+#plot.ts(Pais()$Price, main= &quot;Electricity Price&quot;)
+#})</code></pre>
+</div>
+</div>
+<div id="row-2" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-1" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q==&quot;UK&quot;,&quot;£/MWh&quot;,&quot;€/MWh&quot;),round(pt,1)), style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-android-arrow-dropdown-circle&quot;, 
+           caption=&quot;Historical \n MIN&quot;, color= &quot;#EE7942&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out479cdff3438db909" width="100%"></div></p>
+</div>
+<div id="chart-2-2" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q==&quot;UK&quot;,&quot;£/MWh&quot;,&quot;€/MWh&quot;),round(pt,1)), style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-android-bulb&quot;, 
+           caption=&quot;Historical \n MEAN&quot;,color= &quot;#FFB90F&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outea74e6010bfe2045" width="100%"></div></p>
+</div>
+<div id="chart-2-3" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q==&quot;UK&quot;,&quot;£/MWh&quot;,&quot;€/MWh&quot;),round(pt,1)), style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-android-arrow-dropup-circle&quot;, 
+           caption=&quot;Historical \n MAX&quot;,color=&quot;#008B00&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out638b54b63e2f181b" width="100%"></div></p>
+</div>
+</div>
+</div>
+<div id="weather" class="section level1" data-icon="ion-ios-partlysunny">
+<h1>Weather</h1>
+<div id="row-3" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-4" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out3f88811477329683" width="100%"></div></p>
+</div>
+</div>
+<div id="row-4" class="section level2">
+<h2>Row</h2>
+<div id="temperature" class="section level3">
+<h3>Temperature</h3>
+<pre class="r"><code>serieT&lt;- reactive ({
+              xts(Pais()$Temperature, order.by=as.Date(Pais()$Dates,format = &quot;%Y/%m/%d&quot;))
+               })
+
+renderDygraph({
+  dygraph(serieT(),
+          ylab = &quot;Temperature (°C)&quot;
+          ) %&gt;%
+    dyRangeSelector(height=50) %&gt;% 
+    dyOptions(strokeWidth = 1,colors = &quot;#CDCD00&quot; ,stackedGraph = TRUE)%&gt;%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%&gt;%
+    dyLegend(width = 400)
+  
+})</code></pre>
+<p><div id="outdbe2b930d8e54bf3" style="width:100%; height:400px; " class="dygraphs html-widget html-widget-output"></div></p>
+<pre class="r"><code>#library(tseries)
+
+#renderPlot({
+#plot.ts(Pais()$Temperature.lag, main=&quot;Temperatura.lag&quot;)
+#})</code></pre>
+</div>
+<div id="precipitation" class="section level3">
+<h3>Precipitation</h3>
+<pre class="r"><code>serieP&lt;- reactive ({
+              xts(Pais()$Precipitation, order.by=as.Date(Pais()$Dates,format = &quot;%Y/%m/%d&quot;))
+               })
+
+renderDygraph({
+  dygraph(serieP(),
+          ylab = &quot;Precipitation (mm)&quot;
+          ) %&gt;%
+    dyRangeSelector(height=50) %&gt;% 
+    dyOptions(strokeWidth = 1,colors = &quot;#00C5CD&quot; ,stackedGraph = TRUE)%&gt;%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%&gt;%
+    dyLegend(width = 400)
+  
+})</code></pre>
+<p><div id="out23e0c78170fbbe40" style="width:100%; height:400px; " class="dygraphs html-widget html-widget-output"></div></p>
+</div>
+</div>
+<div id="row-5" class="section level2">
+<h2>Row</h2>
+<div id="wind-speed" class="section level3">
+<h3>Wind speed</h3>
+<pre class="r"><code>serieW&lt;- reactive ({
+              xts(Pais()$Wind.Speed, order.by=as.Date(Pais()$Dates,format = &quot;%Y/%m/%d&quot;))
+               })
+
+renderDygraph({
+  dygraph(serieW(),
+          ylab = &quot;Wind speed (m/s)&quot;
+          ) %&gt;%
+    dyRangeSelector(height=50) %&gt;% 
+    dyOptions(strokeWidth = 1,colors = &quot;#2E8B57&quot; ,stackedGraph = TRUE)%&gt;%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%&gt;%
+    dyLegend(width = 400)
+  
+})</code></pre>
+<p><div id="outb331ef18df409494" style="width:100%; height:400px; " class="dygraphs html-widget html-widget-output"></div></p>
+</div>
+<div id="irradiance" class="section level3">
+<h3>Irradiance</h3>
+<pre class="r"><code>serieI&lt;- reactive ({
+              xts(Pais()$Irradiance, order.by=as.Date(Pais()$Dates,format = &quot;%Y/%m/%d&quot;))
+               })
+
+renderDygraph({
+  dygraph(serieI(),
+          ylab = &quot;Irradiance (Wh/m2)&quot;
+          ) %&gt;%
+    dyRangeSelector(height=50) %&gt;% 
+    dyOptions(strokeWidth = 1,colors = &quot;#7D26CD&quot; ,stackedGraph = TRUE)%&gt;%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%&gt;%
+    dyLegend(width = 400)
+  
+})</code></pre>
+<p><div id="out6bf6186845f4a786" style="width:100%; height:400px; " class="dygraphs html-widget html-widget-output"></div></p>
+</div>
+</div>
+</div>
+<div id="temperature-1" class="section level1" data-navmenu="DLNM Results" data-icon="ion-ios-partlysunny">
+<h1>Temperature</h1>
+<div id="row-6" class="section level2" data-height="180">
+<h2>Row</h2>
+<div id="chart-2-5" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out521996a5da022d14" width="100%"></div></p>
+</div>
+<div id="chart-2-6" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Temperature)
+  valueBox(paste(&quot;Min&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropdown-circle&quot;, 
+           caption=&quot;Historical \n Temperature&quot;, color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out97baad6b5478e69e" width="100%"></div></p>
+</div>
+<div id="chart-2-7" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Temperature)
+  valueBox(paste(&quot;Mean&quot;,round(pt,1)), icon = &quot;ion-ios-partlysunny&quot;, 
+           caption=&quot;Historical \n Temperature&quot;,color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out33a130aa5aa677b8" width="100%"></div></p>
+</div>
+<div id="chart-2-8" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Temperature)
+  valueBox(paste(&quot;Max&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropup-circle&quot;, 
+           caption=&quot;Historical \n Temperature&quot;,color=&quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out10af4d889cadb332" width="100%"></div></p>
+</div>
+<div id="temperature-density" class="section level3">
+<h3>Temperature Density</h3>
+<pre class="r"><code>renderPlot({
+ ggplot(Pais(), aes(x=Temperature)) +
+    geom_density(fill=&quot;#6B8E23&quot;, color=&quot;#e9ecef&quot;, alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=&quot; &quot;)
+ 
+ 
+})</code></pre>
+<p><div id="out2189d3471153982d" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+<div id="row-7" class="section level2" data-height="550">
+<h2>Row</h2>
+<div id="d-surface" class="section level3">
+<h3>3D-Surface</h3>
+<pre class="r"><code>library(plotly)
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~t.cp1()$matfit, y = as.numeric(rownames(t.cp1()$matfit))) %&gt;% 
+    add_surface(colorbar = list(title=&quot;Effect&quot;)) %&gt;% 
+    layout(
+        scene = list(
+        xaxis = list(title = &quot;Lag&quot;),
+        yaxis = list(title = &quot;Temperature&quot;),
+        zaxis = list(title = &quot;Electricity Price&quot;)
+      ))
+  
+})</code></pre>
+<p><div id="out4776a049bd2e9419" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+<div id="contour-plot" class="section level3">
+<h3>Contour plot</h3>
+<pre class="r"><code>renderPlot({
+
+filled.contour(x=t.cp1()$predvar,y=seq(t.cp1()$lag[1],t.cp1()$lag[2],t.cp1()$bylag),
+               z=t.cp1()$matfit,axes=T,xlab=&quot;Temperature&quot;,color.palette = viridis,
+               ylab=&quot;Lag&quot;, key.title={par(cex.main=0.9);title(&quot;Effect&quot;)},
+               main= &quot; &quot;, cex.main= 1.5)
+
+})  </code></pre>
+<p><div id="out2957f57810151e0d" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="precipitation-1" class="section level1" data-navmenu="DLNM Results" data-icon="ion-ios-rainy-outline">
+<h1>Precipitation</h1>
+<div id="row-8" class="section level2" data-height="180">
+<h2>Row</h2>
+<div id="chart-2-9" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out6229cf0b74fefde8" width="100%"></div></p>
+</div>
+<div id="chart-2-10" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Precipitation)
+  valueBox(paste(&quot;Min&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropdown-circle&quot;, 
+           caption=&quot;Historical \n Precipitation&quot;, color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outd64d7c00b82b8e7d" width="100%"></div></p>
+</div>
+<div id="chart-2-11" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Precipitation)
+  valueBox(paste(&quot;Mean&quot;,round(pt,1)), icon = &quot;ion-ios-rainy-outline&quot;, 
+           caption=&quot;Historical \n Precipitation&quot;,color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out664f79ea44179b62" width="100%"></div></p>
+</div>
+<div id="chart-2-12" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Precipitation)
+  valueBox(paste(&quot;Max&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropup-circle&quot;, 
+           caption=&quot;Historical \n Precipitation&quot;,color=&quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out6b2aa05b8468d2c9" width="100%"></div></p>
+</div>
+<div id="precipitation-density" class="section level3">
+<h3>Precipitation Density</h3>
+<pre class="r"><code>renderPlot({
+ ggplot(Pais(), aes(x=Precipitation)) +
+    geom_density(fill=&quot;#6B8E23&quot;, color=&quot;#e9ecef&quot;, alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=&quot; &quot;)
+ 
+ 
+})</code></pre>
+<p><div id="out98b0e20cccaeee85" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+<div id="row-9" class="section level2" data-height="550">
+<h2>Row</h2>
+<div id="d-surface-1" class="section level3">
+<h3>3D-Surface</h3>
+<pre class="r"><code>library(plotly)
+
+renderPlotly({ 
+  
+  plot_ly(z = ~p.cp1()$matfit, y = as.numeric(rownames(p.cp1()$matfit))) %&gt;% 
+    add_surface(colorbar = list(title=&quot;Effect&quot;)) %&gt;% 
+    layout(
+        scene = list(
+        xaxis = list(title = &quot;Lag&quot;),
+        yaxis = list(title = &quot;Precipitation&quot;),
+        zaxis = list(title = &quot;Electricity Price&quot;)
+      ))
+  
+})</code></pre>
+<p><div id="outc6f437dba6eb3b9b" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+<div id="contour-plot-1" class="section level3">
+<h3>Contour plot</h3>
+<pre class="r"><code>renderPlot({
+
+filled.contour(x=p.cp1()$predvar,y=seq(p.cp1()$lag[1],p.cp1()$lag[2],p.cp1()$bylag),
+               z=p.cp1()$matfit,axes=T,xlab=&quot;Precipitation&quot;,color.palette = viridis,
+               ylab=&quot;Lag&quot;, key.title={par(cex.main=0.9);title(&quot;Effect&quot;)},
+               main= &quot; &quot;, cex.main= 1.5)
+
+})  </code></pre>
+<p><div id="out7ab849417e37e5c3" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="wind-speed-1" class="section level1" data-navmenu="DLNM Results" data-icon="ion-ios-shuffle">
+<h1>Wind Speed</h1>
+<div id="row-10" class="section level2" data-height="180">
+<h2>Row</h2>
+<div id="chart-2-13" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outd7155a1fd1a20db0" width="100%"></div></p>
+</div>
+<div id="chart-2-14" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Wind.Speed)
+  valueBox(paste(&quot;Min&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropdown-circle&quot;, 
+           caption=&quot;Historical \n Wind Speed&quot;, color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out7f56ed91216b7341" width="100%"></div></p>
+</div>
+<div id="chart-2-15" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Wind.Speed)
+  valueBox(paste(&quot;Mean&quot;,round(pt,1)), icon = &quot;ion-ios-shuffle&quot;, 
+           caption=&quot;Historical \n Wind Speed&quot;,color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out2505b35fea4c58b9" width="100%"></div></p>
+</div>
+<div id="chart-2-16" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Wind.Speed)
+  valueBox(paste(&quot;Max&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropup-circle&quot;, 
+           caption=&quot;Historical \n Wind Speed&quot;,color=&quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outb1b43534bc4bdbc1" width="100%"></div></p>
+</div>
+<div id="wind-speed-density" class="section level3">
+<h3>Wind Speed Density</h3>
+<pre class="r"><code>renderPlot({
+ ggplot(Pais(), aes(x=Wind.Speed)) +
+    geom_density(fill=&quot;#6B8E23&quot;, color=&quot;#e9ecef&quot;, alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=&quot; &quot;)
+ 
+ 
+})</code></pre>
+<p><div id="out6b9aabfb4fc60c75" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+<div id="row-11" class="section level2" data-height="550">
+<h2>Row</h2>
+<div id="d-surface-2" class="section level3">
+<h3>3D-Surface</h3>
+<pre class="r"><code>library(plotly)
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~w.cp1()$matfit, y = as.numeric(rownames(w.cp1()$matfit))) %&gt;% 
+    add_surface(colorbar = list(title=&quot;Effect&quot;)) %&gt;% 
+    layout(
+        scene = list(
+        xaxis = list(title = &quot;Lag&quot;),
+        yaxis = list(title = &quot;Wind Speed&quot;),
+        zaxis = list(title = &quot;Electricity Price&quot;)
+      ))
+  
+})</code></pre>
+<p><div id="outc591e8c01b54697d" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+<div id="contour-plot-2" class="section level3">
+<h3>Contour plot</h3>
+<pre class="r"><code>renderPlot({
+
+filled.contour(x=w.cp1()$predvar,y=seq(w.cp1()$lag[1],w.cp1()$lag[2],w.cp1()$bylag),
+               z=w.cp1()$matfit,axes=T,xlab=&quot;Wind Speed&quot;,color.palette = viridis,
+               ylab=&quot;Lag&quot;, key.title={par(cex.main=0.9);title(&quot;Effect&quot;)},
+               main= &quot; &quot;, cex.main= 1.5)
+
+})  </code></pre>
+<p><div id="outa755885929b9037a" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="irradiance-1" class="section level1" data-navmenu="DLNM Results" data-icon="ion-android-sunny">
+<h1>Irradiance</h1>
+<div id="row-12" class="section level2" data-height="180">
+<h2>Row</h2>
+<div id="chart-2-17" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outfbade53359bbec16" width="100%"></div></p>
+</div>
+<div id="chart-2-18" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Irradiance)
+  valueBox(paste(&quot;Min&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropdown-circle&quot;, 
+           caption=&quot;Historical \n Irradiance&quot;, color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outb90c84d5e7122e87" width="100%"></div></p>
+</div>
+<div id="chart-2-19" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Irradiance)
+  valueBox(paste(&quot;Mean&quot;,round(pt,1)), icon = &quot;ion-android-sunny&quot;, 
+           caption=&quot;Historical \n Irradiance&quot;,color= &quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outbe8425d940e58bb2" width="100%"></div></p>
+</div>
+<div id="chart-2-20" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>pos&lt;- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Irradiance)
+  valueBox(paste(&quot;Max&quot;,round(pt,1)), icon = &quot;ion-android-arrow-dropup-circle&quot;, 
+           caption=&quot;Historical \n Irradiance&quot;,color=&quot;#EEEEE0&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outaf833f96cbe90d01" width="100%"></div></p>
+</div>
+<div id="irradiance-density" class="section level3">
+<h3>Irradiance Density</h3>
+<pre class="r"><code>renderPlot({
+ ggplot(Pais(), aes(x=Irradiance)) +
+    geom_density(fill=&quot;#6B8E23&quot;, color=&quot;#e9ecef&quot;, alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=&quot; &quot;)
+ 
+ 
+})</code></pre>
+<p><div id="out20a455bbc24208f5" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+<div id="row-13" class="section level2" data-height="550">
+<h2>Row</h2>
+<div id="d-surface-3" class="section level3">
+<h3>3D-Surface</h3>
+<pre class="r"><code>library(plotly)
+
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~i.cp1()$matfit, y = as.numeric(rownames(i.cp1()$matfit))) %&gt;% 
+    add_surface(colorbar = list(title=&quot;Effect&quot;)) %&gt;% 
+    layout(
+        scene = list(
+        xaxis = list(title = &quot;Lag&quot;),
+        yaxis = list(title = &quot;Irradiance&quot;),
+        zaxis = list(title = &quot;Electricity Price&quot;)
+      ))
+  
+})</code></pre>
+<p><div id="outc5d8ae35a09564bb" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme"></div></p>
+</div>
+<div id="contour-plot-3" class="section level3">
+<h3>Contour plot</h3>
+<pre class="r"><code>renderPlot({
+
+filled.contour(x=i.cp1()$predvar,y=seq(i.cp1()$lag[1],i.cp1()$lag[2],i.cp1()$bylag),
+               z=i.cp1()$matfit,axes=T,xlab=&quot;Irradiance&quot;,color.palette = viridis,
+               ylab=&quot;Lag&quot;, key.title={par(cex.main=0.9);title(&quot;Effect&quot;)},
+               main= &quot; &quot;, cex.main= 1.5)
+
+})  </code></pre>
+<p><div id="out77e4d44d479a2572" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="temperature-2" class="section level1" data-navmenu="Global effects" data-icon="ion-ios-partlysunny">
+<h1>Temperature</h1>
+<div id="row-14" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-21" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out13c6f198381e0ea9" width="100%"></div></p>
+</div>
+</div>
+<div id="row-15" class="section level2 tabset tabset-fade">
+<h2>Row</h2>
+<div id="cumulative-effect" class="section level3">
+<h3>Cumulative Effect</h3>
+<pre class="r"><code>renderPlot({
+
+limm&lt;-c(min(t.cp1cold()$alllow),max(t.cp1cold()$allhigh),
+ min(t.cp1hot()$alllow),max(t.cp1hot()$allhigh))  
+  
+plot(t.cp1cold(),&quot;overall&quot;,col=4,lwd=2,ci=&quot;area&quot;,ci.level=0.95,
+     xlim=c(min(t.cp1cold()$predvar),max(t.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab=&quot;Price&quot;,xlab=&quot;Temperature (°C)&quot;, cex.main=1.5)
+  lines(t.cp1hot(),&quot;overall&quot;,ci = &quot;area&quot;,col=2,lwd=2)
+  abline(v=median(Temp.lag()),lty=3)
+
+})  </code></pre>
+<p><div id="out930ff05500d526b9" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="precipitation-2" class="section level1" data-navmenu="Global effects" data-icon="ion-ios-rainy-outline">
+<h1>Precipitation</h1>
+<div id="row-16" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-22" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="outbd48c00849d527e5" width="100%"></div></p>
+</div>
+</div>
+<div id="row-17" class="section level2 tabset tabset-fade">
+<h2>Row</h2>
+<div id="cumulative-effect-1" class="section level3">
+<h3>Cumulative Effect</h3>
+<pre class="r"><code>renderPlot({
+
+limm&lt;-c(min(p.cp1cold()$alllow),max(p.cp1cold()$allhigh),
+ min(p.cp1hot()$alllow),max(p.cp1hot()$allhigh))    
+  
+plot(p.cp1cold(),&quot;overall&quot;,col=4,lwd=2,ci=&quot;area&quot;,ci.level=0.95,
+     xlim=c(min(p.cp1cold()$predvar),max(p.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab=&quot;Price&quot;,xlab=&quot;Precipitation (mm)&quot;, cex.main=1.5)
+  lines(p.cp1hot(),&quot;overall&quot;,ci = &quot;area&quot;,col=2,lwd=2)
+  abline(v=median(Prec.lag()),lty=3)
+
+})  </code></pre>
+<p><div id="outb698a5f776b0e5eb" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="wind-speed-2" class="section level1" data-navmenu="Global effects" data-icon="ion-ios-shuffle">
+<h1>Wind Speed</h1>
+<div id="row-18" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-23" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out11826b4a9cf80226" width="100%"></div></p>
+</div>
+</div>
+<div id="row-19" class="section level2 tabset tabset-fade">
+<h2>Row</h2>
+<div id="cumulative-effect-2" class="section level3">
+<h3>Cumulative Effect</h3>
+<pre class="r"><code>renderPlot({
+  
+limm&lt;-c(min(w.cp1cold()$alllow),max(w.cp1cold()$allhigh),
+ min(w.cp1hot()$alllow),max(w.cp1hot()$allhigh))    
+  
+
+plot(w.cp1cold(),&quot;overall&quot;,col=4,lwd=2,ci=&quot;area&quot;,ci.level=0.95,
+     xlim=c(min(w.cp1cold()$predvar),max(w.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab=&quot;Price&quot;,xlab=&quot;Wind Speed (m/s)&quot;, cex.main=1.5)
+  lines(w.cp1hot(),&quot;overall&quot;,ci = &quot;area&quot;,col=2,lwd=2)
+  abline(v=median(Wind.lag()),lty=3)
+
+})  </code></pre>
+<p><div id="outec3a16c393538325" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="irrandiance" class="section level1" data-navmenu="Global effects" data-icon="ion-android-sunny">
+<h1>Irrandiance</h1>
+<div id="row-20" class="section level2">
+<h2>Row</h2>
+<div id="chart-2-24" class="section level3">
+<h3>Chart 2</h3>
+<pre class="r"><code>renderValueBox({
+  valueBox(tags$p(input$Q, style = &quot;font-size: 80%;&quot;), 
+           icon = &quot;ion-ios-flag-outline&quot;, 
+           caption=&quot;Country&quot;,
+           color= &quot;#F2F2F2&quot;)
+})  </code></pre>
+<p><div class="shiny-html-output shiny-html-output shiny-valuebox-output" height="160px" id="out6381658e6b15baed" width="100%"></div></p>
+</div>
+</div>
+<div id="row-21" class="section level2 tabset tabset-fade">
+<h2>Row</h2>
+<div id="cumulative-effect-3" class="section level3">
+<h3>Cumulative Effect</h3>
+<pre class="r"><code>renderPlot({
+  
+  limm&lt;-c(min(i.cp1cold()$alllow),max(i.cp1cold()$allhigh),
+ min(i.cp1hot()$alllow),max(i.cp1hot()$allhigh))    
+
+
+plot(i.cp1cold(),&quot;overall&quot;,col=4,lwd=2,ci=&quot;area&quot;,ci.level=0.95,
+     xlim=c(min(i.cp1cold()$predvar),max(i.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab=&quot;Price&quot;,xlab=&quot;Irradiance (Wh/m2)&quot;, cex.main=1.5)
+  lines(i.cp1hot(),&quot;overall&quot;,ci = &quot;area&quot;,col=2,lwd=2)
+  abline(v=median(Irra.lag()),lty=3)
+
+})  </code></pre>
+<p><div id="out01eae0412150a62f" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
+</div>
+</div>
+</div>
+<div id="contact" class="section level1" data-icon="ion-person-stalker">
+<h1>Contact</h1>
+<div id="institutions" class="section level3">
+<h3>Institutions</h3>
+<p><img src="img/logos2.png" width="5%" /></p>
+</div>
+<div id="authors" class="section level3">
+<h3>Authors</h3>
+<div align="center">
+This dashboard is a complement to the research
+</div>
+<div align="center">
+<strong>Climate change, weather shocks and electricity prices</strong>
+</div>
+<p><br />
+</p>
+<div align="center">
+Published in
+</div>
+<div align="center">
+<strong>Aquí ponemos el nombre de la revista o el IREA</strong>
+</div>
+<div align="center">
+DOI
+</div>
+<div align="center">
+<strong>Aquí ponemos info del doi o url del manuscript</strong>
+</div>
+<p><br />
+</p>
+<p><br></p>
+<div align="center">
+<p><img style="border-radius: 50%;" src="img/avatar2.PNG" width="100px" ></p>
+</div>
+<div align="center">
+<p><a href="https://sites.google.com/view/stephania-mosquera">PhD. Stephania Mosquera-López</a> <br>
+Orkestra - Basque Institute of Competitiveness</p>
+</div>
+<p><br></p>
+<div align="center">
+<p><img style="border-radius: 50%;" src="img/avatar3.PNG" width="100px" ></p>
+</div>
+<div align="center">
+<p><a href="https://jorgemuribe.com/">PhD. Jorge M. Uribe</a> <br>
+Universitat Oberta de Catalunya</p>
+</div>
+<p><br></p>
+<div align="center">
+<p><img style="border-radius: 50%;" src="img/avatar.png" width="100px" href="https://www.joaquibarandica.com" ></p>
+</div>
+<div align="center">
+<p><a href="https://www.joaquibarandica.com">PhD.(C) Orlando Joaqui-Barandica</a> <br/>
+Universidad del Valle</p>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/&amp;text=Climate%20change,%20weather%20shocks%20and%20electricity%20prices" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/&amp;t=Climate%20change,%20weather%20shocks%20and%20electricity%20prices" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Climate%20change,%20weather%20shocks%20and%20electricity%20prices&amp;body=www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/&amp;title=Climate%20change,%20weather%20shocks%20and%20electricity%20prices" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://send?text=Climate%20change,%20weather%20shocks%20and%20electricity%20prices%20www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=www.joaquibarandica.io/post/climatechanges/climatechanges_electricityprice/&amp;title=Climate%20change,%20weather%20shocks%20and%20electricity%20prices" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="www.joaquibarandica.io"><img class="avatar mr-3 avatar-circle" src="/www.joaquibarandica.io/author/orlando-joaqui-barandica/avatar_hubff469d42154c21c97fb9216ba090a36_209917_270x270_fill_lanczos_center_2.png" alt="Orlando Joaqui Barandica"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="www.joaquibarandica.io">Orlando Joaqui Barandica</a></h5>
+      <h6 class="card-subtitle">PhD(C) in Industrial Engineering</h6>
+      <p class="card-text">My research interests include energy markets, asset and liability management, quantitative finance, applied econometrics and statistical, and data visualization.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/www.joaquibarandica.io/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/jotajb5" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.es/citations?user=3-slu-sAAAAJ&amp;hl=es" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/juniorjb5" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/orlando-jr-joaqui-barandica-69758463/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/www.joaquibarandica.io/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/www.joaquibarandica.io/en/js/wowchemy.min.0cb236a584a56fc8a8f250f0c3900a92.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

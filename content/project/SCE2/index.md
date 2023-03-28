@@ -10,7 +10,7 @@ links:
   name: Event Link
   url: https://sce.org.co/jornada-avances-en-metodos-estadisticos-2023/
 slides: ""
-summary: Nov. 16 - 17 / 2023
+summary: Feb. 16 - 17 / 2023
 tags:
 - Energy
 - Electricity Prices

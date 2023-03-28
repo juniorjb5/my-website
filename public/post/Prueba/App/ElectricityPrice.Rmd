@@ -1,0 +1,1361 @@
+---
+title: "Climate change, weather shocks and electricity prices"
+author: " "
+output: 
+  flexdashboard::flex_dashboard:
+    css: a.css
+    orientation: rows
+    theme: cerulean
+    #logo: Imagen1.png
+    social: menu
+    #source_code: embed
+runtime: shiny
+---
+
+
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(shiny)
+library(dygraphs)
+library(xts)
+library(viridis)
+library(hrbrthemes)
+library(plotly)
+library(htmltools)
+library(xaringan)
+library(xaringanExtra)
+library(readxl)
+```
+
+
+Sidebar {.sidebar}
+=================================================
+
+
+
+```{r}
+
+#Base<-read.table("Base.csv",header=TRUE,sep = ",",dec=".")
+
+Base<- read_xlsx("static/App1/Base2_EP.xlsx",sheet = 1)
+
+#Pais de Noruega
+#Pais<-Base %>% 
+#  filter(Country == "Norway")
+
+
+
+helpText('The objective of this APP is to show the effects of weather on the price of electricity in some European countries.')
+
+
+selectizeInput(
+         "Q", label = "Select a country",
+            choices = sort(unique(Base$Country))
+      )
+      
+
+Pais <- reactive({
+    Base %>% filter(Country == input$Q)
+    })
+
+
+
+
+
+#Forma 1: Base
+
+#price<-reactive({ Pais()$Price[-1] })
+#Temp.lag<-reactive({Pais()$Temperature.lag[-1]})
+#Wind.lag<-reactive({Pais()$Wind.Speed.lag[-1]})
+#Prec.lag<-reactive({Pais()$Precipitation.lag[-1]})
+#Irra.lag<-reactive({Pais()$Irradiance.lag[-1]})
+#TTF.lag<- reactive({Pais()$TTF.lag[-1]})
+
+
+#Forma 2: Base2_EP
+
+price<-reactive({ Pais()$Price[-1] })
+Temp.lag<-reactive({Pais()$Temperature[-2085]})
+Wind.lag<-reactive({Pais()$Wind.Speed[-2085]})
+Prec.lag<-reactive({Pais()$Precipitation[-2085]})
+Irra.lag<-reactive({Pais()$Irradiance[-2085]})
+TTF.lag<- reactive({Pais()$TTF[-2085]})
+
+
+
+
+  library(dlnm)
+  library(splines)
+  library(foreign)
+  library(tsModel)
+  
+  
+  
+  # KNOTS EXPOSURE-RESPONSE 
+  #1
+  vk1 <- reactive({equalknots(Temp.lag(),5) })
+  vk2 <- reactive({equalknots(Wind.lag(),4) })
+  vk3 <- reactive({equalknots(Prec.lag(),4) })
+  vk4 <- reactive({equalknots(Irra.lag(),5) })
+  vk5 <- reactive({equalknots(TTF.lag(),5)  })
+  
+  
+  
+  
+  
+  # KNOTS LAG-RESPONSE
+  maxlag <- 20
+  
+  #1
+  lk <- logknots(maxlag,2)
+  #2
+  #lk <- logknots(maxlag,3)
+  
+  
+  # CENTERING VALUE (AND PERCENTILE)
+  cen <- 10
+  #sum(predictor<cen,na.rm=T)/sum(!is.na(predictor))
+  
+  # THE CROSS-BASIS
+  #1
+  cb1 <- reactive({ crossbasis(Temp.lag(), lag=maxlag, argvar=list(fun="ns",knots=vk1()), 
+                                          arglag=list(fun="bs",degree=2,df=15,knots=lk))   })
+  
+  cb2 <- reactive({ crossbasis(Wind.lag(), lag=maxlag, argvar=list(fun="ns",knots=vk2()), 
+                                          arglag=list(fun="bs",degree=2,df=6,knots=lk))
+  })
+  
+  cb3 <- reactive({ crossbasis(Prec.lag(), lag=maxlag, argvar=list(fun="ns",knots=vk3()), 
+                                          arglag=list(fun="bs",degree=2,df=6,knots=lk))
+  })
+  
+  cb4 <- reactive({ crossbasis(Irra.lag(), lag=maxlag, argvar=list(fun="ns",knots=vk4()), 
+                                          arglag=list(fun="bs",degree=2,df=6,knots=lk))
+  })
+  
+  cb5 <- reactive({ crossbasis(TTF.lag(), lag=maxlag, argvar=list(fun="ns",knots=vk5()), 
+                                          arglag=list(fun="bs",degree=2,df=6,knots=lk))
+  })
+  
+  
+  # 1ST AND 99TH PERCENTILES
+perc1 <-reactive({ round(quantile(Temp.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc2 <-reactive({ round(quantile(Wind.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc3 <-reactive({ round(quantile(Prec.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc4 <-reactive({ round(quantile(Irra.lag(),c(input$Q1,input$Q2,input$Q3)),2) })
+perc5 <-reactive({ round(quantile(TTF.lag(), c(input$Q1,input$Q2,input$Q3)),2) })
+
+  
+  # RUN THE MODEL
+  model <- reactive({ glm(price() ~ cb1() + cb2() + cb3() + cb4() +cb5() ,family=gaussian()) })
+  #A[i]<-AIC(model)
+  
+  # PREDICTION FOR 3D AND OVERALL CUMULATIVE
+  
+  #Temperatura
+  { t.cp1 <- reactive({  crosspred(cb1(),model(),at=seq(min(Temp.lag(),na.rm=T),
+                                     max(Temp.lag(),na.rm=T),length=50),cen=median(Temp.lag()))
+  })
+    t.cp1cold <- reactive({ crosspred(cb1(),model(),at=seq(min(Temp.lag(),na.rm=T),
+                                         median(Temp.lag()),length=50),cen=median(Temp.lag()))
+    })  
+  t.cp1hot <- reactive({  crosspred(cb1(),model(),at=seq(median(Temp.lag()),max(Temp.lag(),na.rm=T),
+                                        length=50),cen=median(Temp.lag()))
+    })
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    t.cp2 <- reactive({  crosspred(cb1(),model(),at=perc1(),bylag=0.2,cen=median(Temp.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    t.cp3 <- reactive({  crosspred(cb1(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+    
+  } 
+  
+  
+ #Wind
+{ w.cp1 <- reactive({  crosspred(cb2(),model(),at=seq(min(Wind.lag(),na.rm=T),
+                                  max(Wind.lag(),na.rm=T),length=50),cen=median(Wind.lag()))
+})
+w.cp1cold <- reactive({  crosspred(cb2(),model(),at=seq(min(Wind.lag(),na.rm=T),
+                                  median(Wind.lag()),length=50),cen=median(Wind.lag()))
+})
+w.cp1hot <- reactive({ crosspred(cb2(),model(),at=seq(median(Wind.lag()),max(Wind.lag(),na.rm=T),
+                                                      length=50),cen=median(Wind.lag()))
+})
+
+# PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    w.cp2 <- reactive({  crosspred(cb2(),model(),at=perc2(),bylag=0.2,cen=median(Wind.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    w.cp3 <- reactive({  crosspred(cb2(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+  
+
+}
+
+
+
+#Precipitacion
+{ p.cp1 <- reactive({ crosspred(cb3(),model(),at=seq(min(Prec.lag(),na.rm=T),
+                                                     max(Prec.lag(),na.rm=T),length=50),cen=median(Prec.lag()))
+})
+  p.cp1cold <- reactive({ crosspred(cb3(),model(),at=seq(min(Prec.lag(),na.rm=T),
+                                                         median(Prec.lag()),length=50),cen=median(Prec.lag()))
+  })
+  p.cp1hot <- reactive({  crosspred(cb3(),model(),at=seq(median(Prec.lag()),max(Prec.lag(),na.rm=T),
+                                                         length=50),cen=median(Prec.lag()))
+  })
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    p.cp2 <- reactive({  crosspred(cb3(),model(),at=perc3(),bylag=0.2,cen=median(Prec.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    p.cp3 <- reactive({  crosspred(cb3(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+  
+}
+
+
+
+#Irradiation
+{ i.cp1 <- reactive({  crosspred(cb4(),model(),at=seq(min(Irra.lag(),na.rm=T),
+                                                      max(Irra.lag(),na.rm=T),length=50),cen=median(Irra.lag()))
+})  
+  i.cp1cold <- reactive({  crosspred(cb4(),model(),at=seq(min(Irra.lag(),na.rm=T),
+                                                          median(Irra.lag()),length=50),cen=median(Irra.lag()))
+  })  
+  i.cp1hot <-reactive({  crosspred(cb4(),model(),at=seq(median(Irra.lag()),max(Irra.lag(),na.rm=T),
+                                                        length=50),cen=median(Irra.lag()))
+  }) 
+  
+  # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+    i.cp2 <- reactive({  crosspred(cb4(),model(),at=perc4(),bylag=0.2,cen=median(Irra.lag())) })
+    
+    # PREDICTION FOR LAG-RESPONSE CURVES
+    i.cp3 <- reactive({  crosspred(cb4(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+  
+}
+
+
+
+#Gas
+{ g.cp1 <- reactive({  crosspred(cb4(),model(),at=seq(min(TTF.lag(),na.rm=T),
+                                                     max(TTF.lag(),na.rm=T),length=50),cen=median(TTF.lag()))
+})
+ g.cp1cold <- reactive({  crosspred(cb4(),model(),at=seq(min(TTF.lag(),na.rm=T),
+                                                         median(TTF.lag()),length=50),cen=median(TTF.lag()))
+ })
+ g.cp1hot <- reactive({  crosspred(cb4(),model(),at=seq(median(TTF.lag()),max(TTF.lag(),na.rm=T),
+                                                        length=50),cen=median(TTF.lag()))
+ })
+
+ # PREDICTIONS AT 1ST AND 99TH PERCENTILES
+   g.cp2 <- reactive({  crosspred(cb5(),model(),at=perc5(),bylag=0.2,cen=median(TTF.lag())) })
+
+   # PREDICTION FOR LAG-RESPONSE CURVES
+   g.cp3 <- reactive({  crosspred(cb5(),model(),at=c(-2,-1,1,2),bylag=0.5,cen=0)  })
+
+
+}
+
+
+```
+
+
+Electricity Price {data-icon="ion-social-usd"}
+=================================================
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+Row
+-------------------------------------
+    
+### Electricity price
+    
+```{r}
+
+
+precio.ser<- reactive ({ xts(Pais()$Price, order.by=as.Date(Pais()$Dates,format = "%Y/%m/%d"))
+               })
+
+# plot
+renderDygraph({
+  
+  precio.ser() %>% 
+  setNames(paste("Price in",input$Q)) %>% 
+  dygraph(
+          ylab = "Electricity Price"
+          ) %>%
+    dyRangeSelector(height=100) %>% 
+    dyOptions(strokeWidth = 1,colors = RColorBrewer::brewer.pal(1, "Set3"),stackedGraph = TRUE)%>%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%>%
+    dyLegend(width = 400)
+  
+})
+
+
+#renderPlot({
+#plot.ts(Pais()$Price, main= "Electricity Price")
+#})
+
+```
+
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+
+
+
+```{r}
+
+
+
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q=="UK","£/MWh","€/MWh"),round(pt,1)), style = "font-size: 80%;"), 
+           icon = "ion-android-arrow-dropdown-circle", 
+           caption="Historical \n MIN", color= "#EE7942")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q=="UK","£/MWh","€/MWh"),round(pt,1)), style = "font-size: 80%;"), 
+           icon = "ion-android-bulb", 
+           caption="Historical \n MEAN",color= "#FFB90F")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Price)
+  valueBox(tags$p(paste(ifelse(input$Q=="UK","£/MWh","€/MWh"),round(pt,1)), style = "font-size: 80%;"), 
+           icon = "ion-android-arrow-dropup-circle", 
+           caption="Historical \n MAX",color="#008B00")
+})  
+
+```
+
+
+    
+
+
+
+Weather {data-icon="ion-ios-partlysunny"}
+=================================================
+
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+
+Row
+-------------------------------------
+    
+### Temperature
+    
+```{r}
+
+
+serieT<- reactive ({
+              xts(Pais()$Temperature, order.by=as.Date(Pais()$Dates,format = "%Y/%m/%d"))
+               })
+
+renderDygraph({
+  dygraph(serieT(),
+          ylab = "Temperature (°C)"
+          ) %>%
+    dyRangeSelector(height=50) %>% 
+    dyOptions(strokeWidth = 1,colors = "#CDCD00" ,stackedGraph = TRUE)%>%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%>%
+    dyLegend(width = 400)
+  
+})
+
+
+#library(tseries)
+
+#renderPlot({
+#plot.ts(Pais()$Temperature.lag, main="Temperatura.lag")
+#})
+
+``` 
+    
+### Precipitation
+
+```{r}
+
+serieP<- reactive ({
+              xts(Pais()$Precipitation, order.by=as.Date(Pais()$Dates,format = "%Y/%m/%d"))
+               })
+
+renderDygraph({
+  dygraph(serieP(),
+          ylab = "Precipitation (mm)"
+          ) %>%
+    dyRangeSelector(height=50) %>% 
+    dyOptions(strokeWidth = 1,colors = "#00C5CD" ,stackedGraph = TRUE)%>%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%>%
+    dyLegend(width = 400)
+  
+})
+
+```
+
+
+Row
+-------------------------------------
+    
+### Wind speed
+    
+```{r}
+
+
+serieW<- reactive ({
+              xts(Pais()$Wind.Speed, order.by=as.Date(Pais()$Dates,format = "%Y/%m/%d"))
+               })
+
+renderDygraph({
+  dygraph(serieW(),
+          ylab = "Wind speed (m/s)"
+          ) %>%
+    dyRangeSelector(height=50) %>% 
+    dyOptions(strokeWidth = 1,colors = "#2E8B57" ,stackedGraph = TRUE)%>%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%>%
+    dyLegend(width = 400)
+  
+})
+
+```
+    
+### Irradiance
+
+```{r}
+
+serieI<- reactive ({
+              xts(Pais()$Irradiance, order.by=as.Date(Pais()$Dates,format = "%Y/%m/%d"))
+               })
+
+renderDygraph({
+  dygraph(serieI(),
+          ylab = "Irradiance (Wh/m2)"
+          ) %>%
+    dyRangeSelector(height=50) %>% 
+    dyOptions(strokeWidth = 1,colors = "#7D26CD" ,stackedGraph = TRUE)%>%
+    dyHighlight(highlightCircleSize = 3, 
+                highlightSeriesBackgroundAlpha = 0.4,
+                hideOnMouseOut = TRUE)%>%
+    dyLegend(width = 400)
+  
+})
+
+```
+
+
+
+
+
+Temperature {data-navmenu="DLNM Results"  data-icon="ion-ios-partlysunny"}
+=====================================  
+
+
+Row {data-height=180}
+-------------------------------------
+
+### Chart 2
+
+```{r}
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Temperature)
+  valueBox(paste("Min",round(pt,1)), icon = "ion-android-arrow-dropdown-circle", 
+           caption="Historical \n Temperature", color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Temperature)
+  valueBox(paste("Mean",round(pt,1)), icon = "ion-ios-partlysunny", 
+           caption="Historical \n Temperature",color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Temperature)
+  valueBox(paste("Max",round(pt,1)), icon = "ion-android-arrow-dropup-circle", 
+           caption="Historical \n Temperature",color="#EEEEE0")
+})  
+
+```
+
+
+### Temperature Density
+
+
+```{r}
+
+renderPlot({
+ ggplot(Pais(), aes(x=Temperature)) +
+    geom_density(fill="#6B8E23", color="#e9ecef", alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=" ")
+ 
+ 
+})
+
+```
+
+
+
+
+Row {data-height=550}
+-------------------------------------
+
+
+### 3D-Surface
+    
+```{r}
+
+
+
+library(plotly)
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~t.cp1()$matfit, y = as.numeric(rownames(t.cp1()$matfit))) %>% 
+    add_surface(colorbar = list(title="Effect")) %>% 
+    layout(
+        scene = list(
+        xaxis = list(title = "Lag"),
+        yaxis = list(title = "Temperature"),
+        zaxis = list(title = "Electricity Price")
+      ))
+  
+})
+
+  
+    
+  
+
+
+```
+    
+### Contour plot
+
+```{r}
+
+renderPlot({
+
+filled.contour(x=t.cp1()$predvar,y=seq(t.cp1()$lag[1],t.cp1()$lag[2],t.cp1()$bylag),
+               z=t.cp1()$matfit,axes=T,xlab="Temperature",color.palette = viridis,
+               ylab="Lag", key.title={par(cex.main=0.9);title("Effect")},
+               main= " ", cex.main= 1.5)
+
+})  
+  
+```
+
+
+
+Precipitation {data-navmenu="DLNM Results"  data-icon="ion-ios-rainy-outline"}
+=====================================  
+
+Row {data-height=180}
+-------------------------------------
+
+### Chart 2
+
+```{r}
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#EEEEE0")
+})  
+
+```
+
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Precipitation)
+  valueBox(paste("Min",round(pt,1)), icon = "ion-android-arrow-dropdown-circle", 
+           caption="Historical \n Precipitation", color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Precipitation)
+  valueBox(paste("Mean",round(pt,1)), icon = "ion-ios-rainy-outline", 
+           caption="Historical \n Precipitation",color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Precipitation)
+  valueBox(paste("Max",round(pt,1)), icon = "ion-android-arrow-dropup-circle", 
+           caption="Historical \n Precipitation",color="#EEEEE0")
+})  
+
+```
+
+
+
+### Precipitation Density
+
+
+```{r}
+
+renderPlot({
+ ggplot(Pais(), aes(x=Precipitation)) +
+    geom_density(fill="#6B8E23", color="#e9ecef", alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=" ")
+ 
+ 
+})
+
+```
+
+
+
+
+Row {data-height=550}
+-------------------------------------
+
+
+### 3D-Surface
+    
+```{r}
+
+
+
+library(plotly)
+
+renderPlotly({ 
+  
+  plot_ly(z = ~p.cp1()$matfit, y = as.numeric(rownames(p.cp1()$matfit))) %>% 
+    add_surface(colorbar = list(title="Effect")) %>% 
+    layout(
+        scene = list(
+        xaxis = list(title = "Lag"),
+        yaxis = list(title = "Precipitation"),
+        zaxis = list(title = "Electricity Price")
+      ))
+  
+})
+
+  
+    
+  
+
+
+```
+    
+### Contour plot
+
+```{r}
+
+renderPlot({
+
+filled.contour(x=p.cp1()$predvar,y=seq(p.cp1()$lag[1],p.cp1()$lag[2],p.cp1()$bylag),
+               z=p.cp1()$matfit,axes=T,xlab="Precipitation",color.palette = viridis,
+               ylab="Lag", key.title={par(cex.main=0.9);title("Effect")},
+               main= " ", cex.main= 1.5)
+
+})  
+  
+```
+
+
+
+Wind Speed {data-navmenu="DLNM Results" data-icon="ion-ios-shuffle"}
+=====================================  
+
+Row {data-height=180}
+-------------------------------------
+
+### Chart 2
+
+```{r}
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Wind.Speed)
+  valueBox(paste("Min",round(pt,1)), icon = "ion-android-arrow-dropdown-circle", 
+           caption="Historical \n Wind Speed", color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Wind.Speed)
+  valueBox(paste("Mean",round(pt,1)), icon = "ion-ios-shuffle", 
+           caption="Historical \n Wind Speed",color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Wind.Speed)
+  valueBox(paste("Max",round(pt,1)), icon = "ion-android-arrow-dropup-circle", 
+           caption="Historical \n Wind Speed",color="#EEEEE0")
+})  
+
+```
+
+
+
+### Wind Speed Density
+
+
+```{r}
+
+renderPlot({
+ ggplot(Pais(), aes(x=Wind.Speed)) +
+    geom_density(fill="#6B8E23", color="#e9ecef", alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=" ")
+ 
+ 
+})
+
+```
+
+
+
+
+Row {data-height=550}
+-------------------------------------
+
+
+### 3D-Surface
+    
+```{r}
+
+
+
+library(plotly)
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~w.cp1()$matfit, y = as.numeric(rownames(w.cp1()$matfit))) %>% 
+    add_surface(colorbar = list(title="Effect")) %>% 
+    layout(
+        scene = list(
+        xaxis = list(title = "Lag"),
+        yaxis = list(title = "Wind Speed"),
+        zaxis = list(title = "Electricity Price")
+      ))
+  
+})
+
+  
+    
+  
+
+
+```
+    
+### Contour plot
+
+```{r}
+
+renderPlot({
+
+filled.contour(x=w.cp1()$predvar,y=seq(w.cp1()$lag[1],w.cp1()$lag[2],w.cp1()$bylag),
+               z=w.cp1()$matfit,axes=T,xlab="Wind Speed",color.palette = viridis,
+               ylab="Lag", key.title={par(cex.main=0.9);title("Effect")},
+               main= " ", cex.main= 1.5)
+
+})  
+  
+```
+
+
+
+Irradiance {data-navmenu="DLNM Results" data-icon="ion-android-sunny"}
+=====================================  
+
+Row {data-height=180}
+-------------------------------------
+
+### Chart 2
+
+```{r}
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = min(Pais()$Irradiance)
+  valueBox(paste("Min",round(pt,1)), icon = "ion-android-arrow-dropdown-circle", 
+           caption="Historical \n Irradiance", color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = mean(Pais()$Irradiance)
+  valueBox(paste("Mean",round(pt,1)), icon = "ion-android-sunny", 
+           caption="Historical \n Irradiance",color= "#EEEEE0")
+})  
+
+```
+
+
+### Chart 2
+
+
+```{r}
+pos<- reactive({ as.numeric(which(names(Consolidado) == input$A)) })
+
+renderValueBox({
+  pt = max(Pais()$Irradiance)
+  valueBox(paste("Max",round(pt,1)), icon = "ion-android-arrow-dropup-circle", 
+           caption="Historical \n Irradiance",color="#EEEEE0")
+})  
+
+```
+
+
+
+### Irradiance Density
+
+
+```{r}
+
+renderPlot({
+ ggplot(Pais(), aes(x=Irradiance)) +
+    geom_density(fill="#6B8E23", color="#e9ecef", alpha=0.8) +
+    theme_classic() +
+    theme(axis.text.y=element_blank(),
+          axis.ticks.y=element_blank() )+
+    labs(y=" ")
+ 
+ 
+})
+
+```
+
+
+
+
+Row {data-height=550}
+-------------------------------------
+
+
+### 3D-Surface
+    
+```{r}
+
+
+
+library(plotly)
+
+
+
+renderPlotly({ 
+  
+  plot_ly(z = ~i.cp1()$matfit, y = as.numeric(rownames(i.cp1()$matfit))) %>% 
+    add_surface(colorbar = list(title="Effect")) %>% 
+    layout(
+        scene = list(
+        xaxis = list(title = "Lag"),
+        yaxis = list(title = "Irradiance"),
+        zaxis = list(title = "Electricity Price")
+      ))
+  
+})
+
+  
+    
+  
+
+
+```
+    
+### Contour plot
+
+```{r}
+
+renderPlot({
+
+filled.contour(x=i.cp1()$predvar,y=seq(i.cp1()$lag[1],i.cp1()$lag[2],i.cp1()$bylag),
+               z=i.cp1()$matfit,axes=T,xlab="Irradiance",color.palette = viridis,
+               ylab="Lag", key.title={par(cex.main=0.9);title("Effect")},
+               main= " ", cex.main= 1.5)
+
+})  
+  
+```
+
+
+
+
+
+
+
+
+
+
+
+Temperature {data-navmenu="Global effects" data-icon="ion-ios-partlysunny"}
+=====================================  
+
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Cumulative Effect
+
+```{r}
+
+renderPlot({
+
+limm<-c(min(t.cp1cold()$alllow),max(t.cp1cold()$allhigh),
+ min(t.cp1hot()$alllow),max(t.cp1hot()$allhigh))  
+  
+plot(t.cp1cold(),"overall",col=4,lwd=2,ci="area",ci.level=0.95,
+     xlim=c(min(t.cp1cold()$predvar),max(t.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab="Price",xlab="Temperature (°C)", cex.main=1.5)
+  lines(t.cp1hot(),"overall",ci = "area",col=2,lwd=2)
+  abline(v=median(Temp.lag()),lty=3)
+
+})  
+
+
+```
+
+
+
+Precipitation {data-navmenu="Global effects" data-icon="ion-ios-rainy-outline"}
+=====================================  
+
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Cumulative Effect
+
+```{r}
+
+renderPlot({
+
+limm<-c(min(p.cp1cold()$alllow),max(p.cp1cold()$allhigh),
+ min(p.cp1hot()$alllow),max(p.cp1hot()$allhigh))    
+  
+plot(p.cp1cold(),"overall",col=4,lwd=2,ci="area",ci.level=0.95,
+     xlim=c(min(p.cp1cold()$predvar),max(p.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab="Price",xlab="Precipitation (mm)", cex.main=1.5)
+  lines(p.cp1hot(),"overall",ci = "area",col=2,lwd=2)
+  abline(v=median(Prec.lag()),lty=3)
+
+})  
+  
+```
+
+
+
+Wind Speed {data-navmenu="Global effects" data-icon="ion-ios-shuffle"}
+=====================================  
+
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Cumulative Effect
+
+```{r}
+
+renderPlot({
+  
+limm<-c(min(w.cp1cold()$alllow),max(w.cp1cold()$allhigh),
+ min(w.cp1hot()$alllow),max(w.cp1hot()$allhigh))    
+  
+
+plot(w.cp1cold(),"overall",col=4,lwd=2,ci="area",ci.level=0.95,
+     xlim=c(min(w.cp1cold()$predvar),max(w.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab="Price",xlab="Wind Speed (m/s)", cex.main=1.5)
+  lines(w.cp1hot(),"overall",ci = "area",col=2,lwd=2)
+  abline(v=median(Wind.lag()),lty=3)
+
+})  
+  
+```
+
+
+
+Irrandiance {data-navmenu="Global effects" data-icon="ion-android-sunny"}
+=====================================  
+
+
+Row
+-------------------------------------
+
+ 
+### Chart 2
+
+```{r}
+
+
+renderValueBox({
+  valueBox(tags$p(input$Q, style = "font-size: 80%;"), 
+           icon = "ion-ios-flag-outline", 
+           caption="Country",
+           color= "#F2F2F2")
+})  
+
+```
+
+
+
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Cumulative Effect
+
+```{r}
+
+renderPlot({
+  
+  limm<-c(min(i.cp1cold()$alllow),max(i.cp1cold()$allhigh),
+ min(i.cp1hot()$alllow),max(i.cp1hot()$allhigh))    
+
+
+plot(i.cp1cold(),"overall",col=4,lwd=2,ci="area",ci.level=0.95,
+     xlim=c(min(i.cp1cold()$predvar),max(i.cp1hot()$predvar)),
+     ylim=c(min(limm),max(limm)),
+       ylab="Price",xlab="Irradiance (Wh/m2)", cex.main=1.5)
+  lines(i.cp1hot(),"overall",ci = "area",col=2,lwd=2)
+  abline(v=median(Irra.lag()),lty=3)
+
+})  
+
+
+```
+
+
+
+
+
+Contact {data-icon="ion-person-stalker"}
+=====================================  
+
+
+### Institutions
+
+
+```{r echo=FALSE, out.width = "5%" }
+knitr::include_graphics("img/logos2.png")
+```
+
+
+### Authors
+
+
+<div align="center"> This dashboard is a complement to the research</div>
+<div align="center"> **Climate change, weather shocks and electricity prices**</div> \
+
+
+<div align="center"> Published in</div>
+<div align="center"> **Aquí ponemos el nombre de la revista o el IREA**</div> 
+
+
+<div align="center"> DOI</div> 
+<div align="center"> **Aquí ponemos info del doi o url del manuscript**</div> \
+
+
+<br>
+
+
+<div align="center">
+<img style="border-radius: 50%;" src="static/App1/img/avatar2.PNG" width="100px" >
+</div>
+
+<div align="center">
+[PhD. Stephania Mosquera-López](https://sites.google.com/view/stephania-mosquera) <br>
+Orkestra - Basque Institute of Competitiveness
+</div>
+
+
+<br>
+
+
+<div align="center">
+<img style="border-radius: 50%;" src="static/App1/img/avatar3.PNG" width="100px" >
+</div>
+
+<div align="center">
+[PhD. Jorge M. Uribe](https://jorgemuribe.com/) <br>
+Universitat Oberta de Catalunya
+</div>
+
+<br>
+
+<div align="center">
+<img style="border-radius: 50%;" src="static/App1/img/avatar.png" width="100px" href="https://www.joaquibarandica.com" >
+</div>
+
+
+<div align="center">
+[PhD.(C) Orlando Joaqui-Barandica](https://www.joaquibarandica.com) <br/>
+Universidad del Valle
+</div>
+
+
+
+    
+
+
+
