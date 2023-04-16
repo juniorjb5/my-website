@@ -69,6 +69,8 @@ xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/DataViz/3_ggplo
     - Recommendation to see in full screen (F11 - Google Chrome)
     
 
+
+
 ## 4. Interactive #️⃣DataViz
 
 ```{r embed-xaringan4, echo=FALSE}
@@ -77,7 +79,21 @@ xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/DataViz/4_Inter
 
 
 
+
 * Visit slides: [🔗 Here! Interactive graphs](https://juniorjb5.github.io/DataViz/4_InteractiveR/4_Interactive.html#1)
+    - Recommendation to see in full screen (F11 - Google Chrome)
+
+
+
+
+## 5. Rmarkdown #️⃣DataViz
+
+```{r embed-xaringan5, echo=FALSE}
+xaringanExtra::embed_xaringan(url = "https://juniorjb5.github.io/DataViz/5_Rmarkdown/Class_Rmarkdonw.html#1", ratio = "16:9")
+```
+
+
+* Visit slides: [🔗 Here! Rmarkdown](https://juniorjb5.github.io/DataViz/5_Rmarkdown/Class_Rmarkdonw.html#1)
     - Recommendation to see in full screen (F11 - Google Chrome)
 
 
