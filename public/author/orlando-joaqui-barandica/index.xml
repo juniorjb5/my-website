@@ -188,3 +188,181 @@
     
   </channel>
 </rss>
+/p&gt;
+&lt;ul&gt;
+&lt;li&gt;👨‍🏫 &lt;a href=&#34;https://www.ernestocardenas.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Ernesto Cárdenas&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👩‍🏫 &lt;a href=&#34;https://www.anaosorio.co/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Ana María Osorio&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👩‍🏫 &lt;a href=&#34;https://www.javerianacali.edu.co/profesores/sayda-milena-pico-fonseca&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Sayda M. Pico&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Visit the awards news&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🗣️ &lt;a href=&#34;https://www.javerianacali.edu.co/noticias/grupo-de-investigacion-ecgesa-recibio-premio-de-la-fundacion-exito&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Pontificia Universidad Javeriana Cali&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🗣️ &lt;a href=&#34;https://www.usergioarboleda.edu.co/noticias/fundacion-exito-galardona-investigacion-sergista-sobre-desnutricion-infantil/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad Sergio Arboleda&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;️📺 &lt;a href=&#34;https://www.youtube.com/watch?v=IJnMacbs-L0&amp;amp;ab_channel=Fundaci%C3%B3n%C3%89xito&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Award Ceremony&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Commonality, macroeconomic factors and banking profitability</title>
+      <link>www.joaquibarandica.io/publication/banking/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/banking/</guid>
+      <description>&lt;p&gt;This my first working paper join with &lt;a href=&#34;https://jorgemuribe.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jorge M. Uribe&lt;/a&gt; and &lt;a href=&#34;http://industrial.univalle.edu.co/profesores/diego-fernando-manotas-duque&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Diego F. Manotas-Duque&lt;/a&gt; as a result of our research in Asset-Liability Management in Banking.&lt;/p&gt;
+&lt;p&gt;👋 All Comments are welcome.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;📩 &lt;em&gt;&lt;a href=&#34;mailto:orlando.joaqui@correounivalle.edu.co&#34;&gt;orlando.joaqui@correounivalle.edu.co&lt;/a&gt;&lt;/em&gt; \&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.ub.edu/irea/working_papers/2021/202113.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Index Fund to NASDAQ100.</title>
+      <link>www.joaquibarandica.io/post/nasdaq_indexfund/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/nasdaq_indexfund/</guid>
+      <description>&lt;h2 id=&#34;index-fund&#34;&gt;Index Fund&lt;/h2&gt;
+&lt;p&gt;An index fund is a portfolio designed to track the movements of a general market population or a market index.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Variables&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$\rho_{ij}: \text{Correlation between the stock i and the stock j}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij}: 
+\begin{cases}
+1 &amp;amp;  \text{If j is the stock most correlated stock in the Index Fund} \\&lt;br&gt;
+&amp;amp; \text{for the stock i of NASDAQ100} \quad i,j: 1, &amp;hellip;,n  \\&lt;br&gt;
+0 &amp;amp; \text{Other case}
+\end{cases}$$&lt;/p&gt;
+&lt;p&gt;$$y_{j}:
+\begin{cases}
+1 &amp;amp;  \text{If the stock j is in the Index Fund} \quad j = 1, &amp;hellip;, n \\&lt;br&gt;
+0 &amp;amp; \text{Other case}
+\end{cases}$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Objective function&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$
+Z = \quad \text{Max} \quad  \sum_{i=1}^n \sum_{j=1}^n \rho_{ij} x_{ij}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Subject to&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$\sum_{j=1}^n y_j = q$$&lt;/p&gt;
+&lt;p&gt;$$\sum_{j=1}^n x_{ij} = 1 \quad _{i=1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij} \leq y_j \quad _{i,j = 1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;$$x_{ij}, y_j = 0 \quad o \quad 1 \quad _{i,j = 1, &amp;hellip;, n}$$&lt;/p&gt;
+&lt;p&gt;Money management strategies are primarily classified as &amp;ldquo;active&amp;rdquo; or &amp;ldquo;passive.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Active portfolio management seeks to achieve superior performance through the use of technical and fundamental analysis, as well as forecasting techniques.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Passive portfolio management avoids any forecasting technique and relies rather on diversification to achieve the desired performance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is desirable to have an index fund with &lt;strong&gt;q&lt;/strong&gt; stocks, where &lt;strong&gt;q&lt;/strong&gt; is substantially less than the size of the target population &lt;strong&gt;(n)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Create a model that groups assets into similar asset groups and selects a representative asset from each group to be included in the Index Fund&amp;rsquo;s portfolio.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Approach&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create an Index Fund with &lt;strong&gt;q&lt;/strong&gt; stocks to track the NASDAQ100 index.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each share &lt;em&gt;i&lt;/em&gt; has a share &lt;em&gt;j&lt;/em&gt; that represents it in the Index Fund&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each share &lt;em&gt;i&lt;/em&gt; can be represented by share &lt;em&gt;j&lt;/em&gt;, only if &lt;em&gt;j&lt;/em&gt; is in the Index Fund&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The objective of the model is to maximize the similarity between the n stocks and their representatives in the Index Fund.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/IndexFund_NASDAQ100/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Index Fund - NASDAQ100 App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An app for Value at Risk (VaR).</title>
+      <link>www.joaquibarandica.io/post/value_at_risk/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/value_at_risk/</guid>
+      <description>&lt;h2 id=&#34;value-at-risk-var&#34;&gt;Value at Risk (VaR)&lt;/h2&gt;
+&lt;p&gt;The Value at Risk (VaR) is one of the measures used to assess the risk of a certain position or portfolio of financial assets.
+The definition of VaR can be done in terms of profitability or in terms of profit and loss of profit and loss (nominal terms); the definition also depends on whether it applies to a long position (bought), as usual, or a short position (sold) on a financial asset.&lt;/p&gt;
+&lt;p&gt;The VaR then answers the question:
+What is the fall or loss that could be suffered under normal market conditions in a time interval and with a certain level of probability or confidence?&lt;/p&gt;
+&lt;p&gt;That is, it indicates the probability (usually 1% or 5%) of suffering a certain loss during a period of time (normally 1 day, 1 week or 1 month).&lt;/p&gt;
+&lt;p&gt;Therefore, the VaR is nothing more than a certain percentile of the probability distribution predicted for the variations in the market value of the portfolio in the chosen time horizon.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/Value_at_Risk/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;VaR App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Corporate Social Responsibility Barometer, an app of text mining.</title>
+      <link>www.joaquibarandica.io/post/barometro/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/post/barometro/</guid>
+      <description>&lt;h2 id=&#34;what-is-kairós&#34;&gt;¿What is Kairós?&lt;/h2&gt;
+&lt;p&gt;The Observatory for business sustainability, Kairós, created in 2017, is a space for observation and analysis of business practices in business sustainability. The main objective is to contribute to the generation of knowledge on business responsibility and sustainability through the analysis of the practices and strategies of Colombian companies with a multidisciplinary approach.&lt;/p&gt;
+&lt;p&gt;In this application, the objective is to evaluate the disclosure index on topics such as employment, environment, community, consumers and products, human rights and the economy.&lt;/p&gt;
+&lt;p&gt;We analyze the sustainability reports of companies through text mining. This allows different measurements to be calculated by company, sector and country.&lt;/p&gt;
+&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://juniorjb5.shinyapps.io/ICESI_BarometroKairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Barometer App&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href=&#34;https://www.icesi.edu.co/centros-academicos/kairos/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Kairós Observatory&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🏛️ &lt;a href=&#34;https://www.icesi.edu.co/es/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Universidad ICESI&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Choosing the type of transport in the working class in Colombia: An analysis by region</title>
+      <link>www.joaquibarandica.io/publication/libreempresa/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/libreempresa/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://doi.org/10.18041/1657-2815/libreempresa.2019v16n2.6608&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Resultados componente cuantitativo: acciones, conocimientos, actitudes y prácticas preventivas frente al VIH</title>
+      <link>www.joaquibarandica.io/publication/tramas/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/tramas/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www2.javerianacali.edu.co/sello-editorial-javeriano/catalogo/tramas-sexualidades-y-prevencion-del-vih-en-jovenes#gsc.tab=0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cassava Breeding II: Phenotypic Correlations through the Different Stages of Selection</title>
+      <link>www.joaquibarandica.io/publication/cassava_ii/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_ii/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fpls.2016.01649/full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cassava Breeding I: The Value of Breeding Value</title>
+      <link>www.joaquibarandica.io/publication/cassava_i/</link>
+      <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/publication/cassava_i/</guid>
+      <description>&lt;h2 id=&#34;visit&#34;&gt;Visit&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;👉 &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fpls.2016.01227/full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Full Publication&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
