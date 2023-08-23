@@ -20,7 +20,7 @@ publication_short: '*JOURNAL OF ENERGY ECONOMICS AND POLICY*'
 publication_types:
 - "2"
 publishDate: "2023-06-16T00:00:00Z"
-summary: 2022 - *(with Manotas-Duque, D. F.).* '**JOURNAL OF ENERGY ECONOMICS AND POLICY**'
+summary: 2023 - *(with Manotas-Duque, D. F.).* '**JOURNAL OF ENERGY ECONOMICS AND POLICY**'
 tags:
 - Finance
 - Energy sector

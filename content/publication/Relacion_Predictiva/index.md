@@ -20,7 +20,7 @@ publication_short: '*DESARROLLO Y SOCIEDAD*'
 publication_types:
 - "2"
 publishDate: "2022-01-04T00:00:00Z"
-summary: 2022 - *(with orozco-Cerón, O. W.).* '**DESARROLLO Y SOCIEDAD**'
+summary: 2023 - *(with orozco-Cerón, O. W.).* '**DESARROLLO Y SOCIEDAD**'
 tags:
 - Asymmetry
 - Cross-quantilogram
