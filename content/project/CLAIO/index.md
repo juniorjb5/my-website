@@ -34,10 +34,6 @@ This research is carried out jointly with Professor Jorge M. Uribe from the Univ
 
 ![png](./claio1.png)
 
-![png](./claio2.png)
-
-![png](./claio3.png)
-
 
 
 👋 All Comments are welcome. 

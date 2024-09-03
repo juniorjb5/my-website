@@ -5,12 +5,33 @@
     <link>www.joaquibarandica.io/tag/electricity-prices/</link>
       <atom:link href="www.joaquibarandica.io/tag/electricity-prices/index.xml" rel="self" type="application/rss+xml" />
     <description>Electricity Prices</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/www.joaquibarandica.io/media/logo_hu1789145b081cc5edb4bb9dabee2afbca_29678_300x300_fit_lanczos_2.png</url>
       <title>Electricity Prices</title>
       <link>www.joaquibarandica.io/tag/electricity-prices/</link>
     </image>
+    
+    <item>
+      <title>9° ELAEE 2024</title>
+      <link>www.joaquibarandica.io/project/elaee9/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>www.joaquibarandica.io/project/elaee9/</guid>
+      <description>&lt;h3 id=&#34;recent-contributions-at-the-9th-latin-american-meeting-on-energy-economics-elaee---rio-de-janeiro&#34;&gt;Recent Contributions at the 9th Latin American Meeting on Energy Economics (ELAEE) - Rio de Janeiro&lt;/h3&gt;
+&lt;p&gt;I recently had the opportunity to present at the 9th Latin American Meeting on Energy Economics (ELAEE) held in Rio de Janeiro, Brazil. This prestigious conference brought together leading experts and researchers in the field of energy economics to discuss the latest developments and challenges in the sector. I was fortunate to present two studies that contribute to the understanding of energy price dynamics and the impact of geopolitical factors on energy markets.&lt;/p&gt;
+&lt;h3 id=&#34;1-assessment-of-energy-price-dynamics-a-gas-model-and-quantile-regression-analysis-between-natural-gas-climate-and-electricity-markets&#34;&gt;1. Assessment of Energy Price Dynamics: A GAS Model and Quantile Regression Analysis between Natural Gas, Climate, and Electricity Markets&lt;/h3&gt;
+&lt;p&gt;This study, developed in collaboration with Wilber Jr. Hernandez, Gina P. Ramirez, and Cesar A. Ojeda, explores the relationship between natural gas prices, climatic factors, and electricity markets using a GAS model and quantile regression analysis. The research aims to uncover the complex interactions between these variables, providing valuable insights into the dynamics of energy prices in volatile markets. The presentation focused on how fluctuations in natural gas prices, coupled with climate variability, impact electricity market prices, highlighting the importance of using advanced statistical models to better capture these relationships.&lt;/p&gt;
+&lt;p&gt;👋 All Comments are welcome.&lt;/p&gt;
+&lt;p&gt;📩 &lt;em&gt;&lt;a href=&#34;mailto:orlando.joaqui@javerianacali.edu.co&#34;&gt;orlando.joaqui@javerianacali.edu.co&lt;/a&gt;&lt;/em&gt;&lt;br&gt;
+📩 &lt;em&gt;&lt;a href=&#34;mailto:cesar.ojeda@correounivalle.edu.co&#34;&gt;cesar.ojeda@correounivalle.edu.co&lt;/a&gt;&lt;/em&gt;&lt;br&gt;
+📩 &lt;em&gt;&lt;a href=&#34;mailto:gina.ramirez@correounivalle.edu.co&#34;&gt;gina.ramirez@correounivalle.edu.co&lt;/a&gt;&lt;/em&gt;&lt;br&gt;
+📩 &lt;em&gt;&lt;a href=&#34;mailto:wilber.hernandez@correounivalle.edu.co&#34;&gt;wilber.hernandez@correounivalle.edu.co&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-armed-conflict-dynamics-and-energy-price-volatility-a-quantile-connectivity-approach&#34;&gt;2. Armed Conflict Dynamics and Energy Price Volatility: A Quantile Connectivity Approach&lt;/h3&gt;
+&lt;p&gt;In collaboration with Sebastián López-Estrada from Pontificia Universidad Javeriana de Cali, this paper investigates the impact of armed conflict dynamics on energy price volatility using a quantile connectivity approach. Our study provides a novel perspective on how geopolitical tensions and conflicts influence the behavior of energy prices, offering key insights into the interconnectedness of global energy markets. The findings underscore the need for robust analytical frameworks to understand the transmission of shocks across different segments of the energy sector, especially in times of political instability.&lt;/p&gt;
+&lt;p&gt;👋 All Comments are welcome.&lt;/p&gt;
+&lt;p&gt;📩 &lt;em&gt;&lt;a href=&#34;mailto:sebastian.lopez@javerianacali.edu.co&#34;&gt;sebastian.lopez@javerianacali.edu.co&lt;/a&gt;&lt;/em&gt; \&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Workshop Advances in Statistical Methods</title>
