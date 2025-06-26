@@ -38,14 +38,13 @@ social:
   link: https://www.linkedin.com/in/orlando-jr-joaqui-barandica-69758463/
 superuser: yes
 bio: My research interests include energy markets, business analytics, quantitative finance, applied econometrics and statistical, and data visualization.
-
 ---
 
-Ph.D. in Engineering with emphasis in Industrial Engineering from Universidad del Valle, where I also obtained my undergraduate degree in Statistics and a master's degree in Applied Economics. Currently, I serve as an assistant professor at Pontificia Universidad Javeriana Cali, where I teach courses in areas such as statistics, econometrics, business analytics, machine learning for finance, data visualization, and quantitative finance.
+I'm a Ph.D. in Engineering with a focus on Industrial Engineering from Universidad del Valle, where I also earned my degrees in Statistics and Applied Economics. Currently, I’m an assistant professor at Universidad del Valle, where I lead courses in statistics, econometrics, business analytics, machine learning for finance, data visualization, and quantitative finance.
 
-I have had the opportunity to collaborate with various universities in the region, including Universidad del Valle, Universidad ICESI, Universidad San Buenaventura Cali, and Universidad del Tolima, providing training in my areas of expertise. My main research interests encompass energy markets, energy finance, business analytics, quantitative finance, applied econometrics, and applied statistics.
+Throughout my academic journey, I’ve collaborated with several leading universities in Colombia, including Pontificia Universidad Javeriana Cali, Universidad ICESI, Universidad San Buenaventura Cali, and Universidad del Tolima—sharing knowledge and training students in areas at the intersection of data and finance.
 
-I have published in several specialized journals on topics related to energy and finance, contributing to the advancement of knowledge in these fields with my experience and research.
+My research explores the dynamics of energy markets and energy finance, as well as quantitative approaches in business analytics, risk management, and econometrics. I’ve published in specialized journals on energy and finance, contributing to the development of data-driven insights that inform policy and business decisions in complex, evolving environments.
 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/CV.pdf" "newtab" >}}resumé{{< /staticref >}}.
