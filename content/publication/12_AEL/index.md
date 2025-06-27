@@ -9,7 +9,7 @@ categories:
 - Macroeconomics
 - QVAR
 - MSCI Index
-date: "2024-08-12T00:00:00Z"
+date: "2024-10-26T00:00:00Z"
 doi: ""
 featured: false
 image:
@@ -21,7 +21,7 @@ publication: '*APPLIED ECONOMICS LETTERS*'
 publication_short: '*APPLIED ECONOMICS LETTERS*'
 publication_types:
 - "2"
-publishDate: "2024-07-23T00:00:00Z"
+publishDate: "2024-10-26T00:00:00Z"
 summary: 2024 - *(with Gómez, J.A., López-Estrada, S.).* '**APPLIED ECONOMICS LETTERS**'
 tags:
 - Finance

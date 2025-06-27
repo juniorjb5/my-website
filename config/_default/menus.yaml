@@ -7,9 +7,6 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-  - name: Portfolio
-    url: '#portfolio'
-    weight: 15
   - name: ''
     url: '#pre-experience'
     weight: 

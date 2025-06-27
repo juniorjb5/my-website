@@ -13,7 +13,6 @@ slides: ""
 summary: Nov. 20 - 22 / 2022
 tags:
 - Energy
-- Finance
 - Climate change
 - Renewable energy
 title: 8° ELAEE 2022

@@ -15,7 +15,6 @@ tags:
 - Energy
 - Electricity Prices
 - Climate
-- Finance
 title: 9° ELAEE 2024
 url_code: ""
 url_pdf: ""

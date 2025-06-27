@@ -13,7 +13,6 @@ slides: ""
 summary: Dec. 12 - 15 / 2022
 tags:
 - Energy
-- Finance
 - Climate change
 - Renewable energy
 title: CLAIO 2022
