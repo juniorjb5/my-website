@@ -2,7 +2,7 @@
 
 library(blogdown)
 
-blogdown::build_site()
+#blogdown::build_site()
 blogdown::serve_site()
 blogdown::stop_server()
 
@@ -10,7 +10,7 @@ blogdown::stop_server()
 
 git add .
 
-git commit -m "Act.23.06.2025_1"
+git commit -m "Act.26.06.2025_1"
 
 git push origin main
 

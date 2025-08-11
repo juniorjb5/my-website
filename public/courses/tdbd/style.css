@@ -1,0 +1,16 @@
+/* tamaño base, forzado */
+html, body {
+  font-size: 1.15rem !important;
+  line-height: 1.6 !important;
+}
+
+/* ancho mayor de la columna de contenido */
+:root { --content-max-width: 1200px; }
+.page-columns .content, main.content {
+  max-width: var(--content-max-width) !important;
+}
+
+/* títulos un poco más grandes (opcional) */
+h1 { font-size: 2.0rem !important; }
+h2 { font-size: 1.6rem !important; }
+h3 { font-size: 1.3rem !important; }

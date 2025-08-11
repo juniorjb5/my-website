@@ -6,6 +6,7 @@ title: Courses
 type: page
 ---
 
-⚙️🔨 Soon you will find in this section all the material of my courses.
+Here, you can find my courses:
 
-Wait for it!!🚩🚩🚩
+- **Toma de Decisiones Basadas en Datos (TDBD)**  
+  👉 [Entrar al material](/courses/tdbd/)
