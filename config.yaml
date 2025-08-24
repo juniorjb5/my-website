@@ -5,7 +5,7 @@ theme: ["starter-academic","hugo-shortcode-gallery"]
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Orlando Joaqui Barandica # Website name
-baseurl: 'www.joaquibarandica.io' # Website URL
+baseurl: 'https://www.joaquibarandica.com/' # Website URL
 copyright: '' # Footer text, e.g. '© {year} Me'
 
 ############################
