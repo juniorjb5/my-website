@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Toma de Decisiones Basadas en Datos - 2. Data frames (iris)</title>
+<title>Clase 02 — Limpieza y Transformación - 2. Data frames (iris)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-listas.html" rel="next">
+<link href="./01-consola.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,19 +95,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-<link rel="stylesheet" href="../style.css">
+
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Toma de Decisiones Basadas en Datos</span>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Clase 02 — Limpieza y Transformación</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,11 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="./../index.html" rel="" target="">
  <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../clase01.html" rel="" target="">
+    <a class="nav-link" href="./../clase01.html" rel="" target="">
  <span class="menu-text">Introducción</span></a>
   </li>  
 </ul>
@@ -128,10 +132,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-consola.html">Secciones</a></li><li class="breadcrumb-item"><a href="./02-iris.html">2. Data frames (iris)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Secciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-consola.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Consola y funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-iris.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Data frames (iris)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-listas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Importar Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Descriptivos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-dplyr-select-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. dplyr I (select/filter)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-dplyr-mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. dplyr II (mutate/recodes)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Resúmenes (group_by/summarise)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Visualización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -152,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -196,162 +290,17 @@ Tip
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>iris           <span class="co"># imprime el objeto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-1            5.1         3.5          1.4         0.2     setosa
-2            4.9         3.0          1.4         0.2     setosa
-3            4.7         3.2          1.3         0.2     setosa
-4            4.6         3.1          1.5         0.2     setosa
-5            5.0         3.6          1.4         0.2     setosa
-6            5.4         3.9          1.7         0.4     setosa
-7            4.6         3.4          1.4         0.3     setosa
-8            5.0         3.4          1.5         0.2     setosa
-9            4.4         2.9          1.4         0.2     setosa
-10           4.9         3.1          1.5         0.1     setosa
-11           5.4         3.7          1.5         0.2     setosa
-12           4.8         3.4          1.6         0.2     setosa
-13           4.8         3.0          1.4         0.1     setosa
-14           4.3         3.0          1.1         0.1     setosa
-15           5.8         4.0          1.2         0.2     setosa
-16           5.7         4.4          1.5         0.4     setosa
-17           5.4         3.9          1.3         0.4     setosa
-18           5.1         3.5          1.4         0.3     setosa
-19           5.7         3.8          1.7         0.3     setosa
-20           5.1         3.8          1.5         0.3     setosa
-21           5.4         3.4          1.7         0.2     setosa
-22           5.1         3.7          1.5         0.4     setosa
-23           4.6         3.6          1.0         0.2     setosa
-24           5.1         3.3          1.7         0.5     setosa
-25           4.8         3.4          1.9         0.2     setosa
-26           5.0         3.0          1.6         0.2     setosa
-27           5.0         3.4          1.6         0.4     setosa
-28           5.2         3.5          1.5         0.2     setosa
-29           5.2         3.4          1.4         0.2     setosa
-30           4.7         3.2          1.6         0.2     setosa
-31           4.8         3.1          1.6         0.2     setosa
-32           5.4         3.4          1.5         0.4     setosa
-33           5.2         4.1          1.5         0.1     setosa
-34           5.5         4.2          1.4         0.2     setosa
-35           4.9         3.1          1.5         0.2     setosa
-36           5.0         3.2          1.2         0.2     setosa
-37           5.5         3.5          1.3         0.2     setosa
-38           4.9         3.6          1.4         0.1     setosa
-39           4.4         3.0          1.3         0.2     setosa
-40           5.1         3.4          1.5         0.2     setosa
-41           5.0         3.5          1.3         0.3     setosa
-42           4.5         2.3          1.3         0.3     setosa
-43           4.4         3.2          1.3         0.2     setosa
-44           5.0         3.5          1.6         0.6     setosa
-45           5.1         3.8          1.9         0.4     setosa
-46           4.8         3.0          1.4         0.3     setosa
-47           5.1         3.8          1.6         0.2     setosa
-48           4.6         3.2          1.4         0.2     setosa
-49           5.3         3.7          1.5         0.2     setosa
-50           5.0         3.3          1.4         0.2     setosa
-51           7.0         3.2          4.7         1.4 versicolor
-52           6.4         3.2          4.5         1.5 versicolor
-53           6.9         3.1          4.9         1.5 versicolor
-54           5.5         2.3          4.0         1.3 versicolor
-55           6.5         2.8          4.6         1.5 versicolor
-56           5.7         2.8          4.5         1.3 versicolor
-57           6.3         3.3          4.7         1.6 versicolor
-58           4.9         2.4          3.3         1.0 versicolor
-59           6.6         2.9          4.6         1.3 versicolor
-60           5.2         2.7          3.9         1.4 versicolor
-61           5.0         2.0          3.5         1.0 versicolor
-62           5.9         3.0          4.2         1.5 versicolor
-63           6.0         2.2          4.0         1.0 versicolor
-64           6.1         2.9          4.7         1.4 versicolor
-65           5.6         2.9          3.6         1.3 versicolor
-66           6.7         3.1          4.4         1.4 versicolor
-67           5.6         3.0          4.5         1.5 versicolor
-68           5.8         2.7          4.1         1.0 versicolor
-69           6.2         2.2          4.5         1.5 versicolor
-70           5.6         2.5          3.9         1.1 versicolor
-71           5.9         3.2          4.8         1.8 versicolor
-72           6.1         2.8          4.0         1.3 versicolor
-73           6.3         2.5          4.9         1.5 versicolor
-74           6.1         2.8          4.7         1.2 versicolor
-75           6.4         2.9          4.3         1.3 versicolor
-76           6.6         3.0          4.4         1.4 versicolor
-77           6.8         2.8          4.8         1.4 versicolor
-78           6.7         3.0          5.0         1.7 versicolor
-79           6.0         2.9          4.5         1.5 versicolor
-80           5.7         2.6          3.5         1.0 versicolor
-81           5.5         2.4          3.8         1.1 versicolor
-82           5.5         2.4          3.7         1.0 versicolor
-83           5.8         2.7          3.9         1.2 versicolor
-84           6.0         2.7          5.1         1.6 versicolor
-85           5.4         3.0          4.5         1.5 versicolor
-86           6.0         3.4          4.5         1.6 versicolor
-87           6.7         3.1          4.7         1.5 versicolor
-88           6.3         2.3          4.4         1.3 versicolor
-89           5.6         3.0          4.1         1.3 versicolor
-90           5.5         2.5          4.0         1.3 versicolor
-91           5.5         2.6          4.4         1.2 versicolor
-92           6.1         3.0          4.6         1.4 versicolor
-93           5.8         2.6          4.0         1.2 versicolor
-94           5.0         2.3          3.3         1.0 versicolor
-95           5.6         2.7          4.2         1.3 versicolor
-96           5.7         3.0          4.2         1.2 versicolor
-97           5.7         2.9          4.2         1.3 versicolor
-98           6.2         2.9          4.3         1.3 versicolor
-99           5.1         2.5          3.0         1.1 versicolor
-100          5.7         2.8          4.1         1.3 versicolor
-101          6.3         3.3          6.0         2.5  virginica
-102          5.8         2.7          5.1         1.9  virginica
-103          7.1         3.0          5.9         2.1  virginica
-104          6.3         2.9          5.6         1.8  virginica
-105          6.5         3.0          5.8         2.2  virginica
-106          7.6         3.0          6.6         2.1  virginica
-107          4.9         2.5          4.5         1.7  virginica
-108          7.3         2.9          6.3         1.8  virginica
-109          6.7         2.5          5.8         1.8  virginica
-110          7.2         3.6          6.1         2.5  virginica
-111          6.5         3.2          5.1         2.0  virginica
-112          6.4         2.7          5.3         1.9  virginica
-113          6.8         3.0          5.5         2.1  virginica
-114          5.7         2.5          5.0         2.0  virginica
-115          5.8         2.8          5.1         2.4  virginica
-116          6.4         3.2          5.3         2.3  virginica
-117          6.5         3.0          5.5         1.8  virginica
-118          7.7         3.8          6.7         2.2  virginica
-119          7.7         2.6          6.9         2.3  virginica
-120          6.0         2.2          5.0         1.5  virginica
-121          6.9         3.2          5.7         2.3  virginica
-122          5.6         2.8          4.9         2.0  virginica
-123          7.7         2.8          6.7         2.0  virginica
-124          6.3         2.7          4.9         1.8  virginica
-125          6.7         3.3          5.7         2.1  virginica
-126          7.2         3.2          6.0         1.8  virginica
-127          6.2         2.8          4.8         1.8  virginica
-128          6.1         3.0          4.9         1.8  virginica
-129          6.4         2.8          5.6         2.1  virginica
-130          7.2         3.0          5.8         1.6  virginica
-131          7.4         2.8          6.1         1.9  virginica
-132          7.9         3.8          6.4         2.0  virginica
-133          6.4         2.8          5.6         2.2  virginica
-134          6.3         2.8          5.1         1.5  virginica
-135          6.1         2.6          5.6         1.4  virginica
-136          7.7         3.0          6.1         2.3  virginica
-137          6.3         3.4          5.6         2.4  virginica
-138          6.4         3.1          5.5         1.8  virginica
-139          6.0         3.0          4.8         1.8  virginica
-140          6.9         3.1          5.4         2.1  virginica
-141          6.7         3.1          5.6         2.4  virginica
-142          6.9         3.1          5.1         2.3  virginica
-143          5.8         2.7          5.1         1.9  virginica
-144          6.8         3.2          5.9         2.3  virginica
-145          6.7         3.3          5.7         2.5  virginica
-146          6.7         3.0          5.2         2.3  virginica
-147          6.3         2.5          5.0         1.9  virginica
-148          6.5         3.0          5.2         2.0  virginica
-149          6.2         3.4          5.4         2.3  virginica
-150          5.9         3.0          5.1         1.8  virginica</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa"},{"1":"4.6","2":"3.4","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.0","2":"3.4","3":"1.5","4":"0.2","5":"setosa"},{"1":"4.4","2":"2.9","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1","5":"setosa"},{"1":"5.4","2":"3.7","3":"1.5","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.4","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.1","5":"setosa"},{"1":"4.3","2":"3.0","3":"1.1","4":"0.1","5":"setosa"},{"1":"5.8","2":"4.0","3":"1.2","4":"0.2","5":"setosa"},{"1":"5.7","2":"4.4","3":"1.5","4":"0.4","5":"setosa"},{"1":"5.4","2":"3.9","3":"1.3","4":"0.4","5":"setosa"},{"1":"5.1","2":"3.5","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.7","2":"3.8","3":"1.7","4":"0.3","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.5","4":"0.3","5":"setosa"},{"1":"5.4","2":"3.4","3":"1.7","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.7","3":"1.5","4":"0.4","5":"setosa"},{"1":"4.6","2":"3.6","3":"1.0","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.3","3":"1.7","4":"0.5","5":"setosa"},{"1":"4.8","2":"3.4","3":"1.9","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.0","3":"1.6","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.4","3":"1.6","4":"0.4","5":"setosa"},{"1":"5.2","2":"3.5","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.2","2":"3.4","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.7","2":"3.2","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.1","3":"1.6","4":"0.2","5":"setosa"},{"1":"5.4","2":"3.4","3":"1.5","4":"0.4","5":"setosa"},{"1":"5.2","2":"4.1","3":"1.5","4":"0.1","5":"setosa"},{"1":"5.5","2":"4.2","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.2","3":"1.2","4":"0.2","5":"setosa"},{"1":"5.5","2":"3.5","3":"1.3","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.6","3":"1.4","4":"0.1","5":"setosa"},{"1":"4.4","2":"3.0","3":"1.3","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.4","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.5","3":"1.3","4":"0.3","5":"setosa"},{"1":"4.5","2":"2.3","3":"1.3","4":"0.3","5":"setosa"},{"1":"4.4","2":"3.2","3":"1.3","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.5","3":"1.6","4":"0.6","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.9","4":"0.4","5":"setosa"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.6","2":"3.2","3":"1.4","4":"0.2","5":"setosa"},{"1":"5.3","2":"3.7","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.3","3":"1.4","4":"0.2","5":"setosa"},{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor"},{"1":"5.5","2":"2.3","3":"4.0","4":"1.3","5":"versicolor"},{"1":"6.5","2":"2.8","3":"4.6","4":"1.5","5":"versicolor"},{"1":"5.7","2":"2.8","3":"4.5","4":"1.3","5":"versicolor"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6","5":"versicolor"},{"1":"4.9","2":"2.4","3":"3.3","4":"1.0","5":"versicolor"},{"1":"6.6","2":"2.9","3":"4.6","4":"1.3","5":"versicolor"},{"1":"5.2","2":"2.7","3":"3.9","4":"1.4","5":"versicolor"},{"1":"5.0","2":"2.0","3":"3.5","4":"1.0","5":"versicolor"},{"1":"5.9","2":"3.0","3":"4.2","4":"1.5","5":"versicolor"},{"1":"6.0","2":"2.2","3":"4.0","4":"1.0","5":"versicolor"},{"1":"6.1","2":"2.9","3":"4.7","4":"1.4","5":"versicolor"},{"1":"5.6","2":"2.9","3":"3.6","4":"1.3","5":"versicolor"},{"1":"6.7","2":"3.1","3":"4.4","4":"1.4","5":"versicolor"},{"1":"5.6","2":"3.0","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.8","2":"2.7","3":"4.1","4":"1.0","5":"versicolor"},{"1":"6.2","2":"2.2","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.6","2":"2.5","3":"3.9","4":"1.1","5":"versicolor"},{"1":"5.9","2":"3.2","3":"4.8","4":"1.8","5":"versicolor"},{"1":"6.1","2":"2.8","3":"4.0","4":"1.3","5":"versicolor"},{"1":"6.3","2":"2.5","3":"4.9","4":"1.5","5":"versicolor"},{"1":"6.1","2":"2.8","3":"4.7","4":"1.2","5":"versicolor"},{"1":"6.4","2":"2.9","3":"4.3","4":"1.3","5":"versicolor"},{"1":"6.6","2":"3.0","3":"4.4","4":"1.4","5":"versicolor"},{"1":"6.8","2":"2.8","3":"4.8","4":"1.4","5":"versicolor"},{"1":"6.7","2":"3.0","3":"5.0","4":"1.7","5":"versicolor"},{"1":"6.0","2":"2.9","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.7","2":"2.6","3":"3.5","4":"1.0","5":"versicolor"},{"1":"5.5","2":"2.4","3":"3.8","4":"1.1","5":"versicolor"},{"1":"5.5","2":"2.4","3":"3.7","4":"1.0","5":"versicolor"},{"1":"5.8","2":"2.7","3":"3.9","4":"1.2","5":"versicolor"},{"1":"6.0","2":"2.7","3":"5.1","4":"1.6","5":"versicolor"},{"1":"5.4","2":"3.0","3":"4.5","4":"1.5","5":"versicolor"},{"1":"6.0","2":"3.4","3":"4.5","4":"1.6","5":"versicolor"},{"1":"6.7","2":"3.1","3":"4.7","4":"1.5","5":"versicolor"},{"1":"6.3","2":"2.3","3":"4.4","4":"1.3","5":"versicolor"},{"1":"5.6","2":"3.0","3":"4.1","4":"1.3","5":"versicolor"},{"1":"5.5","2":"2.5","3":"4.0","4":"1.3","5":"versicolor"},{"1":"5.5","2":"2.6","3":"4.4","4":"1.2","5":"versicolor"},{"1":"6.1","2":"3.0","3":"4.6","4":"1.4","5":"versicolor"},{"1":"5.8","2":"2.6","3":"4.0","4":"1.2","5":"versicolor"},{"1":"5.0","2":"2.3","3":"3.3","4":"1.0","5":"versicolor"},{"1":"5.6","2":"2.7","3":"4.2","4":"1.3","5":"versicolor"},{"1":"5.7","2":"3.0","3":"4.2","4":"1.2","5":"versicolor"},{"1":"5.7","2":"2.9","3":"4.2","4":"1.3","5":"versicolor"},{"1":"6.2","2":"2.9","3":"4.3","4":"1.3","5":"versicolor"},{"1":"5.1","2":"2.5","3":"3.0","4":"1.1","5":"versicolor"},{"1":"5.7","2":"2.8","3":"4.1","4":"1.3","5":"versicolor"},{"1":"6.3","2":"3.3","3":"6.0","4":"2.5","5":"virginica"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica"},{"1":"7.1","2":"3.0","3":"5.9","4":"2.1","5":"virginica"},{"1":"6.3","2":"2.9","3":"5.6","4":"1.8","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.8","4":"2.2","5":"virginica"},{"1":"7.6","2":"3.0","3":"6.6","4":"2.1","5":"virginica"},{"1":"4.9","2":"2.5","3":"4.5","4":"1.7","5":"virginica"},{"1":"7.3","2":"2.9","3":"6.3","4":"1.8","5":"virginica"},{"1":"6.7","2":"2.5","3":"5.8","4":"1.8","5":"virginica"},{"1":"7.2","2":"3.6","3":"6.1","4":"2.5","5":"virginica"},{"1":"6.5","2":"3.2","3":"5.1","4":"2.0","5":"virginica"},{"1":"6.4","2":"2.7","3":"5.3","4":"1.9","5":"virginica"},{"1":"6.8","2":"3.0","3":"5.5","4":"2.1","5":"virginica"},{"1":"5.7","2":"2.5","3":"5.0","4":"2.0","5":"virginica"},{"1":"5.8","2":"2.8","3":"5.1","4":"2.4","5":"virginica"},{"1":"6.4","2":"3.2","3":"5.3","4":"2.3","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.5","4":"1.8","5":"virginica"},{"1":"7.7","2":"3.8","3":"6.7","4":"2.2","5":"virginica"},{"1":"7.7","2":"2.6","3":"6.9","4":"2.3","5":"virginica"},{"1":"6.0","2":"2.2","3":"5.0","4":"1.5","5":"virginica"},{"1":"6.9","2":"3.2","3":"5.7","4":"2.3","5":"virginica"},{"1":"5.6","2":"2.8","3":"4.9","4":"2.0","5":"virginica"},{"1":"7.7","2":"2.8","3":"6.7","4":"2.0","5":"virginica"},{"1":"6.3","2":"2.7","3":"4.9","4":"1.8","5":"virginica"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.1","5":"virginica"},{"1":"7.2","2":"3.2","3":"6.0","4":"1.8","5":"virginica"},{"1":"6.2","2":"2.8","3":"4.8","4":"1.8","5":"virginica"},{"1":"6.1","2":"3.0","3":"4.9","4":"1.8","5":"virginica"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.1","5":"virginica"},{"1":"7.2","2":"3.0","3":"5.8","4":"1.6","5":"virginica"},{"1":"7.4","2":"2.8","3":"6.1","4":"1.9","5":"virginica"},{"1":"7.9","2":"3.8","3":"6.4","4":"2.0","5":"virginica"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.2","5":"virginica"},{"1":"6.3","2":"2.8","3":"5.1","4":"1.5","5":"virginica"},{"1":"6.1","2":"2.6","3":"5.6","4":"1.4","5":"virginica"},{"1":"7.7","2":"3.0","3":"6.1","4":"2.3","5":"virginica"},{"1":"6.3","2":"3.4","3":"5.6","4":"2.4","5":"virginica"},{"1":"6.4","2":"3.1","3":"5.5","4":"1.8","5":"virginica"},{"1":"6.0","2":"3.0","3":"4.8","4":"1.8","5":"virginica"},{"1":"6.9","2":"3.1","3":"5.4","4":"2.1","5":"virginica"},{"1":"6.7","2":"3.1","3":"5.6","4":"2.4","5":"virginica"},{"1":"6.9","2":"3.1","3":"5.1","4":"2.3","5":"virginica"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica"},{"1":"6.8","2":"3.2","3":"5.9","4":"2.3","5":"virginica"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.5","5":"virginica"},{"1":"6.7","2":"3.0","3":"5.2","4":"2.3","5":"virginica"},{"1":"6.3","2":"2.5","3":"5.0","4":"1.9","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.2","4":"2.0","5":"virginica"},{"1":"6.2","2":"3.4","3":"5.4","4":"2.3","5":"virginica"},{"1":"5.9","2":"3.0","3":"5.1","4":"1.8","5":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(iris); <span class="fu">ncol</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(iris); <span class="fu">ncol</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 150</code></pre>
@@ -361,14 +310,14 @@ Tip
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)      <span class="co"># estructura (tipos por columna)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)      <span class="co"># estructura (tipos por columna)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
@@ -380,28 +329,32 @@ Tip
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris, <span class="dv">3</span>)  <span class="co"># primeras 3 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris, <span class="dv">3</span>)  <span class="co"># primeras 3 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iris, <span class="dv">3</span>)  <span class="co"># últimas 3 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iris, <span class="dv">3</span>)  <span class="co"># últimas 3 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-148          6.5         3.0          5.2         2.0 virginica
-149          6.2         3.4          5.4         2.3 virginica
-150          5.9         3.0          5.1         1.8 virginica</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"6.5","2":"3.0","3":"5.2","4":"2.0","5":"virginica","_rn_":"148"},{"1":"6.2","2":"3.4","3":"5.4","4":"2.3","5":"virginica","_rn_":"149"},{"1":"5.9","2":"3.0","3":"5.1","4":"1.8","5":"virginica","_rn_":"150"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abre visor en IDE (descomenta si usas RStudio/Posit):</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(iris)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abre visor en IDE (descomenta si usas RStudio/Posit):</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># View(iris)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -423,22 +376,26 @@ Note
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, <span class="dv">2</span>]     <span class="co"># fila 1, columna 2 (valor escalar)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, <span class="dv">2</span>]     <span class="co"># fila 1, columna 2 (valor escalar)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.5</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, ]      <span class="co"># fila 1 completa (data frame con 5 columnas)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, ]      <span class="co"># fila 1 completa (data frame con 5 columnas)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="dv">5</span>]     <span class="co"># columna 5 como VECTOR (por defecto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="dv">5</span>]     <span class="co"># columna 5 como VECTOR (por defecto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
@@ -470,160 +427,15 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="dv">5</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]  <span class="co"># columna 5 como DATA FRAME (mantén forma)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="dv">5</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]  <span class="co"># columna 5 como DATA FRAME (mantén forma)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Species
-1       setosa
-2       setosa
-3       setosa
-4       setosa
-5       setosa
-6       setosa
-7       setosa
-8       setosa
-9       setosa
-10      setosa
-11      setosa
-12      setosa
-13      setosa
-14      setosa
-15      setosa
-16      setosa
-17      setosa
-18      setosa
-19      setosa
-20      setosa
-21      setosa
-22      setosa
-23      setosa
-24      setosa
-25      setosa
-26      setosa
-27      setosa
-28      setosa
-29      setosa
-30      setosa
-31      setosa
-32      setosa
-33      setosa
-34      setosa
-35      setosa
-36      setosa
-37      setosa
-38      setosa
-39      setosa
-40      setosa
-41      setosa
-42      setosa
-43      setosa
-44      setosa
-45      setosa
-46      setosa
-47      setosa
-48      setosa
-49      setosa
-50      setosa
-51  versicolor
-52  versicolor
-53  versicolor
-54  versicolor
-55  versicolor
-56  versicolor
-57  versicolor
-58  versicolor
-59  versicolor
-60  versicolor
-61  versicolor
-62  versicolor
-63  versicolor
-64  versicolor
-65  versicolor
-66  versicolor
-67  versicolor
-68  versicolor
-69  versicolor
-70  versicolor
-71  versicolor
-72  versicolor
-73  versicolor
-74  versicolor
-75  versicolor
-76  versicolor
-77  versicolor
-78  versicolor
-79  versicolor
-80  versicolor
-81  versicolor
-82  versicolor
-83  versicolor
-84  versicolor
-85  versicolor
-86  versicolor
-87  versicolor
-88  versicolor
-89  versicolor
-90  versicolor
-91  versicolor
-92  versicolor
-93  versicolor
-94  versicolor
-95  versicolor
-96  versicolor
-97  versicolor
-98  versicolor
-99  versicolor
-100 versicolor
-101  virginica
-102  virginica
-103  virginica
-104  virginica
-105  virginica
-106  virginica
-107  virginica
-108  virginica
-109  virginica
-110  virginica
-111  virginica
-112  virginica
-113  virginica
-114  virginica
-115  virginica
-116  virginica
-117  virginica
-118  virginica
-119  virginica
-120  virginica
-121  virginica
-122  virginica
-123  virginica
-124  virginica
-125  virginica
-126  virginica
-127  virginica
-128  virginica
-129  virginica
-130  virginica
-131  virginica
-132  virginica
-133  virginica
-134  virginica
-135  virginica
-136  virginica
-137  virginica
-138  virginica
-139  virginica
-140  virginica
-141  virginica
-142  virginica
-143  virginica
-144  virginica
-145  virginica
-146  virginica
-147  virginica
-148  virginica
-149  virginica
-150  virginica</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -645,332 +457,42 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame con 1 columna (por nombre):</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="st">"Species"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame con 1 columna (por nombre):</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="st">"Species"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Species
-1       setosa
-2       setosa
-3       setosa
-4       setosa
-5       setosa
-6       setosa
-7       setosa
-8       setosa
-9       setosa
-10      setosa
-11      setosa
-12      setosa
-13      setosa
-14      setosa
-15      setosa
-16      setosa
-17      setosa
-18      setosa
-19      setosa
-20      setosa
-21      setosa
-22      setosa
-23      setosa
-24      setosa
-25      setosa
-26      setosa
-27      setosa
-28      setosa
-29      setosa
-30      setosa
-31      setosa
-32      setosa
-33      setosa
-34      setosa
-35      setosa
-36      setosa
-37      setosa
-38      setosa
-39      setosa
-40      setosa
-41      setosa
-42      setosa
-43      setosa
-44      setosa
-45      setosa
-46      setosa
-47      setosa
-48      setosa
-49      setosa
-50      setosa
-51  versicolor
-52  versicolor
-53  versicolor
-54  versicolor
-55  versicolor
-56  versicolor
-57  versicolor
-58  versicolor
-59  versicolor
-60  versicolor
-61  versicolor
-62  versicolor
-63  versicolor
-64  versicolor
-65  versicolor
-66  versicolor
-67  versicolor
-68  versicolor
-69  versicolor
-70  versicolor
-71  versicolor
-72  versicolor
-73  versicolor
-74  versicolor
-75  versicolor
-76  versicolor
-77  versicolor
-78  versicolor
-79  versicolor
-80  versicolor
-81  versicolor
-82  versicolor
-83  versicolor
-84  versicolor
-85  versicolor
-86  versicolor
-87  versicolor
-88  versicolor
-89  versicolor
-90  versicolor
-91  versicolor
-92  versicolor
-93  versicolor
-94  versicolor
-95  versicolor
-96  versicolor
-97  versicolor
-98  versicolor
-99  versicolor
-100 versicolor
-101  virginica
-102  virginica
-103  virginica
-104  virginica
-105  virginica
-106  virginica
-107  virginica
-108  virginica
-109  virginica
-110  virginica
-111  virginica
-112  virginica
-113  virginica
-114  virginica
-115  virginica
-116  virginica
-117  virginica
-118  virginica
-119  virginica
-120  virginica
-121  virginica
-122  virginica
-123  virginica
-124  virginica
-125  virginica
-126  virginica
-127  virginica
-128  virginica
-129  virginica
-130  virginica
-131  virginica
-132  virginica
-133  virginica
-134  virginica
-135  virginica
-136  virginica
-137  virginica
-138  virginica
-139  virginica
-140  virginica
-141  virginica
-142  virginica
-143  virginica
-144  virginica
-145  virginica
-146  virginica
-147  virginica
-148  virginica
-149  virginica
-150  virginica</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"setosa"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"versicolor"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"},{"1":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector de nombres para seleccionar varias:</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector de nombres para seleccionar varias:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Sepal.Width
-1            5.1         3.5
-2            4.9         3.0
-3            4.7         3.2
-4            4.6         3.1
-5            5.0         3.6
-6            5.4         3.9
-7            4.6         3.4
-8            5.0         3.4
-9            4.4         2.9
-10           4.9         3.1
-11           5.4         3.7
-12           4.8         3.4
-13           4.8         3.0
-14           4.3         3.0
-15           5.8         4.0
-16           5.7         4.4
-17           5.4         3.9
-18           5.1         3.5
-19           5.7         3.8
-20           5.1         3.8
-21           5.4         3.4
-22           5.1         3.7
-23           4.6         3.6
-24           5.1         3.3
-25           4.8         3.4
-26           5.0         3.0
-27           5.0         3.4
-28           5.2         3.5
-29           5.2         3.4
-30           4.7         3.2
-31           4.8         3.1
-32           5.4         3.4
-33           5.2         4.1
-34           5.5         4.2
-35           4.9         3.1
-36           5.0         3.2
-37           5.5         3.5
-38           4.9         3.6
-39           4.4         3.0
-40           5.1         3.4
-41           5.0         3.5
-42           4.5         2.3
-43           4.4         3.2
-44           5.0         3.5
-45           5.1         3.8
-46           4.8         3.0
-47           5.1         3.8
-48           4.6         3.2
-49           5.3         3.7
-50           5.0         3.3
-51           7.0         3.2
-52           6.4         3.2
-53           6.9         3.1
-54           5.5         2.3
-55           6.5         2.8
-56           5.7         2.8
-57           6.3         3.3
-58           4.9         2.4
-59           6.6         2.9
-60           5.2         2.7
-61           5.0         2.0
-62           5.9         3.0
-63           6.0         2.2
-64           6.1         2.9
-65           5.6         2.9
-66           6.7         3.1
-67           5.6         3.0
-68           5.8         2.7
-69           6.2         2.2
-70           5.6         2.5
-71           5.9         3.2
-72           6.1         2.8
-73           6.3         2.5
-74           6.1         2.8
-75           6.4         2.9
-76           6.6         3.0
-77           6.8         2.8
-78           6.7         3.0
-79           6.0         2.9
-80           5.7         2.6
-81           5.5         2.4
-82           5.5         2.4
-83           5.8         2.7
-84           6.0         2.7
-85           5.4         3.0
-86           6.0         3.4
-87           6.7         3.1
-88           6.3         2.3
-89           5.6         3.0
-90           5.5         2.5
-91           5.5         2.6
-92           6.1         3.0
-93           5.8         2.6
-94           5.0         2.3
-95           5.6         2.7
-96           5.7         3.0
-97           5.7         2.9
-98           6.2         2.9
-99           5.1         2.5
-100          5.7         2.8
-101          6.3         3.3
-102          5.8         2.7
-103          7.1         3.0
-104          6.3         2.9
-105          6.5         3.0
-106          7.6         3.0
-107          4.9         2.5
-108          7.3         2.9
-109          6.7         2.5
-110          7.2         3.6
-111          6.5         3.2
-112          6.4         2.7
-113          6.8         3.0
-114          5.7         2.5
-115          5.8         2.8
-116          6.4         3.2
-117          6.5         3.0
-118          7.7         3.8
-119          7.7         2.6
-120          6.0         2.2
-121          6.9         3.2
-122          5.6         2.8
-123          7.7         2.8
-124          6.3         2.7
-125          6.7         3.3
-126          7.2         3.2
-127          6.2         2.8
-128          6.1         3.0
-129          6.4         2.8
-130          7.2         3.0
-131          7.4         2.8
-132          7.9         3.8
-133          6.4         2.8
-134          6.3         2.8
-135          6.1         2.6
-136          7.7         3.0
-137          6.3         3.4
-138          6.4         3.1
-139          6.0         3.0
-140          6.9         3.1
-141          6.7         3.1
-142          6.9         3.1
-143          5.8         2.7
-144          6.8         3.2
-145          6.7         3.3
-146          6.7         3.0
-147          6.3         2.5
-148          6.5         3.0
-149          6.2         3.4
-150          5.9         3.0</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5"},{"1":"4.9","2":"3.0"},{"1":"4.7","2":"3.2"},{"1":"4.6","2":"3.1"},{"1":"5.0","2":"3.6"},{"1":"5.4","2":"3.9"},{"1":"4.6","2":"3.4"},{"1":"5.0","2":"3.4"},{"1":"4.4","2":"2.9"},{"1":"4.9","2":"3.1"},{"1":"5.4","2":"3.7"},{"1":"4.8","2":"3.4"},{"1":"4.8","2":"3.0"},{"1":"4.3","2":"3.0"},{"1":"5.8","2":"4.0"},{"1":"5.7","2":"4.4"},{"1":"5.4","2":"3.9"},{"1":"5.1","2":"3.5"},{"1":"5.7","2":"3.8"},{"1":"5.1","2":"3.8"},{"1":"5.4","2":"3.4"},{"1":"5.1","2":"3.7"},{"1":"4.6","2":"3.6"},{"1":"5.1","2":"3.3"},{"1":"4.8","2":"3.4"},{"1":"5.0","2":"3.0"},{"1":"5.0","2":"3.4"},{"1":"5.2","2":"3.5"},{"1":"5.2","2":"3.4"},{"1":"4.7","2":"3.2"},{"1":"4.8","2":"3.1"},{"1":"5.4","2":"3.4"},{"1":"5.2","2":"4.1"},{"1":"5.5","2":"4.2"},{"1":"4.9","2":"3.1"},{"1":"5.0","2":"3.2"},{"1":"5.5","2":"3.5"},{"1":"4.9","2":"3.6"},{"1":"4.4","2":"3.0"},{"1":"5.1","2":"3.4"},{"1":"5.0","2":"3.5"},{"1":"4.5","2":"2.3"},{"1":"4.4","2":"3.2"},{"1":"5.0","2":"3.5"},{"1":"5.1","2":"3.8"},{"1":"4.8","2":"3.0"},{"1":"5.1","2":"3.8"},{"1":"4.6","2":"3.2"},{"1":"5.3","2":"3.7"},{"1":"5.0","2":"3.3"},{"1":"7.0","2":"3.2"},{"1":"6.4","2":"3.2"},{"1":"6.9","2":"3.1"},{"1":"5.5","2":"2.3"},{"1":"6.5","2":"2.8"},{"1":"5.7","2":"2.8"},{"1":"6.3","2":"3.3"},{"1":"4.9","2":"2.4"},{"1":"6.6","2":"2.9"},{"1":"5.2","2":"2.7"},{"1":"5.0","2":"2.0"},{"1":"5.9","2":"3.0"},{"1":"6.0","2":"2.2"},{"1":"6.1","2":"2.9"},{"1":"5.6","2":"2.9"},{"1":"6.7","2":"3.1"},{"1":"5.6","2":"3.0"},{"1":"5.8","2":"2.7"},{"1":"6.2","2":"2.2"},{"1":"5.6","2":"2.5"},{"1":"5.9","2":"3.2"},{"1":"6.1","2":"2.8"},{"1":"6.3","2":"2.5"},{"1":"6.1","2":"2.8"},{"1":"6.4","2":"2.9"},{"1":"6.6","2":"3.0"},{"1":"6.8","2":"2.8"},{"1":"6.7","2":"3.0"},{"1":"6.0","2":"2.9"},{"1":"5.7","2":"2.6"},{"1":"5.5","2":"2.4"},{"1":"5.5","2":"2.4"},{"1":"5.8","2":"2.7"},{"1":"6.0","2":"2.7"},{"1":"5.4","2":"3.0"},{"1":"6.0","2":"3.4"},{"1":"6.7","2":"3.1"},{"1":"6.3","2":"2.3"},{"1":"5.6","2":"3.0"},{"1":"5.5","2":"2.5"},{"1":"5.5","2":"2.6"},{"1":"6.1","2":"3.0"},{"1":"5.8","2":"2.6"},{"1":"5.0","2":"2.3"},{"1":"5.6","2":"2.7"},{"1":"5.7","2":"3.0"},{"1":"5.7","2":"2.9"},{"1":"6.2","2":"2.9"},{"1":"5.1","2":"2.5"},{"1":"5.7","2":"2.8"},{"1":"6.3","2":"3.3"},{"1":"5.8","2":"2.7"},{"1":"7.1","2":"3.0"},{"1":"6.3","2":"2.9"},{"1":"6.5","2":"3.0"},{"1":"7.6","2":"3.0"},{"1":"4.9","2":"2.5"},{"1":"7.3","2":"2.9"},{"1":"6.7","2":"2.5"},{"1":"7.2","2":"3.6"},{"1":"6.5","2":"3.2"},{"1":"6.4","2":"2.7"},{"1":"6.8","2":"3.0"},{"1":"5.7","2":"2.5"},{"1":"5.8","2":"2.8"},{"1":"6.4","2":"3.2"},{"1":"6.5","2":"3.0"},{"1":"7.7","2":"3.8"},{"1":"7.7","2":"2.6"},{"1":"6.0","2":"2.2"},{"1":"6.9","2":"3.2"},{"1":"5.6","2":"2.8"},{"1":"7.7","2":"2.8"},{"1":"6.3","2":"2.7"},{"1":"6.7","2":"3.3"},{"1":"7.2","2":"3.2"},{"1":"6.2","2":"2.8"},{"1":"6.1","2":"3.0"},{"1":"6.4","2":"2.8"},{"1":"7.2","2":"3.0"},{"1":"7.4","2":"2.8"},{"1":"7.9","2":"3.8"},{"1":"6.4","2":"2.8"},{"1":"6.3","2":"2.8"},{"1":"6.1","2":"2.6"},{"1":"7.7","2":"3.0"},{"1":"6.3","2":"3.4"},{"1":"6.4","2":"3.1"},{"1":"6.0","2":"3.0"},{"1":"6.9","2":"3.1"},{"1":"6.7","2":"3.1"},{"1":"6.9","2":"3.1"},{"1":"5.8","2":"2.7"},{"1":"6.8","2":"3.2"},{"1":"6.7","2":"3.3"},{"1":"6.7","2":"3.0"},{"1":"6.3","2":"2.5"},{"1":"6.5","2":"3.0"},{"1":"6.2","2":"3.4"},{"1":"5.9","2":"3.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nombres de columnas:</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nombres de columnas:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso con $ (útil y legible):</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso con $ (útil y legible):</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
@@ -1002,7 +524,7 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.843333</code></pre>
@@ -1014,48 +536,45 @@ Levels: setosa versicolor virginica</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas donde Sepal.Length &gt; 6</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>largas <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(largas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas donde Sepal.Length &gt; 6</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>largas <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(largas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-51          7.0         3.2          4.7         1.4 versicolor
-52          6.4         3.2          4.5         1.5 versicolor
-53          6.9         3.1          4.9         1.5 versicolor
-55          6.5         2.8          4.6         1.5 versicolor
-57          6.3         3.3          4.7         1.6 versicolor
-59          6.6         2.9          4.6         1.3 versicolor</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor","_rn_":"51"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor","_rn_":"52"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor","_rn_":"53"},{"1":"6.5","2":"2.8","3":"4.6","4":"1.5","5":"versicolor","_rn_":"55"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6","5":"versicolor","_rn_":"57"},{"1":"6.6","2":"2.9","3":"4.6","4":"1.3","5":"versicolor","_rn_":"59"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas de la especie "setosa"</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span>, ]</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(setosa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas de la especie "setosa"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span>, ]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(setosa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","_rn_":"3"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa","_rn_":"4"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa","_rn_":"5"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varias condiciones: AND (&amp;) / OR (|)</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ej <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Width <span class="sc">&gt;=</span> <span class="dv">3</span>, ]</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varias condiciones: AND (&amp;) / OR (|)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ej <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">!=</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Width <span class="sc">&gt;=</span> <span class="dv">3</span>, ]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-51          7.0         3.2          4.7         1.4 versicolor
-52          6.4         3.2          4.5         1.5 versicolor
-53          6.9         3.1          4.9         1.5 versicolor
-57          6.3         3.3          4.7         1.6 versicolor
-62          5.9         3.0          4.2         1.5 versicolor
-66          6.7         3.1          4.4         1.4 versicolor</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor","_rn_":"51"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor","_rn_":"52"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor","_rn_":"53"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6","5":"versicolor","_rn_":"57"},{"1":"5.9","2":"3.0","3":"4.2","4":"1.5","5":"versicolor","_rn_":"62"},{"1":"6.7","2":"3.1","3":"4.4","4":"1.4","5":"versicolor","_rn_":"66"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -1064,12 +583,12 @@ Levels: setosa versicolor virginica</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una razón (ancho/largo del sépalo)</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">&lt;-</span> iris</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>base2<span class="sc">$</span>ratio_sepal <span class="ot">&lt;-</span> base2<span class="sc">$</span>Sepal.Width <span class="sc">/</span> base2<span class="sc">$</span>Sepal.Length</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Chequea tipos y primeras filas</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(base2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una razón (ancho/largo del sépalo)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">&lt;-</span> iris</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>base2<span class="sc">$</span>ratio_sepal <span class="ot">&lt;-</span> base2<span class="sc">$</span>Sepal.Width <span class="sc">/</span> base2<span class="sc">$</span>Sepal.Length</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Chequea tipos y primeras filas</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(base2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  6 variables:
@@ -1082,16 +601,15 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base2[, <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Sepal.Width"</span>,<span class="st">"ratio_sepal"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base2[, <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Sepal.Width"</span>,<span class="st">"ratio_sepal"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width ratio_sepal
-1          5.1         3.5   0.6862745
-2          4.9         3.0   0.6122449
-3          4.7         3.2   0.6808511
-4          4.6         3.1   0.6739130
-5          5.0         3.6   0.7200000
-6          5.4         3.9   0.7222222</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["ratio_sepal"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5","3":"0.6862745","_rn_":"1"},{"1":"4.9","2":"3.0","3":"0.6122449","_rn_":"2"},{"1":"4.7","2":"3.2","3":"0.6808511","_rn_":"3"},{"1":"4.6","2":"3.1","3":"0.6739130","_rn_":"4"},{"1":"5.0","2":"3.6","3":"0.7200000","_rn_":"5"},{"1":"5.4","2":"3.9","3":"0.7222222","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -1100,337 +618,42 @@ Levels: setosa versicolor virginica</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeras 10 filas y columnas 1:3</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeras 10 filas y columnas 1:3</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Sepal.Length Sepal.Width Petal.Length
-1           5.1         3.5          1.4
-2           4.9         3.0          1.4
-3           4.7         3.2          1.3
-4           4.6         3.1          1.5
-5           5.0         3.6          1.4
-6           5.4         3.9          1.7
-7           4.6         3.4          1.4
-8           5.0         3.4          1.5
-9           4.4         2.9          1.4
-10          4.9         3.1          1.5</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","_rn_":"3"},{"1":"4.6","2":"3.1","3":"1.5","_rn_":"4"},{"1":"5.0","2":"3.6","3":"1.4","_rn_":"5"},{"1":"5.4","2":"3.9","3":"1.7","_rn_":"6"},{"1":"4.6","2":"3.4","3":"1.4","_rn_":"7"},{"1":"5.0","2":"3.4","3":"1.5","_rn_":"8"},{"1":"4.4","2":"2.9","3":"1.4","_rn_":"9"},{"1":"4.9","2":"3.1","3":"1.5","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columnas no contiguas por índice</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columnas no contiguas por índice</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Petal.Length    Species
-1            5.1          1.4     setosa
-2            4.9          1.4     setosa
-3            4.7          1.3     setosa
-4            4.6          1.5     setosa
-5            5.0          1.4     setosa
-6            5.4          1.7     setosa
-7            4.6          1.4     setosa
-8            5.0          1.5     setosa
-9            4.4          1.4     setosa
-10           4.9          1.5     setosa
-11           5.4          1.5     setosa
-12           4.8          1.6     setosa
-13           4.8          1.4     setosa
-14           4.3          1.1     setosa
-15           5.8          1.2     setosa
-16           5.7          1.5     setosa
-17           5.4          1.3     setosa
-18           5.1          1.4     setosa
-19           5.7          1.7     setosa
-20           5.1          1.5     setosa
-21           5.4          1.7     setosa
-22           5.1          1.5     setosa
-23           4.6          1.0     setosa
-24           5.1          1.7     setosa
-25           4.8          1.9     setosa
-26           5.0          1.6     setosa
-27           5.0          1.6     setosa
-28           5.2          1.5     setosa
-29           5.2          1.4     setosa
-30           4.7          1.6     setosa
-31           4.8          1.6     setosa
-32           5.4          1.5     setosa
-33           5.2          1.5     setosa
-34           5.5          1.4     setosa
-35           4.9          1.5     setosa
-36           5.0          1.2     setosa
-37           5.5          1.3     setosa
-38           4.9          1.4     setosa
-39           4.4          1.3     setosa
-40           5.1          1.5     setosa
-41           5.0          1.3     setosa
-42           4.5          1.3     setosa
-43           4.4          1.3     setosa
-44           5.0          1.6     setosa
-45           5.1          1.9     setosa
-46           4.8          1.4     setosa
-47           5.1          1.6     setosa
-48           4.6          1.4     setosa
-49           5.3          1.5     setosa
-50           5.0          1.4     setosa
-51           7.0          4.7 versicolor
-52           6.4          4.5 versicolor
-53           6.9          4.9 versicolor
-54           5.5          4.0 versicolor
-55           6.5          4.6 versicolor
-56           5.7          4.5 versicolor
-57           6.3          4.7 versicolor
-58           4.9          3.3 versicolor
-59           6.6          4.6 versicolor
-60           5.2          3.9 versicolor
-61           5.0          3.5 versicolor
-62           5.9          4.2 versicolor
-63           6.0          4.0 versicolor
-64           6.1          4.7 versicolor
-65           5.6          3.6 versicolor
-66           6.7          4.4 versicolor
-67           5.6          4.5 versicolor
-68           5.8          4.1 versicolor
-69           6.2          4.5 versicolor
-70           5.6          3.9 versicolor
-71           5.9          4.8 versicolor
-72           6.1          4.0 versicolor
-73           6.3          4.9 versicolor
-74           6.1          4.7 versicolor
-75           6.4          4.3 versicolor
-76           6.6          4.4 versicolor
-77           6.8          4.8 versicolor
-78           6.7          5.0 versicolor
-79           6.0          4.5 versicolor
-80           5.7          3.5 versicolor
-81           5.5          3.8 versicolor
-82           5.5          3.7 versicolor
-83           5.8          3.9 versicolor
-84           6.0          5.1 versicolor
-85           5.4          4.5 versicolor
-86           6.0          4.5 versicolor
-87           6.7          4.7 versicolor
-88           6.3          4.4 versicolor
-89           5.6          4.1 versicolor
-90           5.5          4.0 versicolor
-91           5.5          4.4 versicolor
-92           6.1          4.6 versicolor
-93           5.8          4.0 versicolor
-94           5.0          3.3 versicolor
-95           5.6          4.2 versicolor
-96           5.7          4.2 versicolor
-97           5.7          4.2 versicolor
-98           6.2          4.3 versicolor
-99           5.1          3.0 versicolor
-100          5.7          4.1 versicolor
-101          6.3          6.0  virginica
-102          5.8          5.1  virginica
-103          7.1          5.9  virginica
-104          6.3          5.6  virginica
-105          6.5          5.8  virginica
-106          7.6          6.6  virginica
-107          4.9          4.5  virginica
-108          7.3          6.3  virginica
-109          6.7          5.8  virginica
-110          7.2          6.1  virginica
-111          6.5          5.1  virginica
-112          6.4          5.3  virginica
-113          6.8          5.5  virginica
-114          5.7          5.0  virginica
-115          5.8          5.1  virginica
-116          6.4          5.3  virginica
-117          6.5          5.5  virginica
-118          7.7          6.7  virginica
-119          7.7          6.9  virginica
-120          6.0          5.0  virginica
-121          6.9          5.7  virginica
-122          5.6          4.9  virginica
-123          7.7          6.7  virginica
-124          6.3          4.9  virginica
-125          6.7          5.7  virginica
-126          7.2          6.0  virginica
-127          6.2          4.8  virginica
-128          6.1          4.9  virginica
-129          6.4          5.6  virginica
-130          7.2          5.8  virginica
-131          7.4          6.1  virginica
-132          7.9          6.4  virginica
-133          6.4          5.6  virginica
-134          6.3          5.1  virginica
-135          6.1          5.6  virginica
-136          7.7          6.1  virginica
-137          6.3          5.6  virginica
-138          6.4          5.5  virginica
-139          6.0          4.8  virginica
-140          6.9          5.4  virginica
-141          6.7          5.6  virginica
-142          6.9          5.1  virginica
-143          5.8          5.1  virginica
-144          6.8          5.9  virginica
-145          6.7          5.7  virginica
-146          6.7          5.2  virginica
-147          6.3          5.0  virginica
-148          6.5          5.2  virginica
-149          6.2          5.4  virginica
-150          5.9          5.1  virginica</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"1.4","3":"setosa"},{"1":"4.9","2":"1.4","3":"setosa"},{"1":"4.7","2":"1.3","3":"setosa"},{"1":"4.6","2":"1.5","3":"setosa"},{"1":"5.0","2":"1.4","3":"setosa"},{"1":"5.4","2":"1.7","3":"setosa"},{"1":"4.6","2":"1.4","3":"setosa"},{"1":"5.0","2":"1.5","3":"setosa"},{"1":"4.4","2":"1.4","3":"setosa"},{"1":"4.9","2":"1.5","3":"setosa"},{"1":"5.4","2":"1.5","3":"setosa"},{"1":"4.8","2":"1.6","3":"setosa"},{"1":"4.8","2":"1.4","3":"setosa"},{"1":"4.3","2":"1.1","3":"setosa"},{"1":"5.8","2":"1.2","3":"setosa"},{"1":"5.7","2":"1.5","3":"setosa"},{"1":"5.4","2":"1.3","3":"setosa"},{"1":"5.1","2":"1.4","3":"setosa"},{"1":"5.7","2":"1.7","3":"setosa"},{"1":"5.1","2":"1.5","3":"setosa"},{"1":"5.4","2":"1.7","3":"setosa"},{"1":"5.1","2":"1.5","3":"setosa"},{"1":"4.6","2":"1.0","3":"setosa"},{"1":"5.1","2":"1.7","3":"setosa"},{"1":"4.8","2":"1.9","3":"setosa"},{"1":"5.0","2":"1.6","3":"setosa"},{"1":"5.0","2":"1.6","3":"setosa"},{"1":"5.2","2":"1.5","3":"setosa"},{"1":"5.2","2":"1.4","3":"setosa"},{"1":"4.7","2":"1.6","3":"setosa"},{"1":"4.8","2":"1.6","3":"setosa"},{"1":"5.4","2":"1.5","3":"setosa"},{"1":"5.2","2":"1.5","3":"setosa"},{"1":"5.5","2":"1.4","3":"setosa"},{"1":"4.9","2":"1.5","3":"setosa"},{"1":"5.0","2":"1.2","3":"setosa"},{"1":"5.5","2":"1.3","3":"setosa"},{"1":"4.9","2":"1.4","3":"setosa"},{"1":"4.4","2":"1.3","3":"setosa"},{"1":"5.1","2":"1.5","3":"setosa"},{"1":"5.0","2":"1.3","3":"setosa"},{"1":"4.5","2":"1.3","3":"setosa"},{"1":"4.4","2":"1.3","3":"setosa"},{"1":"5.0","2":"1.6","3":"setosa"},{"1":"5.1","2":"1.9","3":"setosa"},{"1":"4.8","2":"1.4","3":"setosa"},{"1":"5.1","2":"1.6","3":"setosa"},{"1":"4.6","2":"1.4","3":"setosa"},{"1":"5.3","2":"1.5","3":"setosa"},{"1":"5.0","2":"1.4","3":"setosa"},{"1":"7.0","2":"4.7","3":"versicolor"},{"1":"6.4","2":"4.5","3":"versicolor"},{"1":"6.9","2":"4.9","3":"versicolor"},{"1":"5.5","2":"4.0","3":"versicolor"},{"1":"6.5","2":"4.6","3":"versicolor"},{"1":"5.7","2":"4.5","3":"versicolor"},{"1":"6.3","2":"4.7","3":"versicolor"},{"1":"4.9","2":"3.3","3":"versicolor"},{"1":"6.6","2":"4.6","3":"versicolor"},{"1":"5.2","2":"3.9","3":"versicolor"},{"1":"5.0","2":"3.5","3":"versicolor"},{"1":"5.9","2":"4.2","3":"versicolor"},{"1":"6.0","2":"4.0","3":"versicolor"},{"1":"6.1","2":"4.7","3":"versicolor"},{"1":"5.6","2":"3.6","3":"versicolor"},{"1":"6.7","2":"4.4","3":"versicolor"},{"1":"5.6","2":"4.5","3":"versicolor"},{"1":"5.8","2":"4.1","3":"versicolor"},{"1":"6.2","2":"4.5","3":"versicolor"},{"1":"5.6","2":"3.9","3":"versicolor"},{"1":"5.9","2":"4.8","3":"versicolor"},{"1":"6.1","2":"4.0","3":"versicolor"},{"1":"6.3","2":"4.9","3":"versicolor"},{"1":"6.1","2":"4.7","3":"versicolor"},{"1":"6.4","2":"4.3","3":"versicolor"},{"1":"6.6","2":"4.4","3":"versicolor"},{"1":"6.8","2":"4.8","3":"versicolor"},{"1":"6.7","2":"5.0","3":"versicolor"},{"1":"6.0","2":"4.5","3":"versicolor"},{"1":"5.7","2":"3.5","3":"versicolor"},{"1":"5.5","2":"3.8","3":"versicolor"},{"1":"5.5","2":"3.7","3":"versicolor"},{"1":"5.8","2":"3.9","3":"versicolor"},{"1":"6.0","2":"5.1","3":"versicolor"},{"1":"5.4","2":"4.5","3":"versicolor"},{"1":"6.0","2":"4.5","3":"versicolor"},{"1":"6.7","2":"4.7","3":"versicolor"},{"1":"6.3","2":"4.4","3":"versicolor"},{"1":"5.6","2":"4.1","3":"versicolor"},{"1":"5.5","2":"4.0","3":"versicolor"},{"1":"5.5","2":"4.4","3":"versicolor"},{"1":"6.1","2":"4.6","3":"versicolor"},{"1":"5.8","2":"4.0","3":"versicolor"},{"1":"5.0","2":"3.3","3":"versicolor"},{"1":"5.6","2":"4.2","3":"versicolor"},{"1":"5.7","2":"4.2","3":"versicolor"},{"1":"5.7","2":"4.2","3":"versicolor"},{"1":"6.2","2":"4.3","3":"versicolor"},{"1":"5.1","2":"3.0","3":"versicolor"},{"1":"5.7","2":"4.1","3":"versicolor"},{"1":"6.3","2":"6.0","3":"virginica"},{"1":"5.8","2":"5.1","3":"virginica"},{"1":"7.1","2":"5.9","3":"virginica"},{"1":"6.3","2":"5.6","3":"virginica"},{"1":"6.5","2":"5.8","3":"virginica"},{"1":"7.6","2":"6.6","3":"virginica"},{"1":"4.9","2":"4.5","3":"virginica"},{"1":"7.3","2":"6.3","3":"virginica"},{"1":"6.7","2":"5.8","3":"virginica"},{"1":"7.2","2":"6.1","3":"virginica"},{"1":"6.5","2":"5.1","3":"virginica"},{"1":"6.4","2":"5.3","3":"virginica"},{"1":"6.8","2":"5.5","3":"virginica"},{"1":"5.7","2":"5.0","3":"virginica"},{"1":"5.8","2":"5.1","3":"virginica"},{"1":"6.4","2":"5.3","3":"virginica"},{"1":"6.5","2":"5.5","3":"virginica"},{"1":"7.7","2":"6.7","3":"virginica"},{"1":"7.7","2":"6.9","3":"virginica"},{"1":"6.0","2":"5.0","3":"virginica"},{"1":"6.9","2":"5.7","3":"virginica"},{"1":"5.6","2":"4.9","3":"virginica"},{"1":"7.7","2":"6.7","3":"virginica"},{"1":"6.3","2":"4.9","3":"virginica"},{"1":"6.7","2":"5.7","3":"virginica"},{"1":"7.2","2":"6.0","3":"virginica"},{"1":"6.2","2":"4.8","3":"virginica"},{"1":"6.1","2":"4.9","3":"virginica"},{"1":"6.4","2":"5.6","3":"virginica"},{"1":"7.2","2":"5.8","3":"virginica"},{"1":"7.4","2":"6.1","3":"virginica"},{"1":"7.9","2":"6.4","3":"virginica"},{"1":"6.4","2":"5.6","3":"virginica"},{"1":"6.3","2":"5.1","3":"virginica"},{"1":"6.1","2":"5.6","3":"virginica"},{"1":"7.7","2":"6.1","3":"virginica"},{"1":"6.3","2":"5.6","3":"virginica"},{"1":"6.4","2":"5.5","3":"virginica"},{"1":"6.0","2":"4.8","3":"virginica"},{"1":"6.9","2":"5.4","3":"virginica"},{"1":"6.7","2":"5.6","3":"virginica"},{"1":"6.9","2":"5.1","3":"virginica"},{"1":"5.8","2":"5.1","3":"virginica"},{"1":"6.8","2":"5.9","3":"virginica"},{"1":"6.7","2":"5.7","3":"virginica"},{"1":"6.7","2":"5.2","3":"virginica"},{"1":"6.3","2":"5.0","3":"virginica"},{"1":"6.5","2":"5.2","3":"virginica"},{"1":"6.2","2":"5.4","3":"virginica"},{"1":"5.9","2":"5.1","3":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conjunto complementario (todas menos la 5)</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="sc">-</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conjunto complementario (todas menos la 5)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>iris[ , <span class="sc">-</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width
-1            5.1         3.5          1.4         0.2
-2            4.9         3.0          1.4         0.2
-3            4.7         3.2          1.3         0.2
-4            4.6         3.1          1.5         0.2
-5            5.0         3.6          1.4         0.2
-6            5.4         3.9          1.7         0.4
-7            4.6         3.4          1.4         0.3
-8            5.0         3.4          1.5         0.2
-9            4.4         2.9          1.4         0.2
-10           4.9         3.1          1.5         0.1
-11           5.4         3.7          1.5         0.2
-12           4.8         3.4          1.6         0.2
-13           4.8         3.0          1.4         0.1
-14           4.3         3.0          1.1         0.1
-15           5.8         4.0          1.2         0.2
-16           5.7         4.4          1.5         0.4
-17           5.4         3.9          1.3         0.4
-18           5.1         3.5          1.4         0.3
-19           5.7         3.8          1.7         0.3
-20           5.1         3.8          1.5         0.3
-21           5.4         3.4          1.7         0.2
-22           5.1         3.7          1.5         0.4
-23           4.6         3.6          1.0         0.2
-24           5.1         3.3          1.7         0.5
-25           4.8         3.4          1.9         0.2
-26           5.0         3.0          1.6         0.2
-27           5.0         3.4          1.6         0.4
-28           5.2         3.5          1.5         0.2
-29           5.2         3.4          1.4         0.2
-30           4.7         3.2          1.6         0.2
-31           4.8         3.1          1.6         0.2
-32           5.4         3.4          1.5         0.4
-33           5.2         4.1          1.5         0.1
-34           5.5         4.2          1.4         0.2
-35           4.9         3.1          1.5         0.2
-36           5.0         3.2          1.2         0.2
-37           5.5         3.5          1.3         0.2
-38           4.9         3.6          1.4         0.1
-39           4.4         3.0          1.3         0.2
-40           5.1         3.4          1.5         0.2
-41           5.0         3.5          1.3         0.3
-42           4.5         2.3          1.3         0.3
-43           4.4         3.2          1.3         0.2
-44           5.0         3.5          1.6         0.6
-45           5.1         3.8          1.9         0.4
-46           4.8         3.0          1.4         0.3
-47           5.1         3.8          1.6         0.2
-48           4.6         3.2          1.4         0.2
-49           5.3         3.7          1.5         0.2
-50           5.0         3.3          1.4         0.2
-51           7.0         3.2          4.7         1.4
-52           6.4         3.2          4.5         1.5
-53           6.9         3.1          4.9         1.5
-54           5.5         2.3          4.0         1.3
-55           6.5         2.8          4.6         1.5
-56           5.7         2.8          4.5         1.3
-57           6.3         3.3          4.7         1.6
-58           4.9         2.4          3.3         1.0
-59           6.6         2.9          4.6         1.3
-60           5.2         2.7          3.9         1.4
-61           5.0         2.0          3.5         1.0
-62           5.9         3.0          4.2         1.5
-63           6.0         2.2          4.0         1.0
-64           6.1         2.9          4.7         1.4
-65           5.6         2.9          3.6         1.3
-66           6.7         3.1          4.4         1.4
-67           5.6         3.0          4.5         1.5
-68           5.8         2.7          4.1         1.0
-69           6.2         2.2          4.5         1.5
-70           5.6         2.5          3.9         1.1
-71           5.9         3.2          4.8         1.8
-72           6.1         2.8          4.0         1.3
-73           6.3         2.5          4.9         1.5
-74           6.1         2.8          4.7         1.2
-75           6.4         2.9          4.3         1.3
-76           6.6         3.0          4.4         1.4
-77           6.8         2.8          4.8         1.4
-78           6.7         3.0          5.0         1.7
-79           6.0         2.9          4.5         1.5
-80           5.7         2.6          3.5         1.0
-81           5.5         2.4          3.8         1.1
-82           5.5         2.4          3.7         1.0
-83           5.8         2.7          3.9         1.2
-84           6.0         2.7          5.1         1.6
-85           5.4         3.0          4.5         1.5
-86           6.0         3.4          4.5         1.6
-87           6.7         3.1          4.7         1.5
-88           6.3         2.3          4.4         1.3
-89           5.6         3.0          4.1         1.3
-90           5.5         2.5          4.0         1.3
-91           5.5         2.6          4.4         1.2
-92           6.1         3.0          4.6         1.4
-93           5.8         2.6          4.0         1.2
-94           5.0         2.3          3.3         1.0
-95           5.6         2.7          4.2         1.3
-96           5.7         3.0          4.2         1.2
-97           5.7         2.9          4.2         1.3
-98           6.2         2.9          4.3         1.3
-99           5.1         2.5          3.0         1.1
-100          5.7         2.8          4.1         1.3
-101          6.3         3.3          6.0         2.5
-102          5.8         2.7          5.1         1.9
-103          7.1         3.0          5.9         2.1
-104          6.3         2.9          5.6         1.8
-105          6.5         3.0          5.8         2.2
-106          7.6         3.0          6.6         2.1
-107          4.9         2.5          4.5         1.7
-108          7.3         2.9          6.3         1.8
-109          6.7         2.5          5.8         1.8
-110          7.2         3.6          6.1         2.5
-111          6.5         3.2          5.1         2.0
-112          6.4         2.7          5.3         1.9
-113          6.8         3.0          5.5         2.1
-114          5.7         2.5          5.0         2.0
-115          5.8         2.8          5.1         2.4
-116          6.4         3.2          5.3         2.3
-117          6.5         3.0          5.5         1.8
-118          7.7         3.8          6.7         2.2
-119          7.7         2.6          6.9         2.3
-120          6.0         2.2          5.0         1.5
-121          6.9         3.2          5.7         2.3
-122          5.6         2.8          4.9         2.0
-123          7.7         2.8          6.7         2.0
-124          6.3         2.7          4.9         1.8
-125          6.7         3.3          5.7         2.1
-126          7.2         3.2          6.0         1.8
-127          6.2         2.8          4.8         1.8
-128          6.1         3.0          4.9         1.8
-129          6.4         2.8          5.6         2.1
-130          7.2         3.0          5.8         1.6
-131          7.4         2.8          6.1         1.9
-132          7.9         3.8          6.4         2.0
-133          6.4         2.8          5.6         2.2
-134          6.3         2.8          5.1         1.5
-135          6.1         2.6          5.6         1.4
-136          7.7         3.0          6.1         2.3
-137          6.3         3.4          5.6         2.4
-138          6.4         3.1          5.5         1.8
-139          6.0         3.0          4.8         1.8
-140          6.9         3.1          5.4         2.1
-141          6.7         3.1          5.6         2.4
-142          6.9         3.1          5.1         2.3
-143          5.8         2.7          5.1         1.9
-144          6.8         3.2          5.9         2.3
-145          6.7         3.3          5.7         2.5
-146          6.7         3.0          5.2         2.3
-147          6.3         2.5          5.0         1.9
-148          6.5         3.0          5.2         2.0
-149          6.2         3.4          5.4         2.3
-150          5.9         3.0          5.1         1.8</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4"},{"1":"4.6","2":"3.4","3":"1.4","4":"0.3"},{"1":"5.0","2":"3.4","3":"1.5","4":"0.2"},{"1":"4.4","2":"2.9","3":"1.4","4":"0.2"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1"},{"1":"5.4","2":"3.7","3":"1.5","4":"0.2"},{"1":"4.8","2":"3.4","3":"1.6","4":"0.2"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.1"},{"1":"4.3","2":"3.0","3":"1.1","4":"0.1"},{"1":"5.8","2":"4.0","3":"1.2","4":"0.2"},{"1":"5.7","2":"4.4","3":"1.5","4":"0.4"},{"1":"5.4","2":"3.9","3":"1.3","4":"0.4"},{"1":"5.1","2":"3.5","3":"1.4","4":"0.3"},{"1":"5.7","2":"3.8","3":"1.7","4":"0.3"},{"1":"5.1","2":"3.8","3":"1.5","4":"0.3"},{"1":"5.4","2":"3.4","3":"1.7","4":"0.2"},{"1":"5.1","2":"3.7","3":"1.5","4":"0.4"},{"1":"4.6","2":"3.6","3":"1.0","4":"0.2"},{"1":"5.1","2":"3.3","3":"1.7","4":"0.5"},{"1":"4.8","2":"3.4","3":"1.9","4":"0.2"},{"1":"5.0","2":"3.0","3":"1.6","4":"0.2"},{"1":"5.0","2":"3.4","3":"1.6","4":"0.4"},{"1":"5.2","2":"3.5","3":"1.5","4":"0.2"},{"1":"5.2","2":"3.4","3":"1.4","4":"0.2"},{"1":"4.7","2":"3.2","3":"1.6","4":"0.2"},{"1":"4.8","2":"3.1","3":"1.6","4":"0.2"},{"1":"5.4","2":"3.4","3":"1.5","4":"0.4"},{"1":"5.2","2":"4.1","3":"1.5","4":"0.1"},{"1":"5.5","2":"4.2","3":"1.4","4":"0.2"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.2"},{"1":"5.0","2":"3.2","3":"1.2","4":"0.2"},{"1":"5.5","2":"3.5","3":"1.3","4":"0.2"},{"1":"4.9","2":"3.6","3":"1.4","4":"0.1"},{"1":"4.4","2":"3.0","3":"1.3","4":"0.2"},{"1":"5.1","2":"3.4","3":"1.5","4":"0.2"},{"1":"5.0","2":"3.5","3":"1.3","4":"0.3"},{"1":"4.5","2":"2.3","3":"1.3","4":"0.3"},{"1":"4.4","2":"3.2","3":"1.3","4":"0.2"},{"1":"5.0","2":"3.5","3":"1.6","4":"0.6"},{"1":"5.1","2":"3.8","3":"1.9","4":"0.4"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.3"},{"1":"5.1","2":"3.8","3":"1.6","4":"0.2"},{"1":"4.6","2":"3.2","3":"1.4","4":"0.2"},{"1":"5.3","2":"3.7","3":"1.5","4":"0.2"},{"1":"5.0","2":"3.3","3":"1.4","4":"0.2"},{"1":"7.0","2":"3.2","3":"4.7","4":"1.4"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5"},{"1":"5.5","2":"2.3","3":"4.0","4":"1.3"},{"1":"6.5","2":"2.8","3":"4.6","4":"1.5"},{"1":"5.7","2":"2.8","3":"4.5","4":"1.3"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6"},{"1":"4.9","2":"2.4","3":"3.3","4":"1.0"},{"1":"6.6","2":"2.9","3":"4.6","4":"1.3"},{"1":"5.2","2":"2.7","3":"3.9","4":"1.4"},{"1":"5.0","2":"2.0","3":"3.5","4":"1.0"},{"1":"5.9","2":"3.0","3":"4.2","4":"1.5"},{"1":"6.0","2":"2.2","3":"4.0","4":"1.0"},{"1":"6.1","2":"2.9","3":"4.7","4":"1.4"},{"1":"5.6","2":"2.9","3":"3.6","4":"1.3"},{"1":"6.7","2":"3.1","3":"4.4","4":"1.4"},{"1":"5.6","2":"3.0","3":"4.5","4":"1.5"},{"1":"5.8","2":"2.7","3":"4.1","4":"1.0"},{"1":"6.2","2":"2.2","3":"4.5","4":"1.5"},{"1":"5.6","2":"2.5","3":"3.9","4":"1.1"},{"1":"5.9","2":"3.2","3":"4.8","4":"1.8"},{"1":"6.1","2":"2.8","3":"4.0","4":"1.3"},{"1":"6.3","2":"2.5","3":"4.9","4":"1.5"},{"1":"6.1","2":"2.8","3":"4.7","4":"1.2"},{"1":"6.4","2":"2.9","3":"4.3","4":"1.3"},{"1":"6.6","2":"3.0","3":"4.4","4":"1.4"},{"1":"6.8","2":"2.8","3":"4.8","4":"1.4"},{"1":"6.7","2":"3.0","3":"5.0","4":"1.7"},{"1":"6.0","2":"2.9","3":"4.5","4":"1.5"},{"1":"5.7","2":"2.6","3":"3.5","4":"1.0"},{"1":"5.5","2":"2.4","3":"3.8","4":"1.1"},{"1":"5.5","2":"2.4","3":"3.7","4":"1.0"},{"1":"5.8","2":"2.7","3":"3.9","4":"1.2"},{"1":"6.0","2":"2.7","3":"5.1","4":"1.6"},{"1":"5.4","2":"3.0","3":"4.5","4":"1.5"},{"1":"6.0","2":"3.4","3":"4.5","4":"1.6"},{"1":"6.7","2":"3.1","3":"4.7","4":"1.5"},{"1":"6.3","2":"2.3","3":"4.4","4":"1.3"},{"1":"5.6","2":"3.0","3":"4.1","4":"1.3"},{"1":"5.5","2":"2.5","3":"4.0","4":"1.3"},{"1":"5.5","2":"2.6","3":"4.4","4":"1.2"},{"1":"6.1","2":"3.0","3":"4.6","4":"1.4"},{"1":"5.8","2":"2.6","3":"4.0","4":"1.2"},{"1":"5.0","2":"2.3","3":"3.3","4":"1.0"},{"1":"5.6","2":"2.7","3":"4.2","4":"1.3"},{"1":"5.7","2":"3.0","3":"4.2","4":"1.2"},{"1":"5.7","2":"2.9","3":"4.2","4":"1.3"},{"1":"6.2","2":"2.9","3":"4.3","4":"1.3"},{"1":"5.1","2":"2.5","3":"3.0","4":"1.1"},{"1":"5.7","2":"2.8","3":"4.1","4":"1.3"},{"1":"6.3","2":"3.3","3":"6.0","4":"2.5"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9"},{"1":"7.1","2":"3.0","3":"5.9","4":"2.1"},{"1":"6.3","2":"2.9","3":"5.6","4":"1.8"},{"1":"6.5","2":"3.0","3":"5.8","4":"2.2"},{"1":"7.6","2":"3.0","3":"6.6","4":"2.1"},{"1":"4.9","2":"2.5","3":"4.5","4":"1.7"},{"1":"7.3","2":"2.9","3":"6.3","4":"1.8"},{"1":"6.7","2":"2.5","3":"5.8","4":"1.8"},{"1":"7.2","2":"3.6","3":"6.1","4":"2.5"},{"1":"6.5","2":"3.2","3":"5.1","4":"2.0"},{"1":"6.4","2":"2.7","3":"5.3","4":"1.9"},{"1":"6.8","2":"3.0","3":"5.5","4":"2.1"},{"1":"5.7","2":"2.5","3":"5.0","4":"2.0"},{"1":"5.8","2":"2.8","3":"5.1","4":"2.4"},{"1":"6.4","2":"3.2","3":"5.3","4":"2.3"},{"1":"6.5","2":"3.0","3":"5.5","4":"1.8"},{"1":"7.7","2":"3.8","3":"6.7","4":"2.2"},{"1":"7.7","2":"2.6","3":"6.9","4":"2.3"},{"1":"6.0","2":"2.2","3":"5.0","4":"1.5"},{"1":"6.9","2":"3.2","3":"5.7","4":"2.3"},{"1":"5.6","2":"2.8","3":"4.9","4":"2.0"},{"1":"7.7","2":"2.8","3":"6.7","4":"2.0"},{"1":"6.3","2":"2.7","3":"4.9","4":"1.8"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.1"},{"1":"7.2","2":"3.2","3":"6.0","4":"1.8"},{"1":"6.2","2":"2.8","3":"4.8","4":"1.8"},{"1":"6.1","2":"3.0","3":"4.9","4":"1.8"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.1"},{"1":"7.2","2":"3.0","3":"5.8","4":"1.6"},{"1":"7.4","2":"2.8","3":"6.1","4":"1.9"},{"1":"7.9","2":"3.8","3":"6.4","4":"2.0"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.2"},{"1":"6.3","2":"2.8","3":"5.1","4":"1.5"},{"1":"6.1","2":"2.6","3":"5.6","4":"1.4"},{"1":"7.7","2":"3.0","3":"6.1","4":"2.3"},{"1":"6.3","2":"3.4","3":"5.6","4":"2.4"},{"1":"6.4","2":"3.1","3":"5.5","4":"1.8"},{"1":"6.0","2":"3.0","3":"4.8","4":"1.8"},{"1":"6.9","2":"3.1","3":"5.4","4":"2.1"},{"1":"6.7","2":"3.1","3":"5.6","4":"2.4"},{"1":"6.9","2":"3.1","3":"5.1","4":"2.3"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9"},{"1":"6.8","2":"3.2","3":"5.9","4":"2.3"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.5"},{"1":"6.7","2":"3.0","3":"5.2","4":"2.3"},{"1":"6.3","2":"2.5","3":"5.0","4":"1.9"},{"1":"6.5","2":"3.0","3":"5.2","4":"2.0"},{"1":"6.2","2":"3.4","3":"5.4","4":"2.3"},{"1":"5.9","2":"3.0","3":"5.1","4":"1.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -1448,11 +671,11 @@ Levels: setosa versicolor virginica</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sugerencias de solución (puedes ocultar en clase si prefieres):</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Data frame con Petal.Width (iris)</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>pw_df <span class="ot">&lt;-</span> iris[<span class="st">"Petal.Width"</span>]                      <span class="co"># o iris[, "Petal.Width", drop = FALSE]</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pw_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sugerencias de solución (puedes ocultar en clase si prefieres):</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Data frame con Petal.Width (iris)</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>pw_df <span class="ot">&lt;-</span> iris[<span class="st">"Petal.Width"</span>]                      <span class="co"># o iris[, "Petal.Width", drop = FALSE]</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pw_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  1 variable:
@@ -1460,48 +683,45 @@ Levels: setosa versicolor virginica</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) versicolor con sépalos largos (iris)</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>versicolor_largas <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"versicolor"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(versicolor_largas); <span class="fu">head</span>(versicolor_largas, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) versicolor con sépalos largos (iris)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>versicolor_largas <span class="ot">&lt;-</span> iris[ iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"versicolor"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(versicolor_largas); <span class="fu">head</span>(versicolor_largas, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-51          7.0         3.2          4.7         1.4 versicolor
-52          6.4         3.2          4.5         1.5 versicolor
-53          6.9         3.1          4.9         1.5 versicolor</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor","_rn_":"51"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor","_rn_":"52"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor","_rn_":"53"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) área del pétalo (iris)</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>iris2 <span class="ot">&lt;-</span> iris</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>iris2<span class="sc">$</span>area_petal <span class="ot">&lt;-</span> iris2<span class="sc">$</span>Petal.Length <span class="sc">*</span> iris2<span class="sc">$</span>Petal.Width</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris2<span class="sc">$</span>area_petal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) área del pétalo (iris)</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>iris2 <span class="ot">&lt;-</span> iris</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>iris2<span class="sc">$</span>area_petal <span class="ot">&lt;-</span> iris2<span class="sc">$</span>Petal.Length <span class="sc">*</span> iris2<span class="sc">$</span>Petal.Width</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris2<span class="sc">$</span>area_petal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.794067</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) selección por filas y columnas en mtcars</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mtcars viene en R base (32 filas, todas numéricas)</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>sub_mtcars <span class="ot">&lt;-</span> mtcars[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>), <span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"hp"</span>, <span class="st">"gear"</span>)]</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>sub_mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) selección por filas y columnas en mtcars</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mtcars viene en R base (32 filas, todas numéricas)</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>sub_mtcars <span class="ot">&lt;-</span> mtcars[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">32</span>), <span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"hp"</span>, <span class="st">"gear"</span>)]</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>sub_mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   mpg  hp gear
-Mazda RX4         21.0 110    4
-Mazda RX4 Wag     21.0 110    4
-Datsun 710        22.8  93    4
-Hornet 4 Drive    21.4 110    3
-Hornet Sportabout 18.7 175    3
-Lotus Europa      30.4 113    5
-Ford Pantera L    15.8 264    5
-Ferrari Dino      19.7 175    5
-Maserati Bora     15.0 335    5
-Volvo 142E        21.4 109    4</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"110","3":"4","_rn_":"Mazda RX4"},{"1":"21.0","2":"110","3":"4","_rn_":"Mazda RX4 Wag"},{"1":"22.8","2":"93","3":"4","_rn_":"Datsun 710"},{"1":"21.4","2":"110","3":"3","_rn_":"Hornet 4 Drive"},{"1":"18.7","2":"175","3":"3","_rn_":"Hornet Sportabout"},{"1":"30.4","2":"113","3":"5","_rn_":"Lotus Europa"},{"1":"15.8","2":"264","3":"5","_rn_":"Ford Pantera L"},{"1":"19.7","2":"175","3":"5","_rn_":"Ferrari Dino"},{"1":"15.0","2":"335","3":"5","_rn_":"Maserati Bora"},{"1":"21.4","2":"109","3":"4","_rn_":"Volvo 142E"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 
@@ -1743,6 +963,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-consola.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Consola y funciones</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-listas.html" class="pagination-link">
+        <span class="nav-page-text">3. Listas</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

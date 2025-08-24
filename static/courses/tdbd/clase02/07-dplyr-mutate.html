@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Toma de Decisiones Basadas en Datos - 7. dplyr II (mutate/recodes)</title>
+<title>Clase 02 — Limpieza y Transformación - 7. dplyr II (mutate/recodes)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-groupby.html" rel="next">
+<link href="./06-dplyr-select-filter.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,19 +95,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-<link rel="stylesheet" href="../style.css">
+
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Toma de Decisiones Basadas en Datos</span>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Clase 02 — Limpieza y Transformación</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,11 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="./../index.html" rel="" target="">
  <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../clase01.html" rel="" target="">
+    <a class="nav-link" href="./../clase01.html" rel="" target="">
  <span class="menu-text">Introducción</span></a>
   </li>  
 </ul>
@@ -128,10 +132,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-consola.html">Secciones</a></li><li class="breadcrumb-item"><a href="./07-dplyr-mutate.html">7. dplyr II (mutate/recodes)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Secciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-consola.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Consola y funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-iris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Data frames (iris)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-listas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Importar Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Descriptivos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-dplyr-select-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. dplyr I (select/filter)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-dplyr-mutate.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">7. dplyr II (mutate/recodes)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Resúmenes (group_by/summarise)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Visualización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -152,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -273,34 +367,28 @@ Si tu columna de antigüedad tiene otro nombre, el código intenta detectarla.</
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 7
-  rank      sex   yrs.service salary salary_cop log_salary ingreso_ajustado
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
-1 Prof      Male           18 139750  636706590       11.8           139750
-2 Prof      Male           16 173200  789106128       12.1           173200
-3 AsstProf  Male            3  79750  363344190       11.3            79750
-4 Prof      Male           39 115000  523944600       11.7           115000
-5 Prof      Male           41 141500  644679660       11.9           141500
-6 AssocProf Male            6  97000  441935880       11.5            97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["salary_cop"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["log_salary"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ingreso_ajustado"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750","5":"636706590","6":"11.84761","7":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200","5":"789106128","6":"12.06220","7":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750","5":"363344190","6":"11.28665","7":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000","5":"523944600","6":"11.65269","7":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500","5":"644679660","6":"11.86005","7":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000","5":"441935880","6":"11.48247","7":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sólo devolver las columnas nuevas y alguna clave:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Base1_min <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(rank, sex, <span class="at">salary_cop =</span> salary <span class="sc">*</span> tasa_cop, <span class="at">log_salary =</span> <span class="fu">log</span>(salary))</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base1_min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sólo devolver las columnas nuevas y alguna clave:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Base1_min <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(rank, sex, <span class="at">salary_cop =</span> salary <span class="sc">*</span> tasa_cop, <span class="at">log_salary =</span> <span class="fu">log</span>(salary))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base1_min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   salary_cop log_salary
-  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-1 Prof      Male   636706590       11.8
-2 Prof      Male   789106128       12.1
-3 AsstProf  Male   363344190       11.3
-4 Prof      Male   523944600       11.7
-5 Prof      Male   644679660       11.9
-6 AssocProf Male   441935880       11.5</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["salary_cop"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["log_salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"636706590","4":"11.84761"},{"1":"Prof","2":"Male","3":"789106128","4":"12.06220"},{"1":"AsstProf","2":"Male","3":"363344190","4":"11.28665"},{"1":"Prof","2":"Male","3":"523944600","4":"11.65269"},{"1":"Prof","2":"Male","3":"644679660","4":"11.86005"},{"1":"AssocProf","2":"Male","3":"441935880","4":"11.48247"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -325,38 +413,34 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorías de antigüedad (si la columna existe)</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Base2 <span class="ot">&lt;-</span> Base1</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(nombre_ant)) {</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  Base2 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">antiguedad_cat =</span> <span class="fu">case_when</span>(</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        .data[[nombre_ant]] <span class="sc">&lt;</span> <span class="dv">10</span>              <span class="sc">~</span> <span class="st">"&lt;10"</span>,</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        .data[[nombre_ant]] <span class="sc">&lt;=</span> <span class="dv">20</span>             <span class="sc">~</span> <span class="st">"10-20"</span>,</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(.data[[nombre_ant]])            <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span>                                  <span class="sc">~</span> <span class="st">"&gt;20"</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"&lt;10"</span>,<span class="st">"10-20"</span>,<span class="st">"&gt;20"</span>))</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Condición binaria con if_else: indicador “alto salario”</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>Base2 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_alto =</span> <span class="fu">if_else</span>(salary <span class="sc">&gt;=</span> <span class="dv">120000</span>, 1L, 0L))  <span class="co"># umbral ejemplo</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorías de antigüedad (si la columna existe)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Base2 <span class="ot">&lt;-</span> Base1</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(nombre_ant)) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  Base2 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">antiguedad_cat =</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        .data[[nombre_ant]] <span class="sc">&lt;</span> <span class="dv">10</span>              <span class="sc">~</span> <span class="st">"&lt;10"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        .data[[nombre_ant]] <span class="sc">&lt;=</span> <span class="dv">20</span>             <span class="sc">~</span> <span class="st">"10-20"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(.data[[nombre_ant]])            <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span>                                  <span class="sc">~</span> <span class="st">"&gt;20"</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"&lt;10"</span>,<span class="st">"10-20"</span>,<span class="st">"&gt;20"</span>))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Condición binaria con if_else: indicador “alto salario”</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Base2 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_alto =</span> <span class="fu">if_else</span>(salary <span class="sc">&gt;=</span> <span class="dv">120000</span>, 1L, 0L))  <span class="co"># umbral ejemplo</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 9
-  rank      sex   yrs.service salary salary_cop log_salary ingreso_ajustado
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
-1 Prof      Male           18 139750  636706590       11.8           139750
-2 Prof      Male           16 173200  789106128       12.1           173200
-3 AsstProf  Male            3  79750  363344190       11.3            79750
-4 Prof      Male           39 115000  523944600       11.7           115000
-5 Prof      Male           41 141500  644679660       11.9           141500
-6 AssocProf Male            6  97000  441935880       11.5            97000
-# ℹ 2 more variables: antiguedad_cat &lt;fct&gt;, salary_alto &lt;int&gt;</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["salary_cop"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["log_salary"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ingreso_ajustado"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["antiguedad_cat"],"name":[8],"type":["fct"],"align":["left"]},{"label":["salary_alto"],"name":[9],"type":["int"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750","5":"636706590","6":"11.84761","7":"139750","8":"10-20","9":"1"},{"1":"Prof","2":"Male","3":"16","4":"173200","5":"789106128","6":"12.06220","7":"173200","8":"10-20","9":"1"},{"1":"AsstProf","2":"Male","3":"3","4":"79750","5":"363344190","6":"11.28665","7":"79750","8":"<10","9":"0"},{"1":"Prof","2":"Male","3":"39","4":"115000","5":"523944600","6":"11.65269","7":"115000","8":">20","9":"0"},{"1":"Prof","2":"Male","3":"41","4":"141500","5":"644679660","6":"11.86005","7":"141500","8":">20","9":"1"},{"1":"AssocProf","2":"Male","3":"6","4":"97000","5":"441935880","6":"11.48247","7":"97000","8":"<10","9":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -368,42 +452,39 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpieza rápida de 'sex' a valores canónicos</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Base3 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> sex <span class="sc">%&gt;%</span> <span class="fu">as.character</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(sex,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"M"</span> <span class="ot">=</span> <span class="st">"Male"</span>, <span class="st">"F"</span> <span class="ot">=</span> <span class="st">"Female"</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> sex</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>,<span class="st">"Male"</span>))</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizar 'rank' (si llega desordenado o con variantes)</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>Base3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> rank <span class="sc">%&gt;%</span> <span class="fu">as.character</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_squish</span>(),</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(rank,</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Assistant Professor"</span> <span class="ot">=</span> <span class="st">"AsstProf"</span>,</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Associate Professor"</span> <span class="ot">=</span> <span class="st">"AssocProf"</span>,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Asstprof"</span> <span class="ot">=</span> <span class="st">"AsstProf"</span>,</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Assocprof"</span> <span class="ot">=</span> <span class="st">"AssocProf"</span>,</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Professor"</span> <span class="ot">=</span> <span class="st">"Prof"</span>,</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> rank</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"AsstProf"</span>,<span class="st">"AssocProf"</span>,<span class="st">"Prof"</span>))</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base3, rank, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpieza rápida de 'sex' a valores canónicos</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Base3 <span class="ot">&lt;-</span> Base2 <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> sex <span class="sc">%&gt;%</span> <span class="fu">as.character</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(sex,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"M"</span> <span class="ot">=</span> <span class="st">"Male"</span>, <span class="st">"F"</span> <span class="ot">=</span> <span class="st">"Female"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> sex</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>,<span class="st">"Male"</span>))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizar 'rank' (si llega desordenado o con variantes)</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>Base3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> rank <span class="sc">%&gt;%</span> <span class="fu">as.character</span>() <span class="sc">%&gt;%</span> stringr<span class="sc">::</span><span class="fu">str_squish</span>(),</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(rank,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Assistant Professor"</span> <span class="ot">=</span> <span class="st">"AsstProf"</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Associate Professor"</span> <span class="ot">=</span> <span class="st">"AssocProf"</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Asstprof"</span> <span class="ot">=</span> <span class="st">"AsstProf"</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Assocprof"</span> <span class="ot">=</span> <span class="st">"AssocProf"</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Professor"</span> <span class="ot">=</span> <span class="st">"Prof"</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> rank</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"AsstProf"</span>,<span class="st">"AssocProf"</span>,<span class="st">"Prof"</span>))</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base3, rank, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  rank      sex        n
-  &lt;fct&gt;     &lt;fct&gt;  &lt;int&gt;
-1 AsstProf  Female    11
-2 AsstProf  Male      56
-3 AssocProf Female    10
-4 AssocProf Male      54
-5 Prof      Female    18
-6 Prof      Male     248</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["fct"],"align":["left"]},{"label":["sex"],"name":[2],"type":["fct"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"AsstProf","2":"Female","3":"11"},{"1":"AsstProf","2":"Male","3":"56"},{"1":"AssocProf","2":"Female","3":"10"},{"1":"AssocProf","2":"Male","3":"54"},{"1":"Prof","2":"Female","3":"18"},{"1":"Prof","2":"Male","3":"248"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -415,19 +496,19 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si existieran dos columnas de antigüedad (ej.: yrs.service y yrs_service),</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puedes fusionarlas en una sola sin perder datos no-NA:</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">all</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>) <span class="sc">%in%</span> <span class="fu">names</span>(BaseSal))) {</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  Base3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">yrs.service =</span> <span class="fu">coalesce</span>(<span class="st">`</span><span class="at">yrs.service</span><span class="st">`</span>, yrs_service))</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reemplazar NA en 'salary' por la mediana (solo para práctica, no recomendado sin análisis)</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>med_sal <span class="ot">&lt;-</span> <span class="fu">median</span>(Base3<span class="sc">$</span>salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>Base3_demo <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">salary =</span> med_sal))</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Base3<span class="sc">$</span>salary)); <span class="fu">sum</span>(<span class="fu">is.na</span>(Base3_demo<span class="sc">$</span>salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si existieran dos columnas de antigüedad (ej.: yrs.service y yrs_service),</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puedes fusionarlas en una sola sin perder datos no-NA:</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">all</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>) <span class="sc">%in%</span> <span class="fu">names</span>(BaseSal))) {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  Base3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">yrs.service =</span> <span class="fu">coalesce</span>(<span class="st">`</span><span class="at">yrs.service</span><span class="st">`</span>, yrs_service))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reemplazar NA en 'salary' por la mediana (solo para práctica, no recomendado sin análisis)</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>med_sal <span class="ot">&lt;-</span> <span class="fu">median</span>(Base3<span class="sc">$</span>salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>Base3_demo <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">salary =</span> med_sal))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Base3<span class="sc">$</span>salary)); <span class="fu">sum</span>(<span class="fu">is.na</span>(Base3_demo<span class="sc">$</span>salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
@@ -458,50 +539,44 @@ Important
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizar (z-score) todas las columnas numéricas, devolviendo nuevas columnas *_z</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Base4 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(.x)), <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Redondear a 2 decimales algunas columnas numéricas existentes (sin crear nuevas)</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>Base5 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(salary, salary_cop, log_salary), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>))</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear indicadores TRUE/FALSE si una numérica está por encima de su Q3</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>q3_salary <span class="ot">&lt;-</span> <span class="fu">quantile</span>(Base3<span class="sc">$</span>salary, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>Base6 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_gt_q3 =</span> salary <span class="sc">&gt;</span> q3_salary)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base4, salary, salary_z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estandarizar (z-score) todas las columnas numéricas, devolviendo nuevas columnas *_z</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>Base4 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(.x)), <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Redondear a 2 decimales algunas columnas numéricas existentes (sin crear nuevas)</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>Base5 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(salary, salary_cop, log_salary), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>))</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear indicadores TRUE/FALSE si una numérica está por encima de su Q3</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>q3_salary <span class="ot">&lt;-</span> <span class="fu">quantile</span>(Base3<span class="sc">$</span>salary, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>Base6 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_gt_q3 =</span> salary <span class="sc">&gt;</span> q3_salary)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base4, salary, salary_z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  salary salary_z
-   &lt;dbl&gt;    &lt;dbl&gt;
-1 139750   0.860 
-2 173200   1.96  
-3  79750  -1.12  
-4 115000   0.0427
-5 141500   0.918 
-6  97000  -0.552 </code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary_z"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"139750","2":"0.85983388"},{"1":"173200","2":"1.96419379"},{"1":"79750","2":"-1.12108076"},{"1":"115000","2":"0.04270659"},{"1":"141500","2":"0.91761055"},{"1":"97000","2":"-0.55156780"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base6, salary, salary_gt_q3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base6, salary, salary_gt_q3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  salary salary_gt_q3
-   &lt;dbl&gt; &lt;lgl&gt;       
-1 139750 TRUE        
-2 173200 TRUE        
-3  79750 FALSE       
-4 115000 FALSE       
-5 141500 TRUE        
-6  97000 FALSE       </code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary_gt_q3"],"name":[2],"type":["lgl"],"align":["right"]}],"data":[{"1":"139750","2":"TRUE"},{"1":"173200","2":"TRUE"},{"1":"79750","2":"FALSE"},{"1":"115000","2":"FALSE"},{"1":"141500","2":"TRUE"},{"1":"97000","2":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -513,26 +588,23 @@ Important
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo didáctico: "pago_neto" = salary - (10% si salary &gt; 120k)</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Base_row <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">pago_neto =</span> <span class="fu">if_else</span>(salary <span class="sc">&gt;</span> <span class="dv">120000</span>, salary <span class="sc">*</span> <span class="fl">0.9</span>, salary)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base_row, salary, pago_neto))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo didáctico: "pago_neto" = salary - (10% si salary &gt; 120k)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>Base_row <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">pago_neto =</span> <span class="fu">if_else</span>(salary <span class="sc">&gt;</span> <span class="dv">120000</span>, salary <span class="sc">*</span> <span class="fl">0.9</span>, salary)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base_row, salary, pago_neto))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  salary pago_neto
-   &lt;dbl&gt;     &lt;dbl&gt;
-1 139750    125775
-2 173200    155880
-3  79750     79750
-4 115000    115000
-5 141500    127350
-6  97000     97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["pago_neto"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"139750","2":"125775"},{"1":"173200","2":"155880"},{"1":"79750","2":"79750"},{"1":"115000","2":"115000"},{"1":"141500","2":"127350"},{"1":"97000","2":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -548,95 +620,89 @@ Important
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Nuevas transformaciones</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Base_ex1 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_miles =</span> salary <span class="sc">/</span> <span class="dv">1000</span>,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_log10 =</span> <span class="fu">log10</span>(salary)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base_ex1, salary, salary_miles, salary_log10))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Nuevas transformaciones</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Base_ex1 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_miles =</span> salary <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_log10 =</span> <span class="fu">log10</span>(salary)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(Base_ex1, salary, salary_miles, salary_log10))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  salary salary_miles salary_log10
-   &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-1 139750        140.          5.15
-2 173200        173.          5.24
-3  79750         79.8         4.90
-4 115000        115           5.06
-5 141500        142.          5.15
-6  97000         97           4.99</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary_miles"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salary_log10"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"139750","2":"139.75","3":"5.145352"},{"1":"173200","2":"173.20","3":"5.238548"},{"1":"79750","2":"79.75","3":"4.901731"},{"1":"115000","2":"115.00","3":"5.060698"},{"1":"141500","2":"141.50","3":"5.150756"},{"1":"97000","2":"97.00","3":"4.986772"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Rango salarial con case_when</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>Base_ex2 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rango_sal =</span> <span class="fu">case_when</span>(</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&lt;</span>  <span class="dv">90000</span>                <span class="sc">~</span> <span class="st">"&lt;90k"</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&lt;=</span> <span class="dv">120000</span>               <span class="sc">~</span> <span class="st">"90–120k"</span>,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&gt;</span>  <span class="dv">120000</span>               <span class="sc">~</span> <span class="st">"&gt;120k"</span>,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"&lt;90k"</span>,<span class="st">"90–120k"</span>,<span class="st">"&gt;120k"</span>))</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base_ex2, rango_sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Rango salarial con case_when</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Base_ex2 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rango_sal =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&lt;</span>  <span class="dv">90000</span>                <span class="sc">~</span> <span class="st">"&lt;90k"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&lt;=</span> <span class="dv">120000</span>               <span class="sc">~</span> <span class="st">"90–120k"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>      salary <span class="sc">&gt;</span>  <span class="dv">120000</span>               <span class="sc">~</span> <span class="st">"&gt;120k"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>                           <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"&lt;90k"</span>,<span class="st">"90–120k"</span>,<span class="st">"&gt;120k"</span>))</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base_ex2, rango_sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  rango_sal     n
-  &lt;fct&gt;     &lt;int&gt;
-1 &lt;90k         94
-2 90–120k     161
-3 &gt;120k       142</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rango_sal"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"<90k","2":"94"},{"1":"90–120k","2":"161"},{"1":">120k","2":"142"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) sex_bin (F/M)</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>Base_ex3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex_bin =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(<span class="fu">as.character</span>(sex),</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"F"</span>, <span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"M"</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base_ex3, sex, sex_bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) sex_bin (F/M)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Base_ex3 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex_bin =</span> dplyr<span class="sc">::</span><span class="fu">recode</span>(<span class="fu">as.character</span>(sex),</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"F"</span>, <span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"M"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(Base_ex3, sex, sex_bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  sex    sex_bin     n
-  &lt;fct&gt;  &lt;chr&gt;   &lt;int&gt;
-1 Female F          39
-2 Male   M         358</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["sex"],"name":[1],"type":["fct"],"align":["left"]},{"label":["sex_bin"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Female","2":"F","3":"39"},{"1":"Male","2":"M","3":"358"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) across para cuadrados *_2</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>Base_ex4 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> .x<span class="sc">^</span><span class="dv">2</span>, <span class="at">.names =</span> <span class="st">"{.col}_2"</span>))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>Base_ex4 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"_2"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) across para cuadrados *_2</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Base_ex4 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> .x<span class="sc">^</span><span class="dv">2</span>, <span class="at">.names =</span> <span class="st">"{.col}_2"</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>Base_ex4 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"_2"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-  yrs.service_2    salary_2 salary_cop_2 log_salary_2 ingreso_ajustado_2
-          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;              &lt;dbl&gt;
-1           324 19530062500      4.05e17         140.        19530062500
-2           256 29998240000      6.23e17         145.        29998240000
-3             9  6360062500      1.32e17         127.         6360062500
-4          1521 13225000000      2.75e17         136.        13225000000
-5          1681 20022250000      4.16e17         141.        20022250000
-6            36  9409000000      1.95e17         132.         9409000000
-# ℹ 1 more variable: salary_alto_2 &lt;dbl&gt;</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["yrs.service_2"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary_2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salary_cop_2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["log_salary_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ingreso_ajustado_2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["salary_alto_2"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"324","2":"19530062500","3":"4.053953e+17","4":"140.3659","5":"19530062500","6":"1"},{"1":"256","2":"29998240000","3":"6.226885e+17","4":"145.4967","5":"29998240000","6":"1"},{"1":"9","2":"6360062500","3":"1.320190e+17","4":"127.3885","5":"6360062500","6":"0"},{"1":"1521","2":"13225000000","3":"2.745179e+17","4":"135.7851","5":"13225000000","6":"0"},{"1":"1681","2":"20022250000","3":"4.156119e+17","4":"140.6609","5":"20022250000","6":"1"},{"1":"36","2":"9409000000","3":"1.953073e+17","4":"131.8470","5":"9409000000","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5) (Opcional) Imputar salary con mediana por rank</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>Base_ex5 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rank) <span class="sc">%&gt;%</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(salary), <span class="fu">median</span>(salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), salary)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Base3<span class="sc">$</span>salary)); <span class="fu">sum</span>(<span class="fu">is.na</span>(Base_ex5<span class="sc">$</span>salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5) (Opcional) Imputar salary con mediana por rank</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Base_ex5 <span class="ot">&lt;-</span> Base3 <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rank) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(salary), <span class="fu">median</span>(salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), salary)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(Base3<span class="sc">$</span>salary)); <span class="fu">sum</span>(<span class="fu">is.na</span>(Base_ex5<span class="sc">$</span>salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
@@ -884,6 +950,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-dplyr-select-filter.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">6. dplyr I (select/filter)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-groupby.html" class="pagination-link">
+        <span class="nav-page-text">8. Resúmenes (group_by/summarise)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Toma de Decisiones Basadas en Datos - 3. Listas</title>
+<title>Clase 02 — Limpieza y Transformación - 3. Listas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-import.html" rel="next">
+<link href="./02-iris.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,19 +95,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-<link rel="stylesheet" href="../style.css">
+
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Toma de Decisiones Basadas en Datos</span>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Clase 02 — Limpieza y Transformación</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,11 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="./../index.html" rel="" target="">
  <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../clase01.html" rel="" target="">
+    <a class="nav-link" href="./../clase01.html" rel="" target="">
  <span class="menu-text">Introducción</span></a>
   </li>  
 </ul>
@@ -128,10 +132,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-consola.html">Secciones</a></li><li class="breadcrumb-item"><a href="./03-listas.html">3. Listas</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Secciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-consola.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Consola y funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-iris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Data frames (iris)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-listas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3. Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Importar Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Descriptivos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-dplyr-select-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. dplyr I (select/filter)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-dplyr-mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. dplyr II (mutate/recodes)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Resúmenes (group_by/summarise)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Visualización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -153,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -504,11 +598,13 @@ Warning
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>l2[[<span class="st">"datos"</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]  <span class="co"># primeras 3 filas y 2 columnas de iris</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width
-1          5.1         3.5
-2          4.9         3.0
-3          4.7         3.2</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5","_rn_":"1"},{"1":"4.9","2":"3.0","_rn_":"2"},{"1":"4.7","2":"3.2","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -517,7 +613,7 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'tidyverse' was built under R version 4.2.2</code></pre>
@@ -563,36 +659,32 @@ Warning
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar iris por especie y anidar data por grupo</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>iris_nested <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">nest</span>()              <span class="co"># crea una columna 'data' tipo lista</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>iris_nested</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar iris por especie y anidar data por grupo</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>iris_nested <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">nest</span>()              <span class="co"># crea una columna 'data' tipo lista</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>iris_nested</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-# Groups:   Species [3]
-  Species    data             
-  &lt;fct&gt;      &lt;list&gt;           
-1 setosa     &lt;tibble [50 × 4]&gt;
-2 versicolor &lt;tibble [50 × 4]&gt;
-3 virginica  &lt;tibble [50 × 4]&gt;</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]}],"data":[{"1":"setosa","2":"<tibble[,4]>"},{"1":"versicolor","2":"<tibble[,4]>"},{"1":"virginica","2":"<tibble[,4]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>iris_nested<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">head</span>()  <span class="co"># data.frame del primer grupo (setosa)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>iris_nested<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">head</span>()  <span class="co"># data.frame del primer grupo (setosa)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  Sepal.Length Sepal.Width Petal.Length Petal.Width
-         &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-1          5.1         3.5          1.4         0.2
-2          4.9         3            1.4         0.2
-3          4.7         3.2          1.3         0.2
-4          4.6         3.1          1.5         0.2
-5          5           3.6          1.4         0.2
-6          5.4         3.9          1.7         0.4</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -601,31 +693,30 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular medias por grupo usando map (cada 'data' es un data.frame)</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>resumen_por_especie <span class="ot">&lt;-</span> iris_nested <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">medias =</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>      data,</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">summarise</span>(.x,</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_sepal_len =</span> <span class="fu">mean</span>(Sepal.Length),</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_sepal_wid =</span> <span class="fu">mean</span>(Sepal.Width),</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_petal_len =</span> <span class="fu">mean</span>(Petal.Length),</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_petal_wid =</span> <span class="fu">mean</span>(Petal.Width))</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species, medias) <span class="sc">%&gt;%</span></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(medias)</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>resumen_por_especie</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular medias por grupo usando map (cada 'data' es un data.frame)</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>resumen_por_especie <span class="ot">&lt;-</span> iris_nested <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">medias =</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>      data,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">summarise</span>(.x,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_sepal_len =</span> <span class="fu">mean</span>(Sepal.Length),</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_sepal_wid =</span> <span class="fu">mean</span>(Sepal.Width),</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_petal_len =</span> <span class="fu">mean</span>(Petal.Length),</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mean_petal_wid =</span> <span class="fu">mean</span>(Petal.Width))</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Species, medias) <span class="sc">%&gt;%</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unnest</span>(medias)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>resumen_por_especie</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-# Groups:   Species [3]
-  Species    mean_sepal_len mean_sepal_wid mean_petal_len mean_petal_wid
-  &lt;fct&gt;               &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
-1 setosa               5.01           3.43           1.46          0.246
-2 versicolor           5.94           2.77           4.26          1.33 
-3 virginica            6.59           2.97           5.55          2.03 </code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["mean_sepal_len"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean_sepal_wid"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mean_petal_len"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["mean_petal_wid"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"setosa","2":"5.006","3":"3.428","4":"1.462","5":"0.246"},{"1":"versicolor","2":"5.936","3":"2.770","4":"4.260","5":"1.326"},{"1":"virginica","2":"6.588","3":"2.974","4":"5.552","5":"2.026"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -634,16 +725,16 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split devuelve una lista donde cada elemento es el subconjunto por nivel del factor</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>iris_list <span class="ot">&lt;-</span> <span class="fu">split</span>(iris, iris<span class="sc">$</span>Species)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split devuelve una lista donde cada elemento es el subconjunto por nivel del factor</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>iris_list <span class="ot">&lt;-</span> <span class="fu">split</span>(iris, iris<span class="sc">$</span>Species)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "setosa"     "versicolor" "virginica" </code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(iris_list, nrow)  <span class="co"># n de filas por especie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(iris_list, nrow)  <span class="co"># n de filas por especie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$setosa
@@ -657,9 +748,9 @@ $virginica
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Promedios de Sepal.Length por especie con lapply/sapply</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>prom_sep_len <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris_list, <span class="cf">function</span>(df) <span class="fu">mean</span>(df<span class="sc">$</span>Sepal.Length))</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>prom_sep_len</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Promedios de Sepal.Length por especie con lapply/sapply</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>prom_sep_len <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris_list, <span class="cf">function</span>(df) <span class="fu">mean</span>(df<span class="sc">$</span>Sepal.Length))</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>prom_sep_len</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    setosa versicolor  virginica 
@@ -691,174 +782,29 @@ $virginica
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sugerencias de solución (puedes ocultar en clase si prefieres):</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Lista mi_modelo y extracción</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>mi_modelo <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">meta =</span> <span class="fu">list</span>(<span class="at">autor =</span> <span class="st">"TuNombre"</span>, <span class="at">fecha =</span> <span class="fu">Sys.Date</span>()),</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Sepal.Width"</span>),</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">df   =</span> iris</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>mi_modelo<span class="sc">$</span>df[ , <span class="st">"Sepal.Width"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]  <span class="co"># como data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sugerencias de solución (puedes ocultar en clase si prefieres):</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Lista mi_modelo y extracción</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>mi_modelo <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">meta =</span> <span class="fu">list</span>(<span class="at">autor =</span> <span class="st">"TuNombre"</span>, <span class="at">fecha =</span> <span class="fu">Sys.Date</span>()),</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">vars =</span> <span class="fu">c</span>(<span class="st">"Sepal.Length"</span>,<span class="st">"Sepal.Width"</span>),</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">df   =</span> iris</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>mi_modelo<span class="sc">$</span>df[ , <span class="st">"Sepal.Width"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]  <span class="co"># como data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Width
-1           3.5
-2           3.0
-3           3.2
-4           3.1
-5           3.6
-6           3.9
-7           3.4
-8           3.4
-9           2.9
-10          3.1
-11          3.7
-12          3.4
-13          3.0
-14          3.0
-15          4.0
-16          4.4
-17          3.9
-18          3.5
-19          3.8
-20          3.8
-21          3.4
-22          3.7
-23          3.6
-24          3.3
-25          3.4
-26          3.0
-27          3.4
-28          3.5
-29          3.4
-30          3.2
-31          3.1
-32          3.4
-33          4.1
-34          4.2
-35          3.1
-36          3.2
-37          3.5
-38          3.6
-39          3.0
-40          3.4
-41          3.5
-42          2.3
-43          3.2
-44          3.5
-45          3.8
-46          3.0
-47          3.8
-48          3.2
-49          3.7
-50          3.3
-51          3.2
-52          3.2
-53          3.1
-54          2.3
-55          2.8
-56          2.8
-57          3.3
-58          2.4
-59          2.9
-60          2.7
-61          2.0
-62          3.0
-63          2.2
-64          2.9
-65          2.9
-66          3.1
-67          3.0
-68          2.7
-69          2.2
-70          2.5
-71          3.2
-72          2.8
-73          2.5
-74          2.8
-75          2.9
-76          3.0
-77          2.8
-78          3.0
-79          2.9
-80          2.6
-81          2.4
-82          2.4
-83          2.7
-84          2.7
-85          3.0
-86          3.4
-87          3.1
-88          2.3
-89          3.0
-90          2.5
-91          2.6
-92          3.0
-93          2.6
-94          2.3
-95          2.7
-96          3.0
-97          2.9
-98          2.9
-99          2.5
-100         2.8
-101         3.3
-102         2.7
-103         3.0
-104         2.9
-105         3.0
-106         3.0
-107         2.5
-108         2.9
-109         2.5
-110         3.6
-111         3.2
-112         2.7
-113         3.0
-114         2.5
-115         2.8
-116         3.2
-117         3.0
-118         3.8
-119         2.6
-120         2.2
-121         3.2
-122         2.8
-123         2.8
-124         2.7
-125         3.3
-126         3.2
-127         2.8
-128         3.0
-129         2.8
-130         3.0
-131         2.8
-132         3.8
-133         2.8
-134         2.8
-135         2.6
-136         3.0
-137         3.4
-138         3.1
-139         3.0
-140         3.1
-141         3.1
-142         3.1
-143         2.7
-144         3.2
-145         3.3
-146         3.0
-147         2.5
-148         3.0
-149         3.4
-150         3.0</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Sepal.Width"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"3.5"},{"1":"3.0"},{"1":"3.2"},{"1":"3.1"},{"1":"3.6"},{"1":"3.9"},{"1":"3.4"},{"1":"3.4"},{"1":"2.9"},{"1":"3.1"},{"1":"3.7"},{"1":"3.4"},{"1":"3.0"},{"1":"3.0"},{"1":"4.0"},{"1":"4.4"},{"1":"3.9"},{"1":"3.5"},{"1":"3.8"},{"1":"3.8"},{"1":"3.4"},{"1":"3.7"},{"1":"3.6"},{"1":"3.3"},{"1":"3.4"},{"1":"3.0"},{"1":"3.4"},{"1":"3.5"},{"1":"3.4"},{"1":"3.2"},{"1":"3.1"},{"1":"3.4"},{"1":"4.1"},{"1":"4.2"},{"1":"3.1"},{"1":"3.2"},{"1":"3.5"},{"1":"3.6"},{"1":"3.0"},{"1":"3.4"},{"1":"3.5"},{"1":"2.3"},{"1":"3.2"},{"1":"3.5"},{"1":"3.8"},{"1":"3.0"},{"1":"3.8"},{"1":"3.2"},{"1":"3.7"},{"1":"3.3"},{"1":"3.2"},{"1":"3.2"},{"1":"3.1"},{"1":"2.3"},{"1":"2.8"},{"1":"2.8"},{"1":"3.3"},{"1":"2.4"},{"1":"2.9"},{"1":"2.7"},{"1":"2.0"},{"1":"3.0"},{"1":"2.2"},{"1":"2.9"},{"1":"2.9"},{"1":"3.1"},{"1":"3.0"},{"1":"2.7"},{"1":"2.2"},{"1":"2.5"},{"1":"3.2"},{"1":"2.8"},{"1":"2.5"},{"1":"2.8"},{"1":"2.9"},{"1":"3.0"},{"1":"2.8"},{"1":"3.0"},{"1":"2.9"},{"1":"2.6"},{"1":"2.4"},{"1":"2.4"},{"1":"2.7"},{"1":"2.7"},{"1":"3.0"},{"1":"3.4"},{"1":"3.1"},{"1":"2.3"},{"1":"3.0"},{"1":"2.5"},{"1":"2.6"},{"1":"3.0"},{"1":"2.6"},{"1":"2.3"},{"1":"2.7"},{"1":"3.0"},{"1":"2.9"},{"1":"2.9"},{"1":"2.5"},{"1":"2.8"},{"1":"3.3"},{"1":"2.7"},{"1":"3.0"},{"1":"2.9"},{"1":"3.0"},{"1":"3.0"},{"1":"2.5"},{"1":"2.9"},{"1":"2.5"},{"1":"3.6"},{"1":"3.2"},{"1":"2.7"},{"1":"3.0"},{"1":"2.5"},{"1":"2.8"},{"1":"3.2"},{"1":"3.0"},{"1":"3.8"},{"1":"2.6"},{"1":"2.2"},{"1":"3.2"},{"1":"2.8"},{"1":"2.8"},{"1":"2.7"},{"1":"3.3"},{"1":"3.2"},{"1":"2.8"},{"1":"3.0"},{"1":"2.8"},{"1":"3.0"},{"1":"2.8"},{"1":"3.8"},{"1":"2.8"},{"1":"2.8"},{"1":"2.6"},{"1":"3.0"},{"1":"3.4"},{"1":"3.1"},{"1":"3.0"},{"1":"3.1"},{"1":"3.1"},{"1":"3.1"},{"1":"2.7"},{"1":"3.2"},{"1":"3.3"},{"1":"3.0"},{"1":"2.5"},{"1":"3.0"},{"1":"3.4"},{"1":"3.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Mediana de Petal.Width por especie (split + sapply)</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>iris_list <span class="ot">&lt;-</span> <span class="fu">split</span>(iris, iris<span class="sc">$</span>Species)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris_list, <span class="cf">function</span>(df) <span class="fu">median</span>(df<span class="sc">$</span>Petal.Width))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Mediana de Petal.Width por especie (split + sapply)</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>iris_list <span class="ot">&lt;-</span> <span class="fu">split</span>(iris, iris<span class="sc">$</span>Species)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris_list, <span class="cf">function</span>(df) <span class="fu">median</span>(df<span class="sc">$</span>Petal.Width))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    setosa versicolor  virginica 
@@ -866,28 +812,27 @@ $virginica
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) n_obs con map_int y ordenar</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>iris_nested <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_obs =</span> purrr<span class="sc">::</span><span class="fu">map_int</span>(data, nrow)) <span class="sc">%&gt;%</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) n_obs con map_int y ordenar</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>iris_nested <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_obs =</span> purrr<span class="sc">::</span><span class="fu">map_int</span>(data, nrow)) <span class="sc">%&gt;%</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-# Groups:   Species [3]
-  Species    data              n_obs
-  &lt;fct&gt;      &lt;list&gt;            &lt;int&gt;
-1 setosa     &lt;tibble [50 × 4]&gt;    50
-2 versicolor &lt;tibble [50 × 4]&gt;    50
-3 virginica  &lt;tibble [50 × 4]&gt;    50</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["data"],"name":[2],"type":["list"],"align":["right"]},{"label":["n_obs"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"setosa","2":"<tibble[,4]>","3":"50"},{"1":"versicolor","2":"<tibble[,4]>","3":"50"},{"1":"virginica","2":"<tibble[,4]>","3":"50"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Renombrar, eliminar y añadir en lista</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">letras =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(L)[<span class="fu">names</span>(L) <span class="sc">==</span> <span class="st">"letras"</span>] <span class="ot">&lt;-</span> <span class="st">"abc"</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>L<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>L<span class="sc">$</span>par <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Renombrar, eliminar y añadir en lista</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">letras =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(L)[<span class="fu">names</span>(L) <span class="sc">==</span> <span class="st">"letras"</span>] <span class="ot">&lt;-</span> <span class="st">"abc"</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>L<span class="sc">$</span>num <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>L<span class="sc">$</span>par <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$abc
@@ -1136,6 +1081,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-iris.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2. Data frames (iris)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-import.html" class="pagination-link">
+        <span class="nav-page-text">4. Importar Excel</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

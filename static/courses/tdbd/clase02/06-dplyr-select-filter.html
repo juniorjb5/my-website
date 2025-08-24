@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Toma de Decisiones Basadas en Datos - 6. dplyr I (select/filter)</title>
+<title>Clase 02 — Limpieza y Transformación - 6. dplyr I (select/filter)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-dplyr-mutate.html" rel="next">
+<link href="./05-descriptivos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,19 +95,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-<link rel="stylesheet" href="../style.css">
+
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Toma de Decisiones Basadas en Datos</span>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Clase 02 — Limpieza y Transformación</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -115,11 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="./../index.html" rel="" target="">
  <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../clase01.html" rel="" target="">
+    <a class="nav-link" href="./../clase01.html" rel="" target="">
  <span class="menu-text">Introducción</span></a>
   </li>  
 </ul>
@@ -128,10 +132,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-consola.html">Secciones</a></li><li class="breadcrumb-item"><a href="./06-dplyr-select-filter.html">6. dplyr I (select/filter)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Secciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-consola.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Consola y funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-iris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Data frames (iris)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-listas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Listas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Importar Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Descriptivos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-dplyr-select-filter.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">6. dplyr I (select/filter)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-dplyr-mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. dplyr II (mutate/recodes)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Resúmenes (group_by/summarise)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Visualización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -150,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -251,35 +345,29 @@ Si <code>BaseSal</code> no existe, el bloque la crea desde <code>Salaries</code>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sin pipe (anidado):</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">select</span>(<span class="fu">filter</span>(BaseSal, sex <span class="sc">==</span> <span class="st">"Male"</span>), rank, sex, salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  rank      sex   salary
-  &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;
-1 Prof      Male  139750
-2 Prof      Male  173200
-3 AsstProf  Male   79750
-4 Prof      Male  115000
-5 Prof      Male  141500
-6 AssocProf Male   97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["salary"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"139750"},{"1":"Prof","2":"Male","3":"173200"},{"1":"AsstProf","2":"Male","3":"79750"},{"1":"Prof","2":"Male","3":"115000"},{"1":"Prof","2":"Male","3":"141500"},{"1":"AssocProf","2":"Male","3":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Con pipe: más legible</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Con pipe: más legible</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  rank      sex   salary
-  &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;
-1 Prof      Male  139750
-2 Prof      Male  173200
-3 AsstProf  Male   79750
-4 Prof      Male  115000
-5 Prof      Male  141500
-6 AssocProf Male   97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["salary"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"139750"},{"1":"Prof","2":"Male","3":"173200"},{"1":"AsstProf","2":"Male","3":"79750"},{"1":"Prof","2":"Male","3":"115000"},{"1":"Prof","2":"Male","3":"141500"},{"1":"AssocProf","2":"Male","3":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -301,148 +389,121 @@ Note
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: s6-select</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Selección explícita</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: s6-select</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Selección explícita</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  rank      sex   salary
-  &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;
-1 Prof      Male  139750
-2 Prof      Male  173200
-3 AsstProf  Male   79750
-4 Prof      Male  115000
-5 Prof      Male  141500
-6 AssocProf Male   97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["salary"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"139750"},{"1":"Prof","2":"Male","3":"173200"},{"1":"AsstProf","2":"Male","3":"79750"},{"1":"Prof","2":"Male","3":"115000"},{"1":"Prof","2":"Male","3":"141500"},{"1":"AssocProf","2":"Male","3":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helpers útiles:</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"yr"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()     <span class="co"># empieza por "yr"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helpers útiles:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"yr"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()     <span class="co"># empieza por "yr"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  yrs.service
-        &lt;dbl&gt;
-1          18
-2          16
-3           3
-4          39
-5          41
-6           6</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["yrs.service"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"18"},{"1":"16"},{"1":"3"},{"1":"39"},{"1":"41"},{"1":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"ice"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()      <span class="co"># termina en "ice"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"ice"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()      <span class="co"># termina en "ice"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  yrs.service
-        &lt;dbl&gt;
-1          18
-2          16
-3           3
-4          39
-5          41
-6           6</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["yrs.service"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"18"},{"1":"16"},{"1":"3"},{"1":"39"},{"1":"41"},{"1":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"sal"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()       <span class="co"># contiene "sal"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"sal"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()       <span class="co"># contiene "sal"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  salary
-   &lt;dbl&gt;
-1 139750
-2 173200
-3  79750
-4 115000
-5 141500
-6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"139750"},{"1":"173200"},{"1":"79750"},{"1":"115000"},{"1":"141500"},{"1":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"^(rank|sex)$"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()  <span class="co"># regex</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"^(rank|sex)$"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()  <span class="co"># regex</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  rank      sex  
-  &lt;chr&gt;     &lt;chr&gt;
-1 Prof      Male 
-2 Prof      Male 
-3 AsstProf  Male 
-4 Prof      Male 
-5 Prof      Male 
-6 AssocProf Male </code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Prof","2":"Male"},{"1":"Prof","2":"Male"},{"1":"AsstProf","2":"Male"},{"1":"Prof","2":"Male"},{"1":"Prof","2":"Male"},{"1":"AssocProf","2":"Male"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()     <span class="co"># solo numéricas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()     <span class="co"># solo numéricas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  yrs.service salary
-        &lt;dbl&gt;  &lt;dbl&gt;
-1          18 139750
-2          16 173200
-3           3  79750
-4          39 115000
-5          41 141500
-6           6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["yrs.service"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"18","2":"139750"},{"1":"16","2":"173200"},{"1":"3","2":"79750"},{"1":"39","2":"115000"},{"1":"41","2":"141500"},{"1":"6","2":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renombrar a la vez que seleccionas</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">cargo =</span> rank, <span class="at">genero =</span> sex, <span class="at">antiguedad =</span> <span class="st">`</span><span class="at">yrs.service</span><span class="st">`</span>, <span class="at">salario =</span> salary) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renombrar a la vez que seleccionas</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">cargo =</span> rank, <span class="at">genero =</span> sex, <span class="at">antiguedad =</span> <span class="st">`</span><span class="at">yrs.service</span><span class="st">`</span>, <span class="at">salario =</span> salary) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  cargo     genero antiguedad salario
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-1 Prof      Male           18  139750
-2 Prof      Male           16  173200
-3 AsstProf  Male            3   79750
-4 Prof      Male           39  115000
-5 Prof      Male           41  141500
-6 AssocProf Male            6   97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["cargo"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genero"],"name":[2],"type":["chr"],"align":["left"]},{"label":["antiguedad"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salario"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reubicar columnas (que 'salary' quede primero)</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(salary, <span class="at">.before =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reubicar columnas (que 'salary' quede primero)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(salary, <span class="at">.before =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  salary rank      sex   yrs.service
-   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;
-1 139750 Prof      Male           18
-2 173200 Prof      Male           16
-3  79750 AsstProf  Male            3
-4 115000 Prof      Male           39
-5 141500 Prof      Male           41
-6  97000 AssocProf Male            6</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["salary"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[3],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"139750","2":"Prof","3":"Male","4":"18"},{"1":"173200","2":"Prof","3":"Male","4":"16"},{"1":"79750","2":"AsstProf","3":"Male","4":"3"},{"1":"115000","2":"Prof","3":"Male","4":"39"},{"1":"141500","2":"Prof","3":"Male","4":"41"},{"1":"97000","2":"AssocProf","3":"Male","4":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mantener todo pero mover 'sex' al final:</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(sex, <span class="at">.after =</span> <span class="fu">last_col</span>()) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mantener todo pero mover 'sex' al final:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(sex, <span class="at">.after =</span> <span class="fu">last_col</span>()) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      yrs.service salary sex  
-  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
-1 Prof               18 139750 Male 
-2 Prof               16 173200 Male 
-3 AsstProf            3  79750 Male 
-4 Prof               39 115000 Male 
-5 Prof               41 141500 Male 
-6 AssocProf           6  97000 Male </code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Prof","2":"18","3":"139750","4":"Male"},{"1":"Prof","2":"16","3":"173200","4":"Male"},{"1":"AsstProf","2":"3","3":"79750","4":"Male"},{"1":"Prof","2":"39","3":"115000","4":"Male"},{"1":"Prof","2":"41","3":"141500","4":"Male"},{"1":"AssocProf","2":"6","3":"97000","4":"Male"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -464,136 +525,119 @@ Warning
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Igualdad, distinto, mayor/menor</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Igualdad, distinto, mayor/menor</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male           18 139750
-2 Prof      Male           16 173200
-3 AsstProf  Male            3  79750
-4 Prof      Male           39 115000
-5 Prof      Male           41 141500
-6 AssocProf Male            6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">!=</span> <span class="st">"Female"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">!=</span> <span class="st">"Female"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male           18 139750
-2 Prof      Male           16 173200
-3 AsstProf  Male            3  79750
-4 Prof      Male           39 115000
-5 Prof      Male           41 141500
-6 AssocProf Male            6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AND (&amp;) y OR (|)</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">&amp;</span> salary <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AND (&amp;) y OR (|)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">&amp;</span> salary <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Female          18 129000
-2 Prof      Female          36 137000
-3 Prof      Female          19 151768
-4 Prof      Female          25 140096
-5 AssocProf Female          11 103613
-6 Prof      Female          17 111512</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Female","3":"18","4":"129000"},{"1":"Prof","2":"Female","3":"36","4":"137000"},{"1":"Prof","2":"Female","3":"19","4":"151768"},{"1":"Prof","2":"Female","3":"25","4":"140096"},{"1":"AssocProf","2":"Female","3":"11","4":"103613"},{"1":"Prof","2":"Female","3":"17","4":"111512"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">|</span> salary <span class="sc">&gt;</span> <span class="dv">150000</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">|</span> salary <span class="sc">&gt;</span> <span class="dv">150000</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male            16 173200
-2 Prof      Male            23 175000
-3 Prof      Female          18 129000
-4 Prof      Female          36 137000
-5 AssocProf Female           8  74830
-6 AsstProf  Female           2  80225</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"Prof","2":"Male","3":"23","4":"175000"},{"1":"Prof","2":"Female","3":"18","4":"129000"},{"1":"Prof","2":"Female","3":"36","4":"137000"},{"1":"AssocProf","2":"Female","3":"8","4":"74830"},{"1":"AsstProf","2":"Female","3":"2","4":"80225"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% para varios valores (como IN en SQL)</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rank <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Prof"</span>,<span class="st">"AssocProf"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %in% para varios valores (como IN en SQL)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rank <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Prof"</span>,<span class="st">"AssocProf"</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male           18 139750
-2 Prof      Male           16 173200
-3 Prof      Male           39 115000
-4 Prof      Male           41 141500
-5 AssocProf Male            6  97000
-6 Prof      Male           23 175000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"},{"1":"Prof","2":"Male","3":"23","4":"175000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rangos numéricos: between(x, izq, der) incluye extremos</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (si tu columna de antigüedad se llama 'yrs.service', ajusta el nombre)</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(BaseSal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rangos numéricos: between(x, izq, der) incluye extremos</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (si tu columna de antigüedad se llama 'yrs.service', ajusta el nombre)</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(BaseSal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "rank"        "sex"         "yrs.service" "salary"     </code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intentamos adivinar el nombre correcto de antigüedad:</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>nombre_ant <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>,<span class="st">"years_service"</span>), <span class="fu">names</span>(BaseSal))</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(nombre_ant) <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(.data[[nombre_ant]], <span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(rank, sex, <span class="sc">!!</span>nombre_ant, salary) <span class="sc">%&gt;%</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intentamos adivinar el nombre correcto de antigüedad:</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>nombre_ant <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>,<span class="st">"years_service"</span>), <span class="fu">names</span>(BaseSal))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(nombre_ant) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(.data[[nombre_ant]], <span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(rank, sex, <span class="sc">!!</span>nombre_ant, salary) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank  sex    yrs.service salary
-  &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof  Male            18 139750
-2 Prof  Male            16 173200
-3 Prof  Male            20 119250
-4 Prof  Female          18 129000
-5 Prof  Male            18 104800
-6 Prof  Male            20 101000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"Prof","2":"Male","3":"20","4":"119250"},{"1":"Prof","2":"Female","3":"18","4":"129000"},{"1":"Prof","2":"Male","3":"18","4":"104800"},{"1":"Prof","2":"Male","3":"20","4":"101000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA: filtra no faltantes / faltantes</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NA: filtra no faltantes / faltantes</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male           18 139750
-2 Prof      Male           16 173200
-3 AsstProf  Male            3  79750
-4 Prof      Male           39 115000
-5 Prof      Male           41 141500
-6 AssocProf Male            6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(salary))  <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(salary))  <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 4
-# ℹ 4 variables: rank &lt;chr&gt;, sex &lt;chr&gt;, yrs.service &lt;dbl&gt;, salary &lt;dbl&gt;</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -615,87 +659,68 @@ Tip
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden ascendente por salary</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(salary) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden ascendente por salary</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(salary) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male            51  57800
-2 AssocProf Female          22  62884
-3 AsstProf  Female           6  63100
-4 AsstProf  Male             1  63900
-5 Prof      Male            45  67559
-6 AsstProf  Male             3  68404</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"51","4":"57800"},{"1":"AssocProf","2":"Female","3":"22","4":"62884"},{"1":"AsstProf","2":"Female","3":"6","4":"63100"},{"1":"AsstProf","2":"Male","3":"1","4":"63900"},{"1":"Prof","2":"Male","3":"45","4":"67559"},{"1":"AsstProf","2":"Male","3":"3","4":"68404"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden descendente</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden descendente</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank  sex   yrs.service salary
-  &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof  Male           38 231545
-2 Prof  Male           43 205500
-3 Prof  Male            7 204000
-4 Prof  Male           18 194800
-5 Prof  Male           19 193000
-6 Prof  Male           60 192253</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"38","4":"231545"},{"1":"Prof","2":"Male","3":"43","4":"205500"},{"1":"Prof","2":"Male","3":"7","4":"204000"},{"1":"Prof","2":"Male","3":"18","4":"194800"},{"1":"Prof","2":"Male","3":"19","4":"193000"},{"1":"Prof","2":"Male","3":"60","4":"192253"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden múltiple: primero por rank, luego salary desc</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(rank, <span class="fu">desc</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden múltiple: primero por rank, luego salary desc</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(rank, <span class="fu">desc</span>(salary)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 4
-   rank      sex    yrs.service salary
-   &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
- 1 AssocProf Male            11 126431
- 2 AssocProf Male             8 119800
- 3 AssocProf Male             1 118700
- 4 AssocProf Male             7 113600
- 5 AssocProf Male            18 113341
- 6 AssocProf Female           7 109650
- 7 AssocProf Male             1 108413
- 8 AssocProf Male             6 107150
- 9 AssocProf Male             7 107008
-10 AssocProf Male            28 106300</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AssocProf","2":"Male","3":"11","4":"126431"},{"1":"AssocProf","2":"Male","3":"8","4":"119800"},{"1":"AssocProf","2":"Male","3":"1","4":"118700"},{"1":"AssocProf","2":"Male","3":"7","4":"113600"},{"1":"AssocProf","2":"Male","3":"18","4":"113341"},{"1":"AssocProf","2":"Female","3":"7","4":"109650"},{"1":"AssocProf","2":"Male","3":"1","4":"108413"},{"1":"AssocProf","2":"Male","3":"6","4":"107150"},{"1":"AssocProf","2":"Male","3":"7","4":"107008"},{"1":"AssocProf","2":"Male","3":"28","4":"106300"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas únicas (en todas las columnas actuales)</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filas únicas (en todas las columnas actuales)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex   yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male           18 139750
-2 Prof      Male           16 173200
-3 AsstProf  Male            3  79750
-4 Prof      Male           39 115000
-5 Prof      Male           41 141500
-6 AssocProf Male            6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"Prof","2":"Male","3":"16","4":"173200"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"Prof","2":"Male","3":"39","4":"115000"},{"1":"Prof","2":"Male","3":"41","4":"141500"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Únicas por subset (combinación de rank y sex)</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(rank, sex, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Únicas por subset (combinación de rank y sex)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>BaseSal <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(rank, sex, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male            18 139750
-2 AsstProf  Male             3  79750
-3 AssocProf Male             6  97000
-4 Prof      Female          18 129000
-5 AssocProf Female           8  74830
-6 AsstProf  Female           2  80225</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"},{"1":"Prof","2":"Female","3":"18","4":"129000"},{"1":"AssocProf","2":"Female","3":"8","4":"74830"},{"1":"AsstProf","2":"Female","3":"2","4":"80225"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
@@ -710,85 +735,73 @@ Tip
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: s6-ejercicios</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) salary &gt;= 100000, columnas puntuales, ordenar desc</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>Base_gte100 <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(salary <span class="sc">&gt;=</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(salary))</span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base_gte100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: s6-ejercicios</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) salary &gt;= 100000, columnas puntuales, ordenar desc</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>Base_gte100 <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rank, sex, salary) <span class="sc">%&gt;%</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(salary <span class="sc">&gt;=</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(salary))</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base_gte100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  rank  sex   salary
-  &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;
-1 Prof  Male  231545
-2 Prof  Male  205500
-3 Prof  Male  204000
-4 Prof  Male  194800
-5 Prof  Male  193000
-6 Prof  Male  192253</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["salary"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"231545"},{"1":"Prof","2":"Male","3":"205500"},{"1":"Prof","2":"Male","3":"204000"},{"1":"Prof","2":"Male","3":"194800"},{"1":"Prof","2":"Male","3":"193000"},{"1":"Prof","2":"Male","3":"192253"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) únicas por rank + sex</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>Base_unique <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(rank, sex, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>Base_unique</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) únicas por rank + sex</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>Base_unique <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(rank, sex, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>Base_unique</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Prof      Male            18 139750
-2 AsstProf  Male             3  79750
-3 AssocProf Male             6  97000
-4 Prof      Female          18 129000
-5 AssocProf Female           8  74830
-6 AsstProf  Female           2  80225</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Prof","2":"Male","3":"18","4":"139750"},{"1":"AsstProf","2":"Male","3":"3","4":"79750"},{"1":"AssocProf","2":"Male","3":"6","4":"97000"},{"1":"Prof","2":"Female","3":"18","4":"129000"},{"1":"AssocProf","2":"Female","3":"8","4":"74830"},{"1":"AsstProf","2":"Female","3":"2","4":"80225"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) solo columnas numéricas y filas completas</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>Base_num_complete <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">complete.cases</span>(.))</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base_num_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) solo columnas numéricas y filas completas</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>Base_num_complete <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">complete.cases</span>(.))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Base_num_complete)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  yrs.service salary
-        &lt;dbl&gt;  &lt;dbl&gt;
-1          18 139750
-2          16 173200
-3           3  79750
-4          39 115000
-5          41 141500
-6           6  97000</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["yrs.service"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"18","2":"139750"},{"1":"16","2":"173200"},{"1":"3","2":"79750"},{"1":"39","2":"115000"},{"1":"41","2":"141500"},{"1":"6","2":"97000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) antigüedad entre 10 y 20 si la columna existe</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>nombre_ant <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>,<span class="st">"years_service"</span>), <span class="fu">names</span>(BaseSal))</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(nombre_ant) <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  Base_10_20 <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(.data[[nombre_ant]], <span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(rank, <span class="fu">desc</span>(salary))</span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(Base_10_20)</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) antigüedad entre 10 y 20 si la columna existe</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>nombre_ant <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">c</span>(<span class="st">"yrs.service"</span>,<span class="st">"yrs_service"</span>,<span class="st">"years_service"</span>), <span class="fu">names</span>(BaseSal))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(nombre_ant) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  Base_10_20 <span class="ot">&lt;-</span> BaseSal <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(.data[[nombre_ant]], <span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(rank, <span class="fu">desc</span>(salary))</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(Base_10_20)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  rank      sex    yrs.service salary
-  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 AssocProf Male            11 126431
-2 AssocProf Male            18 113341
-3 AssocProf Female          10 103994
-4 AssocProf Male            11 103760
-5 AssocProf Female          10 103750
-6 AssocProf Female          11 103613</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["yrs.service"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salary"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AssocProf","2":"Male","3":"11","4":"126431"},{"1":"AssocProf","2":"Male","3":"18","4":"113341"},{"1":"AssocProf","2":"Female","3":"10","4":"103994"},{"1":"AssocProf","2":"Male","3":"11","4":"103760"},{"1":"AssocProf","2":"Female","3":"10","4":"103750"},{"1":"AssocProf","2":"Female","3":"11","4":"103613"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 
@@ -1030,6 +1043,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-descriptivos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">5. Descriptivos</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-dplyr-mutate.html" class="pagination-link">
+        <span class="nav-page-text">7. dplyr II (mutate/recodes)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
