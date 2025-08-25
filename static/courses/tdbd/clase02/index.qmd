@@ -1,0 +1,14 @@
+---
+title: "Clase 02 — Limpieza y Transformación de Datos"
+format: html
+---
+
+
+Usa el menú de la izquierda para navegar sección por sección.
+
+
+
+<br>
+<hr>
+
+Regresar a [www.joaquibarandica.com](https://www.joaquibarandica.com) 
