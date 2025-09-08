@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Orlando Joaqui-Barandica">
-<meta name="dcterms.date" content="2025-09-07">
+<meta name="dcterms.date" content="2025-09-08">
 
-<title>Toma de Decisiones Basadas en Datos - Regresión Cuantil</title>
+<title>Toma de Decisiones Basadas en Datos - Modelos de Elección Discreta</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,26 +141,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#materiales" id="toc-materiales" class="nav-link active" data-scroll-target="#materiales"><span class="header-section-number">1</span> Materiales</a></li>
-  <li><a href="#resumen-de-la-sesión" id="toc-resumen-de-la-sesión" class="nav-link" data-scroll-target="#resumen-de-la-sesión"><span class="header-section-number">2</span> Resumen de la sesión</a></li>
-  <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">3</span> Objetivos de aprendizaje</a></li>
-  <li><a href="#marco-conceptual" id="toc-marco-conceptual" class="nav-link" data-scroll-target="#marco-conceptual"><span class="header-section-number">4</span> Marco conceptual</a>
+  <li><a href="#resumen-de-la-sesión" id="toc-resumen-de-la-sesión" class="nav-link active" data-scroll-target="#resumen-de-la-sesión"><span class="header-section-number">1</span> Resumen de la sesión</a></li>
+  <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">2</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#marco-conceptual" id="toc-marco-conceptual" class="nav-link" data-scroll-target="#marco-conceptual"><span class="header-section-number">3</span> Marco conceptual</a>
   <ul class="collapse">
-  <li><a href="#elección-binaria-y-modelo-logit" id="toc-elección-binaria-y-modelo-logit" class="nav-link" data-scroll-target="#elección-binaria-y-modelo-logit"><span class="header-section-number">4.1</span> Elección binaria y modelo Logit</a></li>
-  <li><a href="#de-binario-a-multinomial" id="toc-de-binario-a-multinomial" class="nav-link" data-scroll-target="#de-binario-a-multinomial"><span class="header-section-number">4.2</span> De binario a multinomial</a></li>
+  <li><a href="#elección-binaria-y-modelo-logit" id="toc-elección-binaria-y-modelo-logit" class="nav-link" data-scroll-target="#elección-binaria-y-modelo-logit"><span class="header-section-number">3.1</span> Elección binaria y modelo Logit</a></li>
+  <li><a href="#de-binario-a-multinomial" id="toc-de-binario-a-multinomial" class="nav-link" data-scroll-target="#de-binario-a-multinomial"><span class="header-section-number">3.2</span> De binario a multinomial</a></li>
   </ul></li>
-  <li><a href="#codigo-modelo-logit---probit" id="toc-codigo-modelo-logit---probit" class="nav-link" data-scroll-target="#codigo-modelo-logit---probit"><span class="header-section-number">5</span> Codigo Modelo Logit - Probit</a>
+  <li><a href="#codigo-modelo-logit---probit" id="toc-codigo-modelo-logit---probit" class="nav-link" data-scroll-target="#codigo-modelo-logit---probit"><span class="header-section-number">4</span> Codigo Modelo Logit - Probit</a>
   <ul class="collapse">
-  <li><a href="#hosmer-lemeshow" id="toc-hosmer-lemeshow" class="nav-link" data-scroll-target="#hosmer-lemeshow"><span class="header-section-number">5.1</span> Hosmer-Lemeshow</a></li>
-  <li><a href="#modelo-probit" id="toc-modelo-probit" class="nav-link" data-scroll-target="#modelo-probit"><span class="header-section-number">5.2</span> Modelo Probit</a></li>
-  <li><a href="#modelo-multinomial" id="toc-modelo-multinomial" class="nav-link" data-scroll-target="#modelo-multinomial"><span class="header-section-number">5.3</span> Modelo Multinomial</a></li>
+  <li><a href="#hosmer-lemeshow" id="toc-hosmer-lemeshow" class="nav-link" data-scroll-target="#hosmer-lemeshow"><span class="header-section-number">4.1</span> Hosmer-Lemeshow</a></li>
+  <li><a href="#modelo-probit" id="toc-modelo-probit" class="nav-link" data-scroll-target="#modelo-probit"><span class="header-section-number">4.2</span> Modelo Probit</a></li>
+  <li><a href="#modelo-multinomial" id="toc-modelo-multinomial" class="nav-link" data-scroll-target="#modelo-multinomial"><span class="header-section-number">4.3</span> Modelo Multinomial</a></li>
   </ul></li>
-  <li><a href="#taller" id="toc-taller" class="nav-link" data-scroll-target="#taller"><span class="header-section-number">6</span> Taller</a>
+  <li><a href="#taller" id="toc-taller" class="nav-link" data-scroll-target="#taller"><span class="header-section-number">5</span> Taller</a>
   <ul class="collapse">
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo"><span class="header-section-number">6.1</span> Objetivo</a></li>
-  <li><a href="#fuentes-sugeridas" id="toc-fuentes-sugeridas" class="nav-link" data-scroll-target="#fuentes-sugeridas"><span class="header-section-number">6.2</span> Fuentes sugeridas</a></li>
-  <li><a href="#ejemplos-de-preguntas" id="toc-ejemplos-de-preguntas" class="nav-link" data-scroll-target="#ejemplos-de-preguntas"><span class="header-section-number">6.3</span> Ejemplos de preguntas</a></li>
-  <li><a href="#pasos-mínimos" id="toc-pasos-mínimos" class="nav-link" data-scroll-target="#pasos-mínimos"><span class="header-section-number">6.4</span> Pasos (mínimos)</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo"><span class="header-section-number">5.1</span> Objetivo</a></li>
+  <li><a href="#fuentes-sugeridas" id="toc-fuentes-sugeridas" class="nav-link" data-scroll-target="#fuentes-sugeridas"><span class="header-section-number">5.2</span> Fuentes sugeridas</a></li>
+  <li><a href="#ejemplos-de-preguntas" id="toc-ejemplos-de-preguntas" class="nav-link" data-scroll-target="#ejemplos-de-preguntas"><span class="header-section-number">5.3</span> Ejemplos de preguntas</a></li>
+  <li><a href="#pasos-mínimos" id="toc-pasos-mínimos" class="nav-link" data-scroll-target="#pasos-mínimos"><span class="header-section-number">5.4</span> Pasos (mínimos)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -170,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Regresión Cuantil</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Modelos de Elección Discreta</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -187,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 7, 2025</p>
+      <p class="date">September 8, 2025</p>
     </div>
   </div>
   
@@ -197,19 +196,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="materiales" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Materiales</h1>
-<ul>
-<li>R ≥ 4.1 y paquetes: <code>quantreg</code>, <code>ggplot2</code>, <code>dplyr</code>, <code>AER</code>, <code>broom</code>, <code>purrr</code>, <code>tidyr</code>, <code>scales</code>.</li>
-<li>Dataset de ejemplo: <code>AER::CPS1985</code> (salarios en EE. UU. 1985).</li>
-</ul>
-</section>
-<section id="resumen-de-la-sesión" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Resumen de la sesión</h1>
+<section id="resumen-de-la-sesión" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Resumen de la sesión</h1>
 <p>En esta sesión introducimos <strong>modelos de elección discreta</strong> para variables dependientes cualitativas. Empezamos con casos binarios y el <strong>modelo Logit</strong> (formulación, interpretación y validación) y avanzamos a elecciones con <strong>m&gt;2</strong> alternativas mediante <strong>Logit Multinomial</strong>. Cerraremos con criterios para decidir entre <strong>binario, multinomial u ordinal</strong> y simulaciones reproducibles (código oculto).</p>
 </section>
-<section id="objetivos-de-aprendizaje" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Objetivos de aprendizaje</h1>
+<section id="objetivos-de-aprendizaje" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Objetivos de aprendizaje</h1>
 <ul>
 <li>Distinguir entre variables <strong>binarias, ordinales y nominales</strong> y seleccionar el modelo adecuado.</li>
 <li>Formular e interpretar un <strong>Logit</strong> (odds, OR, efectos marginales y ajuste).</li>
@@ -217,8 +209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Reconocer cuándo usar <strong>modelos ordinales</strong> (líneas paralelas) vs <strong>multinomiales</strong>.</li>
 </ul>
 </section>
-<section id="marco-conceptual" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Marco conceptual</h1>
+<section id="marco-conceptual" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Marco conceptual</h1>
 <p>Los <strong>modelos de elección discreta</strong> estudian la probabilidad de que un individuo elija una opción dentro de un conjunto finito. Ejemplos:</p>
 <ul>
 <li><ol type="i">
@@ -237,8 +229,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Satisfacción</strong> en escalas Likert (ordinal).</li>
 </ol></li>
 </ul>
-<section id="elección-binaria-y-modelo-logit" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="elección-binaria-y-modelo-logit"><span class="header-section-number">4.1</span> Elección binaria y modelo Logit</h2>
+<section id="elección-binaria-y-modelo-logit" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="elección-binaria-y-modelo-logit"><span class="header-section-number">3.1</span> Elección binaria y modelo Logit</h2>
 <p>Sea <span class="math inline">\((Y_i \in {0,1})\)</span>. El <strong>Logit</strong> modela <span class="math inline">\((p_i=Pr(Y_i=1\mid X_i))\)</span> con</p>
 <p><span class="math display">\[ p_i=\frac{1}{1+e^{-X_i'\beta}} \quad \Rightarrow \quad \log\frac{p_i}{1-p_i}=X_i'\beta. \]</span></p>
 <p>Se estima por máxima verosimilitud; los coeficientes se interpretan como odds ratios <span class="math inline">\((\exp(\beta_j))\)</span>; los efectos en probabilidad mediante <strong>efectos marginales</strong>.</p>
@@ -256,8 +248,8 @@ Important
 </div>
 </div>
 </section>
-<section id="de-binario-a-multinomial" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="de-binario-a-multinomial"><span class="header-section-number">4.2</span> De binario a multinomial</h2>
+<section id="de-binario-a-multinomial" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="de-binario-a-multinomial"><span class="header-section-number">3.2</span> De binario a multinomial</h2>
 <p>Cuando <span class="math inline">\((m&gt;2)\)</span> sin orden, partimos de <strong>utilidad aleatoria</strong>:</p>
 <p>El individuo (i) elige la alternativa (j) con mayor utilidad</p>
 <p><span class="math display">\[(U_{ij}=X_i'\beta_j+\varepsilon_{ij})\]</span>.</p>
@@ -279,8 +271,8 @@ Note
 </div>
 </section>
 </section>
-<section id="codigo-modelo-logit---probit" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Codigo Modelo Logit - Probit</h1>
+<section id="codigo-modelo-logit---probit" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Codigo Modelo Logit - Probit</h1>
 <p>Un investigador está interesado en cómo las variables, como el GRE (puntaje del examen de Graduados), el GPA (promedio de calificaciones) y el prestigio de la institución de pregrado, tienen efecto en la admisión a la escuela de postgrado.</p>
 <blockquote class="blockquote">
 <p>La variable de respuesta, admitir / no admitir, es una variable binaria.</p>
@@ -495,8 +487,8 @@ rank4       0.2119375 0.090715546 0.4706961</code></pre>
 <p><img src="clase05_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="hosmer-lemeshow" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="hosmer-lemeshow"><span class="header-section-number">5.1</span> Hosmer-Lemeshow</h2>
+<section id="hosmer-lemeshow" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="hosmer-lemeshow"><span class="header-section-number">4.1</span> Hosmer-Lemeshow</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -513,8 +505,8 @@ X-squared = 11.085, df = 8, p-value = 0.1969</code></pre>
 </div>
 <p>No rechazo Ho, indicando que no hay evidencia de mal ajuste. Esto es bueno, ya que aquí sabemos que el modelo está correctamente especificado.</p>
 </section>
-<section id="modelo-probit" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="modelo-probit"><span class="header-section-number">5.2</span> Modelo Probit</h2>
+<section id="modelo-probit" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="modelo-probit"><span class="header-section-number">4.2</span> Modelo Probit</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -666,8 +658,8 @@ mylogit: glm(formula = admit ~ gre + gpa + rank, family = "binomial",
 </div>
 </div>
 </section>
-<section id="modelo-multinomial" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="modelo-multinomial"><span class="header-section-number">5.3</span> Modelo Multinomial</h2>
+<section id="modelo-multinomial" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="modelo-multinomial"><span class="header-section-number">4.3</span> Modelo Multinomial</h2>
 <blockquote class="blockquote">
 <p>Ejemplo 1. Las elecciones ocupacionales de las personas pueden verse influenciadas por las ocupaciones de sus padres y su propio nivel educativo. Podemos estudiar la relación entre la elección de ocupación y el nivel educativo y la ocupación del padre. Las elecciones ocupacionales serán la variable de resultado que consta de categorías de ocupaciones.</p>
 </blockquote>
@@ -1142,21 +1134,21 @@ pp.write$ses: middle
 </ul>
 </section>
 </section>
-<section id="taller" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Taller</h1>
-<section id="objetivo" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">6.1</span> Objetivo</h2>
+<section id="taller" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Taller</h1>
+<section id="objetivo" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">5.1</span> Objetivo</h2>
 <p>Modelar una elección con ≥3 categorías nominales y responder preguntas de política/gestión con probabilidades predichas, efectos marginales, etc.</p>
 </section>
-<section id="fuentes-sugeridas" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="fuentes-sugeridas"><span class="header-section-number">6.2</span> Fuentes sugeridas</h2>
+<section id="fuentes-sugeridas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="fuentes-sugeridas"><span class="header-section-number">5.2</span> Fuentes sugeridas</h2>
 <p>World Bank Data (DataBank), OECD Data, Our World in Data, UN Data, FAOSTAT, IMF Data.</p>
 <blockquote class="blockquote">
 <p>Elijan un dataset con ≥ 300 observaciones (país-año, hogares, empresas, etc) y variables claras. Importante que la frecuencia en las clases sea balanceada.</p>
 </blockquote>
 </section>
-<section id="ejemplos-de-preguntas" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="ejemplos-de-preguntas"><span class="header-section-number">6.3</span> Ejemplos de preguntas</h2>
+<section id="ejemplos-de-preguntas" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="ejemplos-de-preguntas"><span class="header-section-number">5.3</span> Ejemplos de preguntas</h2>
 <p><strong>Transporte</strong></p>
 <blockquote class="blockquote">
 <p>¿Qué factores explican elegir bus/metro/bici/auto? Y: modo. X: tiempo, costo, clima, ingresos. Contrafactual: −10% en tiempo del metro → ¿nuevos shares?</p>
@@ -1197,8 +1189,8 @@ pp.write$ses: middle
 <p>¿Qué determina el combustible de cocina gas/electricidad/biomasa? Y: combustible. X: ingreso, subsidio, zona, precio relativo. Contrafactual: bajar precio de electricidad 15%.</p>
 </blockquote>
 </section>
-<section id="pasos-mínimos" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="pasos-mínimos"><span class="header-section-number">6.4</span> Pasos (mínimos)</h2>
+<section id="pasos-mínimos" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="pasos-mínimos"><span class="header-section-number">5.4</span> Pasos (mínimos)</h2>
 <ol type="1">
 <li><p>Pregunta y alternativas Define la decisión a modelar y las categorías nominales (≥3). Explica por qué no es binario ni ordinal. Fija la categoría base.</p></li>
 <li><p>Datos y limpieza Fuente, tamaño (≥300 obs. sugerido), definiciones, recodificaciones a factor, outliers/NA, y una tabla de frecuencias por categoría.</p></li>
@@ -1500,7 +1492,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb57" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Regresión Cuantil"</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Modelos de Elección Discreta"</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Orlando Joaqui-Barandica"</span></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> last-modified</span></span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
@@ -1519,585 +1511,474 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
 <span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># Materiales</span></span>
-<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R ≥ 4.1 y paquetes: <span class="in">`quantreg`</span>, <span class="in">`ggplot2`</span>, <span class="in">`dplyr`</span>, <span class="in">`AER`</span>, <span class="in">`broom`</span>, <span class="in">`purrr`</span>, <span class="in">`tidyr`</span>, <span class="in">`scales`</span>.</span>
-<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dataset de ejemplo: <span class="in">`AER::CPS1985`</span> (salarios en EE. UU. 1985).</span>
-<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a>required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"quantreg"</span>,<span class="st">"ggplot2"</span>,<span class="st">"dplyr"</span>,<span class="st">"AER"</span>,<span class="st">"broom"</span>,<span class="st">"purrr"</span>,<span class="st">"tidyr"</span>,<span class="st">"scales"</span>)</span>
-<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>missing <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(required, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
-<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(missing)) <span class="fu">install.packages</span>(missing)</span>
-<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">lapply</span>(required, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>required <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"quantreg"</span>,<span class="st">"ggplot2"</span>,<span class="st">"dplyr"</span>,<span class="st">"AER"</span>,<span class="st">"broom"</span>,<span class="st">"purrr"</span>,<span class="st">"tidyr"</span>,<span class="st">"scales"</span>)</span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>missing <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(required, <span class="fu">rownames</span>(<span class="fu">installed.packages</span>()))</span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(missing)) <span class="fu">install.packages</span>(missing)</span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">lapply</span>(required, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resumen de la sesión</span></span>
+<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a>En esta sesión introducimos **modelos de elección discreta** para variables dependientes cualitativas. Empezamos con casos binarios y el **modelo Logit** (formulación, interpretación y validación) y avanzamos a elecciones con **m\&gt;2** alternativas mediante **Logit Multinomial**. Cerraremos con criterios para decidir entre **binario, multinomial u ordinal** y simulaciones reproducibles (código oculto).</span>
 <span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resumen de la sesión</span></span>
+<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivos de aprendizaje</span></span>
 <span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>En esta sesión introducimos **modelos de elección discreta** para variables dependientes cualitativas. Empezamos con casos binarios y el **modelo Logit** (formulación, interpretación y validación) y avanzamos a elecciones con **m\&gt;2** alternativas mediante **Logit Multinomial**. Cerraremos con criterios para decidir entre **binario, multinomial u ordinal** y simulaciones reproducibles (código oculto).</span>
-<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivos de aprendizaje</span></span>
-<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Distinguir entre variables **binarias, ordinales y nominales** y seleccionar el modelo adecuado.</span>
-<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Formular e interpretar un **Logit** (odds, OR, efectos marginales y ajuste).</span>
-<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Entender la teoría de **utilidad aleatoria** y la especificación del **Logit Multinomial**.</span>
-<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Reconocer cuándo usar **modelos ordinales** (líneas paralelas) vs **multinomiales**.</span>
+<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Distinguir entre variables **binarias, ordinales y nominales** y seleccionar el modelo adecuado.</span>
+<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Formular e interpretar un **Logit** (odds, OR, efectos marginales y ajuste).</span>
+<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Entender la teoría de **utilidad aleatoria** y la especificación del **Logit Multinomial**.</span>
+<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Reconocer cuándo usar **modelos ordinales** (líneas paralelas) vs **multinomiales**.</span>
+<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># Marco conceptual</span></span>
+<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a>Los **modelos de elección discreta** estudian la probabilidad de que un individuo elija una opción dentro de un conjunto finito. Ejemplos:</span>
 <span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
 <span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a>    (i) **Adopción de un crédito** (sí/no)</span>
 <span id="cb57-54"><a href="#cb57-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a><span class="fu"># Marco conceptual</span></span>
+<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
 <span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>Los **modelos de elección discreta** estudian la probabilidad de que un individuo elija una opción dentro de un conjunto finito. Ejemplos: </span>
+<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>    (ii) **Compra online** (sí/no)</span>
 <span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(i) **Adopción de un crédito** (sí/no)</span>
-<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(ii) **Compra online** (sí/no)</span>
-<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(iii) **Modo de transporte** (bus/auto/bici)</span>
-<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(iv) **Elección de marca** (m&gt;2, nominal)</span>
-<span id="cb57-63"><a href="#cb57-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(v) **Satisfacción** en escalas Likert (ordinal).</span>
+<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
+<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a>    (iii) **Modo de transporte** (bus/auto/bici)</span>
+<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-63"><a href="#cb57-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
 <span id="cb57-64"><a href="#cb57-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Elección binaria y modelo Logit</span></span>
+<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a>    (iv) **Elección de marca** (m<span class="sc">\&gt;</span>2, nominal)</span>
 <span id="cb57-66"><a href="#cb57-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-67"><a href="#cb57-67" aria-hidden="true" tabindex="-1"></a>Sea $(Y_i \in {0,1})$. El **Logit** modela $(p_i=Pr(Y_i=1\mid X_i))$ con </span>
+<span id="cb57-67"><a href="#cb57-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span></span>
 <span id="cb57-68"><a href="#cb57-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-69"><a href="#cb57-69" aria-hidden="true" tabindex="-1"></a>$$ p_i=\frac{1}{1+e^{-X_i'\beta}} \quad \Rightarrow \quad \log\frac{p_i}{1-p_i}=X_i'\beta. $$</span>
+<span id="cb57-69"><a href="#cb57-69" aria-hidden="true" tabindex="-1"></a>    (v) **Satisfacción** en escalas Likert (ordinal).</span>
 <span id="cb57-70"><a href="#cb57-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-71"><a href="#cb57-71" aria-hidden="true" tabindex="-1"></a>Se estima por máxima verosimilitud; los coeficientes se interpretan como odds ratios $(\exp(\beta_j))$; los efectos en probabilidad mediante **efectos marginales**.</span>
+<span id="cb57-71"><a href="#cb57-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Elección binaria y modelo Logit</span></span>
 <span id="cb57-72"><a href="#cb57-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-73"><a href="#cb57-73" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
-<span id="cb57-74"><a href="#cb57-74" aria-hidden="true" tabindex="-1"></a>**Cuándo usar Logit (binario):** cuando la respuesta tiene 2 categorías excluyentes y nos interesa modelar **probabilidades** acotadas en $(0,1)$ con elasticidad no lineal. Evita el **MLP** por predicciones fuera de $(0,1)$, heterocedasticidad y linealidad estricta.</span>
-<span id="cb57-75"><a href="#cb57-75" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb57-73"><a href="#cb57-73" aria-hidden="true" tabindex="-1"></a>Sea $(Y_i \in {0,1})$. El **Logit** modela $(p_i=Pr(Y_i=1\mid X_i))$ con</span>
+<span id="cb57-74"><a href="#cb57-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-75"><a href="#cb57-75" aria-hidden="true" tabindex="-1"></a>$$ p_i=\frac{1}{1+e^{-X_i'\beta}} \quad \Rightarrow \quad \log\frac{p_i}{1-p_i}=X_i'\beta. $$</span>
 <span id="cb57-76"><a href="#cb57-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-77"><a href="#cb57-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## De binario a multinomial</span></span>
+<span id="cb57-77"><a href="#cb57-77" aria-hidden="true" tabindex="-1"></a>Se estima por máxima verosimilitud; los coeficientes se interpretan como odds ratios $(\exp(\beta_j))$; los efectos en probabilidad mediante **efectos marginales**.</span>
 <span id="cb57-78"><a href="#cb57-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-79"><a href="#cb57-79" aria-hidden="true" tabindex="-1"></a>Cuando $(m&gt;2)$ sin orden, partimos de **utilidad aleatoria**: </span>
-<span id="cb57-80"><a href="#cb57-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-81"><a href="#cb57-81" aria-hidden="true" tabindex="-1"></a>El individuo (i) elige la alternativa (j) con mayor utilidad </span>
+<span id="cb57-79"><a href="#cb57-79" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb57-80"><a href="#cb57-80" aria-hidden="true" tabindex="-1"></a>**Cuándo usar Logit (binario):** cuando la respuesta tiene 2 categorías excluyentes y nos interesa modelar **probabilidades** acotadas en $(0,1)$ con elasticidad no lineal. Evita el **MLP** por predicciones fuera de $(0,1)$, heterocedasticidad y linealidad estricta.</span>
+<span id="cb57-81"><a href="#cb57-81" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb57-82"><a href="#cb57-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-83"><a href="#cb57-83" aria-hidden="true" tabindex="-1"></a>$$(U_{ij}=X_i'\beta_j+\varepsilon_{ij})$$. </span>
+<span id="cb57-83"><a href="#cb57-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## De binario a multinomial</span></span>
 <span id="cb57-84"><a href="#cb57-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-85"><a href="#cb57-85" aria-hidden="true" tabindex="-1"></a>Con errores i.i.d. se deriva el **Logit Multinomial** (base category logit): </span>
+<span id="cb57-85"><a href="#cb57-85" aria-hidden="true" tabindex="-1"></a>Cuando $(m&gt;2)$ sin orden, partimos de **utilidad aleatoria**:</span>
 <span id="cb57-86"><a href="#cb57-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-87"><a href="#cb57-87" aria-hidden="true" tabindex="-1"></a>$$Pr(Y_i=j\mid X_i)=\frac{\exp(X_i'\beta_j)}{\sum_{h=0}^{m-1}\exp(X_i'\beta_h)},$$</span>
+<span id="cb57-87"><a href="#cb57-87" aria-hidden="true" tabindex="-1"></a>El individuo (i) elige la alternativa (j) con mayor utilidad</span>
 <span id="cb57-88"><a href="#cb57-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-89"><a href="#cb57-89" aria-hidden="true" tabindex="-1"></a>Relación con múltiples logits binarios y eficiencia de estimar **simultáneamente** (vs. pares por separado). Considere el supuesto **IIA** (independencia de alternativas irrelevantes) y sus implicaciones empíricas.</span>
+<span id="cb57-89"><a href="#cb57-89" aria-hidden="true" tabindex="-1"></a>$$(U_{ij}=X_i'\beta_j+\varepsilon_{ij})$$.</span>
 <span id="cb57-90"><a href="#cb57-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-91"><a href="#cb57-91" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb57-92"><a href="#cb57-92" aria-hidden="true" tabindex="-1"></a>**¿Multinomial u ordinal?** Si las categorías tienen **orden** (p. ej., *baja, media, alta*), prefiera **logit/probit ordinal** (líneas paralelas). Usar un modelo nominal sobre datos ordinales pierde eficiencia; usar un ordinal sobre datos nominales introduce **sesgo**.</span>
-<span id="cb57-93"><a href="#cb57-93" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb57-91"><a href="#cb57-91" aria-hidden="true" tabindex="-1"></a>Con errores i.i.d. se deriva el **Logit Multinomial** (base category logit):</span>
+<span id="cb57-92"><a href="#cb57-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-93"><a href="#cb57-93" aria-hidden="true" tabindex="-1"></a>$$Pr(Y_i=j\mid X_i)=\frac{\exp(X_i'\beta_j)}{\sum_{h=0}^{m-1}\exp(X_i'\beta_h)},$$</span>
 <span id="cb57-94"><a href="#cb57-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-95"><a href="#cb57-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-95"><a href="#cb57-95" aria-hidden="true" tabindex="-1"></a>Relación con múltiples logits binarios y eficiencia de estimar **simultáneamente** (vs. pares por separado). Considere el supuesto **IIA** (independencia de alternativas irrelevantes) y sus implicaciones empíricas.</span>
 <span id="cb57-96"><a href="#cb57-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-97"><a href="#cb57-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-98"><a href="#cb57-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-99"><a href="#cb57-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-97"><a href="#cb57-97" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb57-98"><a href="#cb57-98" aria-hidden="true" tabindex="-1"></a>**¿Multinomial u ordinal?** Si las categorías tienen **orden** (p. ej., *baja, media, alta*), prefiera **logit/probit ordinal** (líneas paralelas). Usar un modelo nominal sobre datos ordinales pierde eficiencia; usar un ordinal sobre datos nominales introduce **sesgo**.</span>
+<span id="cb57-99"><a href="#cb57-99" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb57-100"><a href="#cb57-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-101"><a href="#cb57-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-101"><a href="#cb57-101" aria-hidden="true" tabindex="-1"></a><span class="fu"># Codigo Modelo Logit - Probit</span></span>
 <span id="cb57-102"><a href="#cb57-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-103"><a href="#cb57-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-103"><a href="#cb57-103" aria-hidden="true" tabindex="-1"></a>Un investigador está interesado en cómo las variables, como el GRE (puntaje del examen de Graduados), el GPA (promedio de calificaciones) y el prestigio de la institución de pregrado, tienen efecto en la admisión a la escuela de postgrado.</span>
 <span id="cb57-104"><a href="#cb57-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-105"><a href="#cb57-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-105"><a href="#cb57-105" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; La variable de respuesta, admitir / no admitir, es una variable binaria.</span></span>
 <span id="cb57-106"><a href="#cb57-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-107"><a href="#cb57-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-108"><a href="#cb57-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-109"><a href="#cb57-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-110"><a href="#cb57-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-111"><a href="#cb57-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-112"><a href="#cb57-112" aria-hidden="true" tabindex="-1"></a><span class="fu"># Codigo Modelo Logit - Probit</span></span>
+<span id="cb57-109"><a href="#cb57-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-110"><a href="#cb57-110" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
+<span id="cb57-111"><a href="#cb57-111" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo Logit - Probit</span></span>
+<span id="cb57-112"><a href="#cb57-112" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
 <span id="cb57-113"><a href="#cb57-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-114"><a href="#cb57-114" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-115"><a href="#cb57-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-116"><a href="#cb57-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-117"><a href="#cb57-117" aria-hidden="true" tabindex="-1"></a>Un investigador está interesado en cómo las variables, como el GRE (puntaje del examen de Graduados), el GPA (promedio de calificaciones) y el prestigio de la institución de pregrado, tienen efecto en la admisión a la escuela de postgrado.</span>
+<span id="cb57-116"><a href="#cb57-116" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Datos/binary.csv"</span>)</span>
+<span id="cb57-117"><a href="#cb57-117" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span>
 <span id="cb57-118"><a href="#cb57-118" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-119"><a href="#cb57-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-120"><a href="#cb57-120" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; La variable de respuesta, admitir / no admitir, es una variable binaria.</span></span>
+<span id="cb57-120"><a href="#cb57-120" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span>
 <span id="cb57-121"><a href="#cb57-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-122"><a href="#cb57-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-122"><a href="#cb57-122" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mydata, sd)</span>
 <span id="cb57-123"><a href="#cb57-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-126"><a href="#cb57-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-127"><a href="#cb57-127" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
-<span id="cb57-128"><a href="#cb57-128" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo Logit - Probit</span></span>
-<span id="cb57-129"><a href="#cb57-129" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
-<span id="cb57-130"><a href="#cb57-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-131"><a href="#cb57-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-124"><a href="#cb57-124" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span>admit <span class="sc">+</span> rank, <span class="at">data =</span> mydata)</span>
+<span id="cb57-125"><a href="#cb57-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-126"><a href="#cb57-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-127"><a href="#cb57-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-128"><a href="#cb57-128" aria-hidden="true" tabindex="-1"></a><span class="co"># MODELO LOGIT </span></span>
+<span id="cb57-129"><a href="#cb57-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-130"><a href="#cb57-130" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>rank <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata<span class="sc">$</span>rank)</span>
+<span id="cb57-131"><a href="#cb57-131" aria-hidden="true" tabindex="-1"></a>mylogit <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
 <span id="cb57-132"><a href="#cb57-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-133"><a href="#cb57-133" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Datos/binary.csv"</span>)</span>
-<span id="cb57-134"><a href="#cb57-134" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span>
+<span id="cb57-133"><a href="#cb57-133" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylogit)</span>
+<span id="cb57-134"><a href="#cb57-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-135"><a href="#cb57-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-136"><a href="#cb57-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-137"><a href="#cb57-137" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span>
-<span id="cb57-138"><a href="#cb57-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-139"><a href="#cb57-139" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mydata, sd)</span>
-<span id="cb57-140"><a href="#cb57-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-141"><a href="#cb57-141" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span>admit <span class="sc">+</span> rank, <span class="at">data =</span> mydata)</span>
-<span id="cb57-142"><a href="#cb57-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-143"><a href="#cb57-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-136"><a href="#cb57-136" aria-hidden="true" tabindex="-1"></a>Tanto gre como gpa son estadísticamente significativos, al igual que los tres términos para rango. Los coeficientes de regresión logística dan el cambio en las probabilidades del logaritmo del resultado para un aumento de una unidad en la variable predictora.</span>
+<span id="cb57-137"><a href="#cb57-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-138"><a href="#cb57-138" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Por cada cambio de unidades en gre, las probabilidades log de admisión (versus no admisión) aumentan en 0.002.</span>
+<span id="cb57-139"><a href="#cb57-139" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Para un aumento de una unidad en gpa, las probabilidades de registro de admisión a la escuela de posgrado aumenta en 0,804.</span>
+<span id="cb57-140"><a href="#cb57-140" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Las variables indicadoras de rango tienen una interpretación ligeramente diferente.</span>
+<span id="cb57-141"><a href="#cb57-141" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Por ejemplo, haber asistido a una institución de pregrado con un rango de 2, frente a una institución con un rango de 1,cambia las probabilidades de registro de admisión en -0.675.</span>
+<span id="cb57-142"><a href="#cb57-142" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Debajo de la tabla de coeficientes se encuentran los índices de ajuste, incluidos los residuales nulos y de desviación y el AIC.</span>
+<span id="cb57-143"><a href="#cb57-143" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Más adelante mostramos un ejemplo de cómo puede usar estos valores para ayudar a evaluar el ajuste del modelo.</span>
 <span id="cb57-144"><a href="#cb57-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-145"><a href="#cb57-145" aria-hidden="true" tabindex="-1"></a><span class="co"># MODELO LOGIT </span></span>
-<span id="cb57-146"><a href="#cb57-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-147"><a href="#cb57-147" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>rank <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata<span class="sc">$</span>rank)</span>
-<span id="cb57-148"><a href="#cb57-148" aria-hidden="true" tabindex="-1"></a>mylogit <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb57-147"><a href="#cb57-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-148"><a href="#cb57-148" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mylogit) <span class="co"># Usando Max. Verosimilitud</span></span>
 <span id="cb57-149"><a href="#cb57-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-150"><a href="#cb57-150" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mylogit)</span>
-<span id="cb57-151"><a href="#cb57-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-150"><a href="#cb57-150" aria-hidden="true" tabindex="-1"></a><span class="fu">confint.default</span>(mylogit) <span class="co">#Usando errores estándar</span></span>
+<span id="cb57-151"><a href="#cb57-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-152"><a href="#cb57-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-153"><a href="#cb57-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-154"><a href="#cb57-154" aria-hidden="true" tabindex="-1"></a>Tanto gre como gpa son estadísticamente significativos, al igual que los tres términos para rango. Los coeficientes de regresión logística dan el cambio en las probabilidades del logaritmo del resultado para un aumento de una unidad en la variable predictora.</span>
-<span id="cb57-155"><a href="#cb57-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-156"><a href="#cb57-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-157"><a href="#cb57-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Por cada cambio de unidades en gre, las probabilidades log de admisión (versus no admisión) aumentan en 0.002. </span>
-<span id="cb57-158"><a href="#cb57-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Para un aumento de una unidad en gpa, las probabilidades de registro de admisión a la escuela de posgrado aumenta en 0,804.</span>
-<span id="cb57-159"><a href="#cb57-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las variables indicadoras de rango tienen una interpretación ligeramente diferente. </span>
-<span id="cb57-160"><a href="#cb57-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Por ejemplo, haber asistido a una institución de pregrado con un rango de 2, frente a una institución con un rango de 1,cambia las probabilidades de registro de admisión en -0.675.</span>
-<span id="cb57-161"><a href="#cb57-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Debajo de la tabla de coeficientes se encuentran los índices de ajuste, incluidos los residuales nulos y de desviación y el AIC. </span>
-<span id="cb57-162"><a href="#cb57-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Más adelante mostramos un ejemplo de cómo puede usar estos valores para ayudar a evaluar el ajuste del modelo.</span>
-<span id="cb57-163"><a href="#cb57-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-164"><a href="#cb57-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-165"><a href="#cb57-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-153"><a href="#cb57-153" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(mylogit)) <span class="co"># Odds ratios</span></span>
+<span id="cb57-154"><a href="#cb57-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-155"><a href="#cb57-155" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">cbind</span>(<span class="at">OR =</span> <span class="fu">coef</span>(mylogit), <span class="fu">confint</span>(mylogit))) <span class="co"># Odds ratios - Int. Conf.</span></span>
+<span id="cb57-156"><a href="#cb57-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-157"><a href="#cb57-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-158"><a href="#cb57-158" aria-hidden="true" tabindex="-1"></a>Ahora podemos decir que para un aumento de una unidad en gpa, las probabilidades de ser admitido en la escuela de postgrado (versus no ser admitido) aumentan en un factor de 2.23.</span>
+<span id="cb57-159"><a href="#cb57-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-160"><a href="#cb57-160" aria-hidden="true" tabindex="-1"></a>También puede usar las probabilidades pronosticadas para ayudarlo a comprender el modelo. Las probabilidades pronosticadas se pueden calcular para variables predictoras tanto categóricas como continuas. Para crear probabilidades pronosticadas, primero necesitamos crear un nuevo marco de datos con los valores que queremos que las variables independientes adopten para crear nuestras predicciones.</span>
+<span id="cb57-161"><a href="#cb57-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-164"><a href="#cb57-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-165"><a href="#cb57-165" aria-hidden="true" tabindex="-1"></a>newdata1 <span class="ot">&lt;-</span> <span class="fu">with</span>(mydata, <span class="fu">data.frame</span>(<span class="at">gre =</span> <span class="fu">mean</span>(gre), <span class="at">gpa =</span> <span class="fu">mean</span>(gpa), <span class="at">rank =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
 <span id="cb57-166"><a href="#cb57-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-169"><a href="#cb57-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-170"><a href="#cb57-170" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mylogit) <span class="co"># Usando Max. Verosimilitud</span></span>
-<span id="cb57-171"><a href="#cb57-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-172"><a href="#cb57-172" aria-hidden="true" tabindex="-1"></a><span class="fu">confint.default</span>(mylogit) <span class="co">#Usando errores estándar</span></span>
-<span id="cb57-173"><a href="#cb57-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-174"><a href="#cb57-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-175"><a href="#cb57-175" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(mylogit)) <span class="co"># Odds ratios</span></span>
-<span id="cb57-176"><a href="#cb57-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-177"><a href="#cb57-177" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">cbind</span>(<span class="at">OR =</span> <span class="fu">coef</span>(mylogit), <span class="fu">confint</span>(mylogit))) <span class="co"># Odds ratios - Int. Conf.</span></span>
+<span id="cb57-167"><a href="#cb57-167" aria-hidden="true" tabindex="-1"></a>newdata1<span class="sc">$</span>rankP <span class="ot">&lt;-</span> <span class="fu">predict</span>(mylogit, <span class="at">newdata =</span> newdata1, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb57-168"><a href="#cb57-168" aria-hidden="true" tabindex="-1"></a>newdata1</span>
+<span id="cb57-169"><a href="#cb57-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-170"><a href="#cb57-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-171"><a href="#cb57-171" aria-hidden="true" tabindex="-1"></a>En el resultado anterior, vemos que la probabilidad prevista de ser aceptado en un programa de postgrado es de 0.52 para estudiantes de las instituciones de pregrado de mayor prestigio (rango = 1) y 0.18 para estudiantes de las instituciones de menor rango (rango = 4), con gre y gpa por sus valores medios. Podemos hacer algo muy similar para crear una tabla de probabilidades predichas que varíe el valor de gre y rank. Vamos a trazarlos, por lo que crearemos 100 valores de gre entre 200 y 800, en cada valor de rango (es decir, 1, 2, 3 y 4).</span>
+<span id="cb57-172"><a href="#cb57-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-175"><a href="#cb57-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-176"><a href="#cb57-176" aria-hidden="true" tabindex="-1"></a>newdata2 <span class="ot">&lt;-</span> <span class="fu">with</span>(mydata, <span class="fu">data.frame</span>(<span class="at">gre =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">200</span>, <span class="at">to =</span> <span class="dv">800</span>, <span class="at">length.out =</span> <span class="dv">100</span>),<span class="dv">4</span>), </span>
+<span id="cb57-177"><a href="#cb57-177" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">gpa =</span> <span class="fu">mean</span>(gpa), <span class="at">rank =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each =</span> <span class="dv">100</span>))))</span>
 <span id="cb57-178"><a href="#cb57-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-179"><a href="#cb57-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-180"><a href="#cb57-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-180"><a href="#cb57-180" aria-hidden="true" tabindex="-1"></a>El código para generar las probabilidades predichas (la primera línea a continuación) es el mismo que antes, excepto que también vamos a pedir errores estándar para que podamos trazar un intervalo de confianza. Obtenemos las estimaciones en la escala del enlace y transformamos los valores pronosticados y los límites de confianza en probabilidades.</span>
 <span id="cb57-181"><a href="#cb57-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-182"><a href="#cb57-182" aria-hidden="true" tabindex="-1"></a>Ahora podemos decir que para un aumento de una unidad en gpa, las probabilidades de ser admitido en la escuela de postgrado (versus no ser admitido) aumentan en un factor de 2.23.</span>
-<span id="cb57-183"><a href="#cb57-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-184"><a href="#cb57-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-185"><a href="#cb57-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-186"><a href="#cb57-186" aria-hidden="true" tabindex="-1"></a>También puede usar las probabilidades pronosticadas para ayudarlo a comprender el modelo. Las probabilidades pronosticadas se pueden calcular para variables  predictoras tanto categóricas como continuas. Para crear probabilidades pronosticadas, primero necesitamos crear un nuevo marco de datos con los valores que queremos que las variables independientes adopten para crear nuestras predicciones.</span>
-<span id="cb57-187"><a href="#cb57-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-188"><a href="#cb57-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-191"><a href="#cb57-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-192"><a href="#cb57-192" aria-hidden="true" tabindex="-1"></a>newdata1 <span class="ot">&lt;-</span> <span class="fu">with</span>(mydata, <span class="fu">data.frame</span>(<span class="at">gre =</span> <span class="fu">mean</span>(gre), <span class="at">gpa =</span> <span class="fu">mean</span>(gpa), <span class="at">rank =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)))</span>
+<span id="cb57-184"><a href="#cb57-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-185"><a href="#cb57-185" aria-hidden="true" tabindex="-1"></a>newdata3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(newdata2, <span class="fu">predict</span>(mylogit, <span class="at">newdata =</span> newdata2, <span class="at">type =</span> <span class="st">"link"</span>,</span>
+<span id="cb57-186"><a href="#cb57-186" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">se =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb57-187"><a href="#cb57-187" aria-hidden="true" tabindex="-1"></a>newdata3 <span class="ot">&lt;-</span> <span class="fu">within</span>(newdata3, {</span>
+<span id="cb57-188"><a href="#cb57-188" aria-hidden="true" tabindex="-1"></a>  PredictedProb <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit)</span>
+<span id="cb57-189"><a href="#cb57-189" aria-hidden="true" tabindex="-1"></a>  LL <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> se.fit))</span>
+<span id="cb57-190"><a href="#cb57-190" aria-hidden="true" tabindex="-1"></a>  UL <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> se.fit))</span>
+<span id="cb57-191"><a href="#cb57-191" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb57-192"><a href="#cb57-192" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-193"><a href="#cb57-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-194"><a href="#cb57-194" aria-hidden="true" tabindex="-1"></a>newdata1<span class="sc">$</span>rankP <span class="ot">&lt;-</span> <span class="fu">predict</span>(mylogit, <span class="at">newdata =</span> newdata1, <span class="at">type =</span> <span class="st">"response"</span>)</span>
-<span id="cb57-195"><a href="#cb57-195" aria-hidden="true" tabindex="-1"></a>newdata1</span>
-<span id="cb57-196"><a href="#cb57-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-194"><a href="#cb57-194" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(newdata3)</span>
+<span id="cb57-195"><a href="#cb57-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-196"><a href="#cb57-196" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb57-197"><a href="#cb57-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-198"><a href="#cb57-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-199"><a href="#cb57-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-200"><a href="#cb57-200" aria-hidden="true" tabindex="-1"></a>En el resultado anterior, vemos que la probabilidad prevista de ser aceptado en un programa de postgrado es de 0.52 para estudiantes de las instituciones de pregrado de mayor prestigio (rango = 1) y 0.18 para estudiantes de las instituciones de menor rango (rango = 4), con gre y gpa por sus valores medios. Podemos hacer algo muy similar para crear una tabla de probabilidades predichas que varíe el valor de gre y rank. </span>
-<span id="cb57-201"><a href="#cb57-201" aria-hidden="true" tabindex="-1"></a>Vamos a trazarlos, por lo que crearemos 100 valores de gre entre 200 y 800, en cada valor de rango (es decir, 1, 2, 3 y 4).</span>
+<span id="cb57-198"><a href="#cb57-198" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newdata3, <span class="fu">aes</span>(<span class="at">x =</span> gre, <span class="at">y =</span> PredictedProb)) <span class="sc">+</span> </span>
+<span id="cb57-199"><a href="#cb57-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LL,<span class="at">ymax =</span> UL, <span class="at">fill =</span> rank), <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb57-200"><a href="#cb57-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">colour =</span> rank),<span class="at">size =</span> <span class="dv">1</span>)</span>
+<span id="cb57-201"><a href="#cb57-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-202"><a href="#cb57-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-203"><a href="#cb57-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-203"><a href="#cb57-203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hosmer-Lemeshow</span></span>
 <span id="cb57-204"><a href="#cb57-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-205"><a href="#cb57-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-208"><a href="#cb57-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-209"><a href="#cb57-209" aria-hidden="true" tabindex="-1"></a>newdata2 <span class="ot">&lt;-</span> <span class="fu">with</span>(mydata, <span class="fu">data.frame</span>(<span class="at">gre =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">200</span>, <span class="at">to =</span> <span class="dv">800</span>, <span class="at">length.out =</span> <span class="dv">100</span>),<span class="dv">4</span>), </span>
-<span id="cb57-210"><a href="#cb57-210" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">gpa =</span> <span class="fu">mean</span>(gpa), <span class="at">rank =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">each =</span> <span class="dv">100</span>))))</span>
-<span id="cb57-211"><a href="#cb57-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-212"><a href="#cb57-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-207"><a href="#cb57-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-208"><a href="#cb57-208" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ResourceSelection)</span>
+<span id="cb57-209"><a href="#cb57-209" aria-hidden="true" tabindex="-1"></a><span class="fu">hoslem.test</span>(mylogit<span class="sc">$</span>y,<span class="fu">fitted</span>(mylogit))</span>
+<span id="cb57-210"><a href="#cb57-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-211"><a href="#cb57-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-212"><a href="#cb57-212" aria-hidden="true" tabindex="-1"></a>No rechazo Ho, indicando que no hay evidencia de mal ajuste. Esto es bueno, ya que aquí sabemos que el modelo está correctamente especificado.</span>
 <span id="cb57-213"><a href="#cb57-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-214"><a href="#cb57-214" aria-hidden="true" tabindex="-1"></a>El código para generar las probabilidades predichas (la primera línea a continuación) es el mismo que antes, excepto que también vamos a pedir errores estándar para que podamos trazar un intervalo de confianza. Obtenemos las estimaciones en la escala del enlace y transformamos los valores pronosticados y los límites de confianza en probabilidades.</span>
+<span id="cb57-214"><a href="#cb57-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelo Probit</span></span>
 <span id="cb57-215"><a href="#cb57-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-216"><a href="#cb57-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-217"><a href="#cb57-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-220"><a href="#cb57-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-221"><a href="#cb57-221" aria-hidden="true" tabindex="-1"></a>newdata3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(newdata2, <span class="fu">predict</span>(mylogit, <span class="at">newdata =</span> newdata2, <span class="at">type =</span> <span class="st">"link"</span>,</span>
-<span id="cb57-222"><a href="#cb57-222" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">se =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb57-223"><a href="#cb57-223" aria-hidden="true" tabindex="-1"></a>newdata3 <span class="ot">&lt;-</span> <span class="fu">within</span>(newdata3, {</span>
-<span id="cb57-224"><a href="#cb57-224" aria-hidden="true" tabindex="-1"></a>  PredictedProb <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit)</span>
-<span id="cb57-225"><a href="#cb57-225" aria-hidden="true" tabindex="-1"></a>  LL <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit <span class="sc">-</span> (<span class="fl">1.96</span> <span class="sc">*</span> se.fit))</span>
-<span id="cb57-226"><a href="#cb57-226" aria-hidden="true" tabindex="-1"></a>  UL <span class="ot">&lt;-</span> <span class="fu">plogis</span>(fit <span class="sc">+</span> (<span class="fl">1.96</span> <span class="sc">*</span> se.fit))</span>
-<span id="cb57-227"><a href="#cb57-227" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb57-228"><a href="#cb57-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-229"><a href="#cb57-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-230"><a href="#cb57-230" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(newdata3)</span>
+<span id="cb57-218"><a href="#cb57-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-219"><a href="#cb57-219" aria-hidden="true" tabindex="-1"></a><span class="co"># MODELO PROBIT</span></span>
+<span id="cb57-220"><a href="#cb57-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-221"><a href="#cb57-221" aria-hidden="true" tabindex="-1"></a>myprobit <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span>  <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"probit"</span>))</span>
+<span id="cb57-222"><a href="#cb57-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-223"><a href="#cb57-223" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(myprobit)</span>
+<span id="cb57-224"><a href="#cb57-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-225"><a href="#cb57-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-226"><a href="#cb57-226" aria-hidden="true" tabindex="-1"></a><span class="co">#Hosmer-Lemeshow</span></span>
+<span id="cb57-227"><a href="#cb57-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-228"><a href="#cb57-228" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ResourceSelection)</span>
+<span id="cb57-229"><a href="#cb57-229" aria-hidden="true" tabindex="-1"></a><span class="fu">hoslem.test</span>(myprobit<span class="sc">$</span>y,<span class="fu">fitted</span>(myprobit))</span>
+<span id="cb57-230"><a href="#cb57-230" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-231"><a href="#cb57-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-232"><a href="#cb57-232" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb57-233"><a href="#cb57-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-234"><a href="#cb57-234" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newdata3, <span class="fu">aes</span>(<span class="at">x =</span> gre, <span class="at">y =</span> PredictedProb)) <span class="sc">+</span> </span>
-<span id="cb57-235"><a href="#cb57-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LL,<span class="at">ymax =</span> UL, <span class="at">fill =</span> rank), <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb57-236"><a href="#cb57-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">colour =</span> rank),<span class="at">size =</span> <span class="dv">1</span>)</span>
-<span id="cb57-237"><a href="#cb57-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-232"><a href="#cb57-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-233"><a href="#cb57-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparación de Modelos</span></span>
+<span id="cb57-234"><a href="#cb57-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-235"><a href="#cb57-235" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(memisc)</span>
+<span id="cb57-236"><a href="#cb57-236" aria-hidden="true" tabindex="-1"></a><span class="fu">mtable</span>(myprobit, mylogit)</span>
+<span id="cb57-237"><a href="#cb57-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-238"><a href="#cb57-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-239"><a href="#cb57-239" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hosmer-Lemeshow</span></span>
-<span id="cb57-240"><a href="#cb57-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-239"><a href="#cb57-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-240"><a href="#cb57-240" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
 <span id="cb57-241"><a href="#cb57-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-244"><a href="#cb57-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-245"><a href="#cb57-245" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ResourceSelection)</span>
-<span id="cb57-246"><a href="#cb57-246" aria-hidden="true" tabindex="-1"></a><span class="fu">hoslem.test</span>(mylogit<span class="sc">$</span>y,<span class="fu">fitted</span>(mylogit))</span>
-<span id="cb57-247"><a href="#cb57-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-248"><a href="#cb57-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-242"><a href="#cb57-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-243"><a href="#cb57-243" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(mylogit)</span>
+<span id="cb57-244"><a href="#cb57-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-245"><a href="#cb57-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-246"><a href="#cb57-246" aria-hidden="true" tabindex="-1"></a>Esto me permite cuantificar el cambio promedio en la probabilidad de admisión (admit) asociado con cambios unitarios en las variables explicativas (gre, gpa y rank), proporcionando una interpretación más clara de los efectos directos de cada variable en la probabilidad de admisión.</span>
+<span id="cb57-247"><a href="#cb57-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-248"><a href="#cb57-248" aria-hidden="true" tabindex="-1"></a>En este bloque de código, estoy ajustando un modelo de regresión logística (logit) para predecir la probabilidad de admisión (admit) en función del puntaje GRE, el GPA, el rango de la institución de pregrado (rank) y la interacción entre GRE y GPA.</span>
 <span id="cb57-249"><a href="#cb57-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-250"><a href="#cb57-250" aria-hidden="true" tabindex="-1"></a>No rechazo Ho, indicando que no hay evidencia de mal ajuste. Esto es bueno, ya que aquí sabemos que el modelo está correctamente especificado. </span>
+<span id="cb57-250"><a href="#cb57-250" aria-hidden="true" tabindex="-1"></a>Luego, utilizo la función plot_slopes para visualizar cómo varía la pendiente de la probabilidad de admisión en función de GRE condicionado al GPA y viceversa. Esto me permite entender mejor la interacción entre GRE y GPA y su efecto en la probabilidad de admisión.</span>
 <span id="cb57-251"><a href="#cb57-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-252"><a href="#cb57-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-253"><a href="#cb57-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelo Probit</span></span>
-<span id="cb57-254"><a href="#cb57-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-255"><a href="#cb57-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-258"><a href="#cb57-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-259"><a href="#cb57-259" aria-hidden="true" tabindex="-1"></a><span class="co"># MODELO PROBIT</span></span>
-<span id="cb57-260"><a href="#cb57-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a>myprobit <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span>  <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"probit"</span>))</span>
+<span id="cb57-254"><a href="#cb57-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-255"><a href="#cb57-255" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> gre<span class="sc">*</span>gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb57-256"><a href="#cb57-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-257"><a href="#cb57-257" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar la pendiente del efecto de GRE en la probabilidad de admisión condicionada al GPA</span></span>
+<span id="cb57-258"><a href="#cb57-258" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"gre"</span>, <span class="at">condition =</span> <span class="st">"gpa"</span>)</span>
+<span id="cb57-259"><a href="#cb57-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-260"><a href="#cb57-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar la pendiente del efecto de GPA en la probabilidad de admisión condicionada al GRE</span></span>
+<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"gpa"</span>, <span class="at">condition =</span> <span class="st">"gre"</span>)</span>
 <span id="cb57-262"><a href="#cb57-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-263"><a href="#cb57-263" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(myprobit)</span>
-<span id="cb57-264"><a href="#cb57-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-263"><a href="#cb57-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con la variable rank</span></span>
+<span id="cb57-264"><a href="#cb57-264" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank<span class="sc">*</span>gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
 <span id="cb57-265"><a href="#cb57-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-266"><a href="#cb57-266" aria-hidden="true" tabindex="-1"></a><span class="co">#Hosmer-Lemeshow</span></span>
-<span id="cb57-267"><a href="#cb57-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-268"><a href="#cb57-268" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ResourceSelection)</span>
-<span id="cb57-269"><a href="#cb57-269" aria-hidden="true" tabindex="-1"></a><span class="fu">hoslem.test</span>(myprobit<span class="sc">$</span>y,<span class="fu">fitted</span>(myprobit))</span>
+<span id="cb57-266"><a href="#cb57-266" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"rank"</span>, <span class="at">condition =</span> <span class="st">"gpa"</span>)<span class="sc">+</span></span>
+<span id="cb57-267"><a href="#cb57-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">y=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb57-268"><a href="#cb57-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-269"><a href="#cb57-269" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank<span class="sc">*</span>gre <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
 <span id="cb57-270"><a href="#cb57-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-271"><a href="#cb57-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-272"><a href="#cb57-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-273"><a href="#cb57-273" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparación de Modelos</span></span>
+<span id="cb57-271"><a href="#cb57-271" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"rank"</span>, <span class="at">condition =</span> <span class="st">"gre"</span>)<span class="sc">+</span></span>
+<span id="cb57-272"><a href="#cb57-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">y=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb57-273"><a href="#cb57-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-274"><a href="#cb57-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-275"><a href="#cb57-275" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(memisc)</span>
-<span id="cb57-276"><a href="#cb57-276" aria-hidden="true" tabindex="-1"></a><span class="fu">mtable</span>(myprobit, mylogit)</span>
-<span id="cb57-277"><a href="#cb57-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-275"><a href="#cb57-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelo Multinomial</span></span>
+<span id="cb57-276"><a href="#cb57-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-277"><a href="#cb57-277" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 1. Las elecciones ocupacionales de las personas pueden verse influenciadas por las ocupaciones de sus padres y su propio nivel educativo. Podemos estudiar la relación entre la elección de ocupación y el nivel educativo y la ocupación del padre. Las elecciones ocupacionales serán la variable de resultado que consta de categorías de ocupaciones.</span></span>
 <span id="cb57-278"><a href="#cb57-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-279"><a href="#cb57-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-280"><a href="#cb57-280" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
-<span id="cb57-281"><a href="#cb57-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-279"><a href="#cb57-279" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 2. Un biólogo puede estar interesado en las elecciones de alimentos que hacen los caimanes. Los caimanes adultos pueden tener preferencias diferentes a las de los jóvenes. La variable de resultado aquí serán los tipos de alimentos, y las variables predictoras podrían ser el tamaño de los caimanes y otras variables ambientales.</span></span>
+<span id="cb57-280"><a href="#cb57-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-281"><a href="#cb57-281" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 3. Los estudiantes que ingresan a la escuela secundaria eligen programas entre programa general, programa vocacional y programa académico. Su elección podría modelarse utilizando su puntaje de escritura y su estatus económico social.</span></span>
 <span id="cb57-282"><a href="#cb57-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-283"><a href="#cb57-283" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(mylogit)</span>
-<span id="cb57-284"><a href="#cb57-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-285"><a href="#cb57-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-286"><a href="#cb57-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-287"><a href="#cb57-287" aria-hidden="true" tabindex="-1"></a>Esto me permite cuantificar el cambio promedio en la probabilidad de admisión (admit) asociado con cambios unitarios en las variables explicativas (gre, gpa y rank), proporcionando una interpretación más clara de los efectos directos de cada variable en la probabilidad de admisión.</span>
-<span id="cb57-288"><a href="#cb57-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-289"><a href="#cb57-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-290"><a href="#cb57-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-283"><a href="#cb57-283" aria-hidden="true" tabindex="-1"></a>El conjunto de datos contiene variables sobre 200 estudiantes. La variable de resultado es 'prog' tipo de programa. Las variables predictoras son el status socioeconómico, 'ses' una variable categórica de tres niveles, y la puntuación de escritura, 'write' una variable continua.</span>
+<span id="cb57-284"><a href="#cb57-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-287"><a href="#cb57-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-288"><a href="#cb57-288" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
+<span id="cb57-289"><a href="#cb57-289" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo Multinomial</span></span>
+<span id="cb57-290"><a href="#cb57-290" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
 <span id="cb57-291"><a href="#cb57-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-292"><a href="#cb57-292" aria-hidden="true" tabindex="-1"></a>En este bloque de código, estoy ajustando un modelo de regresión logística (logit) para predecir la probabilidad de admisión (admit) en función del puntaje GRE, el GPA, el rango de la institución de pregrado (rank) y la interacción entre GRE y GPA. </span>
+<span id="cb57-292"><a href="#cb57-292" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-293"><a href="#cb57-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-294"><a href="#cb57-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-295"><a href="#cb57-295" aria-hidden="true" tabindex="-1"></a>Luego, utilizo la función plot_slopes para visualizar cómo varía la pendiente de la probabilidad de admisión en función de GRE condicionado al GPA y viceversa. Esto me permite entender mejor la interacción entre GRE y GPA y su efecto en la probabilidad de admisión.</span>
-<span id="cb57-296"><a href="#cb57-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-297"><a href="#cb57-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-294"><a href="#cb57-294" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign) </span>
+<span id="cb57-295"><a href="#cb57-295" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet) </span>
+<span id="cb57-296"><a href="#cb57-296" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb57-297"><a href="#cb57-297" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
 <span id="cb57-298"><a href="#cb57-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-301"><a href="#cb57-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-302"><a href="#cb57-302" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> gre<span class="sc">*</span>gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb57-303"><a href="#cb57-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-304"><a href="#cb57-304" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar la pendiente del efecto de GRE en la probabilidad de admisión condicionada al GPA</span></span>
-<span id="cb57-305"><a href="#cb57-305" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"gre"</span>, <span class="at">condition =</span> <span class="st">"gpa"</span>)</span>
+<span id="cb57-299"><a href="#cb57-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-300"><a href="#cb57-300" aria-hidden="true" tabindex="-1"></a>ml  <span class="ot">&lt;-</span>  <span class="fu">read.dta</span> ( <span class="st">"Datos/hsb.dta"</span> )</span>
+<span id="cb57-301"><a href="#cb57-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-302"><a href="#cb57-302" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ml)</span>
+<span id="cb57-303"><a href="#cb57-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-304"><a href="#cb57-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-305"><a href="#cb57-305" aria-hidden="true" tabindex="-1"></a>A continuación utilizamos la función multinom del nnet paquete para estimar un modelo de regresión logística multinomial. Hay otras funciones en otros paquetes de R capaces de realizar regresión multinomial.</span>
 <span id="cb57-306"><a href="#cb57-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-307"><a href="#cb57-307" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar la pendiente del efecto de GPA en la probabilidad de admisión condicionada al GRE</span></span>
-<span id="cb57-308"><a href="#cb57-308" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"gpa"</span>, <span class="at">condition =</span> <span class="st">"gre"</span>)</span>
-<span id="cb57-309"><a href="#cb57-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-310"><a href="#cb57-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Ahora con la variable rank</span></span>
-<span id="cb57-311"><a href="#cb57-311" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank<span class="sc">*</span>gpa <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb57-312"><a href="#cb57-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-313"><a href="#cb57-313" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"rank"</span>, <span class="at">condition =</span> <span class="st">"gpa"</span>)<span class="sc">+</span></span>
-<span id="cb57-314"><a href="#cb57-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">y=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb57-307"><a href="#cb57-307" aria-hidden="true" tabindex="-1"></a>Primero, debemos elegir el nivel de nuestro resultado que deseamos utilizar como línea de base y especificarlo en la función relevel. Luego, ejecutamos nuestro modelo usando multinom. El paquete multinom no incluye el cálculo del valor p para los coeficientes de regresión, por lo que calculamos los valores p utilizando las pruebas de Wald (aquí pruebas z).</span>
+<span id="cb57-308"><a href="#cb57-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-311"><a href="#cb57-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-312"><a href="#cb57-312" aria-hidden="true" tabindex="-1"></a>ml<span class="sc">$</span>prog2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(ml<span class="sc">$</span>prog, <span class="at">ref =</span> <span class="st">"academic"</span>)</span>
+<span id="cb57-313"><a href="#cb57-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-314"><a href="#cb57-314" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">multinom</span>(prog2 <span class="sc">~</span> ses <span class="sc">+</span> write, <span class="at">data =</span> ml)</span>
 <span id="cb57-315"><a href="#cb57-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-316"><a href="#cb57-316" aria-hidden="true" tabindex="-1"></a>mylogit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(admit <span class="sc">~</span> gre <span class="sc">+</span> gpa <span class="sc">+</span> rank<span class="sc">*</span>gre <span class="sc">+</span> rank, <span class="at">data =</span> mydata, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb57-316"><a href="#cb57-316" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(test)</span>
 <span id="cb57-317"><a href="#cb57-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-318"><a href="#cb57-318" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_slopes</span>(mylogit2, <span class="at">variables=</span><span class="st">"rank"</span>, <span class="at">condition =</span> <span class="st">"gre"</span>)<span class="sc">+</span></span>
-<span id="cb57-319"><a href="#cb57-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">y=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb57-320"><a href="#cb57-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-318"><a href="#cb57-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores z</span></span>
+<span id="cb57-319"><a href="#cb57-319" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">summary</span>(test)<span class="sc">$</span>coefficients<span class="sc">/</span><span class="fu">summary</span>(test)<span class="sc">$</span>standard.errors</span>
+<span id="cb57-320"><a href="#cb57-320" aria-hidden="true" tabindex="-1"></a>z</span>
 <span id="cb57-321"><a href="#cb57-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-322"><a href="#cb57-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-323"><a href="#cb57-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-324"><a href="#cb57-324" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelo Multinomial</span></span>
+<span id="cb57-322"><a href="#cb57-322" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores p</span></span>
+<span id="cb57-323"><a href="#cb57-323" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z), <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb57-324"><a href="#cb57-324" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb57-325"><a href="#cb57-325" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-326"><a href="#cb57-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-327"><a href="#cb57-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-327"><a href="#cb57-327" aria-hidden="true" tabindex="-1"></a><span class="co"># Algunas interpretaciones del modelo "test"</span></span>
 <span id="cb57-328"><a href="#cb57-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-329"><a href="#cb57-329" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 1. Las elecciones ocupacionales de las personas pueden verse influenciadas por las ocupaciones de sus padres y su propio nivel educativo. Podemos estudiar la relación entre la elección de ocupación y el nivel educativo y la ocupación del padre. Las elecciones ocupacionales serán la variable de resultado que consta de categorías de ocupaciones.</span></span>
-<span id="cb57-330"><a href="#cb57-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-329"><a href="#cb57-329" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(test)</span>
+<span id="cb57-330"><a href="#cb57-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-331"><a href="#cb57-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-332"><a href="#cb57-332" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 2. Un biólogo puede estar interesado en las elecciones de alimentos que hacen los caimanes. Los caimanes adultos pueden tener preferencias diferentes a las de los jóvenes. La variable de resultado aquí serán los tipos de alimentos, y las variables predictoras podrían ser el tamaño de los caimanes y otras variables ambientales.</span></span>
+<span id="cb57-332"><a href="#cb57-332" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un aumento de una unidad en la variable write se asocia con una disminución en las probabilidades logarítmicas de estar en un programa general versus un programa académico en una cantidad de 0,058.</span>
 <span id="cb57-333"><a href="#cb57-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-334"><a href="#cb57-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-335"><a href="#cb57-335" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Ejemplo 3. Los estudiantes que ingresan a la escuela secundaria eligen programas entre programa general, programa vocacional y programa académico. Su elección podría modelarse utilizando su puntaje de escritura y su estatus económico social.</span></span>
-<span id="cb57-336"><a href="#cb57-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-334"><a href="#cb57-334" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un aumento de una unidad en la variable write se asocia con la disminución en las probabilidades logarítmicas de estar en un programa vocacional versus un programa académico. por la cantidad de .1136</span>
+<span id="cb57-335"><a href="#cb57-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-336"><a href="#cb57-336" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Las probabilidades logarítmicas de estar en un programa general frente a un programa académico disminuirán en 1.163 si se pasa de ses="low"a ses="high"</span>
 <span id="cb57-337"><a href="#cb57-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-338"><a href="#cb57-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-339"><a href="#cb57-339" aria-hidden="true" tabindex="-1"></a>El conjunto de datos contiene variables sobre 200 estudiantes. La variable de resultado es 'prog' tipo de programa. Las variables predictoras son el status socioeconómico, 'ses' una variable categórica de tres niveles, y la puntuación de escritura, 'write' una variable continua. </span>
-<span id="cb57-340"><a href="#cb57-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-338"><a href="#cb57-338" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Las probabilidades logarítmicas de estar en un programa general frente a un programa académico disminuirán en 0.533 si se pasa de ses="low"a ses="middle", aunque este coeficiente no es significativo.</span>
+<span id="cb57-339"><a href="#cb57-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-340"><a href="#cb57-340" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Las probabilidades logarítmicas de estar en un programa vocacional frente a un programa académico disminuirán en 0.983 si se pasa de ses="low"a ses="high"</span>
 <span id="cb57-341"><a href="#cb57-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-342"><a href="#cb57-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-345"><a href="#cb57-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-346"><a href="#cb57-346" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
-<span id="cb57-347"><a href="#cb57-347" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo Multinomial</span></span>
-<span id="cb57-348"><a href="#cb57-348" aria-hidden="true" tabindex="-1"></a><span class="do">######################################</span></span>
+<span id="cb57-342"><a href="#cb57-342" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Las probabilidades logarítmicas de estar en un programa vocacional frente a un programa académico aumentarán en 0.291 si se pasa de ses="low"a ses="middle",aunque este coeficiente no es significativo.</span>
+<span id="cb57-343"><a href="#cb57-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-346"><a href="#cb57-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-347"><a href="#cb57-347" aria-hidden="true" tabindex="-1"></a><span class="co"># Odds ratio</span></span>
+<span id="cb57-348"><a href="#cb57-348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-349"><a href="#cb57-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-350"><a href="#cb57-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-350"><a href="#cb57-350" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(test))</span>
 <span id="cb57-351"><a href="#cb57-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-352"><a href="#cb57-352" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign) </span>
-<span id="cb57-353"><a href="#cb57-353" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet) </span>
-<span id="cb57-354"><a href="#cb57-354" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb57-355"><a href="#cb57-355" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb57-356"><a href="#cb57-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-352"><a href="#cb57-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-353"><a href="#cb57-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-354"><a href="#cb57-354" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidades predichas</span></span>
+<span id="cb57-355"><a href="#cb57-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-356"><a href="#cb57-356" aria-hidden="true" tabindex="-1"></a>pp <span class="ot">&lt;-</span> <span class="fu">fitted</span>(test)</span>
 <span id="cb57-357"><a href="#cb57-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-358"><a href="#cb57-358" aria-hidden="true" tabindex="-1"></a>ml  <span class="ot">&lt;-</span>  <span class="fu">read.dta</span> ( <span class="st">"Datos/hsb.dta"</span> )</span>
-<span id="cb57-359"><a href="#cb57-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-360"><a href="#cb57-360" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ml)</span>
-<span id="cb57-361"><a href="#cb57-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-358"><a href="#cb57-358" aria-hidden="true" tabindex="-1"></a>pp</span>
+<span id="cb57-359"><a href="#cb57-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-360"><a href="#cb57-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-361"><a href="#cb57-361" aria-hidden="true" tabindex="-1"></a>A continuación, si queremos examinar los cambios en la probabilidad predicha asociados con una de nuestras dos variables, podemos crear pequeños conjuntos de datos variando una variable mientras mantenemos la otra constante.</span>
 <span id="cb57-362"><a href="#cb57-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-363"><a href="#cb57-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-363"><a href="#cb57-363" aria-hidden="true" tabindex="-1"></a>Primero haremos esto manteniendo write su media y examinando las probabilidades predichas para cada nivel de ses.</span>
 <span id="cb57-364"><a href="#cb57-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-365"><a href="#cb57-365" aria-hidden="true" tabindex="-1"></a>A continuación utilizamos la función multinom del nnet paquete para estimar un modelo de regresión logística multinomial.  Hay otras funciones en otros paquetes de R capaces de realizar regresión multinomial.</span>
-<span id="cb57-366"><a href="#cb57-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-367"><a href="#cb57-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-368"><a href="#cb57-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-369"><a href="#cb57-369" aria-hidden="true" tabindex="-1"></a>Primero, debemos elegir el nivel de nuestro resultado que deseamos utilizar como línea de base y especificarlo en la función relevel. Luego, ejecutamos nuestro modelo usando multinom. El paquete multinom no incluye el cálculo del valor p para los coeficientes de regresión, por lo que calculamos los valores p utilizando las pruebas de Wald (aquí pruebas z).</span>
+<span id="cb57-367"><a href="#cb57-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-368"><a href="#cb57-368" aria-hidden="true" tabindex="-1"></a>dses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ses =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"middle"</span>, <span class="st">"high"</span>), <span class="at">write =</span> <span class="fu">mean</span>(ml<span class="sc">$</span>write))</span>
+<span id="cb57-369"><a href="#cb57-369" aria-hidden="true" tabindex="-1"></a>dses</span>
 <span id="cb57-370"><a href="#cb57-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-371"><a href="#cb57-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-372"><a href="#cb57-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-371"><a href="#cb57-371" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(test, <span class="at">newdata =</span> dses, <span class="st">"probs"</span>)</span>
+<span id="cb57-372"><a href="#cb57-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb57-373"><a href="#cb57-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-374"><a href="#cb57-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-377"><a href="#cb57-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-378"><a href="#cb57-378" aria-hidden="true" tabindex="-1"></a>ml<span class="sc">$</span>prog2 <span class="ot">&lt;-</span> <span class="fu">relevel</span>(ml<span class="sc">$</span>prog, <span class="at">ref =</span> <span class="st">"academic"</span>)</span>
-<span id="cb57-379"><a href="#cb57-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-380"><a href="#cb57-380" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">multinom</span>(prog2 <span class="sc">~</span> ses <span class="sc">+</span> write, <span class="at">data =</span> ml)</span>
+<span id="cb57-374"><a href="#cb57-374" aria-hidden="true" tabindex="-1"></a>Otra forma de entender el modelo es utilizando las probabilidades predichas para observar las probabilidades promediadas predichas para diferentes valores de la variable predictora continua write dentro de cada nivel de ses.</span>
+<span id="cb57-375"><a href="#cb57-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-378"><a href="#cb57-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-379"><a href="#cb57-379" aria-hidden="true" tabindex="-1"></a>dwrite <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ses =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"middle"</span>, <span class="st">"high"</span>),</span>
+<span id="cb57-380"><a href="#cb57-380" aria-hidden="true" tabindex="-1"></a>                               <span class="at">each =</span> <span class="dv">41</span>), <span class="at">write =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">70</span>), <span class="dv">3</span>))</span>
 <span id="cb57-381"><a href="#cb57-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-382"><a href="#cb57-382" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(test)</span>
-<span id="cb57-383"><a href="#cb57-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-384"><a href="#cb57-384" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores z</span></span>
-<span id="cb57-385"><a href="#cb57-385" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">summary</span>(test)<span class="sc">$</span>coefficients<span class="sc">/</span><span class="fu">summary</span>(test)<span class="sc">$</span>standard.errors</span>
-<span id="cb57-386"><a href="#cb57-386" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb57-382"><a href="#cb57-382" aria-hidden="true" tabindex="-1"></a><span class="do">## almacene las probabilidades predichas para cada valor de ses</span></span>
+<span id="cb57-383"><a href="#cb57-383" aria-hidden="true" tabindex="-1"></a>pp.write <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dwrite, <span class="fu">predict</span>(test, <span class="at">newdata =</span> dwrite, <span class="at">type =</span> <span class="st">"probs"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb57-384"><a href="#cb57-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-385"><a href="#cb57-385" aria-hidden="true" tabindex="-1"></a><span class="do">## calcular las probabilidades medias dentro de cada nivel de ses </span></span>
+<span id="cb57-386"><a href="#cb57-386" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(pp.write[, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], pp.write<span class="sc">$</span>ses, colMeans)</span>
 <span id="cb57-387"><a href="#cb57-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-388"><a href="#cb57-388" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores p</span></span>
-<span id="cb57-389"><a href="#cb57-389" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z), <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb57-390"><a href="#cb57-390" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-391"><a href="#cb57-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-388"><a href="#cb57-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-389"><a href="#cb57-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-390"><a href="#cb57-390" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico probabilidades predichas</span></span>
+<span id="cb57-391"><a href="#cb57-391" aria-hidden="true" tabindex="-1"></a><span class="co"># Pasar la base a formato long para utilizar ggplot</span></span>
 <span id="cb57-392"><a href="#cb57-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-393"><a href="#cb57-393" aria-hidden="true" tabindex="-1"></a><span class="co"># Algunas interpretaciones del modelo "test"</span></span>
+<span id="cb57-393"><a href="#cb57-393" aria-hidden="true" tabindex="-1"></a>lpp <span class="ot">&lt;-</span> <span class="fu">melt</span>(pp.write, <span class="at">id.vars =</span> <span class="fu">c</span>(<span class="st">"ses"</span>, <span class="st">"write"</span>), <span class="at">value.name =</span> <span class="st">"probability"</span>)</span>
 <span id="cb57-394"><a href="#cb57-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-395"><a href="#cb57-395" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(test)</span>
-<span id="cb57-396"><a href="#cb57-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-397"><a href="#cb57-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-395"><a href="#cb57-395" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lpp, <span class="fu">aes</span>(<span class="at">x =</span> write, <span class="at">y =</span> probability, <span class="at">colour =</span> ses)) <span class="sc">+</span></span>
+<span id="cb57-396"><a href="#cb57-396" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb57-397"><a href="#cb57-397" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(variable <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>)</span>
 <span id="cb57-398"><a href="#cb57-398" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-399"><a href="#cb57-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-400"><a href="#cb57-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-401"><a href="#cb57-401" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un aumento de una unidad en la variable write se asocia con una disminución en las probabilidades logarítmicas de estar en un programa general versus un programa académico en una cantidad de 0,058.</span>
-<span id="cb57-402"><a href="#cb57-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-403"><a href="#cb57-403" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un aumento de una unidad en la variable write se asocia con la disminución en las probabilidades logarítmicas de estar en un programa vocacional versus un programa académico. por la cantidad de .1136</span>
+<span id="cb57-400"><a href="#cb57-400" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb57-401"><a href="#cb57-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-402"><a href="#cb57-402" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(test)</span>
+<span id="cb57-403"><a href="#cb57-403" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-404"><a href="#cb57-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-405"><a href="#cb57-405" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las probabilidades logarítmicas de estar en un programa general frente a un programa académico disminuirán en 1.163 si se pasa de ses="low"a ses="high"</span>
-<span id="cb57-406"><a href="#cb57-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-407"><a href="#cb57-407" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las probabilidades logarítmicas de estar en un programa general frente a un programa académico disminuirán en 0.533 si se pasa de ses="low"a ses="middle", aunque este coeficiente no es significativo.</span>
-<span id="cb57-408"><a href="#cb57-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-409"><a href="#cb57-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las probabilidades logarítmicas de estar en un programa vocacional frente a un programa académico disminuirán en 0.983 si se pasa de ses="low"a ses="high"</span>
-<span id="cb57-410"><a href="#cb57-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-411"><a href="#cb57-411" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Las probabilidades logarítmicas de estar en un programa vocacional frente a un programa académico aumentarán en 0.291 si se pasa de ses="low"a ses="middle",aunque este coeficiente no es significativo.</span>
-<span id="cb57-412"><a href="#cb57-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-405"><a href="#cb57-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-406"><a href="#cb57-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-407"><a href="#cb57-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-408"><a href="#cb57-408" aria-hidden="true" tabindex="-1"></a>En este bloque de código, estoy calculando los efectos promedio marginales en un modelo multinomial para entender cómo las variables independientes ses (nivel socioeconómico) y write (puntuación de escritura) influyen en la probabilidad de estar en diferentes grupos de la variable dependiente (academic, general, vocation).</span>
+<span id="cb57-409"><a href="#cb57-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-410"><a href="#cb57-410" aria-hidden="true" tabindex="-1"></a>Estos resultados permiten interpretar el cambio promedio en la probabilidad de estar en cada grupo, condicionado a cambios en las variables independientes, proporcionando una comprensión detallada de los efectos específicos.</span>
+<span id="cb57-411"><a href="#cb57-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-412"><a href="#cb57-412" aria-hidden="true" tabindex="-1"></a>**Resultados del modelo multinomial**</span>
 <span id="cb57-413"><a href="#cb57-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-414"><a href="#cb57-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-414"><a href="#cb57-414" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: academic</span></span>
 <span id="cb57-415"><a href="#cb57-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-418"><a href="#cb57-418" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-419"><a href="#cb57-419" aria-hidden="true" tabindex="-1"></a><span class="co"># Odds ratio</span></span>
-<span id="cb57-420"><a href="#cb57-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-416"><a href="#cb57-416" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: high - low (Estimate: 0.23181, Std. Error: 0.09367, z-value: 2.475, Pr(<span class="sc">\&gt;</span>\|z\|): 0.0133)</span>
+<span id="cb57-417"><a href="#cb57-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-418"><a href="#cb57-418" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico alto comparado con un nivel bajo aumenta la probabilidad de estar en el grupo 'academic' en 0.23181 unidades en la escala logit. Este efecto es estadísticamente significativo (p-valor = 0.0133).</span>
+<span id="cb57-419"><a href="#cb57-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-420"><a href="#cb57-420" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: middle - low (Estimate: 0.03576, Std. Error: 0.08406, z-value: 0.425, Pr(<span class="sc">\&gt;</span>\|z\|): 0.6705)</span>
 <span id="cb57-421"><a href="#cb57-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-422"><a href="#cb57-422" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(test))</span>
+<span id="cb57-422"><a href="#cb57-422" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico medio comparado con un nivel bajo tiene un efecto positivo muy pequeño y no significativo en la probabilidad de estar en el grupo 'academic'.</span>
 <span id="cb57-423"><a href="#cb57-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-424"><a href="#cb57-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-424"><a href="#cb57-424" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>write: dY/dX (Estimate: 0.01714, Std. Error: 0.00288, z-value: 5.959, Pr(<span class="sc">\&gt;</span>\|z\|): <span class="sc">\&lt;</span>0.001)</span>
 <span id="cb57-425"><a href="#cb57-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-426"><a href="#cb57-426" aria-hidden="true" tabindex="-1"></a><span class="co"># Probabilidades predichas</span></span>
+<span id="cb57-426"><a href="#cb57-426" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un incremento en una unidad en la puntuación de escritura aumenta la probabilidad de estar en el grupo 'academic' en 0.01714. Este efecto es altamente significativo (p-valor <span class="sc">\&lt;</span> 0.001).</span>
 <span id="cb57-427"><a href="#cb57-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-428"><a href="#cb57-428" aria-hidden="true" tabindex="-1"></a>pp <span class="ot">&lt;-</span> <span class="fu">fitted</span>(test)</span>
+<span id="cb57-428"><a href="#cb57-428" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: general</span></span>
 <span id="cb57-429"><a href="#cb57-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-430"><a href="#cb57-430" aria-hidden="true" tabindex="-1"></a>pp</span>
-<span id="cb57-431"><a href="#cb57-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-432"><a href="#cb57-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-430"><a href="#cb57-430" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: high - low (Estimate: -0.16006, Std. Error: 0.08686, z-value: -1.843, Pr(<span class="sc">\&gt;</span>\|z\|): 0.0654)</span>
+<span id="cb57-431"><a href="#cb57-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-432"><a href="#cb57-432" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico alto comparado con un nivel bajo disminuye la probabilidad de estar en el grupo 'general' en 0.16006 unidades en la escala logit. Este efecto es marginalmente significativo (p-valor = 0.0654).</span>
 <span id="cb57-433"><a href="#cb57-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-434"><a href="#cb57-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-435"><a href="#cb57-435" aria-hidden="true" tabindex="-1"></a>A continuación, si queremos examinar los cambios en la probabilidad predicha asociados con una de nuestras dos variables, podemos crear pequeños conjuntos de datos variando una variable mientras mantenemos la otra constante. </span>
-<span id="cb57-436"><a href="#cb57-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-437"><a href="#cb57-437" aria-hidden="true" tabindex="-1"></a>Primero haremos esto manteniendo write su media y examinando las probabilidades predichas para cada nivel de ses.</span>
-<span id="cb57-438"><a href="#cb57-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-434"><a href="#cb57-434" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: middle - low (Estimate: -0.12447, Std. Error: 0.07993, z-value: -1.557, Pr(<span class="sc">\&gt;</span>\|z\|): 0.1194)</span>
+<span id="cb57-435"><a href="#cb57-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-436"><a href="#cb57-436" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico medio comparado con un nivel bajo tiene un efecto negativo y no significativo en la probabilidad de estar en el grupo 'general'.</span>
+<span id="cb57-437"><a href="#cb57-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-438"><a href="#cb57-438" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>write: dY/dX (Estimate: -0.00283, Std. Error: 0.00282, z-value: -1.002, Pr(<span class="sc">\&gt;</span>\|z\|): 0.3164)</span>
 <span id="cb57-439"><a href="#cb57-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-440"><a href="#cb57-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-440"><a href="#cb57-440" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un incremento en una unidad en la puntuación de escritura disminuye la probabilidad de estar en el grupo 'general' en 0.00283. Este efecto no es significativo (p-valor = 0.3164).</span>
 <span id="cb57-441"><a href="#cb57-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-442"><a href="#cb57-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-445"><a href="#cb57-445" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-446"><a href="#cb57-446" aria-hidden="true" tabindex="-1"></a>dses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ses =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"middle"</span>, <span class="st">"high"</span>), <span class="at">write =</span> <span class="fu">mean</span>(ml<span class="sc">$</span>write))</span>
-<span id="cb57-447"><a href="#cb57-447" aria-hidden="true" tabindex="-1"></a>dses</span>
-<span id="cb57-448"><a href="#cb57-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-449"><a href="#cb57-449" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(test, <span class="at">newdata =</span> dses, <span class="st">"probs"</span>)</span>
-<span id="cb57-450"><a href="#cb57-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-442"><a href="#cb57-442" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: vocation</span></span>
+<span id="cb57-443"><a href="#cb57-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-444"><a href="#cb57-444" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: high - low (Estimate: -0.07175, Std. Error: 0.07432, z-value: -0.965, Pr(<span class="sc">\&gt;</span>\|z\|): 0.3343)</span>
+<span id="cb57-445"><a href="#cb57-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-446"><a href="#cb57-446" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico alto comparado con un nivel bajo disminuye la probabilidad de estar en el grupo 'vocation' en 0.07175 unidades en la escala logit. Este efecto no es significativo (p-valor = 0.3343).</span>
+<span id="cb57-447"><a href="#cb57-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-448"><a href="#cb57-448" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ses: middle - low (Estimate: 0.08870, Std. Error: 0.06982, z-value: 1.270, Pr(<span class="sc">\&gt;</span>\|z\|): 0.2039)</span>
+<span id="cb57-449"><a href="#cb57-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-450"><a href="#cb57-450" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un nivel socioeconómico medio comparado con un nivel bajo aumenta la probabilidad de estar en el grupo 'vocation' en 0.08870 unidades en la escala logit. Este efecto no es significativo (p-valor = 0.2039).</span>
 <span id="cb57-451"><a href="#cb57-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-452"><a href="#cb57-452" aria-hidden="true" tabindex="-1"></a>Otra forma de entender el modelo es utilizando las probabilidades predichas para observar las probabilidades promediadas predichas para diferentes valores de la variable predictora continua write dentro de cada nivel de ses.</span>
+<span id="cb57-452"><a href="#cb57-452" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>write: dY/dX (Estimate: -0.01431, Std. Error: 0.00251, z-value: -5.698, Pr(<span class="sc">\&gt;</span>\|z\|): <span class="sc">\&lt;</span>0.001)</span>
 <span id="cb57-453"><a href="#cb57-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-454"><a href="#cb57-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-454"><a href="#cb57-454" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Un incremento en una unidad en la puntuación de escritura disminuye la probabilidad de estar en el grupo 'vocation' en 0.01431. Este efecto es altamente significativo (p-valor <span class="sc">\&lt;</span> 0.001).</span>
 <span id="cb57-455"><a href="#cb57-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-458"><a href="#cb57-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-459"><a href="#cb57-459" aria-hidden="true" tabindex="-1"></a>dwrite <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ses =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"middle"</span>, <span class="st">"high"</span>),</span>
-<span id="cb57-460"><a href="#cb57-460" aria-hidden="true" tabindex="-1"></a>                               <span class="at">each =</span> <span class="dv">41</span>), <span class="at">write =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">70</span>), <span class="dv">3</span>))</span>
+<span id="cb57-456"><a href="#cb57-456" aria-hidden="true" tabindex="-1"></a><span class="fu"># Taller</span></span>
+<span id="cb57-457"><a href="#cb57-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-458"><a href="#cb57-458" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo</span></span>
+<span id="cb57-459"><a href="#cb57-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-460"><a href="#cb57-460" aria-hidden="true" tabindex="-1"></a>Modelar una elección con ≥3 categorías nominales y responder preguntas de política/gestión con probabilidades predichas, efectos marginales, etc.</span>
 <span id="cb57-461"><a href="#cb57-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-462"><a href="#cb57-462" aria-hidden="true" tabindex="-1"></a><span class="do">## almacene las probabilidades predichas para cada valor de ses</span></span>
-<span id="cb57-463"><a href="#cb57-463" aria-hidden="true" tabindex="-1"></a>pp.write <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dwrite, <span class="fu">predict</span>(test, <span class="at">newdata =</span> dwrite, <span class="at">type =</span> <span class="st">"probs"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb57-464"><a href="#cb57-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-465"><a href="#cb57-465" aria-hidden="true" tabindex="-1"></a><span class="do">## calcular las probabilidades medias dentro de cada nivel de ses </span></span>
-<span id="cb57-466"><a href="#cb57-466" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(pp.write[, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], pp.write<span class="sc">$</span>ses, colMeans)</span>
+<span id="cb57-462"><a href="#cb57-462" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fuentes sugeridas</span></span>
+<span id="cb57-463"><a href="#cb57-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-464"><a href="#cb57-464" aria-hidden="true" tabindex="-1"></a>World Bank Data (DataBank), OECD Data, Our World in Data, UN Data, FAOSTAT, IMF Data.</span>
+<span id="cb57-465"><a href="#cb57-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-466"><a href="#cb57-466" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Elijan un dataset con ≥ 300 observaciones (país-año, hogares, empresas, etc) y variables claras. Importante que la frecuencia en las clases sea balanceada.</span></span>
 <span id="cb57-467"><a href="#cb57-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-468"><a href="#cb57-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-468"><a href="#cb57-468" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplos de preguntas</span></span>
 <span id="cb57-469"><a href="#cb57-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-470"><a href="#cb57-470" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico probabilidades predichas</span></span>
-<span id="cb57-471"><a href="#cb57-471" aria-hidden="true" tabindex="-1"></a><span class="co"># Pasar la base a formato long para utilizar ggplot</span></span>
-<span id="cb57-472"><a href="#cb57-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-473"><a href="#cb57-473" aria-hidden="true" tabindex="-1"></a>lpp <span class="ot">&lt;-</span> <span class="fu">melt</span>(pp.write, <span class="at">id.vars =</span> <span class="fu">c</span>(<span class="st">"ses"</span>, <span class="st">"write"</span>), <span class="at">value.name =</span> <span class="st">"probability"</span>)</span>
-<span id="cb57-474"><a href="#cb57-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-475"><a href="#cb57-475" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lpp, <span class="fu">aes</span>(<span class="at">x =</span> write, <span class="at">y =</span> probability, <span class="at">colour =</span> ses)) <span class="sc">+</span></span>
-<span id="cb57-476"><a href="#cb57-476" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb57-477"><a href="#cb57-477" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(variable <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>)</span>
-<span id="cb57-478"><a href="#cb57-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-470"><a href="#cb57-470" aria-hidden="true" tabindex="-1"></a>**Transporte**</span>
+<span id="cb57-471"><a href="#cb57-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-472"><a href="#cb57-472" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué factores explican elegir bus/metro/bici/auto? Y: modo. X: tiempo, costo, clima, ingresos. Contrafactual: −10% en tiempo del metro → ¿nuevos shares?</span></span>
+<span id="cb57-473"><a href="#cb57-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-474"><a href="#cb57-474" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Cómo cambian las elecciones Uber/taxi/bus según hora del día? Y: servicio. X: hora pico, tarifa dinámica, lluvia. Contrafactual: +15% tarifa Uber.</span></span>
+<span id="cb57-475"><a href="#cb57-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-476"><a href="#cb57-476" aria-hidden="true" tabindex="-1"></a>**Educación**</span>
+<span id="cb57-477"><a href="#cb57-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-478"><a href="#cb57-478" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué perfila la elección de programa académico/general/vocacional? Y: programa. X: puntaje, SES, género, escuela previa. Contrafactual: +10 puntos en "write".</span></span>
 <span id="cb57-479"><a href="#cb57-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-480"><a href="#cb57-480" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb57-480"><a href="#cb57-480" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué determina escoger universidad pública/privada/externa? Y: tipo de institución. X: ingreso hogar, becas, distancia. Contrafactual: beca del 50% en privada.</span></span>
 <span id="cb57-481"><a href="#cb57-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-482"><a href="#cb57-482" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(test)</span>
+<span id="cb57-482"><a href="#cb57-482" aria-hidden="true" tabindex="-1"></a>**Salud**</span>
 <span id="cb57-483"><a href="#cb57-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-484"><a href="#cb57-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-484"><a href="#cb57-484" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué lleva a elegir EPS A/EPS B/privado? Y: proveedor. X: prima, tiempo de espera, edad, crónicos. Contrafactual: reducir espera en EPS B a 20 min.</span></span>
 <span id="cb57-485"><a href="#cb57-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-486"><a href="#cb57-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-486"><a href="#cb57-486" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; En urgencias, ¿por qué eligen clínica X/clínica Y/hospital? Y: centro. X: distancia, saturación, seguro. Contrafactual: abrir nueva sede de la clínica X más cerca.</span></span>
 <span id="cb57-487"><a href="#cb57-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-488"><a href="#cb57-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-488"><a href="#cb57-488" aria-hidden="true" tabindex="-1"></a>**Finanzas**</span>
 <span id="cb57-489"><a href="#cb57-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-490"><a href="#cb57-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-491"><a href="#cb57-491" aria-hidden="true" tabindex="-1"></a>En este bloque de código, estoy calculando los efectos promedio marginales en un modelo multinomial para entender cómo las variables independientes ses (nivel socioeconómico) y write (puntuación de escritura) influyen en la probabilidad de estar en diferentes grupos de la variable dependiente (academic, general, vocation).</span>
-<span id="cb57-492"><a href="#cb57-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-490"><a href="#cb57-490" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué define elegir tarjeta débito/crédito/fintech para pagar? Y: método. X: ingresos, comisiones, cashback, edad. Contrafactual: +2% cashback en fintech.</span></span>
+<span id="cb57-491"><a href="#cb57-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-492"><a href="#cb57-492" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué influye en tipo de cuenta (básica/premium/pyme)? Y: producto. X: tarifas, uso mensual, score. Contrafactual: eximir cuota de manejo en "premium".</span></span>
 <span id="cb57-493"><a href="#cb57-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-494"><a href="#cb57-494" aria-hidden="true" tabindex="-1"></a>Estos resultados permiten interpretar el cambio promedio en la probabilidad de estar en cada grupo, condicionado a cambios en las variables independientes, proporcionando una comprensión detallada de los efectos específicos.</span>
+<span id="cb57-494"><a href="#cb57-494" aria-hidden="true" tabindex="-1"></a>**Consumo/Marketing**</span>
 <span id="cb57-495"><a href="#cb57-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-496"><a href="#cb57-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-496"><a href="#cb57-496" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué explica elegir marca A/B/C de café? Y: marca. X: precio, sello orgánico, origen, reseñas. Contrafactual: certificación orgánica para B.</span></span>
 <span id="cb57-497"><a href="#cb57-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-498"><a href="#cb57-498" aria-hidden="true" tabindex="-1"></a>**Resultados del modelo multinomial**</span>
+<span id="cb57-498"><a href="#cb57-498" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Delivery: Rappi/UberEats/DidiFood Y: plataforma. X: costo envío, tiempo, cupones, rating. Contrafactual: cupón 30% en Rappi.</span></span>
 <span id="cb57-499"><a href="#cb57-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-500"><a href="#cb57-500" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: academic</span></span>
+<span id="cb57-500"><a href="#cb57-500" aria-hidden="true" tabindex="-1"></a>**Energía/Ambiente**</span>
 <span id="cb57-501"><a href="#cb57-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-502"><a href="#cb57-502" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: high - low (Estimate: 0.23181, Std. Error: 0.09367, z-value: 2.475, Pr(&gt;|z|): 0.0133)</span>
+<span id="cb57-502"><a href="#cb57-502" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ¿Qué determina el combustible de cocina gas/electricidad/biomasa? Y: combustible. X: ingreso, subsidio, zona, precio relativo. Contrafactual: bajar precio de electricidad 15%.</span></span>
 <span id="cb57-503"><a href="#cb57-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-504"><a href="#cb57-504" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico alto comparado con un nivel bajo aumenta la probabilidad de estar en el grupo 'academic' en 0.23181 unidades en la escala logit. Este efecto es estadísticamente significativo (p-valor = 0.0133).</span>
+<span id="cb57-504"><a href="#cb57-504" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pasos (mínimos)</span></span>
 <span id="cb57-505"><a href="#cb57-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-506"><a href="#cb57-506" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: middle - low (Estimate: 0.03576, Std. Error: 0.08406, z-value: 0.425, Pr(&gt;|z|): 0.6705) </span>
+<span id="cb57-506"><a href="#cb57-506" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Pregunta y alternativas Define la decisión a modelar y las categorías nominales (≥3). Explica por qué no es binario ni ordinal. Fija la categoría base.</span>
 <span id="cb57-507"><a href="#cb57-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-508"><a href="#cb57-508" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico medio comparado con un nivel bajo tiene un efecto positivo muy pequeño y no significativo en la probabilidad de estar en el grupo 'academic'.</span>
+<span id="cb57-508"><a href="#cb57-508" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Datos y limpieza Fuente, tamaño (≥300 obs. sugerido), definiciones, recodificaciones a factor, outliers/NA, y una tabla de frecuencias por categoría.</span>
 <span id="cb57-509"><a href="#cb57-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-510"><a href="#cb57-510" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>write: dY/dX (Estimate: 0.01714, Std. Error: 0.00288, z-value: 5.959, Pr(&gt;|z|): &lt;0.001)</span>
+<span id="cb57-510"><a href="#cb57-510" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Modelo (MNL) Especifica y \~ x1 + x2 + ... (incluye 1 interacción simple si tiene sentido). Explica la plausibilidad del IIA (antes de estimar): ¿hay "clones"?</span>
 <span id="cb57-511"><a href="#cb57-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-512"><a href="#cb57-512" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un incremento en una unidad en la puntuación de escritura aumenta la probabilidad de estar en el grupo 'academic' en 0.01714. Este efecto es altamente significativo (p-valor &lt; 0.001).</span>
+<span id="cb57-512"><a href="#cb57-512" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Estimación y lectura Ajusta con nnet::multinom. Reporta coeficientes, odds ratios (OR) y p-valores (Wald). Interpreta por categoría vs. baseline.</span>
 <span id="cb57-513"><a href="#cb57-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-514"><a href="#cb57-514" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: general</span></span>
+<span id="cb57-514"><a href="#cb57-514" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Validación/diagnóstico Pseudo-R², log-likelihood, tasa de acierto (matriz de confusión).</span>
 <span id="cb57-515"><a href="#cb57-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-516"><a href="#cb57-516" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: high - low (Estimate: -0.16006, Std. Error: 0.08686, z-value: -1.843, Pr(&gt;|z|): 0.0654)</span>
-<span id="cb57-517"><a href="#cb57-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-518"><a href="#cb57-518" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico alto comparado con un nivel bajo disminuye la probabilidad de estar en el grupo 'general' en 0.16006 unidades en la escala logit. Este efecto es marginalmente significativo (p-valor = 0.0654).</span>
-<span id="cb57-519"><a href="#cb57-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-520"><a href="#cb57-520" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: middle - low (Estimate: -0.12447, Std. Error: 0.07993, z-value: -1.557, Pr(&gt;|z|): 0.1194)</span>
-<span id="cb57-521"><a href="#cb57-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-522"><a href="#cb57-522" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico medio comparado con un nivel bajo tiene un efecto negativo y no significativo en la probabilidad de estar en el grupo 'general'.</span>
-<span id="cb57-523"><a href="#cb57-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-524"><a href="#cb57-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>write: dY/dX (Estimate: -0.00283, Std. Error: 0.00282, z-value: -1.002, Pr(&gt;|z|): 0.3164)</span>
-<span id="cb57-525"><a href="#cb57-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-526"><a href="#cb57-526" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un incremento en una unidad en la puntuación de escritura disminuye la probabilidad de estar en el grupo 'general' en 0.00283. Este efecto no es significativo (p-valor = 0.3164).</span>
-<span id="cb57-527"><a href="#cb57-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-528"><a href="#cb57-528" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Group: vocation</span></span>
-<span id="cb57-529"><a href="#cb57-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-530"><a href="#cb57-530" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: high - low (Estimate: -0.07175, Std. Error: 0.07432, z-value: -0.965, Pr(&gt;|z|): 0.3343)</span>
-<span id="cb57-531"><a href="#cb57-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-532"><a href="#cb57-532" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico alto comparado con un nivel bajo disminuye la probabilidad de estar en el grupo 'vocation' en 0.07175 unidades en la escala logit. Este efecto no es significativo (p-valor = 0.3343).</span>
-<span id="cb57-533"><a href="#cb57-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-534"><a href="#cb57-534" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ses: middle - low (Estimate: 0.08870, Std. Error: 0.06982, z-value: 1.270, Pr(&gt;|z|): 0.2039)</span>
-<span id="cb57-535"><a href="#cb57-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-536"><a href="#cb57-536" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un nivel socioeconómico medio comparado con un nivel bajo aumenta la probabilidad de estar en el grupo 'vocation' en 0.08870 unidades en la escala logit. Este efecto no es significativo (p-valor = 0.2039).</span>
-<span id="cb57-537"><a href="#cb57-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-538"><a href="#cb57-538" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>write: dY/dX (Estimate: -0.01431, Std. Error: 0.00251, z-value: -5.698, Pr(&gt;|z|): &lt;0.001)</span>
-<span id="cb57-539"><a href="#cb57-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-540"><a href="#cb57-540" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un incremento en una unidad en la puntuación de escritura disminuye la probabilidad de estar en el grupo 'vocation' en 0.01431. Este efecto es altamente significativo (p-valor &lt; 0.001).</span>
-<span id="cb57-541"><a href="#cb57-541" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-542"><a href="#cb57-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-543"><a href="#cb57-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-544"><a href="#cb57-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-545"><a href="#cb57-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-546"><a href="#cb57-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-547"><a href="#cb57-547" aria-hidden="true" tabindex="-1"></a><span class="fu"># Taller</span></span>
-<span id="cb57-548"><a href="#cb57-548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-549"><a href="#cb57-549" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo</span></span>
-<span id="cb57-550"><a href="#cb57-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-551"><a href="#cb57-551" aria-hidden="true" tabindex="-1"></a>Modelar una elección con ≥3 categorías nominales y responder preguntas de política/gestión con probabilidades predichas, efectos marginales, etc.</span>
-<span id="cb57-552"><a href="#cb57-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-553"><a href="#cb57-553" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fuentes sugeridas</span></span>
-<span id="cb57-554"><a href="#cb57-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-555"><a href="#cb57-555" aria-hidden="true" tabindex="-1"></a>World Bank Data (DataBank), OECD Data, Our World in Data, UN Data, FAOSTAT, IMF Data.</span>
-<span id="cb57-556"><a href="#cb57-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-557"><a href="#cb57-557" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Elijan un dataset con ≥ 300 observaciones (país-año, hogares, empresas, etc) y variables claras. Importante que la frecuencia en las clases sea balanceada.</span></span>
-<span id="cb57-558"><a href="#cb57-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-559"><a href="#cb57-559" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplos de preguntas</span></span>
-<span id="cb57-560"><a href="#cb57-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-561"><a href="#cb57-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-562"><a href="#cb57-562" aria-hidden="true" tabindex="-1"></a>**Transporte**</span>
-<span id="cb57-563"><a href="#cb57-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-564"><a href="#cb57-564" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué factores explican elegir bus/metro/bici/auto?</span></span>
-<span id="cb57-565"><a href="#cb57-565" aria-hidden="true" tabindex="-1"></a><span class="at">Y: modo. X: tiempo, costo, clima, ingresos. Contrafactual: −10% en tiempo del metro → ¿nuevos shares?</span></span>
-<span id="cb57-566"><a href="#cb57-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-567"><a href="#cb57-567" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Cómo cambian las elecciones Uber/taxi/bus según hora del día?</span></span>
-<span id="cb57-568"><a href="#cb57-568" aria-hidden="true" tabindex="-1"></a><span class="at">Y: servicio. X: hora pico, tarifa dinámica, lluvia. Contrafactual: +15% tarifa Uber.</span></span>
-<span id="cb57-569"><a href="#cb57-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-570"><a href="#cb57-570" aria-hidden="true" tabindex="-1"></a>**Educación**</span>
-<span id="cb57-571"><a href="#cb57-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-572"><a href="#cb57-572" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué perfila la elección de programa académico/general/vocacional?</span></span>
-<span id="cb57-573"><a href="#cb57-573" aria-hidden="true" tabindex="-1"></a><span class="at">Y: programa. X: puntaje, SES, género, escuela previa. Contrafactual: +10 puntos en “write”.</span></span>
-<span id="cb57-574"><a href="#cb57-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-575"><a href="#cb57-575" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué determina escoger universidad pública/privada/externa?</span></span>
-<span id="cb57-576"><a href="#cb57-576" aria-hidden="true" tabindex="-1"></a><span class="at">Y: tipo de institución. X: ingreso hogar, becas, distancia. Contrafactual: beca del 50% en privada.</span></span>
-<span id="cb57-577"><a href="#cb57-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-578"><a href="#cb57-578" aria-hidden="true" tabindex="-1"></a>**Salud**</span>
-<span id="cb57-579"><a href="#cb57-579" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-580"><a href="#cb57-580" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué lleva a elegir EPS A/EPS B/privado?</span></span>
-<span id="cb57-581"><a href="#cb57-581" aria-hidden="true" tabindex="-1"></a><span class="at">Y: proveedor. X: prima, tiempo de espera, edad, crónicos. Contrafactual: reducir espera en EPS B a 20 min.</span></span>
-<span id="cb57-582"><a href="#cb57-582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-583"><a href="#cb57-583" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;En urgencias, ¿por qué eligen clínica X/clínica Y/hospital?</span></span>
-<span id="cb57-584"><a href="#cb57-584" aria-hidden="true" tabindex="-1"></a><span class="at">Y: centro. X: distancia, saturación, seguro. Contrafactual: abrir nueva sede de la clínica X más cerca.</span></span>
-<span id="cb57-585"><a href="#cb57-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-586"><a href="#cb57-586" aria-hidden="true" tabindex="-1"></a>**Finanzas**</span>
-<span id="cb57-587"><a href="#cb57-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-588"><a href="#cb57-588" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué define elegir tarjeta débito/crédito/fintech para pagar?</span></span>
-<span id="cb57-589"><a href="#cb57-589" aria-hidden="true" tabindex="-1"></a><span class="at">Y: método. X: ingresos, comisiones, cashback, edad. Contrafactual: +2% cashback en fintech.</span></span>
-<span id="cb57-590"><a href="#cb57-590" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-591"><a href="#cb57-591" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué influye en tipo de cuenta (básica/premium/pyme)?</span></span>
-<span id="cb57-592"><a href="#cb57-592" aria-hidden="true" tabindex="-1"></a><span class="at">Y: producto. X: tarifas, uso mensual, score. Contrafactual: eximir cuota de manejo en “premium”.</span></span>
-<span id="cb57-593"><a href="#cb57-593" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-594"><a href="#cb57-594" aria-hidden="true" tabindex="-1"></a>**Consumo/Marketing**</span>
-<span id="cb57-595"><a href="#cb57-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-596"><a href="#cb57-596" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué explica elegir marca A/B/C de café?</span></span>
-<span id="cb57-597"><a href="#cb57-597" aria-hidden="true" tabindex="-1"></a><span class="at">Y: marca. X: precio, sello orgánico, origen, reseñas. Contrafactual: certificación orgánica para B.</span></span>
-<span id="cb57-598"><a href="#cb57-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-599"><a href="#cb57-599" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;Delivery: Rappi/UberEats/DidiFood</span></span>
-<span id="cb57-600"><a href="#cb57-600" aria-hidden="true" tabindex="-1"></a><span class="at">Y: plataforma. X: costo envío, tiempo, cupones, rating. Contrafactual: cupón 30% en Rappi.</span></span>
-<span id="cb57-601"><a href="#cb57-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-602"><a href="#cb57-602" aria-hidden="true" tabindex="-1"></a>**Energía/Ambiente**</span>
-<span id="cb57-603"><a href="#cb57-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-604"><a href="#cb57-604" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;¿Qué determina el combustible de cocina gas/electricidad/biomasa?</span></span>
-<span id="cb57-605"><a href="#cb57-605" aria-hidden="true" tabindex="-1"></a><span class="at">Y: combustible. X: ingreso, subsidio, zona, precio relativo. Contrafactual: bajar precio de electricidad 15%.</span></span>
-<span id="cb57-606"><a href="#cb57-606" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-607"><a href="#cb57-607" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-608"><a href="#cb57-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-609"><a href="#cb57-609" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pasos (mínimos)</span></span>
-<span id="cb57-610"><a href="#cb57-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-611"><a href="#cb57-611" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Pregunta y alternativas</span>
-<span id="cb57-612"><a href="#cb57-612" aria-hidden="true" tabindex="-1"></a>Define la decisión a modelar y las categorías nominales (≥3). Explica por qué no es binario ni ordinal. Fija la categoría base.</span>
-<span id="cb57-613"><a href="#cb57-613" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-614"><a href="#cb57-614" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Datos y limpieza</span>
-<span id="cb57-615"><a href="#cb57-615" aria-hidden="true" tabindex="-1"></a>Fuente, tamaño (≥300 obs. sugerido), definiciones, recodificaciones a factor, outliers/NA, y una tabla de frecuencias por categoría.</span>
-<span id="cb57-616"><a href="#cb57-616" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-617"><a href="#cb57-617" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Modelo (MNL)</span>
-<span id="cb57-618"><a href="#cb57-618" aria-hidden="true" tabindex="-1"></a>Especifica y ~ x1 + x2 + … (incluye 1 interacción simple si tiene sentido). Explica la plausibilidad del IIA (antes de estimar): ¿hay “clones”?</span>
-<span id="cb57-619"><a href="#cb57-619" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-620"><a href="#cb57-620" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Estimación y lectura</span>
-<span id="cb57-621"><a href="#cb57-621" aria-hidden="true" tabindex="-1"></a>Ajusta con nnet::multinom. Reporta coeficientes, odds ratios (OR) y p-valores (Wald). Interpreta por categoría vs. baseline.</span>
-<span id="cb57-622"><a href="#cb57-622" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-623"><a href="#cb57-623" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Validación/diagnóstico</span>
-<span id="cb57-624"><a href="#cb57-624" aria-hidden="true" tabindex="-1"></a>Pseudo-R², log-likelihood, tasa de acierto (matriz de confusión).</span>
-<span id="cb57-625"><a href="#cb57-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-626"><a href="#cb57-626" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Predicciones</span>
-<span id="cb57-627"><a href="#cb57-627" aria-hidden="true" tabindex="-1"></a>Construye perfiles y reporta probabilidades predichas P(y=j | x); grafica P vs. un predictor clave con facetas por categoría.</span>
+<span id="cb57-516"><a href="#cb57-516" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Predicciones Construye perfiles y reporta probabilidades predichas P(y=j \| x); grafica P vs. un predictor clave con facetas por categoría.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
