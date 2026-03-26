@@ -1,0 +1,53 @@
+{{ $all := slice }}
+
+{{ range site.Data.publications }}
+  {{ $year := .year }}
+  {{ range .papers }}
+    {{ $all = $all | append (dict
+      "year" $year
+      "date" (.date | default (printf "%v-01-01" $year))
+      "title" .title
+      "journal" .journal
+      "summary" .summary
+      "url" .url
+      "abstract" .abstract
+    ) }}
+  {{ end }}
+{{ end }}
+
+{{ $latest := first 3 (sort $all "date" "desc") }}
+
+<div class="pub-home-grid">
+  {{ range $latest }}
+    <article class="pub-home-card">
+      <div class="pub-home-meta">{{ .year }}</div>
+
+      <h3 class="pub-home-title">
+        {{ .title }}
+      </h3>
+
+      {{ with .journal }}
+        <div class="pub-home-journal"><em>{{ . }}</em></div>
+      {{ end }}
+
+      {{ with .summary }}
+        <p class="pub-home-summary">{{ . }}</p>
+      {{ end }}
+
+      <div class="pub-home-actions">
+        {{ with .url }}
+          <a class="pub-home-btn" href="{{ . }}" target="_blank" rel="noopener">Full Publication</a>
+        {{ end }}
+
+        {{ with .abstract }}
+          <details class="pub-home-toggle">
+            <summary>Abstract</summary>
+            <div class="pub-home-hidden">
+              <p>{{ . }}</p>
+            </div>
+          </details>
+        {{ end }}
+      </div>
+    </article>
+  {{ end }}
+</div>

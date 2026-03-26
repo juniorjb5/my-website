@@ -1,3 +1,0 @@
-User-agent: *
-
-Sitemap: www.joaquibarandica.io/sitemap.xml

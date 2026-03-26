@@ -1,0 +1,57 @@
+{{ define "main" }}
+
+{{ $pubs := site.Data.publications }}
+
+<div class="universal-wrapper">
+  <section class="pub-archive">
+
+    <header class="pub-archive-header">
+      <h1>{{ .Title }}</h1>
+      <p>A curated archive of published research articles.</p>
+    </header>
+
+    <nav class="pub-year-nav">
+      {{ range $pubs }}
+        <a href="#y{{ .year }}">{{ .year }}</a>
+      {{ end }}
+    </nav>
+
+    {{ range $pubs }}
+      <section id="y{{ .year }}" class="pub-year-block">
+        <div class="pub-year">{{ .year }}</div>
+
+        <div class="pub-items">
+          {{ range .papers }}
+            <article class="pub-item">
+              <h3 class="pub-item-title">{{ .title }}</h3>
+
+              <div class="pub-journal"><em>{{ .journal }}</em></div>
+
+              {{ with .summary }}
+                <p class="pub-summary">{{ . | markdownify }}</p>
+              {{ end }}
+
+              <div class="pub-actions">
+                {{ with .url }}
+                  <a class="pub-btn" href="{{ . }}" target="_blank" rel="noopener">Full Publication</a>
+                {{ end }}
+
+                {{ with .abstract }}
+                  <details class="pub-toggle">
+                    <summary>Abstract</summary>
+                    <div class="pub-hidden-box">
+                      <p>{{ . }}</p>
+                    </div>
+                  </details>
+                {{ end }}
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+  </section>
+</div>
+
+{{ end }}

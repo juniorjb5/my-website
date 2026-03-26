@@ -1,0 +1,149 @@
+.pub-archive {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem 0;
+}
+
+.pub-archive-header {
+  margin-bottom: 1.5rem;
+}
+
+.pub-archive-header h1 {
+  margin-bottom: 0.4rem;
+  font-size: 2.7rem;
+  font-weight: 400;
+}
+
+.pub-archive-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.pub-year-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.2rem 0 2.5rem 0;
+}
+
+.pub-year-nav a {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.pub-year-nav a:hover {
+  border-color: #0f274d;
+  color: #0f274d;
+  text-decoration: none;
+}
+
+.pub-year-block {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2.8rem;
+}
+
+.pub-year {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #0f274d;
+  position: sticky;
+  top: 100px;
+}
+
+.pub-items {
+  min-width: 0;
+}
+
+.pub-item {
+  padding: 0 0 1.3rem 0;
+  margin: 0 0 1.3rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pub-item:last-child {
+  margin-bottom: 0;
+}
+
+.pub-item-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.0rem;
+  line-height: 1.28;
+  font-weight: 650;
+}
+
+.pub-item-title a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.pub-item-title a:hover {
+  color: #0f274d;
+  text-decoration: none;
+}
+
+.pub-journal {
+  margin-bottom: 0.45rem;
+  font-size: 0rem;
+  color: #374151;
+}
+
+.pub-journal p {
+  margin: 0;
+}
+
+.pub-summary {
+  margin: 0 0 0.7rem 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.pub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.pub-btn {
+  display: inline-block;
+  padding: 0.38rem 0.8rem;
+  border: 1px solid #d4a800;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.5rem;
+  color: #b58900;
+  transition: all 0.2s ease;
+}
+
+.pub-btn:hover {
+  background: #fff8dc;
+  text-decoration: none;
+  color: #8a6d00;
+}
+
+@media (max-width: 768px) {
+  .pub-year-block {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .pub-year {
+    position: static;
+    font-size: 1.5rem;
+  }
+
+  .pub-item-title {
+    font-size: 1.15rem;
+  }
+}

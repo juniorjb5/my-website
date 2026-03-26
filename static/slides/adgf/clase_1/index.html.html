@@ -1,0 +1,2768 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Analítica en la Gestión Financiera</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Orlando Joaqui-Barandica, PhD." />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link href="libs/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="libs/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="fonts_mtheme.css" type="text/css" />
+    <link rel="stylesheet" href="cols.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+class: inverse, left, bottom
+background-image: url("img/fondo.jpg")
+background-size: cover
+
+
+# **Analítica en la Gestión Financiera**
+----
+
+## **&lt;br/&gt; Del dato al modelo**
+
+### Orlando Joaqui-Barandica, PhD.
+###  
+
+
+---
+
+
+
+class: center, middle
+
+
+
+
+
+&lt;img src="img/univalle.jpg" width="20%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+
+
+
+
+
+class: center, middle
+
+
+.center[
+
+&lt;br&gt;
+
+
+
+&lt;a href="https://www.joaquibarandica.com" target="_blank"&gt;
+  &lt;img src="img/avatar.png"
+       style="border-radius: 80%; width: 220px; max-width: 30%; height: auto;"
+       alt="Avatar"/&gt;
+&lt;/a&gt;
+
+
+## Orlando Joaqui-Barandica
+
+
+Doctor en Ingeniería, Enf. Ingeniería Industrial **|** Magíster en Economía Aplicada **|** Estadístico.
+
+
+
+<span>&lt;i class="fas  fa-envelope faa-passing animated "&gt;&lt;/i&gt;</span> orlando.joaqui@correounivalle.edu.co 
+]
+
+
+
+.center[
+### [www.joaquibarandica.com](https://www.joaquibarandica.com)
+]
+
+
+
+
+---
+
+
+
+
+
+background-image: url(img/img1.jpg)
+background-size: cover
+
+
+
+---
+
+
+
+background-image: url(img/img2.jpg)
+background-size: cover
+
+
+---
+
+
+
+
+# Machine Learning es como el *gym* en enero
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Todos hablan de ello.  
+Pocos saben qué hacer.  
+Y los que lo hacen de verdad… casi nunca están presumiéndolo.
+
+
+
+---
+
+# Si has intentado leer ML en Internet…
+
+
+.pull-left[
+
+Probablemente te encontraste con dos extremos:
+
+- **Trilogías académicas** llenas de teoremas (útiles, pero duras de digerir).
+- **Cuentos de hadas** sobre “IA mágica” y promesas de data science.
+
+Hoy lo vamos a ver como se usa en la vida real:
+
+**problema → datos → patrones → decisión**
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="img/img3.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+
+.footnote[
+Imagen tomada de .purple[*Vastrick*]
+]
+
+
+---
+
+
+# Antes de hablar de “modelos”…
+
+Machine Learning suele sonar a “magia” porque lo vemos al final del proceso: un modelo que predice algo.
+Pero en la vida real, ML es más simple (y más útil) si lo entendemos así:
+
+- Hay un problema cotidiano (y un deseo de decidir mejor).
+
+- Hay datos del pasado (ejemplos).
+
+- Hay una máquina que busca patrones donde el humano ya no alcanza.
+
+
+
+----
+
+.center[
+### La historia de Billy nos sirve para entender el nacimiento de ML sin tecnicismos.
+]
+
+
+---
+
+
+
+# Este es Billy...
+
+
+&lt;img src="img/img4.jpg" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+
+
+---
+
+
+
+# Este es Billy...
+
+Billy quiere comprar un carro y decide hacer lo que hacemos todos: **mirar anuncios** y `“hacerse una idea”.`
+
+
+No está tratando de ser científico: .orange[**solo quiere una estimación razonable para planear su ahorro.**]
+
+- Revisa muchos anuncios en internet.
+
+- Empieza a ordenar mentalmente precios según el año del carro.
+
+- Y anota ejemplos típicos:
+
+- Nuevo ≈ $20,000
+
+- 1 año ≈ $19,000
+
+- 2 años ≈ $18,000
+
+- ... y así sucesivamente.
+
+En este punto Billy no sabe nada de ML… pero ya está pensando como alguien que aprende de datos.
+
+
+
+---
+
+
+
+# Billy encuentra una “regla” simple
+
+.pull-left[
+
+Después de ver suficientes anuncios, Billy cree que encontró un patrón estable:
+
+&gt; El precio depende de la edad del carro.
+
+Cada año baja aproximadamente $1,000.
+
+Y parece existir un “piso” donde ya no baja más, cerca de $10,000.
+
+
+----
+
+
+.center[
+.orange[**Esta intuición es muy humana: buscamos una regla corta para explicar el mundo.**]
+
+.blue2[Si esa regla funcionara siempre, la vida sería fácil...]
+]
+
+
+]
+
+
+.pull-right[
+
+.panelset[
+
+.panel[.panel-name[Idea rápida]
+Un patrón simple se siente poderoso porque nos permite decidir rápido:
+“Si el carro es 3 años más viejo, debería costar ~3 mil menos”.
+
+]
+
+.panel[.panel-name[Mapa mental]
+
+
+&lt;img src="Clase_1_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+]
+]
+
+]
+
+---
+
+# Traducción a Machine Learning: “regresión”
+
+En términos de ML, lo que Billy hizo tiene nombre:
+
+**Regresión** = predecir un valor numérico (precio) usando datos históricos.
+
+Ojo: esto no es algo “de laboratorio”.
+La gente hace regresión intuitiva todo el tiempo, por ejemplo:
+
+- Estimar un precio razonable para un iPhone usado.
+
+- Decidir cuánto comprar para una parrillada (¿200g o 500g por persona?).
+
+----
+
+&gt; Lo interesante es que Billy lo hizo “a ojo” con pocos factores...
+pero el mundo real casi nunca se deja reducir a una sola variable.
+
+
+---
+
+# El mundo real entra a escena
+
+
+&lt;img src="img/img5.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# El problema: no existe una fórmula para todo
+
+Sería increíble tener una fórmula simple para cualquier problema del mundo.
+Pero con carros (y con casi todo) aparece la complejidad:
+
+- No todos los carros “de 2 años” son comparables: pueden tener distintos meses de fabricación.
+
+- Hay decenas de opciones y versiones (extras, motor, transmisión).
+
+- La condición técnica cambia todo (kilometraje, choques, mantenimiento).
+
+- Hay picos de demanda por temporada.
+
+- Y existen factores ocultos que ni siquiera sabemos medir bien.
+
+----
+
+&gt; Entonces, la regla de Billy empieza a fallar:
+
+&gt; no porque sea “mala”, sino porque es **demasiado simple para un sistema complejo.**
+
+
+---
+
+# Limitación humana (y la razón práctica de ML)
+
+.pull-left[
+
+Un Billy promedio no puede sostener todas esas variables y relaciones en la cabeza al mismo tiempo.
+Y aunque alguien lo intente con cuidado, el cerebro tiende a:
+
+- simplificar demasiado,
+
+- olvidar factores,
+
+- sesgarse por ejemplos recientes,
+
+- y “cerrar” la decisión con poca evidencia.
+
+En pocas palabras: cuando el problema tiene muchos factores,
+necesitamos un método que pueda procesarlos sistemáticamente.
+
+]
+
+.pull-right[
+
+
+
+&lt;img src="img/img6.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+
+
+]
+
+
+---
+
+# La idea de Machine Learning (en una receta)
+
+En vez de inventarnos una fórmula a mano, hagamos lo computacional:
+
+1. Recolectamos datos (muchos anuncios con precio + características).
+
+2. Le pedimos a la máquina que encuentre patrones ocultos relacionados con el precio.
+
+3. Usamos esos patrones para predecir mejor.
+
+&lt;br&gt;
+&lt;br&gt;
+
+----
+
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+&gt; Esto no elimina la incertidumbre, pero sí mejora dos cosas:
+
+&gt; - La consistencia (no depende del “ánimo” del analista),
+
+&gt; - y la capacidad de capturar relaciones complejas.
+
+
+
+
+---
+
+# Y... funciona
+
+
+&lt;img src="img/img7.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+
+# Aquí “nace” ML
+
+Lo emocionante es que, con datos suficientes, la máquina puede predecir precios
+mejor que una persona tratando de analizar todo mentalmente.
+
+Ese es el origen práctico de ML:
+
+- No es magia.
+
+- No es solo “algoritmos”.
+
+- Es un enfoque para aprender patrones desde datos cuando el mundo es complejo.
+
+
+### Antes de hablar de modelos, necesitamos entender la base: **el dato.**
+
+
+
+
+---
+
+
+# La idea central
+
+Machine Learning no es “un algoritmo mágico”.
+
+Es un sistema que funciona **solo si** se alinean tres piezas:
+
+1. **Datos** (lo que observamos del mundo)  
+2. **Features** (cómo representamos ese mundo en variables)  
+3. **Algoritmos** (cómo aprende el patrón)
+
+
+&lt;br&gt;&lt;br&gt;
+
+----
+
+&lt;br&gt;&lt;br&gt;
+
+.center[
+.font140[.orange[**Si una de las tres falla, el resultado falla.**]]
+]
+
+---
+
+
+# Una metáfora rápida
+
+.pull-left[
+
+Piensa en ML como cocinar:
+
+- **Datos** = ingredientes  
+- **Features** = cómo los cortas / mezclas / preparas  
+- **Algoritmo** = la receta + técnica de cocción
+
+Si los ingredientes están dañados,  
+no hay receta que salve el plato 😅
+
+&lt;br&gt;
+
+----
+
+&lt;br&gt;
+
+.center[
+.font130[.blue2[**Garbage in → garbage out**]]
+]
+
+]
+
+
+.pull-right[
+
+&lt;img src="img/img8.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+
+
+# Componente 1: Datos (Data)
+
+Los datos son ejemplos del pasado.
+No son “la verdad”, son una medición (con ruido, sesgos y errores).
+
+.panelset[
+
+.panel[.panel-name[Qué incluye “datos”]
+
+- ¿De dónde vienen? (fuente)
+
+- ¿Cómo se capturan? (manual / automático)
+
+- ¿Qué tan completos están? (faltantes)
+
+- ¿Qué tan consistentes son? (fechas, unidades, llaves)
+
+- ¿En qué contexto se midieron? (reglas del negocio)
+]
+
+.panel[.panel-name[Finanzas]
+
+&gt; .font130[**En finanzas, el dato “malo” no solo reduce precisión: genera decisiones equivocadas y puede costar plata.**]
+
+]
+
+]
+
+
+---
+
+# Datos: manual vs automático
+
+.pull-left[
+
+Cuando se capturan datos, hay dos mundos:
+
+**Manual**
+
+- más lento
+
+- puede tener errores humanos (digitación)
+
+- suele tener validación por sentido común
+
+
+**Automático**
+
+- más rápido y masivo
+
+- pero también mete errores silenciosos:
+
+- sensores, scrapers, logs
+
+- cambios de formato
+
+- duplicados por integración
+
+- valores fuera de escala
+
+
+]
+
+.pull-right[
+
+&lt;img src="img/img9.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+.center[
+.orange[Más datos ≠ mejores datos]
+]
+
+]
+
+
+
+---
+
+
+# Componente 2: Features (representación)
+
+Un dato crudo rara vez sirve directo.
+
+**Features** son la forma en que convertimos el mundo en números/variables:
+
+- Edad del carro (ok)
+
+- Kilometraje (mejor)
+
+- Estado / extras (mejor)
+
+- Estacionalidad (mes, semana)
+
+- Ciudad / zona (mercado local)
+
+
+----
+
+&gt; En la práctica, una gran parte del trabajo real en ML ocurre aquí.
+
+
+---
+
+
+
+# Features: el mismo dato, distinto significado
+
+.panelset[
+
+.panel[.panel-name[Ejemplo simple]
+Precio = 18,000
+Eso solo no dice mucho…
+
+Pero si lo acompañas de:
+
+- edad = 2 años
+
+- km = 35,000
+
+- transmisión = automática
+
+- ciudad = Cali
+
+- mes = diciembre
+
+...ya puedes explicar “por qué” ese precio puede ser razonable.
+]
+
+.panel[.panel-name[Finanzas]
+
+En finanzas es igual:
+
+- retornos (feature) salen de precios (dato)
+
+- ratios financieros salen de estados financieros
+
+- riesgo (VaR/ES) sale de series limpias y consistentes
+
+.orange[**Sin features bien definidas, el modelo aprende basura.**]
+]
+
+]
+
+---
+
+# Componente 3: Algoritmos
+
+Aquí viven las “familias” que todo el mundo menciona:
+
+- Regresión / Clasificación
+
+- Árboles / SVM / KNN
+
+- Redes neuronales
+
+- Ensambles, etc.
+
+Pero ojo:
+
+.orange[El algoritmo es la parte más visible... pero no siempre la más importante.]
+
+.center[
+.blue2[**Con buen dato + buenas features, incluso modelos simples funcionan muy bien.**]
+]
+
+---
+
+# En proyectos reales
+
+.pull-left[
+
+En el mundo real, el orden de prioridad suele ser:
+
+1. Datos correctos y trazables
+
+2. Features coherentes con el negocio
+
+3. Luego sí eliges el algoritmo
+
+----
+
+.orange[**Si inviertes el orden (arrancas por “modelo”), terminas “arreglando” el proyecto al final, cuando ya es tarde.**]
+
+]
+
+.pull-right[
+&lt;img src="img/img10.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+# Intersección
+
+
+&lt;img src="img/img11.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+
+
+# Learning vs Intelligence
+
+Machine Learning es **parte** de la Inteligencia Artificial, pero no es “toda la IA”.
+
+- **AI**: campo completo (como biología o química)
+- **ML**: una parte de AI que aprende patrones desde datos
+- **Neural Networks**: un tipo de ML (popular, pero no el único)
+- **Deep Learning**: enfoque moderno/arquitecturas para redes (hoy se usa casi como sinónimo práctico)
+
+----
+
+.center[
+.orange[**Regla de oro:** no compares categorías que están en “niveles” distintos, porque suena a marketing y confunde.]
+]
+
+- Mal: **“¿Qué es mejor: AI o redes neuronales?”**
+
+(AI es el campo grande; redes neuronales es una técnica dentro de ML, que está dentro de AI)
+
+- Mal: **“¿Uso Machine Learning o Deep Learning?”**
+
+(Deep Learning es un subconjunto de ML, no una alternativa del mismo nivel)
+
+
+
+---
+
+# “La máquina aprende” ≠ “la máquina es inteligente”
+
+.pull-left[
+La máquina puede **aprender patrones**... pero eso no significa que tenga “inteligencia humana”.
+
+**Machine can**
+- Forecast / predecir
+- Memorize / aprender de ejemplos
+- Reproduce / automatizar una tarea
+- Choose best item / optimizar un criterio
+
+**Machine cannot**
+- Create something new (sin contexto/humano)
+- Get smart really fast (sin datos/entrenamiento)
+- Go beyond their task (sin re-definir objetivo)
+- “Kill all humans” (dejemos a Hollywood 😅)
+
+----
+
+.center[
+.blue2[En analítica: “aprender” = ajustar a datos; “inteligencia” = otra conversación.]
+]
+]
+
+.pull-right[
+&lt;img src="img/img12.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+
+
+
+
+---
+
+# El mapa del ML world
+
+
+
+&lt;img src="img/img13.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# El mapa del ML world
+
+
+.pull-left[
+Cuando alguien dice “hago ML”, puede estar hablando de cosas muy distintas.  
+Por eso sirve un mapa: **ubicar familias** y entender que no existe “un solo ML”.
+
+**Tres preguntas para orientarnos:**
+- ¿Tengo una etiqueta/objetivo `Y`? .orange[(sí → supervisado / no → no supervisado)]
+- ¿Estoy optimizando por trial–error con recompensas? .orange[(→ reinforcement learning)]
+- ¿Necesito combinar muchos modelos para mejorar? .orange[(→ ensembles)]
+
+----
+
+.center[
+.orange[**Idea clave:** el método depende del problema, los datos y la restricción del negocio.]
+]
+]
+
+
+
+.pull-right[
+&lt;img src="img/img14.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+
+
+
+
+---
+
+
+## ‘Big data: The next frontier for innovation, competition, and productivity' 
+
+
+.pull-left[
+La tecnología de big data o el análisis de grandes conjuntos de datos, se está convirtiendo en un aspecto clave de:
+
+
+1. La competitividad de las empresas
+2. El aumento de la productividad y el crecimiento
+3. La innovación
+4. La satisfacción del consumidor
+
+
+Además, los **`datos`** son el combustible que alimenta la **inteligencia artificial** y el **machine learning**, claves también para lograr un futuro más eficiente y sostenible.
+
+]
+
+
+.pull-right[
+
+![](https://media.giphy.com/media/xT9C25UNTwfZuk85WP/giphy.gif)
+
+]
+
+--
+
+.center[
+.orange[
+
+Desde el comercio minorista hasta la industria pesada, pasando por el sector de la salud, los seguros o la banca, no hay industria que no pueda beneficiarse de la inteligencia de los datos.
+
+]
+]
+
+
+---
+
+class: center, middle
+
+
+## Además de los beneficios estrictamente empresariales, como la reducción de costes, la automatización, la personalización de productos o la mejora en la toma de decisiones...
+
+&lt;br&gt;
+
+##... el .orange[**BIG DATA**] tiene el potencial de construir una economía más transparente, eficiente, justa y sostenible.
+
+
+
+---
+
+# Transparencia
+
+Desde el funcionamiento interno de las empresas hasta la gestión de nuestras sociedades, el análisis de datos permite alcanzar altos niveles de transparencia. 
+
+
+.center[
+*“En un mundo ideal, la transparencia debe aplicarse a todas las etapas del trabajo con datos".*
+]
+
+.pull-left[
+
+&lt;img src="https://media.giphy.com/media/3o6MbglpHAmtq6rvZS/giphy.gif" width="90%"/&gt;
+
+]
+
+
+.pull-right[
+
+Las partes implicadas deben estar informadas sobre los fines de los datos capturados:
+
+- ¿cómo se recopilan, almacenan, transfieren o procesan? 
+
+- También se les debe informar sobre la forma en que se analizarán los datos si algún tercero participa en el procesamiento de datos. 
+
+- Los usuarios deben recibir garantías claras de que los datos no se venderán ni se transferirán a otras instituciones o entidades legales sin el consentimiento adecuado.
+
+]
+
+
+
+---
+
+
+# Eficiencia en el uso de recursos
+
+.left-column[
+
+&lt;br&gt;
+&lt;br&gt;
+
+
+&lt;img src="https://media.giphy.com/media/WtWLJ7AraeFaTvTMwu/giphy.gif" width="90%"/&gt;
+
+
+
+&lt;img src="https://media.giphy.com/media/xD9vHfSZiBgTm/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.right-column[
+
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+A nivel industrial, el análisis de .orange[**BIG DATA**] permite una producción mucho más precisa y ajustada a la demanda real, lo que a su vez conlleva la reducción de excedentes. 
+
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+.orange[
+### Esto tiene un impacto directo en el uso eficiente de recursos y, por lo tanto, en la huella medioambiental de las empresas.
+]
+]
+
+]
+
+
+
+---
+
+
+# Sostenibilidad en el uso de los recursos
+
+&lt;br&gt;
+&lt;br&gt;
+
+
+
+&gt; El uso del big data y la inteligencia artificial contribuye también a la sostenibilidad de la industria y la economía.
+
+
+
+&lt;br&gt;
+
+&gt; Por un lado, permite medir (y hacer predicciones) de forma precisa sobre el impacto de las actividades humanas en el medio ambiente.
+
+
+
+&lt;br&gt;
+
+&gt; Por otro, la gestión inteligente basada en datos de la red energética posibilita una mejor integración de las energías renovables.
+
+
+---
+
+background-image: url("https://media.giphy.com/media/ixvKqzJFAg2DC/giphy.gif")
+background-size: cover
+
+class: center, middle, inverse
+
+
+## Su aplicación en el sector utilities hace posible una gestión eficiente de servicios como el agua, las comunicaciones o la gestión de residuos. 
+
+## Todo esto implica, además, nuevos pasos hacia modelos productivos sostenibles y la construcción de una economía circular.
+
+
+
+---
+
+
+# Mejora de la responsabilidad social corporativa
+
+
+&lt;br&gt;
+
+&gt; A nivel de responsabilidad empresarial o RSC, la tecnología de .orange[BIG DATA] permite gestionar la información de forma diferente. 
+
+
+
+.pull-left[
+
+----
+### Las autoridades pueden monitorear aspectos relevantes como emisiones o respeto a los derechos humanos, las marcas pueden poner en valor sus esfuerzos de sostenibilidad y los analistas pueden perfeccionar sus predicciones.
+----
+
+]
+
+
+.pull-right[
+
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/U6Qzze3Mt90Ig/giphy.gif" width="90%"/&gt;
+
+]
+
+
+
+---
+
+
+class: center, middle
+
+# ¿Qué es BIG DATA?... 🤔
+
+
+---
+
+
+
+# ¿Qué es BIG DATA?
+
+&lt;br&gt;
+
+### El .orange[BIG DATA] es el análisis masivo de datos. 
+
+
+&lt;br&gt;
+
+
+.right[
+.font140[
+Una cuantía de datos, tan sumamente grande, que las aplicaciones de software de procesamiento de datos que tradicionalmente se venían usando no son capaces de capturar, tratar y poner en valor en un tiempo razonable.
+]
+]
+
+&lt;br&gt;
+
+<span>&lt;i class="fas  fa-angle-double-right fa-2x faa-passing animated "&gt;&lt;/i&gt;</span> Igualmente, el mismo término se refiere a las .orange[nuevas tecnologías] que hacen posible el **almacenamiento y procesamiento**, además de al uso que se hace de la información obtenida a través de dichas tecnologías.
+
+---
+
+
+background-image: url(img/back5.jpg)
+background-size: cover
+
+
+
+# .orange[¿De dónde vienen los datos?]
+
+
+.pull-left[
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## Producidos por personas
+
+
+]
+
+
+.pull-right[
+
+.center[
+.font140[Mandar un email, escribir un comentario en Facebook, contestar a una encuesta telefónica, meter información en una hoja de cálculo, responder a un WhatsApp, coger los datos de contacto de un cliente, hacer clic en un enlace de Internet...
+]
+
+### Infinidad de acciones que realizamos en el día a día suponen una fuente de datos inmensa.
+
+]
+
+]
+
+
+---
+
+
+
+background-image: url(img/back5.jpg)
+background-size: cover
+
+
+
+# .orange[¿De dónde vienen los datos?]
+
+
+.pull-left[
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## Entre máquinas
+
+
+]
+
+
+.pull-right[
+
+.center[
+.font140[Los termómetros, parquímetros y sistemas de riego automático de las ciudades, los GPS de vehículos y teléfonos móviles, las máquinas expendedoras de bebidas y alimentos en un hospital, o los contadores de electricidad de las viviendas, etc.. 
+]
+
+### Se comunican a través de dispositivos con otros aparatos, a los que transmiten los datos que van recogiendo...
+
+]
+
+]
+
+---
+
+
+background-image: url(img/back5.jpg)
+background-size: cover
+
+
+
+# .orange[¿De dónde vienen los datos?]
+
+
+.pull-left[
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## Biométricas
+
+
+]
+
+
+.pull-right[
+
+.center[
+.font140[Los datos que tienen como origen artefactos como sensores de huellas dactilares, escáneres de retina, lectores de ADN, sensores de reconocimiento facial o reconocimiento de voz... 
+]
+
+### Su uso es muy extendido en materia de seguridad en todas sus variantes...
+
+]
+
+]
+
+---
+
+
+
+background-image: url(img/back5.jpg)
+background-size: cover
+
+
+
+# .orange[¿De dónde vienen los datos?]
+
+
+.pull-left[
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## Marketing Web
+
+
+]
+
+
+.pull-right[
+
+.center[
+.font140[Nuestros movimientos en la Red están sujetos a todo tipo de mediciones que tienen como objeto estudios de marketing y análisis de comportamiento.... 
+]
+
+### Con esos datos se llega a conclusiones tales como qué partes de una página atraen más al usuario, dónde hace clic o en qué zona de esta pasa más tiempo...
+
+]
+
+]
+
+---
+
+
+background-image: url(img/back5.jpg)
+background-size: cover
+
+
+
+# .orange[¿De dónde vienen los datos?]
+
+
+.pull-left[
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## Transacciones de datos
+
+
+]
+
+
+.pull-right[
+
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+.font140[El traspaso de dinero de una cuenta bancaria a otra, la reserva de un billete de avión o añadir un artículo a un carrito de compra virtual de un portal de comercio electrónico, serían algunos ejemplos... 
+]
+
+]
+
+]
+
+---
+
+
+class: middle, center
+
+
+
+# .purple[Para que te hagas una idea...]
+
+&lt;br&gt;
+
+## .orange[...y centrándonos únicamente en una pequeñísima porción de los datos producidos por las personas, en el año 2017, durante un solo minuto, de promedio y a nivel global]
+
+&lt;br&gt;
+
+.gray[Se enviaron 156 millones de correos electrónicos, se realizaron 3 millones y medio de búsquedas en Google, se mandaron 16 millones de SMS, se postearon 46.200 nuevos contenidos en Instagram, se generaron 452.000 tuits y se publicaron 1,8 millones de snaps en Snapchat.]
+
+
+---
+
+
+background-image: url(img/back6.jpg)
+background-size: cover
+
+
+# Tipos de datos según su estructura
+
+
+## Datos estructurados
+
+
+.pull-left[
+
+]
+
+.pull-right[
+
+.center[
+### - Son los que tradicionalmente se han usado en el tratamiento de datos.
+
+### - Se pueden almacenar en tablas y tienen una clara defición de longitud y formato.
+
+### - Entre ellos, se encuentran los números, cadenas de caracteres y las fechas.
+]
+
+
+]
+
+
+---
+
+
+background-image: url(img/back7.jpg)
+background-size: cover
+
+
+# Tipos de datos según su estructura
+
+
+## Datos no estructurados
+
+
+.pull-left[
+
+]
+
+.pull-right[
+
+.center[
+### - Son datos en su forma original, tal y como fueron recogidos.
+
+### - No poseen un formato específico que permita almacenarlos de forma tradicional.
+
+### - Entre ellos, se encuentran los emails, documentos de texto, audio, etc.
+]
+
+
+]
+
+---
+
+
+background-image: url(img/back8.jpg)
+background-size: cover
+
+
+# Tipos de datos según su estructura
+
+
+## Datos semi estructurados
+
+
+.pull-left[
+
+]
+
+.pull-right[
+
+.center[
+### - Siguen una especie de estructura, pero esta no es lo suficientemente regular.
+
+### - Posee ciertos patrones comunes que los describen.
+
+### - Entre ellos, se encuentran el lenguaje HTML, lenguaje XML, formato JSON, etc.
+]
+
+
+]
+
+---
+
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+
+.center[
+# 7 V 
+# del BIG DATA
+]
+
+]
+
+.pull-right-wide[
+
+&lt;br&gt;
+
+.font110[.left[ 
+
+&gt; - .purple[.font140[V]]ELOCIDAD
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]OLUMEN
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]ARIEDAD
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]ERACIDAD
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]ALOR
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]ISUALIZACIÓN
+
+&lt;hr&gt;
+
+&gt; - .purple[.font140[V]]ARIABILIDAD
+
+]
+]
+]
+
+
+
+---
+
+
+# Velocidad
+
+
+.pull-left[
+
+&lt;br&gt;
+
+Nuestro concepto de inmediatez ha cambiado en los últimos tiempos y se busca información que llegue prácticamente al instante.
+
+&lt;br&gt;
+
+----
+
+`Así, la velocidad de análisis requerida por la sociedad actual es una de las características fundamentales que tienen los datos a gran escala, donde los datos en constante movimiento procesados a tiempo real cobran protagonismo, ejecutando algoritmos cada vez más complejos en menos tiempo.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/xUOxeZUc8UFwMgH2MM/giphy.gif" width="90%"/&gt;
+
+]
+
+
+
+---
+
+# Volumen
+
+
+.pull-left[
+
+&lt;br&gt;
+
+La cantidad de datos generados está aumentando.
+
+&lt;br&gt;
+
+----
+
+`Según crecen las bases de datos, también lo han de hacer las aplicaciones y arquitectura construida para soportar la recogida y almacenamiento de datos cada vez más variados.`
+
+`Además, se han reducido los costes de almacenamiento propiciando almacenar grandes cuantías de información a un precio mucho más reducido que antiguamente.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/ftAyb0CG1FNAIZt4SO/giphy.gif" width="90%"/&gt;
+
+]
+
+
+
+---
+
+
+# Variedad
+
+
+.pull-left[
+
+&lt;br&gt;
+
+Los datos sobre los que trabajan las técnicas de macrodatos son diversos pues, como hemos visto, proceden de numerosas fuentes y se encuentran en distintos formatos.
+
+&lt;br&gt;
+
+----
+
+`Además, continúa en aumento la cuantía de datos no estructurados en proporción a los tradicionales.`
+
+`Igual que pasaba con el volumen, esta entrada en escena con fuerza de los datos no estructurados requiere nuevos tratamientos de la información, necesitando de nuevas metodologías y tecnologías para poder ser analizadas.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/3NeSk2IVEd2FYUQEcM/giphy.gif" width="90%"/&gt;
+
+]
+
+
+
+---
+
+
+# Veracidad
+
+
+.pull-left[
+
+&lt;br&gt;
+
+Saber la fiabilidad de la información recogida es importante para obtener unos datos de calidad.
+
+&lt;br&gt;
+
+----
+
+`Incluso, dependiendo de las aplicaciones que se le vaya a dar a la información, la veracidad se convierte en fundamental. Es un factor que puede influir mucho en conseguir una ventaja competitiva en la explotación del Big Data.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/dXFKDUolyLLi8gq6Cl/giphy.gif" width="90%"/&gt;
+
+]
+
+---
+
+
+# Valor
+
+
+.pull-left[
+
+&lt;br&gt;
+
+Una gran cuantía de datos frecuentemente extrae pequeñas informaciones de valor.
+
+&lt;br&gt;
+
+----
+
+`Cómo conseguir dicha información de manera eficiente es uno de los retos que afronta día a día el área de la inteligencia de datos. El valor es sin duda una cualidad fundamental en el análisis.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/zyYqgdql12FRC/giphy.gif" width="90%"/&gt;
+
+]
+
+
+---
+
+# Visualización
+
+
+.pull-left[
+
+&lt;br&gt;
+
+Una imagen vale más que mil palabras.
+
+&lt;br&gt;
+
+----
+
+`Convertir cientos de hojas de información en un único gráfico que muestre claramente unas conclusiones predictivas es un ejemplo de cómo mostrar los resultados de forma clara y sencilla en un evidente ejercicio de sintetización.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;img src="https://media.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif" width="90%"/&gt;
+
+]
+
+
+---
+
+
+# Variabilidad
+
+
+.pull-left[
+
+&lt;br&gt;
+
+en un entorno tan cambiante como el de los macrodatos, la información varía mucho.
+
+&lt;br&gt;
+
+----
+
+`Y también han de hacerlo los modelos o tratamientos que se aplican en torno a esta, pues no son fijos en el tiempo y requieren de un control periódico.`
+
+----
+
+
+]
+
+
+.pull-right[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/Rubq2zDiRjHSxv7CHX/giphy.gif" width="90%"/&gt;
+
+]
+
+
+
+
+
+
+---
+
+class: center, middle
+
+
+
+# El ciclo de gestión de información en 4 fases
+
+# 👨‍💻
+--
+
+&lt;br&gt;
+
+### .orange[Conoces ya de dónde vienen los datos, los tipos de ellos que existen y sus características principales. Lo siguiente es cómo gestionarlos]
+
+
+
+---
+
+
+# 1️⃣ Captura de información
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+## ¿Dónde está la información que necesitamos y cómo podemos capturarla?
+
+## 🔍
+]
+
+
+
+
+---
+
+
+
+# 1️⃣ Captura de información
+
+
+&lt;br&gt;
+
+.center[
+.font140[Cómo hemos comentado... .brand-red[**HAY INFORMACIÓN POR TODAS PARTES.**]]
+]
+
+&lt;br&gt;
+
+### Para capturarla, existen varios métodos como:
+
+&gt; - .orange[*Web Scraping:*] Una técnica que mediante programas de software extrae información de sitios web.
+
+&gt; - .orange[*API's:*] La gestión de información a través de diversar API creadas, permite la comunicación entre diversos componentes de software.
+
+&gt; - .orange[*Apache Flume:*] Específicamente diseñado para recopilar y agregar grandes volúmenes de datos.
+
+&gt; - .orange[*...*]
+
+
+
+---
+
+
+# 2️⃣ Almacenamiento
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+## Capturados los datos necesitarás guardarlos!!!
+
+## 💾
+]
+
+
+
+
+---
+
+
+# 2️⃣ Almacenamiento
+
+
+&lt;br&gt;
+
+.center[
+.font140[Depende de su uso futuro... .brand-red[**Y EL TIPO DE INFORMACIÓN QUE SE TRATE.**]]
+]
+
+&lt;br&gt;
+
+### Se pueden guardar en:
+
+&gt; - .orange[*Hojas de cálculo:*] Para el manejo de información estructurada tradicional.
+
+&gt; - .orange[*NoSQL:*] Permite almacenamiento de información no estructurada de forma mucho más flexible y rápida.
+
+&gt; - .orange[*Hadoop:*] Entornos de trabajo como Hadoop, ayudarán a ejecutar aplicaciones necesarias para trabajar con macrodatos.
+
+&gt; - .orange[*...*]
+
+
+---
+
+
+# 3️⃣ Tratamiento
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+## Capturados y almacenados los datos, ¿ahora cómo los tratamos?
+
+## 🔨
+]
+
+
+
+
+---
+
+
+# 3️⃣ Tratamiento
+
+
+&lt;br&gt;
+
+
+### Se puede extraer conocimiento y buscar patrones repetitivos de esos datos a través de **la estadística** y **el machine learning** (desarrollo de tpecnicas que tienen como objetivo que las máquinas generalicen su comportamiento con base a datos de entrenamiento):
+
+&gt; - .orange[*Apache Spark:*] Es un motor unificado de analíticas para procesar datos a gran escala que integra módulos para SQL, streaming, aprendizaje automático y procesamiento de grafos.
+
+&gt; - .orange[*Python:*] Construir aplicaciones web, analizar datos, automatizar operaciones y crear aplicaciones empresariales.
+
+&gt; - .orange[*R:*] es un entorno de software libre y lenguaje de programación interpretado, es decir, ejecuta las instrucciones directamente, sin una previa compilación del programa a instrucciones en lenguaje máquina.
+
+&gt; - .orange[*...*]
+
+
+
+
+---
+
+# 4️⃣ Puesta en valor
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.center[
+## Capturados los datos necesitarás guardarlos!!!
+
+## 💰
+]
+
+
+
+
+---
+
+
+
+# 4️⃣ Puesta en valor
+
+
+&lt;br&gt;
+
+.center[
+.font140[Los datos en sí mismos... .brand-red[**NO GARANTIZAN CONOCIMIENTO.**]]
+]
+
+&lt;br&gt;
+
+### Sin un análisis y un tratamiento adecuado, los datos no sirven para nada. Así el valor estará, no en los propios datos, sino en la relación de estos entre sí.
+
+&gt; - .orange[*Patrones o tendencias*]
+
+&gt; - .orange[*Estimaciones, Correlaciones, Predicciones, ...*]
+
+&gt; - .orange[*Tablas y visualizaciones*]
+
+&gt; - .orange[*...*]
+
+
+
+
+---
+
+class: inverse, center, middle
+background-color: #122140
+
+
+# Casos prácticos de aplicación
+
+# y éxito empresarial
+
+
+---
+
+
+# Amazon
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/zWyv9xtsEfXQQ/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.pull-right-wide[
+
+La compañía de referencia a nivel mundial, en lo que a comercio electrónico se refiere, basa buena parte de su éxito en conocer de antemano lo que necesitan sus clientes. Así, es muy probable que si entras en la página de esta empresa, te sugiera artículos que van a ser de gran interés para ti. 
+
+&lt;br&gt;
+
+¿Cómo? A través de la inteligencia de datos analizan muchos factores de carácter individual del usuario como sus hábitos de compra o intereses y otros más generales como tendencias del momento o pautas de conducta de otros usuarios que adquirieron productos similares.
+
+&lt;br&gt;
+
+Juntan todo en la coctelera del Big Data y ofrecen una serie de productos sugeridos o relacionados con compras que el cliente ya ha hecho o se ha planteado hacer.
+
+]
+
+
+---
+
+
+# Netflix
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/JnvHE3lTHPr3WrSsrl/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.pull-right-wide[
+
+Uno de los grandes factores del éxito de la popular empresa estadounidense Netflix, es su magistral uso de los macrodatos para crear nuevos contenidos para sus usuarios, cuyos hábitos de consumo y preferencias son observados al detalle para descubrir qué es lo que van a querer ver a continuación con base a patrones predictivos. 
+
+&lt;br&gt;
+
+Así crearon, por ejemplo, la serie House of Cards: observaron que a muchos de sus usuarios les gustaban contenidos que incluyeran poder, política, drama y sensualidad entre sus características principales. Y también que les gustaba como actor Kevin Spacey. 
+
+&lt;br&gt;
+
+Así, dieron con la fórmula y mezclaron en la trama todos estos ingredientes poniendo a protagonizar a Spacey la misma. Igual proceso para Stranger Things y otros grandes éxitos de audiencia.
+
+
+]
+
+
+---
+
+
+
+# T-Mobile
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/mGKIeZ9y4A2ZvMFFCQ/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.pull-right-wide[
+
+Esta empresa de telecomunicaciones alemana es un ejemplo de uso de los datos masivos como mejor arma de retención de clientes. 
+
+&lt;br&gt;
+
+Analizando a fondo las conversaciones, reclamaciones y descontentos que sus clientes dejaban en redes sociales, crearon soluciones específicas para cada uno de ellos y consiguieron reducir la fuga de clientes a otras empresas en un 50%, con lo que el retorno de la inversión realizada en Big Data fue compensado con creces.
+
+
+]
+
+
+---
+
+
+# Spotify
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/l4FGB9Cs55wbvM75u/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.pull-right-wide[
+
+Bajar hasta los datos individualizados más llamativos para lanzar con ellos una campaña global masiva. Eso hizo en Reino Unido la compañía sueca Spotify, que ofrece reproducción de música vía streaming. Su plan consistió en buscar la complicidad del gran público. Y lo consiguieron mostrando curiosidades o rarezas del comportamiento de algunos de sus usuarios que habían detectado a través de los macrodatos. Así, en grandes carteles publicitarios, colocaron anuncios como estos:
+
+- `Querida persona que reprodujo “Sorry” 42 veces en el Día de San Valentín, ¿qué hiciste?`
+
+- `Queridas 3.749 personas que reprodujeron “It’s the end of the world as we know it” el día del Brexit, estamos con vosotros`
+
+- `Querida persona en el Theater District que escuchó la banda sonora de Hamilton 5.376 veces este año, ¿puedes conseguirnos tickets?`
+
+
+]
+
+
+---
+
+
+# Nike
+
+.pull-left-narrow[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;img src="https://media.giphy.com/media/3o6Zt4F6t6Sm1cmcus/giphy.gif" width="90%"/&gt;
+
+
+]
+
+
+.pull-right-wide[
+
+Los dispositivos electrónicos de su línea NikePlus (relojes inteligentes, pulsómetros, dispositivos con sensores que conectan sus zapatillas con un teléfono...) recogen cantidades masivas de información de millones de usuarios. 
+
+&lt;br&gt;
+
+Información que sirve a la empresa de ropa deportiva estadounidense para buscar la fidelización de los usuarios a través de retos y objetivos que apelan a la capacidad de superación de estos, creando un vínculo con la marca más allá de la simple venta de material deportivo. 
+
+
+]
+
+
+---
+
+
+
+background-image: url(img/back9.jpg)
+background-size: cover
+class: inverse, center, bottom
+
+
+
+## Está en todas partes...
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+## y todavía no hay tantos expertos como demanda de éstos, que sigue en aumento imparable. Por tanto, ha llegado el momento de los datos a gran escala.
+
+
+---
+
+
+
+
+class: inverse, center, middle
+background-color: #122140
+
+# Analítica de Datos para la Gestión Financiera
+## “Del hype (ML/Big Data) al trabajo real: el dato”
+
+---
+
+# ¿Qué es “analítica de datos” en gestión financiera?
+
+En finanzas, analítica no es “hacer un modelo” solamente.  
+Es construir un proceso confiable para responder preguntas como:
+
+- ¿Cómo se comporta el rendimiento y el riesgo de un activo / portafolio?
+- ¿Cómo evoluciona la liquidez, solvencia o rentabilidad de una empresa?
+- ¿Qué señales tempranas hay de estrés financiero?
+
+----
+
+.center[
+.orange[**El insumo real es el dato: limpio, trazable, consistente.**]
+]
+
+---
+
+# El flujo analítico (vista de ingeniería)
+
+**Problema → Dato → Integración → Calidad → Métrica/Modelo → Decisión**
+
+.panelset[
+.panel[.panel-name[Pregunta guía]
+Si mañana te cambian la base de datos o llega un nuevo periodo,
+¿puedes reproducir exactamente el dataset final y el resultado?
+]
+.panel[.panel-name[Objetivo del curso]
+Que tu respuesta sea: **sí**, porque tienes un pipeline documentado.
+]
+]
+
+---
+
+# Dos mundos de datos financieros
+
+.pull-left[
+## Mercado
+Datos que reflejan precios y condiciones de negociación.
+
+- Precios (close, open, high, low)
+- Volúmenes, spreads, liquidez
+- Tasas de interés, FX, commodities
+- Indicadores: retornos, volatilidad, VaR
+
+**Preguntas típicas:** riesgo, cobertura, asignación, timing.
+]
+
+.pull-right[
+## Corporativo
+Datos que describen la salud financiera de empresas.
+
+- Estados financieros (balance, P&amp;G, flujo de caja)
+- Razones financieras (ROA, ROE, margen, endeudamiento)
+- Cuentas por cobrar/pagar, inventarios, CAPEX
+
+**Preguntas típicas:** desempeño, solvencia, planeación y control.
+]
+
+---
+
+# Clasifica variables
+
+¿Cuáles son de mercado y cuáles son corporativas?
+
+- Precio de cierre, volumen, tasa de cambio, beta, EBITDA, deuda total, caja, margen neto
+
+.panelset[
+.panel[.panel-name[Respuesta]
+**Mercado:** precio de cierre, volumen, tasa de cambio, beta  
+**Corporativo:** EBITDA, deuda total, caja, margen neto
+]
+.panel[.panel-name[Mensaje]
+La clasificación te dice **cómo** se generan,
+**con qué frecuencia** llegan,
+y **qué llaves** necesitas para integrarlas.
+]
+]
+
+---
+
+# Estructuras de datos: serie de tiempo vs panel
+
+.pull-left[
+## Serie de tiempo
+Una entidad a través del tiempo.
+
+- Un activo: `precio_t`
+- Una empresa: `EBITDA_t`
+- Un país: `inflación_t`
+
+**Llave típica:** `fecha`
+]
+
+.pull-right[
+## Panel
+Muchas entidades a través del tiempo.
+
+- Muchas acciones por día: `id_activo × fecha`
+- Muchas empresas por trimestre: `firma × periodo`
+- Países por mes: `pais × fecha`
+
+**Llaves típicas:** `(id, fecha)`
+]
+
+---
+
+# Frecuencia importa
+
+Mercado suele ser:
+- diaria, intradía (minutos/segundos)
+
+Corporativo suele ser:
+- trimestral, anual (a veces mensual interno)
+
+**Riesgo típico:** mezclar frecuencias sin control.
+
+&gt; Ejemplo: unir precios diarios con estados trimestrales “como si fuera lo mismo”
+genera duplicados o valores repetidos artificialmente.
+
+---
+
+# Mini-caso: unir mercado (diario) con corporativo (trimestral)
+
+Si tienes:
+- precios diarios de una acción (365 filas/año)
+- estado financiero trimestral (4 filas/año)
+
+Pregunta: ¿qué pasa si haces un join solo por `id`?
+
+
+--
+
+
+.panelset[
+.panel[.panel-name[Respuesta corta]
+Explota la tabla: el dato trimestral se replica en todos los días
+y puedes terminar duplicando o “inyectando” información donde no corresponde.
+]
+.panel[.panel-name[Regla práctica]
+Antes de unir: define la **frecuencia objetivo** del análisis.
+- Si quieres análisis diario: debes decidir cómo “llevar” lo trimestral a diario (y justificarlo).
+- Si quieres análisis trimestral: debes agregar/resumir lo diario a trimestre.
+]
+]
+
+---
+
+class: inverse, center, middle
+background-color: #122140
+
+# Importación e integración (en R)
+## Llaves, joins, duplicados, faltantes, unidades/monedas/fechas
+
+---
+
+# Paso 1: Importación (import) con control
+
+En el mundo real, el dolor no es `read_csv()`, sino:
+
+- encoding y separadores (coma vs punto y coma)
+- nombres raros de columnas
+- tipos mal leídos (fechas como texto, números como caracteres)
+- separadores de miles/decimales
+
+----
+
+.center[
+.orange[**Importar es tipificar. Si no tipificas, todo lo demás se contamina.**]
+]
+
+---
+
+# ¿Qué error ves?
+
+Te llega una columna `price` como texto:
+
+- `"19,000"`  
+- `"20.000"`  
+- `"$18,500"`  
+
+Pregunta: ¿es el mismo formato? ¿es el mismo número?
+
+.panelset[
+.panel[.panel-name[Claves]
+- separador de miles vs decimal  
+- símbolo de moneda  
+- consistencia del formato  
+Si no limpias esto, tus retornos salen absurdos.
+]
+]
+
+---
+
+# Paso 2: Llaves (keys): la decisión más importante
+
+En datos financieros, una llave mal definida te destruye el dataset.
+
+Ejemplos de llaves típicas:
+- Mercado: `(ticker, fecha)`
+- FX: `(par_moneda, fecha)`
+- Corporativo: `(firma, periodo)`
+- Transaccional: `(id_cliente, fecha_hora, id_transaccion)`
+
+----
+
+.center[
+.blue2[Antes de hacer joins, escribe tu llave en una frase.]
+]
+
+---
+
+# Paso 3: Joins (uniones) — el lugar donde nacen los duplicados
+
+Tipos de joins (idea):
+- `left_join()`: conservo mi tabla base
+- `inner_join()`: solo intersección
+- `full_join()`: todo, con faltantes
+
+Riesgo #1: **many-to-many accidental**
+- si ambas tablas tienen repetidos en la llave, el join “multiplica” filas.
+
+---
+
+# Predice qué pasa
+
+Tabla A: precios diarios (ticker, fecha) — única por llave.  
+Tabla B: noticias (ticker, fecha) — puede tener **varias** noticias por día.
+
+Si haces `left_join(A, B, by=c("ticker","fecha"))`:
+
+--
+
+.panelset[
+.panel[.panel-name[Respuesta]
+El precio del día se va a repetir tantas veces como noticias existan ese día.
+Eso NO es “malo” si tu unidad de análisis es “noticia”.
+Pero es un desastre si tu unidad de análisis es “día”.
+]
+.panel[.panel-name[Regla]
+Primero define la **unidad de análisis**:
+día, transacción, cliente, firma-trimestre…
+Luego ajustas la tabla (agregas B o cambias el modelo).
+]
+]
+
+---
+
+# Paso 4: Duplicados (y cómo se generan)
+
+Duplicados típicos en finanzas:
+- mismo registro repetido (carga doble)
+- join que explota filas
+- fechas duplicadas por zona horaria / mercado
+
+Chequeo mental:
+&gt; “¿Debería existir más de una fila por (ticker, fecha)?”
+
+Si la respuesta es no → entonces tu dataset tiene un problema.
+
+---
+
+# Checklist de duplicados
+
+Si tu unidad es diaria por activo, entonces:
+
+- ¿existe más de una fila por `(ticker, fecha)`?
+- ¿cuántas? ¿en qué fechas? ¿por qué?
+
+
+
+.panelset[
+.panel[.panel-name[Interpretación]
+Duplicados ≠ “un error pequeño”.  
+Duplicados = retornos duplicados, volatilidad falsa,
+VaR inflado/deflactado, y decisiones erróneas.
+]
+]
+
+---
+
+# Paso 5: Faltantes (NA) — no siempre son “malos”, pero sí peligrosos
+
+Tipos de faltantes:
+- faltante real (no existe dato)
+- faltante por falla de captura
+- faltante por join mal hecho
+
+En finanzas:
+- `NA` en precio rompe retornos
+- `NA` en estados financieros rompe ratios
+- `NA` en tasas rompe descuento/valuación
+
+---
+
+# NA en precios
+
+Si un precio está NA en medio de la serie:
+
+- tu retorno de ese día es NA  
+- y el retorno del día siguiente depende de ese NA  
+- puedes “perder” ventanas completas de cálculo
+
+**Regla:** antes de modelar, decide:
+- eliminar, imputar, interpolar, o marcar y excluir por periodos
+… y documenta la decisión.
+
+---
+
+# Paso 6: Unidades, moneda y fechas (los tres asesinos silenciosos)
+
+**Unidades:** miles vs millones, % vs proporción  
+**Moneda:** COP vs USD, nominal vs real  
+**Fechas:** formato, zona horaria, días hábiles vs calendario
+
+----
+
+.center[
+.orange[**La mayoría de errores graves en finanzas son “formato”, no matemática.**]
+]
+
+---
+
+# Mini-ejercicio (2 min): identifica el bug
+
+Tasa de interés: `5`  
+- ¿Es 5% o es 5 (500%)?
+
+FX: `4000`  
+- ¿COP/USD o USD/COP?
+
+Fecha: `01/02/2025`  
+- ¿1 de febrero o 2 de enero?
+
+.panelset[
+.panel[.panel-name[Moraleja]
+Sin diccionario de variables y reglas de formato,
+tú y tu equipo pueden leer lo mismo… y entender cosas distintas.
+]
+]
+
+---
+
+class: inverse, center, middle
+background-color: #122140
+
+# Validaciones, trazabilidad y diccionario
+## Quality gate + pipeline reproducible
+
+---
+
+# Quality gate: validaciones mínimas antes de analizar
+
+Antes de calcular retornos, ratios o riesgo, valida:
+
+- Llaves únicas (unidad de análisis)
+- Rangos lógicos (precios &gt; 0, tasas razonables)
+- Consistencia de moneda y unidades
+- Fechas ordenadas y sin huecos “raros”
+- NA bajo control (reglas explícitas)
+
+----
+
+.center[
+.blue2[Estas validaciones son parte del pipeline, no una “revisión manual”.]
+]
+
+---
+
+# Trazabilidad: ¿de dónde salió este número?
+
+Trazabilidad significa que puedas responder:
+
+- ¿qué fuente lo generó?
+- ¿qué transformaciones se aplicaron?
+- ¿qué filas se filtraron y por qué?
+- ¿qué versión de datos/código lo produjo?
+
+En proyectos reales, esto separa:
+- análisis “bonito” (no repetible)
+- de análisis profesional (auditables).
+
+---
+
+# Diccionario de variables (mínimo viable)
+
+Para cada variable define:
+
+- nombre (en el dataset)
+- descripción en español
+- unidad (USD, COP, %, ratio)
+- frecuencia (diaria, mensual, trimestral)
+- fuente (sistema, API, proveedor)
+- reglas de validación (rangos, NA permitido)
+- llave / nivel (ticker-fecha, firma-periodo)
+
+----
+
+.center[
+.orange[**Sin diccionario, no hay proyecto: hay solo archivos sueltos.**]
+]
+
+---
+
+# Mini-ejercicio (5 min): crea tu mini-diccionario
+
+Toma 5 variables típicas y define:
+
+1) nombre en dataset  
+2) descripción  
+3) unidad/moneda  
+4) frecuencia  
+5) nivel (llave)
+
+Ejemplos:
+- `close`, `volume`, `ret`, `fx_usdcop`, `debt_total`
+
+.panelset[
+.panel[.panel-name[Entrega]
+En grupos: un diccionario de 5 variables en una tabla (puede ser Google Sheets).
+]
+.panel[.panel-name[Evaluación rápida]
+¿Se entiende sin que tú lo expliques?
+Si la respuesta es no, falta detalle.
+]
+]
+
+---
+
+# Pipeline reproducible (en una frase)
+
+**Importar → limpiar → integrar → validar → documentar → analizar**
+
+.panelset[
+.panel[.panel-name[Lo que haremos en R]
+- `readr`/`readxl` para importar  
+- `dplyr` para limpiar e integrar  
+- funciones de validación (reglas)  
+- outputs reproducibles (dataset final + reporte)
+]
+.panel[.panel-name[Mensaje final]
+Cuando lleguemos a modelos (ML), ya tendremos confianza
+en que el patrón viene del mundo… no de errores del dataset.
+]
+]
+
+---
+
+
+
+# Taller 1 (10%) — Flujo de datos y calidad
+
+**Objetivo:** entregar un *dataset analítico* listo para usar en el **Taller 2 (EDA + inferencia + visualización)**. 
+
+
+Aquí NO evaluamos “modelos”: evaluamos **calidad, trazabilidad y reproducibilidad**.
+
+----
+
+## 1) Elige una ruta de datos (una sola)
+
+.pull-left[
+### Ruta A — Mercado
+- 7-10 activos (acciones/ETF/índice/etc)  
+- ventana: 3–5 años (ideal: diaria)  
+
+**Llave:** `ticker + date`
+]
+
+.pull-right[
+### Ruta B — Corporativo
+- Empresas  
+- 8–12 trimestres (o meses, o años)  
+- variables de estados financieros/ratios
+
+**Llave:** `empresa + periodo`
+]
+
+---
+
+
+
+.pull-left[
+
+## 2) Entregables (1 archivo)
+
+1) **Reporte reproducible** 
+   - Generado con Rmd/Quarto/Streamlit/etc.
+   
+2)  El reporte debe de mostar el camino desde el **Dataset inicial** hasta **Dataset final**  
+   
+3) **Diccionario mínimo**  
+   - nombre, descripción, unidad/moneda, frecuencia, fuente, llave/nivel, etc.
+
+
+
+]
+
+.pull-right[
+
+
+## 3) Checks de calidad (obligatorios)
+
+- **Llave única:** sin duplicados en la llave  
+- **Tipos correctos:** fechas como `Date`, números como numéricos  
+- **Missing controlado:** conteo de NA + decisión (eliminar/imputar/marcar)  
+- **Unidades/moneda consistentes:** una sola convención + nota si transformaste  
+- **Rangos lógicos:** valores imposibles detectados (precio&gt;0, tasas razonables, etc.)  
+- **Bitácora:** “qué cambié y por qué” (trazabilidad)
+
+]
+
+---
+
+
+## IA ?
+
+&gt; “Pueden usar IA como asistente de programación. En la vida real la usarán.
+Pero el taller evalúa criterio de datos: llaves, calidad, trazabilidad y reproducibilidad.
+Si la IA les da código, ustedes siguen siendo responsables de entenderlo y documentarlo.”
+
+
+Plataformas recomendadas:
+
+- Quarto: https://quarto.org/
+- Rmarkdown: https://rmarkdown.rstudio.com/
+- Streamlit: https://streamlit.io/
+
+
+
+----
+
+.center[**.orange[.font130[Importante: Pensar en la reproducibilidad, Si cambio la Base de Datos, ¿puedo replicar el código que generé?]]**]
+
+
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+background-color: #122140
+
+
+
+
+.pull-left[
+
+.center[
+&lt;br&gt;&lt;br&gt;
+
+# Gracias!!!
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+
+
+### Preguntas?
+]
+
+
+]
+
+
+.pull-right[
+
+
+.center[
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+
+.center[
+&lt;img style="border-radius: 50%;" src="img/avatar.png"
+width="100px" href="https://www.joaquibarandica.com"
+/&gt;
+
+<span>&lt;i class="fas  fa-envelope faa-passing animated "&gt;&lt;/i&gt;</span> orlando.joaqui@correounivalle.edu.co 
+]
+
+
+&lt;img src="img/qr-code.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+.center[
+www.joaquibarandica.com
+]
+
+
+
+]
+
+
+]
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+----
+
+*The images used to set the presentation are from [pixabay](https://pixabay.com/).*
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="cols_macro.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
