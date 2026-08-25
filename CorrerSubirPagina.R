@@ -17,7 +17,7 @@ blogdown::serve_site()
 
 git add .
 
-git commit -m "Act.02.07.2026_1"
+git commit -m "Act.25.08.2026_1"
 
 git push origin main
 
